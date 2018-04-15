@@ -58,13 +58,30 @@
     <div class="east-menu">
         <div class="content">
             <div class="col-lg-12">
-                <a href="news-categories/view/index.html@id=3.html">Новости</a>
+                <!-- <a href="news-categories/view/index.html@id=3.html">Новости</a>
                 <a href="news-categories/view/index.html@id=4.html">Исследования</a>
                 <a href="news-categories/view/index.html@id=5.html">Технологии</a>
                 <a href="news-categories/view/index.html@id=6.html">Розничный аудит</a>
                 <a href="index.html#">Цены</a>
                 <a class="current-link" href="index.html#">Рейтинги</a>
-                <a href="index.html#">Блог</a>
+                <a href="index.html#">Блог</a> -->
+                @foreach($catigories as $catigor)
+                    <!-- <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a> -->
+                    @if($catigor->slug == NULL)
+                        @if($catigor->color == 0)
+                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @endif
+                    @else
+                        
+                        @if($catigor->color == 0)
+                            <a href="{{ route('otherCatigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ route('otherCatigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
+                        @endif
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
