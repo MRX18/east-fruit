@@ -53,36 +53,42 @@
                     </div>
 
                     <div class="wrapper-category">
-                                <div id="w0" class="news-reserch category-block">
-<div data-key="43">
-    <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-        <div class="item-category">
-            <div class="item item-category-image">
-                <div class="item-hover">
-                    <a href="../../news/view/index.html@id=43.html" class="search"></a>
-                </div>
-                <div class="item-img item-category-img">
-                    <img src="../../images/news/image/5ad0701b158e1.png"/>
-                </div>
+                        <div id="w0" class="news-reserch category-block">
+                            
+                            @foreach($articles as $article)
+                            <div data-key="43">
+                                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                    <div class="item-category">
+                                        <div class="item item-category-image">
+                                            <div class="item-hover">
+                                                <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
+                                            </div>
+                                            <div class="item-img item-category-img">
+                                                <img src="{{ asset('/uploads/'.$article->img) }}"/>
+                                            </div>
 
-            </div>
+                                        </div>
 
-            <div class="entry-meta bg-2">НОВОСТИ</div>
+                                        <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
 
-            <div style="float: left;" class="title">
-                <h4 style="text-align: left;"><a href="../../news/view/index.html@id=43.html">Правительство Украины компенсирует фермерам 80% стоимости саженцев</a></h4>
-            </div>
+                                        <div style="float: left;" class="title">
+                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                        </div>
 
 
-            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
-                13/04/2018
-            </div>
-        </div>
-    </div>
-</div>
+                                        <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                            13/04/2018
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
 
-</div>
                     </div>
+                    <div class="category-button">
+                        {{ $articles->links() }}
+                    </div>
+                </div>
 
 <!--                     <div class="more-news-item">
 
@@ -139,7 +145,6 @@
                     </div> -->
 
                 </div>
-
                 <div class="col-sm-4 col-lg-3 hidden-xs category-left-block">
                     <div id='calendar'></div>
 

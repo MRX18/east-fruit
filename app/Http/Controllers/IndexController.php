@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index() {
+    	$title = "Главная";
 
     	$catigories = CatigorTop::get();
     	$sitebar = Article::where('visible',1)->orderByDesc('id')->limit(10)->get();
@@ -27,6 +28,7 @@ class IndexController extends Controller
 
 
     	return view('index')->with([
+    		'title' => $title,
     		'catigories' => $catigories,
     		'sitebarArticle' => $sitebar,
 

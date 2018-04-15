@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        <link href="css/reset.css" rel="stylesheet">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/adaptive.css" rel="stylesheet">
-<link href="slick/slick-theme.css" rel="stylesheet">
-<link href="slick/slick.css" rel="stylesheet">        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <title>{{ $title }}</title>
+        <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
+<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/adaptive.css') }}" rel="stylesheet">
+<link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
+<link href="{{ asset('slick/slick.css') }}" rel="stylesheet">        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
@@ -20,7 +20,7 @@
         <div class="content">
             <div class="col-md-12">
                 <div class="east-header-logo">
-                    <img src="images/east-fruit.png">
+                    <img src="{{ asset('images/east-fruit.png') }}">
                 </div>
                 <div class="east-header-hamburger">
                     <img src="images/hamburger.png">
@@ -140,7 +140,7 @@
             </div>
             <div class="col-lg-2 east-footer-copy">
                 <div class="">
-                    <img src="images/east-fruit.png">
+                    <img src="{{ asset('images/east-fruit.png') }}">
                 </div>
                 <div class="">
                     <p class="copy">© 2018 Новостное агентство East Fruit</p>
@@ -150,11 +150,11 @@
         </div>
     </footer>
 
-    <script src="assets/eba91ba9/jquery.js"></script>
-<script src="assets/8a33ea23/yii.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="slick/slick.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/plugins.js"></script>    </body>
+<script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
+<script src="{{ asset('assets/8a33ea23/yii.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('slick/slick.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>    </body>
 </html>
