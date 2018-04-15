@@ -1,0 +1,830 @@
+@extends('layouts.main')
+@section('content')
+<section id="main-section">
+    <section id="news-section">
+        <div class="container">
+            <div class="row no-gutter">
+                <div class="col-sm-4 col-lg-3 hidden-xs">
+                    <div class="entry-post">
+                        <h3>Актуальное</h3>
+                        <!-- Begin .item-->
+                        <div id="w0" class="list-view">
+<div data-key="43"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=43.html">Правительство Украины компенсирует фермерам 80% стоимости са...</a></p>
+        <div class="entry-meta bg-4">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="42"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=42.html">Узбекистан хочет втрое увеличить поставки овощей и фруктов в...</a></p>
+        <div class="entry-meta bg-6">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="41"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=41.html">Ассоциация производителей орехов Грузии ожидает в текущем го...</a></p>
+        <div class="entry-meta bg-2">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="40"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=40.html">Инвестиции в хранилища яблок: проблемы и перспективы</a></p>
+        <div class="entry-meta bg-9">ИССЛЕДОВАНИЯ</div>
+    </div>
+</div>
+</div>
+<div data-key="39"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=39.html">Машина удаляет микроорганизмы с кожицы снековых яблок </a></p>
+        <div class="entry-meta bg-2">ТЕХНОЛОГИИ</div>
+    </div>
+</div>
+</div>
+<div data-key="38"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=38.html">Съедобные чернила как альтернатива наклейкам на плодах</a></p>
+        <div class="entry-meta bg-1">ТЕХНОЛОГИИ</div>
+    </div>
+</div>
+</div>
+<div data-key="37"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=37.html">Молдова вводит стандарты ЕС в сфере контроля качества свежих...</a></p>
+        <div class="entry-meta bg-6">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="36"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=36.html">В Узбекистане отменили пошлины на импорт грузовиков, перевоз...</a></p>
+        <div class="entry-meta bg-2">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="35"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=35.html">Страна готовится к международной конференции "Ягоды Украины"</a></p>
+        <div class="entry-meta bg-2">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="34"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=34.html">В хранилищах ЕС остается больше груш, чем годом ранее</a></p>
+        <div class="entry-meta bg-1">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+<div data-key="33"><div class="item">
+    <div class="item-image">
+        <span class="item-image-date">13 апр</span>
+        <!--<span class="item-image-time">09:30</span>-->
+    </div>
+    <div class="item-content">
+        <p class="ellipsis"><a href="news/view/index.html@id=33.html">Европе нужны яблоки: в остается минимальный объем этой проду...</a></p>
+        <div class="entry-meta bg-2">НОВОСТИ</div>
+    </div>
+</div>
+</div>
+</div>                    </div>
+                </div>
+                <div class="col-sm-8 col-lg-9">
+                    <div class="news-bredcrumbs">
+
+                            <div id="w1" class="news-stroke">
+<div data-key="43"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="42"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="41"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="40"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="39"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="38"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="37"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="36"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="35"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="34"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+<div data-key="33"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
+</div>
+</div>                    </div>
+                    <div class="news-carousel">
+                        <div id="newsSlider" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#newsSlider" data-slide-to="0" class="active"></li>
+                                <li data-target="#newsSlider" data-slide-to="1"></li>
+                                <li data-target="#newsSlider" data-slide-to="2"></li>
+                            </ol>
+
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="images/686225095.jpg" />
+                                    <div class="text">
+                                        <span>09/03/18</span>
+                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                    </div>
+                                    <div class="items-more" data-slide-to="0">
+                                        <div class="items-more-item active">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item" data-slide-to="1">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item" data-slide-to="2">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="images/686225095.jpg" />
+                                    <div class="text">
+                                        <span>09/03/18</span>
+                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                    </div>
+                                    <div class="items-more">
+                                        <div class="items-more-item">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item active">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img src="images/686225095.jpg" />
+                                    <div class="text">
+                                        <span>09/03/18</span>
+                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                    </div>
+                                    <div class="items-more">
+                                        <div class="items-more-item">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                        <div class="items-more-item active">
+                                            <span>09/03/18</span>
+                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-slider-controls">
+                                <!-- Left and right controls -->
+                                <a class="carousel-control" href="index.html#newsSlider" data-slide="prev">
+                                    <img src="images/arrowWhireLeft.png">
+                                </a>
+                                <a class="right carousel-control" href="index.html#newsSlider" data-slide="next">
+                                    <img src="images/arrowWhireRight.png">
+                                </a>
+                                <div class="block-marquee">
+                                    <div class="marquee"><span>Фермеры не могут получить компенсацию за строительство<i>26/11/2018</i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-reserch">
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                            <h3>Исследования</h3>
+                            <div id="w2" class="list-view">
+<div data-key="40"><div class="item">
+    <p>Инвестиции в хранилища яблок: проблемы и перспективы</p>
+    <a href="news/view/index.html@id=40.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5ad0698e93440.jpg"/>
+            </div>
+</div>
+</div>
+<div data-key="32"><div class="item">
+    <p>Украинским производителям яблок стоит поработать над улучшением качества продукции</p>
+    <a href="news/view/index.html@id=32.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5ad05b4395a23.jpg"/>
+            </div>
+</div>
+</div>
+</div>                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
+                            <h3>Технологии</h3>
+                            <div id="w3" class="list-view">
+<div data-key="39"><div class="item">
+    <p>Машина удаляет микроорганизмы с кожицы снековых яблок </p>
+    <a href="news/view/index.html@id=39.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5ad067e216400.jpg"/>
+            </div>
+</div>
+</div>
+<div data-key="38"><div class="item">
+    <p>Съедобные чернила как альтернатива наклейкам на плодах</p>
+    <a href="news/view/index.html@id=38.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5ad0654433f01.jpg"/>
+            </div>
+</div>
+</div>
+</div>                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                            <h3>Розничный аудит</h3>
+                            <div id="w4" class="list-view">
+<div data-key="13"><div class="item">
+    <p>test8</p>
+    <a href="news/view/index.html@id=13.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5acdd6ce4410b.jpg"/>
+            </div>
+</div>
+</div>
+<div data-key="12"><div class="item">
+    <p>test7</p>
+    <a href="news/view/index.html@id=12.html" class="item-hover">
+        <div class="search"></div>
+    </a>
+    <div class="item-img">
+
+                <img src="images/news/image/5acdd6b7e9e78.jpg"/>
+            </div>
+</div>
+</div>
+</div>                        </div>
+                    </div>
+                    <div class="news-slick_slider">
+                        <div class="news-comments-slick_slider-slider">
+                            <div class="news-team-item">
+                                <div class="news-slick-item-img">
+                                    <img src="images/viktor.jpg" />
+                                </div>
+                                <div class="news-team-item-text">
+                                    <p class="name">Виктор Компанеец</p>
+                                    <p>Эпоха аутсорсинга заканчивается</p>
+                                    <span>03 МАР 09:30</span>
+                                    <a href="index.html">Читать</a>
+                                </div>
+                            </div>
+                            <div class="news-team-item">
+                                <div class="news-slick-item-img">
+                                    <img src="images/viktor.jpg" />
+                                </div>
+                                <div class="news-team-item-text">
+                                    <p class="name">Виктор Компанеец</p>
+                                    <p>Эпоха аутсорсинга заканчивается</p>
+                                    <span>03 МАР 09:30</span>
+                                    <a href="index.html">Читать</a>
+                                </div>
+                            </div>
+                            <div class="news-team-item">
+                                <div class="news-slick-item-img">
+                                    <img src="images/657220.jpg" />
+                                </div>
+                                <div class="news-team-item-text">
+                                    <p class="name">Виктор Компанеец</p>
+                                    <p>Эпоха аутсорсинга заканчивается</p>
+                                    <span>03 МАР 09:30</span>
+                                    <a href="index.html">Читать</a>
+                                </div>
+                            </div>
+                            <div class="news-team-item">
+                                <div class="news-slick-item-img">
+                                    <img src="images/viktor.jpg" />
+                                </div>
+                                <div class="news-team-item-text">
+                                    <p class="name">Виктор Компанеец</p>
+                                    <p>Эпоха аутсорсинга заканчивается</p>
+                                    <span>03 МАР 09:30</span>
+                                    <a href="index.html">Читать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+
+                        </script>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 visible-xs">
+                        <div class="entry-post">
+                            <h3>Новости</h3>
+                            <!-- Begin .item-->
+                            <div class="item">
+                                <div class="item-image">
+                                    <span class="item-image-date">05 МАР</span>
+                                    <!--<span class="item-image-time">09:30</span>-->
+                                </div>
+                                <div class="item-content">
+                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
+                                    <div class="entry-meta bg-4">News</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-image">
+                                    <span class="item-image-date">05 МАР</span>
+                                    <!--<span class="item-image-time">09:30</span>-->
+                                </div>
+                                <div class="item-content">
+                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
+                                    <div class="entry-meta bg-5">News</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-image">
+                                    <span class="item-image-date">05 МАР</span>
+                                    <!--<span class="item-image-time">09:30</span>-->
+                                </div>
+                                <div class="item-content">
+                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
+                                    <div class="entry-meta bg-6">News</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-history hidden-xs">
+                        <div class="col-md-12 col-lg-4 text-center">
+                            <h3>Истории бизнеса</h3>
+                            <div class="item">
+                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <div class="item-img">
+                                    <img src="images/image_350x247.jpg"/>
+                                </div>
+                                <div class="item-link">
+                                    <span>05 мар 09:30</span>
+                                    <span class="arrow"></span>
+                                </div>
+                                <div class="hover"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4 text-center">
+                            <h3>Рейтинги</h3>
+                            <div class="item">
+                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <div class="item-img">
+                                    <img src="images/image_350x247.jpg"/>
+                                </div>
+                                <div class="item-link">
+                                    <span>05 мар 09:30</span>
+                                    <span class="arrow"></span>
+                                </div>
+                                <div class="hover"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4 text-center">
+                            <h3>Цены</h3>
+                            <div class="item">
+                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <div class="item-img">
+                                    <img src="images/image_350x247.jpg"/>
+                                </div>
+                                <div class="item-link">
+                                    <span>05 мар 09:30</span>
+                                    <span class="arrow"></span>
+                                </div>
+                                <div class="hover"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="slider-section">
+        <div class="container">
+            <div class="row no-gutter">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6 col-lg-6 text">
+                                <div class="video-container">
+                                    <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
+                                            class="video" title="Advertisement"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6 text">
+                                <h3>В Турции повысился урожай цитрусовых</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
+                                <p><span>05 МАР 09:30</span></p>
+                                <p><a href="index.html">Подробнее</a></p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6 col-lg-6 text">
+                                <div class="video-container">
+                                    <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
+                                            class="video" title="Advertisement"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6 text">
+                                <h3>В Турции повысился урожай цитрусовых</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
+                                <p><span>05 МАР 09:30</span></p>
+                                <p><a href="index.html">Подробнее</a></p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6 col-md-6 text">
+                                <div class="video-container">
+                                    <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
+                                            class="video" title="Advertisement"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6 text">
+                                <h3>В Турции повысился урожай цитрусовых</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
+                                <p><span>05 МАР 09:30</span></p>
+                                <p><a href="index.html">Подробнее</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="calendar-section">
+        <div class="container">
+            <div class="row no-gutter">
+                <div class="col-sm-6 col-lg-4 text-right">
+                    <div id='calendar'></div>
+                </div>
+                <div class="col-sm-6 col-lg-8 hidden-xs">
+                    <div class="calendar-news">
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news7.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news7.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news5.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news5.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news2.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news2.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news8.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news8.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news4.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news4.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news9.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news9.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news6.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news6.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news6.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news6.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news4.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news4.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news5.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news5.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news1.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news1.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news6.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news6.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news5.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news5.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news8.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news8.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-8 visible-xs">
+                    <div class="calendar-news">
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news6.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news6.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news4.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news4.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news5.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news5.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news1.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news1.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news6.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news6.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news3.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news3.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news5.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news5.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-hover">
+                                <img src="images/news8.jpg"/>
+                                <div class="search"></div>
+                            </div>
+                            <div class="item-img">
+                                <img src="images/news8.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="org-section">
+        <div class="container">
+            <div class="row no-gutter">
+                <h3>Организаторы</h3>
+                <div class="col-sm-5 col-md-6 col-xs-6 text-right">
+                    <img src="images/Logo&#32;FAO.png" alt="" />
+                </div>
+                <div class="col-sm-6 col-md-5 col-xs-6 col-md-offset-1">
+                    <img src="images/ebrr_logo.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="partners-section">
+        <div class="container">
+            <div class="row no-gutter">
+                <div class="col-sm-6 col-md-5 text-right partners-text">
+                    <p>Партнеры проекта:</p>
+                </div>
+                <div class="col-sm-6 col-md-2 col-xs-6 text-right">
+                    <img src="images/UHA.png" alt="" />
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-6 text-center">
+                    <img src="images/400x400&#32;(1).png" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+@endsection
