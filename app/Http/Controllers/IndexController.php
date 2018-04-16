@@ -11,7 +11,8 @@ class IndexController extends Controller
     public function index() {
     	$title = "Главная";
 
-    	$catigories = CatigorTop::get();
+    	$catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
     	$sitebar = Article::orderByDesc('id')->limit(10)->get();
 
     	foreach($sitebar as $option) {
@@ -30,6 +31,7 @@ class IndexController extends Controller
     	return view('index')->with([
     		'title' => $title,
     		'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
     		'sitebarArticle' => $sitebar,
 
     		'researchs' => $researchs,

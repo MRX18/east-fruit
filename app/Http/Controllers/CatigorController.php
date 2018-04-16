@@ -10,7 +10,8 @@ class CatigorController extends Controller
 {
     public function index($id) {
     	$title = "Главная";
-    	$catigories = CatigorTop::get();
+    	$catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
 
     	foreach($catigories as $catigor) {
     		if($catigor->id == $id) {
@@ -31,6 +32,7 @@ class CatigorController extends Controller
     	return view('catigories')->with([
     		'title' => $title,
     		'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
 
     		'articles' => $articles
     	]);

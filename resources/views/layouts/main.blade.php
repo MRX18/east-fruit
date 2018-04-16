@@ -67,20 +67,22 @@
                 <a href="index.html#">Блог</a> -->
                 @foreach($catigories as $catigor)
                     <!-- <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a> -->
-                    @if($catigor->slug == NULL)
-                        @if($catigor->color == 0)
-                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
-                        @else
-                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
-                        @endif
+                    @if($catigor->color == 0)
+                        <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
                     @else
-                        
-                        @if($catigor->color == 0)
-                            <a href="{{ route('otherCatigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
-                        @else
-                            <a class="current-link" href="{{ route('otherCatigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
-                        @endif
+                        <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
                     @endif
+                    
+                @endforeach
+
+                 @foreach($otherCatigorTop as $catigor)
+                    <!-- <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a> -->
+                    @if($catigor->color == 0)
+                        <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                    @else
+                        <a class="current-link" href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                    @endif
+                    
                 @endforeach
             </div>
         </div>
