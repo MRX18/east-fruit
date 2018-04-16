@@ -24,10 +24,10 @@
         <h2 class="title-item">{{ $article->title }}</h2>
         <span class="date-item">{{ $article->date }}</span>
 
-        <div class="img-item"><img src="{{ asset('/uploads/'.$article->img) }}" alt=""></div>
+        <div class="img-item"><img src="{{ asset($article->img) }}" alt=""></div>
 
         <div class="descr-item">
-            {{ $article->text }}       
+            {!! $article->text !!}       
         </div>
 
         <ul class="category-item">
@@ -117,7 +117,7 @@
         </div>
         <div class="item-content">
             <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->id]) }}">{{ $read->title }}</a></p>
-            <div class="entry-meta-descr"><p style="text-align: justify;">{{ mb_substr($read->text, 0, 300) }}</div>
+            <div class="entry-meta-descr"><p style="text-align: justify;">{!! mb_substr($read->text, 0, 300) !!}</div>
         </div>
     </div>
 </div>

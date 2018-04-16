@@ -169,7 +169,7 @@
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
-                                            <img src="{{ asset('/uploads/'.$research->img) }}"/>
+                                            <img src="{{ asset($research->img) }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
-                                            <img src="{{ asset('/uploads/'.$technology->img) }}"/>
+                                            <img src="{{ asset($technology->img) }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
-                                            <img src="{{ asset('/uploads/'.$retailAudit->img) }}"/>
+                                            <img src="{{ asset($retailAudit->img) }}"/>
                                         </div>
                                     </div>
                                 </div>

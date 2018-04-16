@@ -19,3 +19,7 @@ Route::get('/', 'IndexController@index');
 Route::get('/catigor/{id}', 'CatigorController@index')->where('id', '[0-9]+')->name('catigor');
 Route::get('/catigors/{id}', 'CatigorController@otherCatigor')->where('id', '[a-z]+')->name('otherCatigor');
 Route::get('/article/{id}', 'ArticleController@index')->where('id', '[0-9]+')->name('article');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

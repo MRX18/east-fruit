@@ -64,7 +64,7 @@
                                                 <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
                                             </div>
                                             <div class="item-img item-category-img">
-                                                <img src="{{ asset('/uploads/'.$article->img) }}"/>
+                                                <img src="{{ asset($article->img) }}"/>
                                             </div>
 
                                         </div>
