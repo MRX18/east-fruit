@@ -11,11 +11,9 @@
     <div class="news-bredcrumbs-item">
         <ul>
             <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная"></li>
-            <li><a href="../../index.html">Главная</a></li>
+            <li><a href="/">Главная</a></li>
             <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
-            <li><a href="index.html@id=27.html">Новости</a></li>
-            <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
-            <li><a href="index.html@id=27.html">Розничный аудит</a></li>
+            <li><a style="font-weight: normal;" href="{{ route('catigor', ['id'=>$article->id_catigories]) }}">{{ $article->catigor }}</a></li>
         </ul>
     </div>
 
@@ -68,29 +66,42 @@
 
 
 
-            <div id="w1" class="new-comments"><div class="empty"></div></div>                        <div class="comment-form-container">
+            <div id="w1" class="new-comments"><div class="empty"></div></div> 
+            @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif                
+            <div class="comment-form-container">
     <form id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->id]) }}" method="post">
+        {{ csrf_field() }}
 
-<div class="form-group field-commentmodel-content required">
-<textarea id="commentmodel-content" class="form-control" name="CommentModel[content]" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
-<div class="help-block"></div>
-</div> 
+        <div class="form-group field-commentmodel-content required">
+        <textarea id="commentmodel-content" class="form-control" name="comment" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
+        <div class="help-block"></div>
+        </div> 
 
-    <div class="p20-item">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="checkbox">
-                    <label><input type="checkbox"> Размещая комментарий, я соглашаюсь с Правилами сайта</label>
+            <div class="p20-item">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Размещая комментарий, я соглашаюсь с Правилами сайта</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary comment-add comment-submit" disabled="disabled"><img
+                                src="../../images/page-item/comments/add-comment.png" alt="add-comment">  Добавить</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-primary comment-add comment-submit" disabled="disabled"><img
-                        src="../../images/page-item/comments/add-comment.png" alt="add-comment">  Добавить</button>
-            </div>
-        </div>
-    </div>
-    </form>    <div class="clearfix"></div>
-</div>                    </div>
+    </form>    
+    <div class="clearfix"></div>
+</div>                    
+</div>
     </div>
     </div></div>
         <!--<h5 class="checkable-comment">Показывать новый комментарий:
@@ -145,7 +156,11 @@
             </div>
             <div class="item-content">
                 <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
-                <div class="entry-meta bg-{{ rand(1,9) }}">{{ $sitebar->catigor }}</div>
+                <div class="entry-meta bg-{{ rand(1,9) }}">
+                    @if($sitebar->visible == 1)
+                        {{ $sitebar->catigor }}
+                    @endif
+                </div>
             </div>
         </div>
     </div>

@@ -15,23 +15,19 @@ class ArticleController extends Controller
 
     	if($request->isMethod('post')) {
 
-    		dump($request->all());
+            $validator = Validator::make($request->all(),
+                array(
+                    'comment' => 'required|between:4,500'
+                )
+            );
+            $time = date('H:i');
+            $date = date('d.m.Y');
 
-            // $validator = Validator::make($request->all(),
-            //     array(
-            //         'name' => 'required|between:4,16',
-            //         'email' => 'required|email|max:32',
-            //         'comment' => 'required|between:4,500'
-            //     )
-            // );
-            // $time = date('H:i');
-            // $date = date('d.m.Y');
-
-            // if($validator->fails()) {
-            //     return redirect()->back()->withInput()->withErrors($validator->errors());
-            // } else {
-            //     BlogComment::insert(['id_blog' => $id, 'name' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
-            // }
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator->errors());
+            } else {
+                ArticlesComment::insert(['id_articles' => $id, 'user' => 'User', 'time' => $time, 'date' => $date, 'text' => $request->comment]);
+            }
 
         }
 
@@ -39,7 +35,7 @@ class ArticleController extends Controller
     	$title = "Главная";
 
     	$catigories = CatigorTop::get();
-    	$sitebar = Article::where('visible',1)->orderByDesc('id')->limit(10)->get();
+    	$sitebar = Article::orderByDesc('id')->limit(10)->get();
 
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {

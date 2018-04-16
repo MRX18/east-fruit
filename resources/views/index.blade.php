@@ -10,32 +10,24 @@
                         <!-- Begin .item-->
                         <div id="w0" class="list-view">
 
-    <!-- <div data-key="43">
-        <div class="item">
-            <div class="item-image">
-                <span class="item-image-date">13 апр</span>
-                <!--<span class="item-image-time">09:30</span>-->
-            <!-- </div>
-            <div class="item-content">
-                <p class="ellipsis"><a href="news/view/index.html@id=43.html">Правительство Украины компенсирует фермерам 80% стоимости са...</a></p>
-                <div class="entry-meta bg-4">НОВОСТИ</div>
+        @foreach($sitebarArticle as $sitebar)
+        <div data-key="43">
+            <div class="item">
+                <div class="item-image">
+                    <span class="item-image-date">{{ $sitebar->date }}</span>
+                    <!--<span class="item-image-time">09:30</span>-->
+                </div>
+                <div class="item-content">
+                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
+                    <div class="entry-meta bg-{{ rand(1,9) }}">
+                        @if($sitebar->visible == 1)
+                            {{ $sitebar->catigor }}
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </div> -->
-    @foreach($sitebarArticle as $sitebar)
-    <div data-key="43">
-        <div class="item">
-            <div class="item-image">
-                <span class="item-image-date">{{ $sitebar->date }}</span>
-                <!--<span class="item-image-time">09:30</span>-->
-            </div>
-            <div class="item-content">
-                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
-                <div class="entry-meta bg-{{ rand(1,9) }}">{{ $sitebar->catigor }}</div>
-            </div>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
 
 </div>                    
 </div>

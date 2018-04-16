@@ -12,7 +12,7 @@ class IndexController extends Controller
     	$title = "Главная";
 
     	$catigories = CatigorTop::get();
-    	$sitebar = Article::where('visible',1)->orderByDesc('id')->limit(10)->get();
+    	$sitebar = Article::orderByDesc('id')->limit(10)->get();
 
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {
