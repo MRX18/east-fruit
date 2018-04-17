@@ -75,13 +75,28 @@
                   @endforeach
                 </ul>
               </div>
-            @endif                
+            @endif 
+
+            @if(Session::has('addComment')) 
+                <div class="alert alert-success">
+                    <strong>Ваш комментарий был отправлен!</strong> Он будет опубликован после одобрения модератора.
+                </div>
+            @endif               
             <div class="comment-form-container">
-    <form id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->id]) }}" method="post">
+    <form name="com" id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->id]) }}" method="post">
         {{ csrf_field() }}
+        
+        <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div class="auth" style="width: 49%;">
+                <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя">
+            </div>
+            <div class="auth" style="width: 49%;">
+                <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email">
+            </div>
+        </div>
 
         <div class="form-group field-commentmodel-content required">
-        <textarea id="commentmodel-content" class="form-control" name="comment" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
+            <textarea id="commentmodel-content" class="form-control" name="comment" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
         <div class="help-block"></div>
         </div> 
 
@@ -125,6 +140,9 @@
     <div class="item-news">
         <div class="item-image">
             <span class="item-image-date">{{ $read->date }}</span>
+            <div class="img" style="width: 100px; margin: 10px 10px 0px 0px;">
+                <img style="width: 100%;" src="{{ $read->img }}" alt="">
+            </div>
         </div>
         <div class="item-content">
             <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->id]) }}">{{ $read->title }}</a></p>
