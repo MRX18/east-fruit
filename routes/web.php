@@ -17,7 +17,7 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/catigor/{id}', 'CatigorController@index')->where('id', '[0-9]+')->name('catigor');
 
-Route::get('/prices', 'CatigorController@prices');
+Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
 Route::get('/rating', 'CatigorController@rating');
 Route::get('/blog', 'CatigorController@blog');
 
