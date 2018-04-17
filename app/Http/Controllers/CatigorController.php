@@ -37,4 +37,18 @@ class CatigorController extends Controller
     		'articles' => $articles
     	]);
     }
+
+
+    public function prices() {
+        $title = 'Цены';
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+
+        return view('price')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+        ]);
+    }
 }
