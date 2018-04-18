@@ -24,7 +24,10 @@ Route::get('/blog', 'CatigorController@blog');
 
 Route::match(['get', 'post'],'/article/{id}', 'ArticleController@index')->where('id', '[0-9]+')->name('article');
 
-
+Route::get('/about', 'StaticController@about')->name('about');
+Route::get('/cooperation', 'StaticController@cooperation')->name('cooperation');
+Route::get('/contact', 'StaticController@contact')->name('contact');
+Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
