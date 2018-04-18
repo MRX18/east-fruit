@@ -148,7 +148,7 @@
         <div class="item-image">
             <span class="item-image-date">{{ $read->date }}</span>
             <div class="img" style="width: 100px; margin: 10px 10px 0px 0px;">
-                <img style="width: 100%;" src="{{ $read->img }}" alt="">
+                <img style="width: 100%;" src="{{ asset($read->img) }}" alt="">
             </div>
         </div>
         <div class="item-content">

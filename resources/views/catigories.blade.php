@@ -16,37 +16,34 @@
                                 <li data-target="#newsSlider" data-slide-to="2"></li>
                             </ol>
 
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="../../images/686225095.jpg" />
+                             <div class="carousel-inner">
+                                <?php $i=1;?>
+                                @foreach($slider as $slid)
+                                <div class="item
+                                @if($i == 1)
+                                    active
+                                @endif">
+                                    <img src="{{ asset($slid->img) }}" />
+                                    <div class="text">
+                                        <span>{{ $slid->date }}</span>
+                                        <p>{{ $slid->title }}</p>
+                                    </div>
                                     <div class="items-more" data-slide-to="0">
-                                        <div class="items-more-item">
-                                            <h4>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая</h4>
-                                            <p>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая. Об этом заявил на встрече с журналистами 26 июля замминистра сельского хозяйства республики Роберт Макарян, передает Новости Армении</p>
-                                            <span>09/03/18</span>
+                                        <?php $j=1;?>
+                                        @foreach($slider as $slid)
+                                        <div class="items-more-item 
+                                        @if($i == $j)
+                                            active
+                                        @endif">
+                                        <?php $j++;?>
+                                            <span>{{ $slid->date }}</span>
+                                            <p>{{ $slid->title }}</p>
                                         </div>
+                                        @endforeach
+                                        <?php $i++;?>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img src="../../images/686225095.jpg" />
-                                    <div class="items-more" data-slide-to="0">
-                                        <div class="items-more-item">
-                                            <h4>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая</h4>
-                                            <p>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая. Об этом заявил на встрече с журналистами 26 июля замминистра сельского хозяйства республики Роберт Макарян, передает Новости Армении</p>
-                                            <span>09/03/18</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="../../images/686225095.jpg" />
-                                    <div class="items-more" data-slide-to="0">
-                                        <div class="items-more-item">
-                                            <h4>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая</h4>
-                                            <p>С начала 2017 года плодоовощные комбинаты Армении закупили почти на 70% больше урожая. Об этом заявил на встрече с журналистами 26 июля замминистра сельского хозяйства республики Роберт Макарян, передает Новости Армении</p>
-                                            <span>09/03/18</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
 
                         </div>

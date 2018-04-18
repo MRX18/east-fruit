@@ -96,50 +96,6 @@
                                     </div>
                                 </div>
                                 @endforeach
-
-                                <!-- <div class="item">
-                                    <img src="images/686225095.jpg" />
-                                    <div class="text">
-                                        <span>09/03/18</span>
-                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                    </div>
-                                    <div class="items-more">
-                                        <div class="items-more-item">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                        <div class="items-more-item active">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                        <div class="items-more-item">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <img src="images/686225095.jpg" />
-                                    <div class="text">
-                                        <span>09/03/18</span>
-                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                    </div>
-                                    <div class="items-more">
-                                        <div class="items-more-item">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                        <div class="items-more-item">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                        <div class="items-more-item active">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="news-slider-controls">
                                 <!-- Left and right controls -->

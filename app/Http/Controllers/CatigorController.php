@@ -25,6 +25,7 @@ class CatigorController extends Controller
     	}
 
     	$articles = Article::where('id_catigories', $id)->orderByDesc('id')->paginate(24);
+        $slider = Article::orderByDesc('id')->limit(3)->get();
 
     	foreach($articles as $option) {
     		foreach ($catigories as $catigor) {
@@ -39,7 +40,8 @@ class CatigorController extends Controller
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
 
-    		'articles' => $articles
+    		'articles' => $articles,
+            'slider' => $slider
     	]);
     }
 
