@@ -15,6 +15,8 @@ class IndexController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
     	$sitebar = Article::orderByDesc('id')->limit(10)->get();
 
+        $slider = Article::orderByDesc('id')->limit(3)->get();
+
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {
     			if($option->id_catigories == $catigor->id) {
@@ -34,6 +36,7 @@ class IndexController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
     		'sitebarArticle' => $sitebar,
 
+            'slider' => $slider,
     		'researchs' => $researchs,
     		'technologys' => $technologys,
     		'retailAudits' => $retailAudits

@@ -43,6 +43,7 @@ $('.news-comments-slick_slider-slider').slick({
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
+    adaptiveHeight: true,
     responsive: [
         {
             breakpoint: 600,

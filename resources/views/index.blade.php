@@ -69,28 +69,35 @@
                             </ol>
 
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="images/686225095.jpg" />
+                                <?php $i=1;?>
+                                @foreach($slider as $slid)
+                                <div class="item
+                                @if($i == 1)
+                                    active
+                                @endif">
+                                    <img src="{{ asset($slid->img) }}" />
                                     <div class="text">
-                                        <span>09/03/18</span>
-                                        <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        <span>{{ $slid->date }}</span>
+                                        <p>{{ $slid->title }}</p>
                                     </div>
                                     <div class="items-more" data-slide-to="0">
-                                        <div class="items-more-item active">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
+                                        <?php $j=1;?>
+                                        @foreach($slider as $slid)
+                                        <div class="items-more-item 
+                                        @if($i == $j)
+                                            active
+                                        @endif">
+                                        <?php $j++;?>
+                                            <span>{{ $slid->date }}</span>
+                                            <p>{{ $slid->title }}</p>
                                         </div>
-                                        <div class="items-more-item" data-slide-to="1">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
-                                        <div class="items-more-item" data-slide-to="2">
-                                            <span>09/03/18</span>
-                                            <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
-                                        </div>
+                                        @endforeach
+                                        <?php $i++;?>
                                     </div>
                                 </div>
-                                <div class="item">
+                                @endforeach
+
+                                <!-- <div class="item">
                                     <img src="images/686225095.jpg" />
                                     <div class="text">
                                         <span>09/03/18</span>
@@ -132,7 +139,7 @@
                                             <p>lorem ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet ipsun dolor sir amet</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="news-slider-controls">
                                 <!-- Left and right controls -->
