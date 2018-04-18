@@ -1330,3 +1330,47 @@ footer .links a:hover{
 	text-decoration: none;
 	color: #37ca96!important;
 }
+.img-lid {
+	position: relative;
+}
+.lid {
+	position: absolute;
+	bottom: 80px;
+	left: 50px;
+	margin-right: 10px;
+}
+.lid:before {
+	content: '';
+	width: 50%;
+	height: 1px;
+	background-color: #fff;
+	position: absolute;
+	bottom: 120px;
+	z-index: 100;
+	box-shadow: 1px 1px 20px black;
+}
+.lid > p {
+	color: #fff;
+	font-size: 18px;
+	text-shadow: 1px 1px 20px black;
+}
+@media screen and (max-width: 990px) {
+	.lid:before {
+		bottom: 170px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.lid:before {
+		bottom: 130px;
+	}
+}
+@media screen and (max-width: 659px) {
+	.lid:before {
+		bottom: 150px;
+	}
+}
+@media screen and (max-width: 560px) {
+	.lid {
+		display: none;
+	}
+}

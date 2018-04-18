@@ -3,7 +3,6 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Article;
 use App\CatigorTop;
 
-
 AdminSection::registerModel(Article::class, function (ModelConfiguration $model) {
 //    $model->enableAccessCheck();
 //     Запрет на удаление
@@ -33,6 +32,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
 
 
             AdminFormElement::ckeditor('text', 'Текс')->required(),
+            AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::image('img', 'Изображение')->required()
         );

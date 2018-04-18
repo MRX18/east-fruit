@@ -22,7 +22,14 @@
         <h2 class="title-item">{{ $article->title }}</h2>
         <span class="date-item">{{ $article->date }}</span>
 
-        <div class="img-item"><img src="{{ asset($article->img) }}" alt=""></div>
+        <div class="img-item img-lid">
+            <img src="{{ asset($article->img) }}" alt="{{ $article->title }}">
+            @if(!empty($article->lid)) 
+                <div class="lid">
+                    <p>{{ $article->lid }}</p>
+                </div>
+            @endif
+        </div>
 
         <div class="descr-item">
             {!! $article->text !!}       
