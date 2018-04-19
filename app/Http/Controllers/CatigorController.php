@@ -10,6 +10,7 @@ use App\Article;
 use App\Market;
 use App\Product;
 use App\Price;
+use App\Currency;
 
 class CatigorController extends Controller
 {
@@ -53,6 +54,7 @@ class CatigorController extends Controller
 
         $markets = Market::get();
         $products = Product::get();
+        $currencys = Currency::get();
 
         if($request->isMethod('post')) {
             
@@ -68,7 +70,8 @@ class CatigorController extends Controller
 
                     'market'=>'required|integer',
                     'product'=>'required|integer',
-                    'price'=>'required|integer'
+                    'price'=>'required|integer',
+                    'currency' => 'required|integer'
                 )
             );
 
@@ -79,7 +82,7 @@ class CatigorController extends Controller
                 $dateMax = $request->yearMax.'-'.$request->monthMax.'-'.$request->deyMax;
 
                 $_price = new Price;
-                $price = $_price->price($request->market, $request->product, $dateMin, $dateMax);
+                $price = $_price->price($request->market, $request->product, $request->currency, $dateMin, $dateMax);
 
                 if($request->price == 1) { // минимальная цена
                     $number = $price->min('price');
@@ -107,6 +110,7 @@ class CatigorController extends Controller
 
                     'markets' => $markets,
                     'products' => $products,
+                    'currencys' => $currencys,
 
                     'marketTable' => $marketTable,
                     'productTable' => $productTable,
@@ -124,7 +128,8 @@ class CatigorController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
 
             'markets' => $markets,
-            'products' => $products
+            'products' => $products,
+            'currencys' => $currencys
         ]);
     }
 }

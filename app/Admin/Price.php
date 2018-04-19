@@ -3,6 +3,7 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Price;
 use App\Product;
 use App\Market;
+use App\Currency;
 
 AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
 //    $model->enableAccessCheck();
@@ -18,7 +19,6 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminColumn::text('id_product')->setLabel('Продукты'),
             AdminColumn::text('price')->setLabel('Цена'),
             AdminColumn::text('date')->setLabel('Дата'),
-        	//AdminColumn::text('title')->setLabel('Назва')
         ]);
         return $display;
     });
@@ -31,8 +31,10 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminFormElement::select('id_market', 'Продукты')->setModelForOptions(new Market)->setDisplay(function($Market) {
                 return $Market->market;
             })->required(),
-            AdminFormElement::text('price', 'Цены')->required(),
-            AdminFormElement::date('date', 'Дата')->required()
+            AdminFormElement::select('currency', 'Тип валюты')->setModelForOptions(new Currency)->setDisplay(function($Currency) {
+                return $Currency->currency;
+            })->required(),
+            AdminFormElement::text('price', 'Цена')->required()
 
         );
     });
