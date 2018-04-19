@@ -15,7 +15,7 @@ class IndexController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
     	$sitebar = Article::orderByDesc('id')->limit(10)->get();
 
-        $slider = Article::orderByDesc('id')->limit(3)->get();
+        $slider = Article::where('baner',1)->orderByDesc('id')->limit(3)->get();
 
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {
@@ -24,6 +24,11 @@ class IndexController extends Controller
     			}
     		}
     	}
+
+        $topSlider = Article::where('toptwenty',1)->orderByDesc('id')->limit(20)->get();
+
+        $line = Article::where('line',1)->orderByDesc('id')->first();
+
 
     	$researchs = Article::where('id_catigories', 2)->orderByDesc('id')->limit(2)->get(); //иследования
     	$technologys = Article::where('id_catigories', 3)->orderByDesc('id')->limit(2)->get(); //технологии
@@ -37,6 +42,9 @@ class IndexController extends Controller
     		'sitebarArticle' => $sitebar,
 
             'slider' => $slider,
+            'topSlider' => $topSlider,
+            'line' => $line,
+
     		'researchs' => $researchs,
     		'technologys' => $technologys,
     		'retailAudits' => $retailAudits

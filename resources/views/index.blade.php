@@ -34,31 +34,17 @@
 </div>
                 <div class="col-sm-8 col-lg-9">
                     <div class="news-bredcrumbs">
+                        <div id="w1" class="news-stroke">
+                            
+                            @foreach($topSlider as $slid)
+                            <div data-key="42" style="margin-right: 3px;">
+                                <div><a href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></div>
+                            </div>
+                            @endforeach
 
-                            <div id="w1" class="news-stroke">
-<div data-key="43"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="42"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="41"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="40"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="39"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="38"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="37"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="36"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="35"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="34"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-<div data-key="33"><div><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></div>
-</div>
-</div>                    </div>
+                        </div>                
+                    </div>
+
                     <div class="news-carousel">
                         <div id="newsSlider" class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
@@ -67,7 +53,7 @@
                                 <li data-target="#newsSlider" data-slide-to="1"></li>
                                 <li data-target="#newsSlider" data-slide-to="2"></li>
                             </ol>
-
+                            
                             <div class="carousel-inner">
                                 <?php $i=1;?>
                                 @foreach($slider as $slid)
@@ -76,7 +62,7 @@
                                     active
                                 @endif">
                                     <img src="{{ asset($slid->img) }}" />
-                                    <div class="text">
+                                    <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 10px;">
                                         <span>{{ $slid->date }}</span>
                                         <p>{{ $slid->title }}</p>
                                     </div>
@@ -89,7 +75,7 @@
                                         @endif">
                                         <?php $j++;?>
                                             <span>{{ $slid->date }}</span>
-                                            <p>{{ $slid->title }}</p>
+                                            <p><a style="color: #fff;" href="">{{ $slid->title }}</a></p>
                                         </div>
                                         @endforeach
                                         <?php $i++;?>
@@ -106,7 +92,7 @@
                                     <img src="images/arrowWhireRight.png">
                                 </a>
                                 <div class="block-marquee">
-                                    <div class="marquee"><span>Фермеры не могут получить компенсацию за строительство<i>26/11/2018</i></span></div>
+                                    <div class="marquee"><span>{{ $line->title }}<i>{{ $line->date }}</i></span></div>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +105,7 @@
                                 @foreach($researchs as $research)
                                 <div data-key="32">
                                     <div class="item">
-                                        <p>{{ $research->title }}</p>
+                                        <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
                                         <a href="{{ route('article', ['id'=>$research->id]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>
@@ -140,7 +126,7 @@
                                 @foreach($technologys as $technology)
                                 <div data-key="32">
                                     <div class="item">
-                                        <p>{{ $technology->title }}</p>
+                                        <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>
                                         <a href="{{ route('article', ['id'=>$technology->id]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>
@@ -161,7 +147,7 @@
                                 @foreach($retailAudits as $retailAudit)
                                 <div data-key="32">
                                     <div class="item">
-                                        <p>{{ $retailAudit->title }}</p>
+                                        <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>
                                         <a href="{{ route('article', ['id'=>$retailAudit->id]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>

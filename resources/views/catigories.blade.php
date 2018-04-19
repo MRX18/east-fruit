@@ -24,7 +24,7 @@
                                     active
                                 @endif">
                                     <img src="{{ asset($slid->img) }}" />
-                                    <div class="text">
+                                    <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 10px;">
                                         <span>{{ $slid->date }}</span>
                                         <p>{{ $slid->title }}</p>
                                     </div>
