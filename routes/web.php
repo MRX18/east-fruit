@@ -26,7 +26,7 @@ Route::match(['get', 'post'],'/article/{id}', 'ArticleController@index')->where(
 
 Route::get('/about', 'StaticController@about')->name('about');
 Route::get('/cooperation', 'StaticController@cooperation')->name('cooperation');
-Route::get('/contact', 'StaticController@contact')->name('contact');
+Route::match(['get', 'post'],'/contact', 'StaticController@contact')->name('contact');
 Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
 Auth::routes();

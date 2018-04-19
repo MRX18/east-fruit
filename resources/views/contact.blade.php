@@ -24,6 +24,48 @@
         <div class="descr-item">
             <p>Вопросы, отзывы и предложения относительно работы EAST-FRUIT.com отправляйте на e-mail: info@east-fruit.com</p>      
         </div>
+        
+
+        @if (count($errors) > 0)
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif 
+
+        @if($addApplications) 
+            <div class="alert alert-success">
+                <strong>Ваша заявки була отправлена!</strong>
+            </div>
+        @endif 
+        <form name="com" id="comment-form" class="comment-box" action="{{ route('contact') }}" method="post">
+            {{ csrf_field() }}
+            
+            <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div class="auth" style="width: 49%;">
+                    <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя" value="{{ old('name') }}">
+                </div>
+                <div class="auth" style="width: 49%;">
+                    <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                </div>
+            </div>
+
+            <div class="form-group field-commentmodel-content required">
+                <textarea id="commentmodel-content" class="form-control" name="text" rows="4" placeholder="Текст..." data-comment="content" aria-required="true">{{ old('text') }}</textarea>
+            <div class="help-block"></div>
+            </div> 
+
+            <div class="p20-item">
+                <div class="row">
+                    <div>
+                        <button style="margin-right: 15px;" type="submit" class="btn btn-primary comment-add comment-submit">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </form>  
 
     </div>
 

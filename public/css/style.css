@@ -593,6 +593,9 @@ li.slick-active button{
 .entry-post .item .item-content {
 	padding-left: 15px;
 }
+.ui-datepicker-calendar td, .ui-datepicker-calendar th {
+    padding: 9px;
+}
 .entry-post .item-image:hover {
 	opacity: .8;
 }

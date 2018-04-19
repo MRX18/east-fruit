@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use App\Article;
+use App\Application;
 
 class StaticController extends Controller
 {
@@ -37,8 +40,28 @@ class StaticController extends Controller
     	]);
     }
 
-    public function contact() {
+    public function contact(Request $request) {
     	$title = "Контакты";
+        $addApplications = false;
+
+        if($request->isMethod('post')) {
+
+            $validator = Validator::make($request->all(),
+                array(
+                    'name' => 'required|between:3,16',
+                    'email' => 'required|email|max:32',
+                    'text' => 'required|between:4,500'
+                )
+            );
+
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator->errors());
+            } else {
+                Application::insert(['name' => $request->name, 'email' => $request->email, 'text' => $request->text]);
+
+                $addApplications = true;
+            }
+        }
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
@@ -48,7 +71,9 @@ class StaticController extends Controller
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
-    		'sitebarArticle' => $sitebar
+    		'sitebarArticle' => $sitebar,
+
+            'addApplications' => $addApplications
     	]);
     }
     
