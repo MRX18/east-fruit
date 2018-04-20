@@ -17,6 +17,9 @@ h2{
 h3{
 	font-size: 24px;
 }
+a:hover {
+	text-decoration: none;
+}
 /*--------------------------------------------------------------------------------------------------*/
 .content{
 	max-width: 1204px;
@@ -658,8 +661,8 @@ li.slick-active button{
 	display: inline-block;
 	float: left;
 	margin-top: 15px;
-	padding-top: 8px;
-	padding-bottom: 8px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
 }
 .news-carousel{
@@ -1356,6 +1359,9 @@ footer .links a:hover{
 	color: #fff;
 	font-size: 18px;
 	text-shadow: 1px 1px 20px black;
+}
+.bottom-menu > a:first-child {
+	border: none;
 }
 @media screen and (max-width: 990px) {
 	.lid:before {

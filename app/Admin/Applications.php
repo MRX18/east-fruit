@@ -7,7 +7,7 @@ AdminSection::registerModel(Application::class, function (ModelConfiguration $mo
 //    $model->enableAccessCheck();
     $model->disableCreating();
 
-    $model->setTitle('Заказ');
+    $model->setTitle('Заявки');
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
         $display->setColumns([

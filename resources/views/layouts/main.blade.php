@@ -58,19 +58,13 @@
     <div class="east-menu">
         <div class="content">
             <div class="col-lg-12">
-                <!-- <a href="news-categories/view/index.html@id=3.html">Новости</a>
-                <a href="news-categories/view/index.html@id=4.html">Исследования</a>
-                <a href="news-categories/view/index.html@id=5.html">Технологии</a>
-                <a href="news-categories/view/index.html@id=6.html">Розничный аудит</a>
-                <a href="index.html#">Цены</a>
-                <a class="current-link" href="index.html#">Рейтинги</a>
-                <a href="index.html#">Блог</a> -->
                 @foreach($catigories as $catigor)
-                    <!-- <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a> -->
-                    @if($catigor->color == 0)
-                        <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
-                    @else
-                        <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                    @if($catigor->menu == 1)
+                        @if($catigor->color == 0)
+                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @endif
                     @endif
                     
                 @endforeach
@@ -89,12 +83,18 @@
     </div>
     <div class="east-menu east-second-menu">
         <div class="content">
-            <div class="col-md-12">
-                <a class="border-none" href="/">Главная</a>
-                <a href="news-categories/view/index.html@id=11.html">Интервью</a>
-                <a href="index.html">Календарь событий</a>
-                <a href="news-categories/view/index.html@id=13.html">Обучающие поездки</a>
-                <a href="news-categories/view/index.html@id=14.html">Истории бизнеса</a>
+            <div class="col-md-12 bottom-menu">
+                 <a href="/">Главная</a>
+                @foreach($catigories as $catigor)
+                    @if($catigor->menu == 2)
+                        @if($catigor->color == 0)
+                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @endif
+                    @endif
+                    
+                @endforeach
             </div>
         </div>
     </div>
