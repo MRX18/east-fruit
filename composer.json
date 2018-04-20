@@ -9,7 +9,8 @@
         "laravel/framework": "5.4.*",
         "laravelrus/sleepingowl": "4.*@dev",
         "laravel/tinker": "~1.0",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "intervention/image": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

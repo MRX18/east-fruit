@@ -4,7 +4,7 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\User;
 
 AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
-//    $model->enableAccessCheck();
+  $model->enableAccessCheck();
     $model->setTitle('Пользователи');
     // Запрет на создание
 //    $model->disableCreating();
