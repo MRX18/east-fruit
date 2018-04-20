@@ -33,6 +33,21 @@ return [
         'icon'  => 'fa fa-exclamation-circle',
         'url'   => route('admin.information'),
     ],
+    [
+        'title' => "Пользователи",
+        'icon' => 'fa fa-credit-card',
+        'pages' => [
+            (new Page(\App\Permission::class))
+                ->setIcon('fa fa-key')
+                ->setPriority(0),
+            (new Page(\App\Role::class))
+                ->setIcon('fa fa-graduation-cap')
+                ->setPriority(100),
+            (new Page(\App\User::class))
+                ->setIcon('fa fa-user')
+                ->setPriority(200)
+        ]
+    ],
 
     // Examples
     // [
