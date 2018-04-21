@@ -14,6 +14,7 @@ class IndexController extends Controller
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
     	$sitebar = Article::orderByDesc('id')->limit(10)->get();
+        $sitebarAdaptive = Article::orderByDesc('id')->limit(5)->get();
 
         $slider = Article::where('baner',1)->orderByDesc('id')->limit(3)->get();
 
@@ -24,6 +25,14 @@ class IndexController extends Controller
     			}
     		}
     	}
+
+        foreach($sitebarAdaptive as $option) {
+            foreach ($catigories as $catigor) {
+                if($option->id_catigories == $catigor->id) {
+                    $option->catigor = $catigor->title;
+                }
+            }
+        }
 
         $topSlider = Article::where('toptwenty',1)->orderByDesc('id')->limit(20)->get();
 
@@ -40,6 +49,7 @@ class IndexController extends Controller
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
     		'sitebarArticle' => $sitebar,
+            'sitebarAdaptive' => $sitebarAdaptive,
 
             'slider' => $slider,
             'topSlider' => $topSlider,

@@ -9,6 +9,8 @@ $( document ).ready(function() {
         });
     });
 
+
+
     $('.east-header-username').on('click',function () {
 
         $( '.east-header-personal_menu' ).slideToggle( "slow", function() {

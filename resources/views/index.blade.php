@@ -213,40 +213,23 @@
                         </script>
                     </div>
                     <div class="col-sm-6 col-lg-3 visible-xs">
+
                         <div class="entry-post">
-                            <h3>Новости</h3>
+                            <h3>Актуальные</h3>
                             <!-- Begin .item-->
+                            @foreach($sitebarAdaptive as $sitebar)
                             <div class="item">
                                 <div class="item-image">
-                                    <span class="item-image-date">05 МАР</span>
-                                    <!--<span class="item-image-time">09:30</span>-->
+                                    <span class="item-image-date">{{ $sitebar->date }}</span>
                                 </div>
                                 <div class="item-content">
-                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
-                                    <div class="entry-meta bg-4">News</div>
+                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
+                                    <div class="entry-meta bg-4">{{ $sitebar->catigor }}</div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="item-image">
-                                    <span class="item-image-date">05 МАР</span>
-                                    <!--<span class="item-image-time">09:30</span>-->
-                                </div>
-                                <div class="item-content">
-                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
-                                    <div class="entry-meta bg-5">News</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image">
-                                    <span class="item-image-date">05 МАР</span>
-                                    <!--<span class="item-image-time">09:30</span>-->
-                                </div>
-                                <div class="item-content">
-                                    <p class="ellipsis"><a href="index.html#">Фермеры не могут получить компенсацию за строительство</a></p>
-                                    <div class="entry-meta bg-6">News</div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
+
                     </div>
                     <div class="news-history hidden-xs">
                         <div class="col-md-12 col-lg-4 text-center">

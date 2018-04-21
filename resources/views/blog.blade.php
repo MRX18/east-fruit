@@ -52,45 +52,73 @@
 
 
 
-                            <div class="articles-blog">
-								<h3>Другие новости</h3>
-								<div class="article">
-									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
-									</div>
-									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
-									</div>
-								</div>
+                            <div class="news-reserch">
+                            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                <h3>Исследования</h3>
+                                <div id="w2" class="list-view">
 
-								<div class="article">
-									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
-									</div>
-									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
-									</div>
-								</div>
+                                    @foreach($researchs as $research)
+                                    <div data-key="32">
+                                        <div class="item">
+                                            <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
+                                            <a href="{{ route('article', ['id'=>$research->id]) }}" class="item-hover">
+                                                <div class="search"></div>
+                                            </a>
+                                            <div class="item-img">
+                                                <img src="{{ asset($research->img) }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
 
-								<div class="article">
-									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
-									</div>
-									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
-									</div>
-								</div>
-
+                                </div>                        
                             </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
+                                <h3>Технологии</h3>
+                                <div id="w3" class="list-view">
+
+                                    @foreach($technologys as $technology)
+                                    <div data-key="32">
+                                        <div class="item">
+                                            <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>
+                                            <a href="{{ route('article', ['id'=>$technology->id]) }}" class="item-hover">
+                                                <div class="search"></div>
+                                            </a>
+                                            <div class="item-img">
+                                                <img src="{{ asset($technology->img) }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
+                                </div>                        
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                <h3>Розничный аудит</h3>
+                                <div id="w4" class="list-view">
+
+                                    @foreach($retailAudits as $retailAudit)
+                                    <div data-key="32">
+                                        <div class="item">
+                                            <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>
+                                            <a href="{{ route('article', ['id'=>$retailAudit->id]) }}" class="item-hover">
+                                                <div class="search"></div>
+                                            </a>
+                                            <div class="item-img">
+                                                <img src="{{ asset($retailAudit->img) }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
+                                </div>                        
+                            </div>
+                        </div>
+
+
+                            
 
                     </div>
                     <div class="category-button">

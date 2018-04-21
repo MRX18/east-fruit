@@ -54,7 +54,7 @@
                             
                             @foreach($articles as $article)
                             <div data-key="43">
-                                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
                                     <div class="item-category">
                                         <div class="item item-category-image">
                                             <div class="item-hover">
@@ -87,60 +87,6 @@
                     </div>
                 </div>
 
-<!--                     <div class="more-news-item">
-
-                        <div class="item-news">
-                            <div class="item-image">
-                                <span class="item-image-date">05 МАР</span>
-                            </div>
-                            <div class="item-content">
-                                <p class="ellipsis"><a href="index.html@id=3.html#">Песчаная буря</a></p>
-                                <div class="entry-meta-descr">Сахара Астарта продала больше, но прибыль упала на четверть</div>
-                            </div>
-                        </div>
-
-                        <div class="item-news">
-                            <div class="item-image">
-                                <span class="item-image-date">05 МАР</span>
-                            </div>
-                            <div class="item-content">
-                                <p class="ellipsis"><a href="index.html@id=3.html#">6 апреля 20018 года</a></p>
-                                <div class="entry-meta-descr">Как обещают организаторы, у участников будет возможность представить свои продукты и услуги перед более чем 150 посетителями. А у посетителей — ознакомиться с последними новинками.</div>
-                            </div>
-                        </div>
-
-                        <div class="item-news">
-                            <div class="item-image">
-                                <span class="item-image-date">05 МАР</span>
-                            </div>
-                            <div class="item-content">
-                                <p class="ellipsis"><a href="index.html@id=3.html#">мировые цены на чеснок обваляться из-за переизбытка продукции в Китае</a></p>
-                                <div class="entry-meta-descr">В прошлом году значительное увеличение объемов валового урожая чеснока в Китае побудило фермеров нарастить производство этой культуры. «В результате 2017 год стал провальным для всего мирового рынка чеснока и несет в себе потенциальные риски», – говорит один из китайских трейдеров.</div>
-                            </div>
-                        </div>
-
-                        <div class="item-news">
-                            <div class="item-image">
-                                <span class="item-image-date">05 МАР</span>
-                            </div>
-                            <div class="item-content">
-                                <p class="ellipsis"><a href="index.html@id=3.html#">ежегодно в мире пропадает треть зерновых и половина овощей</a></p>
-                                <div class="entry-meta-descr">Отмечается, что на Земле ежегодно пропадает 30% зерновых, 40-50% корнеплодов, фруктов и овощей, 20% мяса и 35% рыбы. Вес всех этих продуктов сравним с весом половины мирового урожая зерновых культур.</div>
-                            </div>
-                        </div>
-
-                        <div class="item-news">
-                            <div class="item-image">
-                                <span class="item-image-date">05 МАР</span>
-                            </div>
-                            <div class="item-content">
-                                <p class="ellipsis"><a href="index.html@id=3.html#">слияние Bayer и Monsanto на несколько месяцев притормозили США</a></p>
-                                <div class="entry-meta-descr">По словам двух спикеров, хорошо знакомых с данным вопросом, план Bayer AG получить антимонопольное одобрение на поглощение Monsanto Co не удовлетворил должностных лиц США. Они обеспокоены тем, что слияние может нанести ущерб конкуренции, сообщает Bloomberg.</div>
-                            </div>
-                        </div>
-
-                    </div> -->
-
                 </div>
                 <div class="col-sm-4 col-lg-3 hidden-xs category-left-block">
                     <div id='calendar'></div>
@@ -148,75 +94,6 @@
                     <div class="banner-category">
                         <img src="../../images/page-category/Layer&#32;920.png" alt="Banner">
                     </div>
-
-                    <!--<div class="news-slick_slider">
-                        <div class="news-comments-slick_slider-slider">
-                            <div class="news-team-item">
-                                <div class="news-slick-item-img">
-                                    <img src="/images/viktor.jpg" />
-                                </div>
-                                <div class="news-team-item-text">
-                                    <p class="name">Виктор Компанеец</p>
-                                    <p>Эпоха аутсорсинга заканчивается</p>
-                                    <span>03 МАР 09:30</span>
-                                    <a href="">Читать</a>
-                                </div>
-                            </div>
-                            <div class="news-team-item">
-                                <div class="news-slick-item-img">
-                                    <img src="/images/viktor.jpg" />
-                                </div>
-                                <div class="news-team-item-text">
-                                    <p class="name">Виктор Компанеец</p>
-                                    <p>Эпоха аутсорсинга заканчивается</p>
-                                    <span>03 МАР 09:30</span>
-                                    <a href="">Читать</a>
-                                </div>
-                            </div>
-                            <div class="news-team-item">
-                                <div class="news-slick-item-img">
-                                    <img src="/images/657220.jpg" />
-                                </div>
-                                <div class="news-team-item-text">
-                                    <p class="name">Виктор Компанеец</p>
-                                    <p>Эпоха аутсорсинга заканчивается</p>
-                                    <span>03 МАР 09:30</span>
-                                    <a href="">Читать</a>
-                                </div>
-                            </div>
-                            <div class="news-team-item">
-                                <div class="news-slick-item-img">
-                                    <img src="/images/viktor.jpg" />
-                                </div>
-                                <div class="news-team-item-text">
-                                    <p class="name">Виктор Компанеец</p>
-                                    <p>Эпоха аутсорсинга заканчивается</p>
-                                    <span>03 МАР 09:30</span>
-                                    <a href="">Читать</a>
-                                </div>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            /*$('.news-comments-slick_slider-slider').slick({
-                                dots: false,
-                                infinite: true,
-                                speed: 300,
-                                slidesToShow: 1,
-                                slidesToScroll: 1,
-                                autoplay: false,
-                                responsive: [
-                                    {
-                                        breakpoint: 600,
-                                        settings: {
-                                            slidesToShow: 1,
-                                            slidesToScroll: 1,
-                                            infinite: true,
-                                            dots: true
-                                        }
-                                    }]
-                            });*/
-                        </script>
-                    </div>-->
 
                     <div class="vote-block">
                         <h4>Опрос</h4>
