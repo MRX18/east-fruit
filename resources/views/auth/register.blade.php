@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
+                            <label for="position" class="col-md-4 control-label">Position</label>
+
+                            <div class="col-md-6">
+                                <input id="position" type="position" class="form-control" name="position" value="{{ old('position') }}" required>
+
+                                @if ($errors->has('position'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('position') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

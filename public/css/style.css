@@ -1363,6 +1363,151 @@ footer .links a:hover{
 .bottom-menu > a:first-child {
 	border: none;
 }
+/*blog*/
+.article {
+	display: flex;
+	/*background-color: #F0F0F0;*/
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.article > .img {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+.article > .img > img {
+	width: 120px;
+	height: 100px;
+}
+
+.information {
+	margin-right: 10px;
+}
+.information > .name {
+	display: block;
+	margin-top: 5px;
+	font-size: 14px;
+	color: #278C61;
+}
+.information > h3 {
+	margin-top: -0px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.information > h3 > a {
+	color: #262D70;
+}
+.information > h3 > a:hover {
+	color: #33CB98;
+	text-decoration: underline;
+}
+.information > .text {
+	display: block;
+	color: #7F7F7F;
+	font-style: italic;
+	font-size: 15px;
+	line-height: 17px;
+}
+.information > .date {
+	display: block;
+	font-size: 12px;
+	margin-top: 5px;
+}
+/*sitebar*/
+.user {
+	width: 100%;
+	margin-top: 20px;
+}
+.user > .img {
+	width: 100%;
+}
+.user > .img > img {
+	width: 100%;
+}
+.name-user h3 {
+	font-size: 17px;
+	font-weight: bold;
+	margin-top: 7px;
+}
+.file-upload {
+     position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
+     overflow: hidden; /* Все что выходит за пределы - скрываем */
+     width: 100%; /* Задаем ширину кнопки выбора файла */
+     height: 35px; /* Задаем высоту кнопки выбора файла */
+     background: #6da047;
+     border-radius: 3px;
+     padding: 8px 4px;
+     color: #fff;
+     text-align: center;
+}
+.file-upload:hover {
+     background: #7aad55;
+}
+.file-upload input[type="file"]{
+    display: none; /* Обязательно скрываем настоящий Input File */
+}
+.file-upload label {
+     /* Растягиваем label на всю возможную площадь блока .file-upload */
+     display: block;
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     cursor: pointer;
+}
+.file-upload span {
+     line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+}
+
+.button > button {
+	border: none;
+	outline: none;
+	width: 100%;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	background-color: #33CB98;
+	color: #fff;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+.button > button:hover {
+	opacity: 0.9;
+}
+.add-article > a {
+	display: block;
+	outline: none;
+	width: 100%;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	background-color: #262D49;
+	color: #fff;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+.add-article > a:hover {
+	opacity: 0.9;
+}
+/*blog*/
+.user-article {
+	display: flex;
+}
+.user-article > .img {
+	width: 300px;
+	margin-right: 10px;
+}
+.user-article > .img > img {
+	width: 100%;
+}
+.date-user {
+	display: block;
+	font-weight: bold;
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
 @media screen and (max-width: 990px) {
 	.lid:before {
 		bottom: 170px;

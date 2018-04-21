@@ -74,7 +74,7 @@
 
 
                                         <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
-                                            13/04/2018
+                                            {{ $article->date }}
                                         </div>
                                     </div>
                                 </div>
