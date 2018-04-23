@@ -41,7 +41,7 @@
                             @else
                             <li style="margin-right: 20px;"> <a style="color: #848AA2; font-size: 14px;" href="/logout" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Выход</a> </li>
-                            <form id="logout-form" action="http://east-fruit/logout" method="POST" style="display: none;">
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                             @endif

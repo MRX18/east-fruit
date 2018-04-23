@@ -65,7 +65,7 @@ $('.news-stroke').slick({
     nfinite: true,
     speed: 300,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 60000,
     responsive: [
         {
             breakpoint: 1190,
