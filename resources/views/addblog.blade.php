@@ -17,65 +17,13 @@
         </ul>
     </div>
 
-    <div class="news-more-item">
-
-        <div class="user-article">
-           <div class="img"> <img src="{{ asset($author->img) }}" alt=""></div>
-           <div class="text">
-               <h3>{{ $author->name }}</h3>
-               <p>{{ $author->position }}</p>
-           </div>
-        </div>
-
-        <h2 class="title-item">{{ $article->title }}</h2>
-
-        <span class="date-user">{{ $article->date }}</span>
-
-        <div class="descr-item">
-            {!! $article->text !!}     
-        </div>
-
-    </div>
-
     <div class="comments-item">
         <div class="comment-wrapper" id="cdaec8da27">
     <div id="comment-pjax-container-w0" data-pjax-container="" data-pjax-timeout="20000">    <div class="comments row">
         <div class="col-md-12 col-sm-12">
-            <div class="title-block clearfix">
-                <h3 class="comment-title">
-                    Комментарии ({{ count($comment) }})                </h3>
-            </div>
-
-
-
-        
-    <div id="w1" class="new-comments">
-        @foreach($comment as $com)
-        <div style="background-color: #F3F3F3;" class="item comment" id="comment-1">
-            <div class="item-image">
-                <span class="item-image-user">
-                    @if($com->img != null)
-                    <img src="{{ asset($user->img) }}" alt="User">
-                    @else
-                    <img src="{{ asset('/images/user/user.png') }}" alt="User">
-                    @endif
-                </span>
-            </div>
-            <div class="item-content">
-                <p class="user-name">{{ $com->user }}<span class="user-date">{{ $com->date.' o '.$com->time }}</span></p>
-                <div class="user-descr">{{ $com->text }}</div>
-
-            </div>
-            <div class="triang-img"></div>
-        </div>
-        @endforeach
-
-    </div>
-
-
-
 
             <div id="w1" class="new-comments"><div class="empty"></div></div> 
+            <h2 style="display: block; margin-bottom: 20px;">Добавить статью в блог: </h2>
             @if (count($errors) > 0)
               <div class="alert alert-danger">
                 <ul>
@@ -88,26 +36,19 @@
 
             @if(Session::has('addComment')) 
                 <div class="alert alert-success">
-                    <strong>Ваш комментарий был отправлен!</strong> Он будет опубликован после одобрения модератора.
+                    <strong>Ваша статья была добавлена!</strong> Он будет опубликован после одобрения модератора.
                 </div>
             @endif               
             <div class="comment-form-container">
-    <form name="com" id="comment-form" class="comment-box" action="{{ route('addcomment', ['id'=>$article->id]) }}" method="post">
+    <form name="com" id="comment-form" class="comment-box" action="{{ route('addartblog') }}" method="post">
         {{ csrf_field() }}
-        
-        @if(!Auth::check())
-        <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-            <div class="auth" style="width: 49%;">
-                <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя">
-            </div>
-            <div class="auth" style="width: 49%;">
-                <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email">
-            </div>
-        </div>
-        @endif
+		
+		<div class="form-group">
+		    <input type="text" class="form-control" name="title" placeholder="Название статьи">
+		</div>	
 
         <div class="form-group field-commentmodel-content required">
-            <textarea id="commentmodel-content" class="form-control" name="comment" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
+            <textarea style="height: 250px;" id="commentmodel-content" class="form-control" name="article" rows="4" placeholder="Добавить статью..." data-comment="content" aria-required="true"></textarea>
         <div class="help-block"></div>
         </div> 
 
@@ -135,31 +76,6 @@
 
         </div>
 
-        <div class="more-news-item">
-
-            <h4>Читайте также</h4>
-            <div id="w2" class="list-view">
-            @foreach($reads as $read)
-            <div data-key="28">
-                <div class="item-news">
-                    <div class="item-image">
-                        <span class="item-image-date">{{ $read->date }}</span>
-                        <div class="img" style="width: 100px; margin: 10px 10px 0px 0px;">
-                            <img style="width: 100%;" src="{{ asset($read->img) }}" alt="">
-                        </div>
-                    </div>
-                    <div class="item-content">
-                        <p class="ellipsis"><a href="">{{ $read->title }}</a></p>
-                        <div class="entry-meta-descr"><p style="text-align: justify;">{{ mb_substr(strip_tags($read->text), 0, 350).'...' }}</div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-
-
-</div>
-        </div>
-
     </div>
 
 
@@ -178,10 +94,10 @@
                             <h3>{{ $user->name }}</h3>
                             <p>{{ $user->position }}</p>
                         </div>
-                        
+                       
 
                         <div class="form-conteiner">
-                            <form action="{{ route('articleBlog', ['id'=>$article->id]) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('addblog') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form">
                                     <div class="file-upload">
@@ -197,9 +113,6 @@
                             </form>
                         </div>
 
-                        <div class="add-article">
-                            <a href="{{ route('addblog') }}">Добавить статью</a>
-                        </div>
                         @else
                         <div class="add-article">
                             <a href="/login">Авторизироваться</a>

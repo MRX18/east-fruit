@@ -1530,4 +1530,15 @@ footer .links a:hover{
 	.lid {
 		display: none;
 	}
+	.article {
+		display: block;
+	}
+	.article > .img {
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+	.article > .img > img {
+		width: 100%;
+		height: auto;
+	}
 }

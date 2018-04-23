@@ -100,7 +100,7 @@
                     <div class="news-reserch">
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
                             <h3>Исследования</h3>
-                            <div id="w2" class="list-view">
+                            <div id="w2" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($researchs as $research)
                                 <div data-key="32">
@@ -121,7 +121,7 @@
 
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
                             <h3>Технологии</h3>
-                            <div id="w3" class="list-view">
+                            <div id="w3" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($technologys as $technology)
                                 <div data-key="32">
@@ -142,7 +142,7 @@
 
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
                             <h3>Розничный аудит</h3>
-                            <div id="w4" class="list-view">
+                            <div id="w4" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($retailAudits as $retailAudit)
                                 <div data-key="32">

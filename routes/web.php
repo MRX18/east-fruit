@@ -19,8 +19,12 @@ Route::get('/catigor/{id}', 'CatigorController@index')->where('id', '[0-9]+')->n
 
 Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
 Route::get('/rating', 'CatigorController@rating');
-Route::get('/blog', 'BlogController@index');
-Route::get('/blog/article', 'BlogController@article');
+
+Route::match(['get', 'post'], '/blog', 'BlogController@index')->name('blog');
+Route::match(['get', 'post'],'/blog/article/{id}', 'BlogController@article')->where('id', '[0-9]+')->name('articleBlog');
+Route::match(['get','post'],'/addcommen/{id}', 'BlogController@addcomment')->where('id', '[0-9]+')->name('addcomment');
+Route::match(['get', 'post'], '/add-blog', 'BlogController@addblog')->name('addblog');
+Route::match(['get', 'post'], '/add-article-blog', 'BlogController@addartblog')->name('addartblog');
 
 
 Route::match(['get', 'post'],'/article/{id}', 'ArticleController@index')->where('id', '[0-9]+')->name('article');

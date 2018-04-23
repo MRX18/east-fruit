@@ -5,7 +5,7 @@ use App\Article;
 
 
 AdminSection::registerModel(ArticlesComment::class, function (ModelConfiguration $model) {
-//    $model->enableAccessCheck();
+   $model->enableAccessCheck();
 //     Запрет на удаление
 //    $model->disableDeleting();
     $model->setTitle('Коментарии к статьям');

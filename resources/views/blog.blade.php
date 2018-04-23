@@ -11,43 +11,22 @@
                         <div id="w0" class="cont">
                             
                             <div class="articles-blog">
-
+                                @foreach($articles as $article)
 								<div class="article">
 									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
+										<img src="{{ asset($article->img_user) }}" alt="">
 									</div>
 									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
+										<span class="name">{{ $article->name_user }}</span>
+										<h3><a href="{{ route('articleBlog', ['id'=>$article->id]) }}">{{ $article->title }}</a></h3>
+										<span class="text">{!! mb_substr($article->text, 0, 200).'...' !!}</span>
+										<span class="date" style="display: block; color: #000; font-size: 12px; margin-top: 5px;">{{ $article->date }}</span>
 									</div>
 								</div>
-
-								<div class="article">
-									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
-									</div>
-									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
-									</div>
-								</div>
-
-								<div class="article">
-									<div class="img">
-										<img src="{{ asset('/images/657220.jpg') }}" alt="">
-									</div>
-									<div class="information">
-										<span class="name">Test name</span>
-										<h3><a href="#">Американо-Українська Ділова Рада закликала Президента реформувати оборонну промисловість </a></h3>
-										<span class="text">Гучний конфлікт між головою парламентського комітету з питань оборони Сергієм Пашинським та журналом "Новое Время" суспільству подається як проблема кількох міжнародних контрактів, яку в цілому можна вирішити одним засіданням згаданого комітету...</span>
-										<span class="date">21.04.2018</span>
-									</div>
-								</div>
-
+                                @endforeach
+                                <div class="category-button">
+                                    {{ $articles->links() }}
+                                </div>
                             </div>
 
 
@@ -55,7 +34,7 @@
                             <div class="news-reserch">
                             <div class="col-lg-4 col-md-4 col-sm-4 text-center">
                                 <h3>Исследования</h3>
-                                <div id="w2" class="list-view">
+                                <div id="w2" class="list-view" style="position: relative; z-index: 100;">
 
                                     @foreach($researchs as $research)
                                     <div data-key="32">
@@ -76,7 +55,7 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
                                 <h3>Технологии</h3>
-                                <div id="w3" class="list-view">
+                                <div id="w3" class="list-view" style="position: relative; z-index: 100;">
 
                                     @foreach($technologys as $technology)
                                     <div data-key="32">
@@ -97,7 +76,7 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-4 text-center">
                                 <h3>Розничный аудит</h3>
-                                <div id="w4" class="list-view">
+                                <div id="w4" class="list-view" style="position: relative; z-index: 100;">
 
                                     @foreach($retailAudits as $retailAudit)
                                     <div data-key="32">
@@ -131,36 +110,58 @@
                 <div class="col-sm-4 col-lg-3 hidden-xs category-left-block">
 
                 	<div class="user">
-                		<div class="img"><img src="{{ asset('/images/657220.jpg') }}" alt=""></div>
+                        @if($auth)
+                		<div class="img">
+                            @if($user->img != null)
+                            <img src="{{ asset($user->img) }}" alt="">
+                            @else
+                            <img src="{{ asset('/images/user/user-blog.jpg') }}" alt="">
+                            @endif
+                        </div>
                 		<div class="name-user">
-                			<h3>Test Name</h3>
-                			<p>Голова експертної організації StateWatch, Антикорупційна група РПР</p>
-                		</div>
+                			<h3>{{ $user->name }}</h3>
+                			<p>{{ $user->position }}</p>
+                		</div> 
 
                 		<div class="form-conteiner">
-                			<form action="">
+                            @if (count($errors) > 0)
+                              <div class="alert alert-danger">
+                                <ul>
+                                  @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                  @endforeach
+                                </ul>
+                              </div>
+                            @endif 
+                			<form action="{{ route('blog') }}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
                 				<div class="form">
                 					<div class="file-upload">
 									     <label>
-									          <input type="file" name="file">
+									          <input type="file" name="img">
 									          <span>Выберите фото</span>
 									     </label>
 									</div>
                 					<div class="button">
-                						<button>Загрузить фото</button>
+                						<button type="submit">Загрузить фото</button>
                 					</div>
                 				</div>
                 			</form>
                 		</div>
 
                 		<div class="add-article">
-                			<a href="">Добавить статью</a>
+                			<a href="{{ route('addblog') }}">Добавить статью</a>
                 		</div>
+                        @else
+                        <div class="add-article">
+                            <a href="/login">Авторизироваться</a>
+                        </div>
+                        @endif
 
                 	</div>
 
 					<div class="entry-post">
-					    <h3>Актуальное в блоге</h3>
+					    <h3>Актуальное</h3>
 					    <!-- Begin .item-->
 					    <div id="w4" class="list-view">
 

@@ -4,7 +4,7 @@ use App\Application;
 
 
 AdminSection::registerModel(Application::class, function (ModelConfiguration $model) {
-//    $model->enableAccessCheck();
+    $model->enableAccessCheck();
     $model->disableCreating();
 
     $model->setTitle('Заявки');

@@ -57,7 +57,13 @@
         @foreach($comments as $comment)
         <div style="background-color: #F3F3F3;" class="item comment" id="comment-1">
             <div class="item-image">
-                <span class="item-image-user"><img src="http://www.gravatar.com/avatar?d=mm&amp;f=y&amp;s=50" alt="User"></span>
+                <span class="item-image-user">
+                    @if($comment->img != null)
+                    <img src="{{ asset($comment->img) }}" alt="User">
+                    @else
+                    <img src="{{ asset('/images/user/user.png') }}" alt="User">
+                    @endif
+                </span>
             </div>
             <div class="item-content">
                 <p class="user-name">{{ $comment->user }}<span class="user-date">{{ $comment->date." в ".$comment->time }}</span></p>
@@ -92,7 +98,7 @@
             <div class="comment-form-container">
     <form name="com" id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->id]) }}" method="post">
         {{ csrf_field() }}
-        
+        @if(!Auth::check())
         <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
             <div class="auth" style="width: 49%;">
                 <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя">
@@ -101,6 +107,7 @@
                 <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email">
             </div>
         </div>
+        @endif
 
         <div class="form-group field-commentmodel-content required">
             <textarea id="commentmodel-content" class="form-control" name="comment" rows="4" placeholder="Добавить комментарий..." data-comment="content" aria-required="true"></textarea>
@@ -153,7 +160,7 @@
         </div>
         <div class="item-content">
             <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->id]) }}">{{ $read->title }}</a></p>
-            <div class="entry-meta-descr"><p style="text-align: justify;">{!! mb_substr($read->text, 0, 300) !!}</div>
+            <div class="entry-meta-descr"><p style="text-align: justify;">{{ mb_substr(strip_tags($read->text), 0, 300) }}</div>
         </div>
     </div>
 </div>

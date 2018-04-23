@@ -4,7 +4,7 @@ use App\Article;
 use App\CatigorTop;
 
 AdminSection::registerModel(Article::class, function (ModelConfiguration $model) {
-//    $model->enableAccessCheck();
+   $model->enableAccessCheck();
 //     Запрет на удаление
 //    $model->disableDeleting();
     $model->setTitle('Статьи');

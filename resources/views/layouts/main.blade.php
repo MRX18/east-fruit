@@ -35,6 +35,17 @@
                 <div class="east-header-buttons">
                     <div class="header-add-place">
                         <ul class="">
+                            @if(!Auth::check())
+                            <li style="margin-right: 10px;"> <a style="color: #848AA2; font-size: 14px;" href="/login">Вход</a> </li>
+                            <li style="margin-right: 60px;"> <a style="color: #848AA2; font-size: 14px;" href="/register">Регистрация</a> </li>
+                            @else
+                            <li style="margin-right: 20px;"> <a style="color: #848AA2; font-size: 14px;" href="/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Выход</a> </li>
+                            <form id="logout-form" action="http://east-fruit/logout" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                            @endif
+
                             <li> <a href="index.html#"><i class="fab fa-twitter"></i></a> </li>
                             <li> <a href="index.html#"> <i class="fab fa-instagram"></i></a> </li>
                             <li> <a href="index.html#"><i class="fab fa-facebook-f"></i></i></a></li>
@@ -114,7 +125,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="links">
+                <div class="links" style="position: relative; z-index: 100;">
                     <a href="{{ route('about') }}">О проекте</a>
                     <a href="{{ route('cooperation') }}">Сотрудничество</a>
                     <a href="{{ route('contact') }}">Контакты</a>

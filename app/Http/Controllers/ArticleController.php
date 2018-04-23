@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 use App\Article;
 use App\ArticlesComment;
+use App\User;
 
 class ArticleController extends Controller
 {
@@ -14,21 +17,34 @@ class ArticleController extends Controller
         $addComment = false;
 
     	if($request->isMethod('post')) {
-
-            $validator = Validator::make($request->all(),
-                array(
-                    'name' => 'required|between:3,16',
-                    'email' => 'required|email|max:32',
-                    'comment' => 'required|between:4,500'
-                )
-            );
+            if(!Auth::check()) {
+                $validator = Validator::make($request->all(),
+                    array(
+                        'name' => 'required|between:3,16',
+                        'email' => 'required|email|max:32',
+                        'comment' => 'required|between:4,500'
+                    )
+                );
+            } else {
+                $validator = Validator::make($request->all(),
+                    array(
+                        'comment' => 'required|between:4,500'
+                    )
+                );
+            }
             $time = date('H:i');
             $date = date('d.m.Y');
 
             if($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator->errors());
             } else {
-                ArticlesComment::insert(['id_articles' => $id, 'user' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
+                if(!Auth::check()) {
+                    ArticlesComment::insert(['id_articles' => $id, 'user' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
+                } else {
+                    $idUser = Auth::user()->id;
+                    $user = User::where('id', $idUser)->first();
+                    ArticlesComment::insert(['id_articles' => $id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
+                }
 
                 $addComment = true;
                 return redirect()->route('article', ['id'=>$id])->with('addComment', $addComment);
