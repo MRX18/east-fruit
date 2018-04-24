@@ -164,4 +164,28 @@ class CatigorController extends Controller
             'currencys' => $currencys
         ]);
     }
+
+    public function allArticle() {
+        $title = "Все статьи";
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $articles = Article::orderByDesc('id')->paginate(24);
+
+        foreach($articles as $option) {
+            foreach ($catigories as $catigor) {
+                if($option->id_catigories == $catigor->id) {
+                    $option->catigor = $catigor->title;
+                }
+            }
+        }
+
+        return view('all-article')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+
+            'articles' => $articles,
+        ]);
+    }
 }

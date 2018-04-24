@@ -16,9 +16,9 @@ Route::get('/', 'IndexController@index');
 
 
 Route::get('/catigor/{id}', 'CatigorController@index')->where('id', '[0-9]+')->name('catigor');
-
 Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
 Route::get('/rating', 'CatigorController@rating');
+Route::get('/all-articles', 'CatigorController@allArticle')->name('all-articles');
 
 Route::match(['get', 'post'], '/blog', 'BlogController@index')->name('blog');
 Route::match(['get', 'post'],'/blog/article/{id}', 'BlogController@article')->where('id', '[0-9]+')->name('articleBlog');

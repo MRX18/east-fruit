@@ -28,6 +28,9 @@
             </div>
         </div>
         @endforeach
+        <div class="add-article" style="margin-bottom: 30px;">
+            <a href="{{ route('all-articles') }}">Все статьи</a>
+        </div>
 
 </div>                    
 </div>
@@ -118,6 +121,9 @@
                                 </div>
                             </div>
                             @endforeach
+                            <div class="add-article" style="margin-bottom: 30px;">
+                                <a href="{{ route('all-articles') }}">Все статьи</a>
+                            </div>
                         </div>
 
                     </div>
