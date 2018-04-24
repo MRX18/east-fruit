@@ -20,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Application::class => \App\Policies\ApplicationPolicy::class,
         \App\Article::class => \App\Policies\ArticlePolicy::class,
         \App\Permission::class => \App\Policies\PermissionPolicy::class,
+        \App\Blog::class => \App\Policies\BlogPolicy::class,
 
 //        \App\Permission::class => \App\Policies\PermissionPolicy::class,
     ];
