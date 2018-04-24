@@ -42,6 +42,7 @@ class IndexController extends Controller
     	$researchs = Article::where('id_catigories', 2)->orderByDesc('id')->limit(2)->get(); //иследования
     	$technologys = Article::where('id_catigories', 3)->orderByDesc('id')->limit(2)->get(); //технологии
     	$retailAudits = Article::where('id_catigories', 4)->orderByDesc('id')->limit(2)->get(); //РОЗНИЧНЫЙ АУДИТ
+        $interview = Article::where('id_catigories', 6)->orderByDesc('id')->limit(10)->get(); // Интервю
 
 
     	return view('index')->with([
@@ -57,7 +58,8 @@ class IndexController extends Controller
 
     		'researchs' => $researchs,
     		'technologys' => $technologys,
-    		'retailAudits' => $retailAudits
+    		'retailAudits' => $retailAudits,
+            'interview' => $interview
     	]);
     }
 }

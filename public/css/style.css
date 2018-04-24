@@ -24,6 +24,14 @@ a:hover {
 .menu-auth-bottom {
 	display: none;
 }
+.top-header {
+	width: 100%;
+	position: fixed;
+	z-index: 500;
+}
+.height {
+	height: 230px;
+}
 
 
 .content{
@@ -609,7 +617,7 @@ li.slick-active button{
 }
 .item-image-date{
 	color: #33cb98;
-	font-size: 16px;
+	font-size: 12px;
 	display: block;
 }
 .item-image-time{
@@ -618,7 +626,7 @@ li.slick-active button{
 }
 .ellipsis a, .ellipsis a:hover{
 	color: #262d49;
-	font-size: 13px;
+	font-size: 16px;
 	text-decoration: none;
 	display: block;
 }
@@ -853,7 +861,7 @@ li.slick-active button{
 }
 .news-carousel .carousel-inner .text p{
 	font-size: 20px;
-	font-style: italic;
+	font-family: "Arial";
 	color: #fff;
 	font-weight: 700;
 	margin-top: 15px;
@@ -886,8 +894,8 @@ li.slick-active button{
 }
 .news-carousel .items-more-item p{
 	color: #fff;
-	font-size: 14px;
-	font-style: italic;
+	font-size: 15px;
+	font-family: "Arial";
 }
 .news-carousel .items-more-item span{
 	color: #48e0ad;
@@ -1521,6 +1529,11 @@ footer .links a:hover{
 		bottom: 170px;
 	}
 }
+@media screen and (max-width: 974px) {
+	.height {
+		height: 300px;
+	}
+}
 @media screen and (max-width: 767px) {
 	.lid:before {
 		bottom: 130px;
@@ -1529,6 +1542,11 @@ footer .links a:hover{
 @media screen and (max-width: 659px) {
 	.lid:before {
 		bottom: 150px;
+	}
+}
+@media screen and (max-width: 600px) {
+	.height {
+		height: 130px;
 	}
 }
 @media screen and (max-width: 560px) {

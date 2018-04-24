@@ -26,7 +26,7 @@
                                     <img src="{{ asset($slid->img) }}" />
                                     <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
                                         <span>{{ $slid->date }}</span>
-                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title, 0, 70).'...' }}</a></p>
+                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
                                     </div>
                                     <div class="items-more" data-slide-to="0">
                                         <?php $j=1;?>
@@ -37,7 +37,7 @@
                                         @endif">
                                         <?php $j++;?>
                                             <span>{{ $slid->date }}</span>
-                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title, 0, 70).'...' }}</a></p>
+                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
                                         </div>
                                         @endforeach
                                         <?php $i++;?>

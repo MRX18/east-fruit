@@ -18,7 +18,7 @@
                     <!--<span class="item-image-time">09:30</span>-->
                 </div>
                 <div class="item-content">
-                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
+                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
                     <div class="entry-meta bg-{{ rand(1,9) }}">
                         @if($sitebar->visible == 1)
                             {{ $sitebar->catigor }}
@@ -64,7 +64,7 @@
                                     <img src="{{ asset($slid->img) }}" />
                                     <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
                                         <span>{{ $slid->date }}</span>
-                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title, 0, 70).'...' }}</a></p>
+                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
                                     </div>
                                     <div class="items-more" data-slide-to="0">
                                         <?php $j=1;?>
@@ -75,7 +75,7 @@
                                         @endif">
                                         <?php $j++;?>
                                             <span>{{ $slid->date }}</span>
-                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title, 0, 70).'...' }}</a></p>
+                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
                                         </div>
                                         @endforeach
                                         <?php $i++;?>
@@ -110,7 +110,11 @@
                                 </div>
                                 <div class="item-content">
                                     <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
-                                    <div class="entry-meta bg-{{ rand(1,9) }}">{{ $sitebar->catigor }}</div>
+                                    <div class="entry-meta bg-{{ rand(1,9) }}">
+                                        @if($sitebar->visible == 1)
+                                            {{ $sitebar->catigor }}
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
@@ -184,18 +188,19 @@
                     </div>
                     <div class="news-slick_slider">
                         <div class="news-comments-slick_slider-slider">
+                            @foreach($interview as $value)
                             <div class="news-team-item">
                                 <div class="news-slick-item-img">
-                                    <img src="images/viktor.jpg" />
+                                    <img src="{{ asset($value->img) }}" />
                                 </div>
                                 <div class="news-team-item-text">
-                                    <p class="name">Виктор Компанеец</p>
-                                    <p>Эпоха аутсорсинга заканчивается</p>
-                                    <span>03 МАР 09:30</span>
-                                    <a href="index.html">Читать</a>
+                                    <p>{{ $value->title }}</p>
+                                    <span>{{ $value->date }}</span>
+                                    <a href="{{ route('article', ['id'=>$value->id]) }}">Читать</a>
                                 </div>
                             </div>
-                            <div class="news-team-item">
+                            @endforeach
+                            <!-- <div class="news-team-item">
                                 <div class="news-slick-item-img">
                                     <img src="images/viktor.jpg" />
                                 </div>
@@ -227,7 +232,7 @@
                                     <span>03 МАР 09:30</span>
                                     <a href="index.html">Читать</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <script type="text/javascript">
 

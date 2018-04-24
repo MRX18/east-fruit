@@ -20,7 +20,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
     <body>
-        <div class="east-header">
+<div class="top-header">
+    <div class="east-header">
         <div class="content">
             <div class="col-md-12">
                 <div class="east-header-logo">
@@ -139,6 +140,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="height"></div>
         
     @yield('content')
 <!--========== END #MAIN-SECTION ==========-->
