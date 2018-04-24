@@ -21,6 +21,11 @@ a:hover {
 	text-decoration: none;
 }
 /*--------------------------------------------------------------------------------------------------*/
+.menu-auth-bottom {
+	display: none;
+}
+
+
 .content{
 	max-width: 1204px;
 	width: 100%;

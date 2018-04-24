@@ -97,6 +97,27 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-6 col-lg-3 visible-xs">
+
+                        <div class="entry-post">
+                            <h3>Актуальные</h3>
+                            <!-- Begin .item-->
+                            @foreach($sitebarAdaptive as $sitebar)
+                            <div class="item">
+                                <div class="item-image">
+                                    <span class="item-image-date">{{ $sitebar->date }}</span>
+                                </div>
+                                <div class="item-content">
+                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
+                                    <div class="entry-meta bg-{{ rand(1,9) }}">{{ $sitebar->catigor }}</div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
                     <div class="news-reserch">
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
                             <h3>Исследования</h3>
@@ -211,25 +232,6 @@
                         <script type="text/javascript">
 
                         </script>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 visible-xs">
-
-                        <div class="entry-post">
-                            <h3>Актуальные</h3>
-                            <!-- Begin .item-->
-                            @foreach($sitebarAdaptive as $sitebar)
-                            <div class="item">
-                                <div class="item-image">
-                                    <span class="item-image-date">{{ $sitebar->date }}</span>
-                                </div>
-                                <div class="item-content">
-                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
-                                    <div class="entry-meta bg-4">{{ $sitebar->catigor }}</div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-
                     </div>
                     <div class="news-history hidden-xs">
                         <div class="col-md-12 col-lg-4 text-center">

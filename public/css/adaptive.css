@@ -295,7 +295,19 @@
 	}
 }
 @media (max-width: 360px) {
-	.header-add-place .border-right{
-		padding-right: 20%;
+	.east-header-buttons ul li{
+		margin-top: -15px;
+	}
+	.menu-auth {
+		display: none;
+	}
+
+	.menu-auth-bottom {
+		display: block;
+	}
+
+	.news-bredcrumbs {
+		height: 80px;
+		text-align: center;
 	}
 }
