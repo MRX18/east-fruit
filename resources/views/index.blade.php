@@ -101,7 +101,7 @@
                     <div class="col-sm-6 col-lg-3 visible-xs">
 
                         <div class="entry-post">
-                            <h3>Актуальные</h3>
+                            <h3>Актуальное</h3>
                             <!-- Begin .item-->
                             @foreach($sitebarAdaptive as $sitebar)
                             <div class="item">

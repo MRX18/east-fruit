@@ -154,7 +154,7 @@
                     <a href="news-categories/view/index.html@id=11.html">Интервью</a>
                     <a href="index.html">Календарь событий</a>
                     <a href="news-categories/view/index.html@id=13.html">Обучающие поездки</a>
-                    <a href="news-categories/view/index.html@id=14.html">История бизнеса</a>
+                    <a href="news-categories/view/index.html@id=14.html">Истории бизнеса</a>
                 </div>
             </div>
             <div class="col-lg-3">
