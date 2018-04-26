@@ -34,5 +34,10 @@ Route::get('/cooperation', 'StaticController@cooperation')->name('cooperation');
 Route::match(['get', 'post'],'/contact', 'StaticController@contact')->name('contact');
 Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
+Route::get('/events', 'CalendarController@index')->name('event');
+Route::get('/conference', 'CalendarController@conference')->name('conference');
+Route::get('/program', 'CalendarController@program')->name('program');
+Route::get('/speakers', 'CalendarController@speakers')->name('speakers');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
