@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    //
+    public function allArticlesBlog($count) {
+    	return $this->where('visible', 1)->orderByDesc('id')->paginate($count);
+    }
+
+    public function oneArticle($id) {
+    	return $this->where('id', $id)->first();
+    } 
 }

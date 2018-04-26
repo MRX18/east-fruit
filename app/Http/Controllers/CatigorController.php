@@ -25,8 +25,10 @@ class CatigorController extends Controller
     		}
     	}
 
-    	$articles = Article::where('id_catigories', $id)->orderByDesc('id')->paginate(24);
-        $slider = Article::where('baner',1)->orderByDesc('id')->limit(3)->get();
+        $_article = new Article();
+
+        $articles = $_article->articleCatigor($id, 24);
+        $slider = $_article->articleInIndexPage('baner', 1, 3);
 
     	foreach($articles as $option) {
     		foreach ($catigories as $catigor) {
@@ -57,8 +59,10 @@ class CatigorController extends Controller
             }
         }
 
-        $articles = Article::where('id_catigories', $id)->orderByDesc('id')->paginate(24);
-        $slider = Article::where('baner',1)->orderByDesc('id')->limit(3)->get();
+        $_article = new Article();
+        
+        $articles = $_article->articleCatigor($id, 24);
+        $slider = $_article->articleInIndexPage('baner', 1, 3);
 
         foreach($articles as $option) {
             foreach ($catigories as $catigor) {
@@ -170,7 +174,8 @@ class CatigorController extends Controller
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-        $articles = Article::orderByDesc('id')->paginate(24);
+        $_article = new Article();
+        $articles = $_article->allArticles(24);
 
         foreach($articles as $option) {
             foreach ($catigories as $catigor) {

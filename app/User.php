@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return array_pluck($this->theroles()->get(['id'])->toArray(), 'id');
     }
+
+    /*****************/
+    public function user($idUser) {
+        return $this->where('id', $idUser)->first();
+    }
 }

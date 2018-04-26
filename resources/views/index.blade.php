@@ -288,15 +288,52 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="wrapper-category">
+                        <div id="w0" class="news-reserch category-block">
+                            
+                            @foreach($articles as $article)
+                            <div data-key="43">
+                                <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
+                                    <div class="item-category">
+                                        <div class="item item-category-image">
+                                            <div class="item-hover">
+                                                <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
+                                            </div>
+                                            <div class="item-img item-category-img">
+                                                <img src="{{ asset($article->img) }}"/>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
+
+                                        <div style="float: left;" class="title">
+                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                        </div>
+
+
+                                        <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                            {{ $article->date }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                    </div>
+                </div>
+
                 </div>
             </div>
     </section>
-    <section id="slider-section">
+
+    <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -366,7 +403,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <section id="calendar-section">
         <div class="container">
             <div class="row no-gutter">

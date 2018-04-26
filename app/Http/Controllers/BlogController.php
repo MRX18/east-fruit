@@ -15,6 +15,10 @@ use App\BlogComment;
 class BlogController extends Controller
 {
     public function index(Request $request) {
+        $_article = new Article();
+        $_blog = new Blog();
+        $_user = new User();
+
         $auth = false;
         $idUser = 0;
         if(Auth::check()) {
@@ -42,27 +46,32 @@ class BlogController extends Controller
                 }
              }
         }
-        $user = User::where('id', $idUser)->first();
+        $user = $_user->user($idUser);
 
 
     	$title = "Блог";
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-        $articles = Blog::where('visible', 1)->orderByDesc('id')->paginate(20);
+        $articles = $_blog->allArticlesBlog(20);
         foreach($articles as $article) {
             $article->date = $this->date($article->date);
 
-            $users = User::where('id', $article->id_user)->first();
+            $users = $_user->user($article->id_user);
             $article->name_user = $users->name;
             $article->img_user = $users->img;
         }
 
-        $sitebar = Article::orderByDesc('id')->limit(10)->get();
+        $sitebar = $_article->sitebar(10);
 
-        $researchs = Article::where('id_catigories', 2)->orderByDesc('id')->limit(5)->get(); //иследования
-        $technologys = Article::where('id_catigories', 3)->orderByDesc('id')->limit(5)->get(); //технологии
-        $retailAudits = Article::where('id_catigories', 4)->orderByDesc('id')->limit(5)->get(); //РОЗНИЧНЫЙ АУДИТ
+        //иследования
+        $researchs = $_article->articleInIndexPage('id_catigories', 2, 2);
+
+        //технологии
+        $technologys = $_article->articleInIndexPage('id_catigories', 3, 2);
+
+        //РОЗНИЧНЫЙ АУДИТ
+        $retailAudits = $_article->articleInIndexPage('id_catigories', 4, 2);
 
     	return view('blog')->with([
     		'title' => $title,
@@ -82,6 +91,9 @@ class BlogController extends Controller
     }
 
     public function article(Request $request, $id) {
+        $_article = new Article();
+        $_blog = new Blog();
+        $_user = new User();
 
         $auth = false;
         $idUser = 0;
@@ -109,14 +121,15 @@ class BlogController extends Controller
                 }
              }
         }
-        $user = User::where('id', $idUser)->first();
+        $user = $_user->user($idUser);
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-        $sitebar = Article::orderByDesc('id')->limit(10)->get();
+        $sitebar = $_article->sitebar(10);
 
-        $article = Blog::where('id', $id)->first();
+        $article = $_blog->oneArticle($id);
+
         $comment = BlogComment::where('id_blog', $id)->orderByDesc('id')->get();
         $reads = Article::orderByDesc('id')->limit(10)->get();
         foreach($reads as $read) {
@@ -125,7 +138,7 @@ class BlogController extends Controller
 
         $title = $article->title;
         $article->date = $this->date($article->date);
-        $author = User::where('id', $article->id_user)->first();
+        $author = $_user->user($article->id_user);
 
     	return view('articles-blog')->with([
     		'title' => $title,
@@ -186,6 +199,9 @@ class BlogController extends Controller
     }
 
     public function addblog(Request $request) {
+        $_article = new Article();
+        $_user = new User();
+
 
         $auth = false;
         $idUser = 0;
@@ -216,13 +232,13 @@ class BlogController extends Controller
         } else {
             return redirect()->back();
         }
-        $user = User::where('id', $idUser)->first();
+        $user = $_user->user($idUser);
 
 
         $title = "Добавить статью";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
-        $sitebar = Article::orderByDesc('id')->limit(5)->get();
+        $sitebar = $_article->sitebar(10);
 
 
         return view('addblog')->with([

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\CatigorTop;
 use App\Article;
 
 use Illuminate\Http\Request;
@@ -13,10 +12,14 @@ class IndexController extends Controller
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
-    	$sitebar = Article::orderByDesc('id')->limit(10)->get();
-        $sitebarAdaptive = Article::orderByDesc('id')->limit(5)->get();
 
-        $slider = Article::where('baner',1)->orderByDesc('id')->limit(3)->get();
+
+        $_article = new Article();
+        $sitebar = $_article->sitebar(10);
+        $sitebarAdaptive =$_article->sitebar(5);
+
+
+        $slider = $_article->articleInIndexPage('baner', 1, 3);
 
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {
@@ -34,15 +37,32 @@ class IndexController extends Controller
             }
         }
 
-        $topSlider = Article::where('toptwenty',1)->orderByDesc('id')->limit(20)->get();
+        $topSlider = $_article->articleInIndexPage('toptwenty', 1, 20);
 
-        $line = Article::where('line',1)->orderByDesc('id')->first();
+        $line = $_article->lineIndex('line', 1);
 
 
-    	$researchs = Article::where('id_catigories', 2)->orderByDesc('id')->limit(2)->get(); //иследования
-    	$technologys = Article::where('id_catigories', 3)->orderByDesc('id')->limit(2)->get(); //технологии
-    	$retailAudits = Article::where('id_catigories', 4)->orderByDesc('id')->limit(2)->get(); //РОЗНИЧНЫЙ АУДИТ
-        $interview = Article::where('id_catigories', 6)->orderByDesc('id')->limit(10)->get(); // Интервю
+        //иследования
+        $researchs = $_article->articleInIndexPage('id_catigories', 2, 2);
+
+    	//технологии
+        $technologys = $_article->articleInIndexPage('id_catigories', 3, 2);
+
+    	//РОЗНИЧНЫЙ АУДИТ
+        $retailAudits = $_article->articleInIndexPage('id_catigories', 4, 2);
+
+        // Интервю
+        $interview = $_article->articleInIndexPage('id_catigories', 6, 10);
+
+        $articles = Article::orderByDesc('id')->paginate(9);
+
+        foreach($articles as $option) {
+            foreach ($catigories as $catigor) {
+                if($option->id_catigories == $catigor->id) {
+                    $option->catigor = $catigor->title;
+                }
+            }
+        }
 
 
     	return view('index')->with([
@@ -59,7 +79,8 @@ class IndexController extends Controller
     		'researchs' => $researchs,
     		'technologys' => $technologys,
     		'retailAudits' => $retailAudits,
-            'interview' => $interview
+            'interview' => $interview,
+            'articles' => $articles
     	]);
     }
 }

@@ -53,11 +53,11 @@ class ArticleController extends Controller
         }
 
 
-    	$title = "Главная";
-
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
-    	$sitebar = Article::orderByDesc('id')->limit(10)->get();
+
+    	$_article = new Article();
+        $sitebar = $_article->sitebar(10);
 
     	foreach($sitebar as $option) {
     		foreach ($catigories as $catigor) {
@@ -67,7 +67,7 @@ class ArticleController extends Controller
     		}
     	}
 
-    	$article = Article::where('id', $id)->first();
+    	$article = $_article->article($id);
 
     	$title = $article->title;
 
@@ -77,7 +77,7 @@ class ArticleController extends Controller
     		}
     	}
 
-    	$read = Article::where('id_catigories', $article->id_catigories)->orderByDesc('id')->get();
+        $read = $_article->articleCatigor($article->id_catigories, 10);
 
     	$comments = ArticlesComment::where('id_articles', $id)
             ->where('visible', 1)
