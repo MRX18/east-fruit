@@ -37,6 +37,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::ckeditor('text', 'Текс')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
+            AdminFormElement::datetime('datetime', 'Время публикации статьи')->required(),
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });

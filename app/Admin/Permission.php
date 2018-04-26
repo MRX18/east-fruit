@@ -12,7 +12,7 @@ use App\Permission;
 
 AdminSection::registerModel(Permission::class, function (ModelConfiguration $model) {
 
-   $model->enableAccessCheck();
+   // $model->enableAccessCheck();
 
     $model->setTitle('Права доступа');
 

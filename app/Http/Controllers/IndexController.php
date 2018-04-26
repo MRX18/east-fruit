@@ -9,10 +9,8 @@ class IndexController extends Controller
 {
     public function index() {
     	$title = "Главная";
-
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
-
 
         $_article = new Article();
         $sitebar = $_article->sitebar(10);
