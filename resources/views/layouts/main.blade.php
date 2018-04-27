@@ -14,8 +14,10 @@
 
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/adaptive.css') }}" rel="stylesheet">
+<link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
 <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
-<link href="{{ asset('slick/slick.css') }}" rel="stylesheet">        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="{{ asset('slick/slick.css') }}" rel="stylesheet">        
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
@@ -194,6 +196,7 @@
 <script src="{{ asset('assets/8a33ea23/yii.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
 <script src="{{ asset('slick/slick.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>    </body>

@@ -18,6 +18,20 @@ $( document ).ready(function() {
         });
     });
 
+    $('.img-cont').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        gallery: {
+            enabled: true
+        },
+        image: {
+            verticalFit: true
+        }
+    });
+
 
 
     //---------------------------------------------------------------------------------------

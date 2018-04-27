@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Article;
+use App\Image;
 
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class IndexController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
+        $_image = new Image();
+
         $sitebar = $_article->sitebar(10);
         $sitebarAdaptive =$_article->sitebar(5);
 
@@ -54,6 +57,9 @@ class IndexController extends Controller
 
         $articles = Article::orderByDesc('id')->paginate(9);
 
+        $images = $_image->images(18);
+        $imagesM = $_image->images(9);
+
         foreach($articles as $option) {
             foreach ($catigories as $catigor) {
                 if($option->id_catigories == $catigor->id) {
@@ -78,7 +84,9 @@ class IndexController extends Controller
     		'technologys' => $technologys,
     		'retailAudits' => $retailAudits,
             'interview' => $interview,
-            'articles' => $articles
+            'articles' => $articles,
+            'images' => $images,
+            'imagesM' => $imagesM
     	]);
     }
 }

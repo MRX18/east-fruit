@@ -11,6 +11,7 @@ use App\Market;
 use App\Product;
 use App\Price;
 use App\Currency;
+use App\Image;
 
 class CatigorController extends Controller
 {
@@ -191,6 +192,29 @@ class CatigorController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
 
             'articles' => $articles,
+        ]);
+    }
+
+    public function image() {
+        $title = "Фотогалерея";
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_image = new Image();
+
+        $slider = $_article->articleInIndexPage('baner', 1, 3);
+
+        $images = $_image->images(42);
+        $imagesM = $_image->images(9);
+
+        return view('images')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+
+            'slider' => $slider,
+            'images' => $images
         ]);
     }
 }

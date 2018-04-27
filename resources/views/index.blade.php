@@ -410,256 +410,42 @@
                 <div class="col-sm-6 col-lg-4 text-right">
                     <div id='calendar'></div>
                 </div>
-                <div class="col-sm-6 col-lg-8 hidden-xs">
+                <div class="col-sm-6 col-lg-8 hidden-xs img-cont">
                     <div class="calendar-news">
-                        <div class="item">
+
+                        @foreach($images as $image)
+                        <a href="{{ asset($image->img) }}" title="{{ $image->title }}" class="item">
                             <div class="item-hover">
-                                <img src="images/news7.jpg"/>
-                                <div class="search"></div>
+                                <img src="{{ asset($image->img) }}"/>
                             </div>
                             <div class="item-img">
-                                <img src="images/news7.jpg"/>
+                                <img src="{{ asset($image->img) }}"/>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news5.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news5.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news2.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news2.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news8.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news8.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news4.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news4.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news9.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news9.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news6.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news6.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news6.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news6.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news4.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news4.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news5.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news5.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news1.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news1.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news6.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news6.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news5.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news5.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news8.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news8.jpg"/>
-                            </div>
-                        </div>
+                        </a>
+                        @endforeach
+
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-8 visible-xs">
+                <!-- <div class="but">
+                    <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
+                </div> -->
+                <!-- mobail -->
+                <div class="col-sm-6 col-lg-8 visible-xs img-cont">
                     <div class="calendar-news">
-                        <div class="item">
+                        @foreach($imagesM as $image)
+                        <a href="{{ asset($image->img) }}" title="{{ $image->title }}" class="item">
                             <div class="item-hover">
-                                <img src="images/news6.jpg"/>
-                                <div class="search"></div>
+                                <img src="{{ asset($image->img) }}"/>
                             </div>
                             <div class="item-img">
-                                <img src="images/news6.jpg"/>
+                                <img src="{{ asset($image->img) }}"/>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news4.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news4.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news5.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news5.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news1.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news1.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news6.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news6.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news3.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news3.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news5.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news5.jpg"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-hover">
-                                <img src="images/news8.jpg"/>
-                                <div class="search"></div>
-                            </div>
-                            <div class="item-img">
-                                <img src="images/news8.jpg"/>
-                            </div>
-                        </div>
+                        </a>
+                        @endforeach
                     </div>
+                </div>
+                <div class="but">
+                    <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
                 </div>
             </div>
         </div>
