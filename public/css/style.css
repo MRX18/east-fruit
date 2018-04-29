@@ -1656,10 +1656,15 @@ footer .links a:hover{
 	align-items: center;
 	justify-content: center;
 	background-color: #33CB98;
-	padding: 10px;
+	/*padding: 10px;*/
 	color: #fff;
 	font-weight: bold;
 	font-size: 18px;
+	background-size: cover;
+	background-position: center, center;
+}
+.program-left > img {
+	width: 100%;
 }
 .program-right {
 	padding: 10px;
@@ -1715,6 +1720,21 @@ footer .links a:hover{
 	.lid:before {
 		bottom: 150px;
 	}
+
+
+	/*blog*/
+	.user-article {
+		display: block;
+	}
+	.user-article > .img {
+		width: 100%;
+	}
+	.user-article > .img > img {
+		width: 100%;
+	}
+	.text {
+		margin-right: 20px;
+	}
 }
 @media screen and (max-width: 600px) {
 	.height {
@@ -1760,5 +1780,20 @@ footer .links a:hover{
 	}
 	.event-right {
 		margin-left: 20px;
+	}
+	/**/
+	.program-left {
+		width: 100%;
+	}
+	.program-right h3 {
+		font-size: 14px;
+	}
+}
+@media screen and (max-width: 330px) {
+	.program {
+		display: block;
+	}
+	.text h3 {
+		font-size: 18px;
 	}
 }

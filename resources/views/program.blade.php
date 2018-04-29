@@ -13,28 +13,26 @@
             <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная"></li>
             <li><a href="/">Главная</a></li>
             <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
-            <li><a style="font-weight: normal;" href="{{ route('blog') }}">Блог</a></li>
+            <li><a style="font-weight: normal;" href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a></li>
         </ul>
     </div>
 
     <div class="news-more-item">
 
         <div class="user-article">
-           <div class="img"> <img src="{{ asset('/images/uploads/events_logo.jpg.pagespeed.ce.b98GK-2iBh.jpg') }}" alt=""></div>
+           <div class="img"> <img src="{{ asset($event->img) }}" alt=""></div>
            <div class="text" style="margin-left: 20px;">
-               <h3>РИСКИ И ПРОТИВОДЕЙСТВИЕ МОШЕННИЧЕСТВУ</h3>
-               <span style="margin-top: 10px;" class="date-user">25.04.2018</span>
-               <p style="margin-top: -10px;">Киев, Отель "Алфавито"</p>
+               <h3>{{ $event->title }}</h3>
+               <span style="margin-top: 10px;" class="date-user">{{ $event->date }}</span>
+               <p style="margin-top: -10px;">{{ $event->adres }}</p>
            </div>
         </div>
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a href="#">О конференции</a></li>
-                <li><a class="date-active" href="#">Программа</a></li>
-                <li><a href="#">Спикеры</a></li>
-                <li><a href="#">Участники</a></li>
-                <li><a href="#">Фотоотчет</a></li>
+                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
+                <li><a class="date-active" href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
             </ul>
         </div>
 
@@ -42,37 +40,15 @@
 
         <div class="descr-item">
             
+            @foreach($programs as $program)
             <div class="program">
-                <div class="program-left">10:50 - 11:00</div>
+                <div class="program-left">{{ $program->time }}</div>
                 <div class="program-right">
-                    <h3>ОПЫТ КОНТРОЛЯ ПРОИЗВОДСТВЕННЫХ ПРОЦЕССОВ И ПРЕДОТВРАЩЕНИЕ ХИЩЕНИЙ В АГРОХОЛДИНГЕ</h3>
-                    <p><b>Евгений Буданцев,</b> начальник отдела внутреннего контроля</p>
+                    <h3>{{ $program->title }}</h3>
+                    <div class="prog-text">{!! $program->text !!}</div>
                 </div>
             </div>
-
-            <div class="program">
-                <div class="program-left">10:50 - 11:00</div>
-                <div class="program-right">
-                    <h3>ОПЫТ КОНТРОЛЯ ПРОИЗВОДСТВЕННЫХ ПРОЦЕССОВ И ПРЕДОТВРАЩЕНИЕ ХИЩЕНИЙ В АГРОХОЛДИНГЕ</h3>
-                    <p><b>Евгений Буданцев,</b> начальник отдела внутреннего контроля</p>
-                </div>
-            </div>
-
-            <div class="program">
-                <div class="program-left">10:50 - 11:00</div>
-                <div class="program-right">
-                    <h3>ОПЫТ КОНТРОЛЯ ПРОИЗВОДСТВЕННЫХ ПРОЦЕССОВ И ПРЕДОТВРАЩЕНИЕ ХИЩЕНИЙ В АГРОХОЛДИНГЕ</h3>
-                    <p><b>Евгений Буданцев,</b> начальник отдела внутреннего контроля</p>
-                </div>
-            </div>
-
-            <div class="program">
-                <div class="program-left">10:50 - 11:00</div>
-                <div class="program-right">
-                    <h3>ОПЫТ КОНТРОЛЯ ПРОИЗВОДСТВЕННЫХ ПРОЦЕССОВ И ПРЕДОТВРАЩЕНИЕ ХИЩЕНИЙ В АГРОХОЛДИНГЕ</h3>
-                    <p><b>Евгений Буданцев,</b> начальник отдела внутреннего контроля</p>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 

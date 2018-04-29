@@ -35,10 +35,10 @@ Route::get('/cooperation', 'StaticController@cooperation')->name('cooperation');
 Route::match(['get', 'post'],'/contact', 'StaticController@contact')->name('contact');
 Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
-Route::get('/events', 'CalendarController@index')->name('event');
-Route::get('/conference', 'CalendarController@conference')->name('conference');
-Route::get('/program', 'CalendarController@program')->name('program');
-Route::get('/speakers', 'CalendarController@speakers')->name('speakers');
+Route::get('/events/{id}', 'CalendarController@index')->where('id','[0-9]+')->name('event');
+Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-9]+')->name('conference');
+Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');
+Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+')->name('speakers');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

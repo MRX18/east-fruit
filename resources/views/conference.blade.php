@@ -13,37 +13,33 @@
             <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная"></li>
             <li><a href="/">Главная</a></li>
             <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
-            <li><a style="font-weight: normal;" href="{{ route('blog') }}">Блог</a></li>
+            <li><a style="font-weight: normal;" href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a></li>
         </ul>
     </div>
 
     <div class="news-more-item">
 
         <div class="user-article">
-           <div class="img"> <img src="{{ asset('/images/uploads/events_logo.jpg.pagespeed.ce.b98GK-2iBh.jpg') }}" alt=""></div>
+           <div class="img"> <img src="{{ asset($event->img) }}" alt=""></div>
            <div class="text" style="margin-left: 20px;">
-               <h3>РИСКИ И ПРОТИВОДЕЙСТВИЕ МОШЕННИЧЕСТВУ</h3>
-               <span style="margin-top: 10px;" class="date-user">25.04.2018</span>
-               <p style="margin-top: -10px;">Киев, Отель "Алфавито"</p>
+               <h3>{{ $event->title }}</h3>
+               <span style="margin-top: 10px;" class="date-user">{{ $event->date }}</span>
+               <p style="margin-top: -10px;">{{ $event->adres }}</p>
            </div>
         </div>
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a class="date-active" href="#">О конференции</a></li>
-                <li><a href="#">Программа</a></li>
-                <li><a href="#">Спикеры</a></li>
-                <li><a href="#">Участники</a></li>
-                <li><a href="#">Фотоотчет</a></li>
+                <li><a class="date-active" href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
+                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
             </ul>
         </div>
 
         <h2 class="title-item">О конференции</h2>
 
-        <div class="descr-item">
-            <p>Виталий Блажко, генеральный директор и основатель компании IT-Grand, в своем докладе "Коты должны ловить мышей, а системы безопасности - мошенников" рассказал об основных моментах технической организации контроля над мошенничеством в агрокомпании. Виталий привел практические примеры недочетов в построении системы безопасности, акцентировав внимание на степень ответственности и распределение функций различных служб агрокомпании в построение такой системы.</p>
-
-            <p>Деловую атмосферу конференции разбавило яркое выступление профессионального иллюзиониста Андрея Кулинича. Ловкость рук - и никакого мошенничества! В руках Андрея пять карт превращались в колоду, а пластмассовое яйцо, в которое только что затолкали платок - в настоящее.</p>
+        <div class="descr-item" style="max-width: 100%;">
+            {!! $conference->text !!}
         </div>
 
     </div>

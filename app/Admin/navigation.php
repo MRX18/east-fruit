@@ -48,6 +48,25 @@ return [
                 ->setPriority(200)
         ]
     ],
+/**/
+    [
+        'title' => "Календарь событий",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Event::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\Conference::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100),
+            (new Page(\App\Program::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(200),
+            (new Page(\App\Speaker::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(400)
+        ]
+    ],
 
     // Examples
     // [

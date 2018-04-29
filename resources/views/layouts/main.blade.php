@@ -114,11 +114,13 @@
                 @endforeach
 
                  @foreach($otherCatigorTop as $catigor)
-                    <!-- <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a> -->
-                    @if($catigor->color == 0)
-                        <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
-                    @else
-                        <a class="current-link" href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+
+                     @if($catigor->menu == 1)
+                        @if($catigor->color == 0)
+                            <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                        @endif
                     @endif
                     
                 @endforeach
@@ -139,6 +141,18 @@
                     @endif
                     
                 @endforeach
+
+                @foreach($otherCatigorTop as $catigor)
+
+                     @if($catigor->menu == 2)
+                        @if($catigor->slug == 'events')
+                            <a href="{{ '/'.$catigor->slug.'/'.date('Y') }}">{{ $catigor->title }}</a>
+                        @else
+                            <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                        @endif
+                    @endif
+                    
+                @endforeach
             </div>
         </div>
     </div>
@@ -153,10 +167,28 @@
             <div class="col-lg-12 border-bottom text-center hidden-xs">
                 <div class="menu">
                     <a href="/">Главная</a>
-                    <a href="news-categories/view/index.html@id=11.html">Интервью</a>
-                    <a href="index.html">Календарь событий</a>
-                    <a href="news-categories/view/index.html@id=13.html">Обучающие поездки</a>
-                    <a href="news-categories/view/index.html@id=14.html">Истории бизнеса</a>
+                @foreach($catigories as $catigor)
+                    @if($catigor->menu == 2)
+                        @if($catigor->color == 0)
+                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @else
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                        @endif
+                    @endif
+                    
+                @endforeach
+
+                @foreach($otherCatigorTop as $catigor)
+
+                     @if($catigor->menu == 2)
+                        @if($catigor->slug == 'events')
+                            <a href="{{ '/'.$catigor->slug.'/'.date('Y') }}">{{ $catigor->title }}</a>
+                        @else
+                            <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
+                        @endif
+                    @endif
+                    
+                @endforeach
                 </div>
             </div>
             <div class="col-lg-3">

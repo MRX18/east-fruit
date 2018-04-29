@@ -11,95 +11,47 @@
                     
                     <div class="menu-calendar">
                         <ul>
-                            <li><a class="date-active" href="#">2018</a></li>
-                            <li><a href="#">2017</a></li>
-                            <li><a href="#">2016</a></li>
-                            <li><a href="#">2015</a></li>
-                            <li><a href="#">2014</a></li>
-                            <li><a href="#">2013</a></li>
-                            <li><a href="#">2012</a></li>
-                            <li><a href="#">2011</a></li>
+                            <!-- <li><a class="date-active" href="#">2018</a></li> -->
+                            @foreach($years as $year)
+                            <li><a href="{{ route('event', ['id'=>$year->year]) }}">{{ $year->year }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="event-conteiner">
                         
-                        <div class="event-article">
-                            <header class="header-event">
-                                <h3><a href="#">Риски и противодействие мошенничеству 2016</a></h3>
-                            </header>
-                            <div class="content-event">
-                                <div class="event-left">
-                                    <div class="event-date">25.04.2018</div>
-                                    <div class="event-img">
-                                        <img src="{{ asset('/images/uploads/events_logo.jpg.pagespeed.ce.b98GK-2iBh.jpg') }}" alt="">
+                        @if(count($events) > 0) 
+                            @foreach($events as $event)
+                            <div class="event-article">
+                                <header class="header-event">
+                                    <h3><a href="{{ route('conference', ['id'=>$event->id]) }}">{{ $event->title }}</a></h3>
+                                </header>
+                                <div class="content-event">
+                                    <div class="event-left">
+                                        <div class="event-date">{{ $event->date }}</div>
+                                        <div class="event-img">
+                                            <img src="{{ asset($event->img) }}" alt="">
+                                        </div>
+                                        <div class="event-adres">{{ $event->adres }}</div>
                                     </div>
-                                    <div class="event-adres">Киев, Отель "Алфавито"</div>
-                                </div>
-                                <div class="event-right">
-                                    <ul>
-                                        <li><a href="#">О конференции</a></li>
-                                        <li><a href="#">Программа</a></li>
-                                        <li><a href="#">Спикеры</a></li>
-                                        <li><a href="#">Участники</a></li>
-                                        <li><a href="#">Фотоотчет</a></li>
-                                    </ul>
+                                    <div class="event-right">
+                                        <ul>
+                                            <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
+                                            <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                                            <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="event-article">
-                            <header class="header-event">
-                                <h3><a href="#">Риски и противодействие мошенничеству 2016</a></h3>
-                            </header>
-                            <div class="content-event">
-                                <div class="event-left">
-                                    <div class="event-date">25.04.2018</div>
-                                    <div class="event-img">
-                                        <img src="{{ asset('/images/uploads/events_logo.jpg.pagespeed.ce.b98GK-2iBh.jpg') }}" alt="">
-                                    </div>
-                                    <div class="event-adres">Киев, Отель "Алфавито"</div>
-                                </div>
-                                <div class="event-right">
-                                    <ul>
-                                        <li><a href="#">О конференции</a></li>
-                                        <li><a href="#">Программа</a></li>
-                                        <li><a href="#">Спикеры</a></li>
-                                        <li><a href="#">Участники</a></li>
-                                        <li><a href="#">Фотоотчет</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="event-article">
-                            <header class="header-event">
-                                <h3><a href="#">Риски и противодействие мошенничеству 2016</a></h3>
-                            </header>
-                            <div class="content-event">
-                                <div class="event-left">
-                                    <div class="event-date">25.04.2018</div>
-                                    <div class="event-img">
-                                        <img src="{{ asset('/images/uploads/events_logo.jpg.pagespeed.ce.b98GK-2iBh.jpg') }}" alt="">
-                                    </div>
-                                    <div class="event-adres">Киев, Отель "Алфавито"</div>
-                                </div>
-                                <div class="event-right">
-                                    <ul>
-                                        <li><a href="#">О конференции</a></li>
-                                        <li><a href="#">Программа</a></li>
-                                        <li><a href="#">Спикеры</a></li>
-                                        <li><a href="#">Участники</a></li>
-                                        <li><a href="#">Фотоотчет</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <h2>Событий нет!</h2>
+                        @endif
 
                     </div>
 
                     <div class="category-button">
-                        
+                        {{ $events->links() }}
                     </div>
                 </div>
 
@@ -131,12 +83,12 @@
             </div>
     </section>
 
-    <section id="slider-section">
+    <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -206,7 +158,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </section>
 @endsection
