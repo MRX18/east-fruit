@@ -55,7 +55,7 @@ class IndexController extends Controller
         // Интервю
         $interview = $_article->articleInIndexPage('id_catigories', 6, 10);
 
-        $articles = Article::orderByDesc('id')->paginate(9);
+        $articles = $_article->allArticles(9);
 
         $images = $_image->images(18);
         $imagesM = $_image->images(9);

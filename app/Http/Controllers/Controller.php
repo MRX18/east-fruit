@@ -21,9 +21,27 @@ class Controller extends BaseController
     protected function otherCatigorTop() {
     	return OtherTopCatigorie::get();
     }
-
-    protected function date($date) {
+    /*date*/
+    public function dateFirst($date) {
     	$date = explode('-', $date);
         return $date[2].'.'.$date[1].'.'.$date[0];
+    }
+
+    public function dateSitebar($colection) {
+        foreach($colection as $article) {
+            $date = explode('-', $article->date);
+            $article->date = $date[2].'.'.$date[1];
+        }
+
+        return $colection;
+    }
+
+    public function dateCatigor($colection) {
+        foreach($colection as $article) {
+            $date = explode('-', $article->date);
+            $article->date = $date[2].'.'.$date[1].'.'.$date[0];
+        }
+
+        return $colection;
     }
 }

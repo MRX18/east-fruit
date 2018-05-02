@@ -31,6 +31,6 @@ AdminSection::registerModel(Speaker::class, function (ModelConfiguration $model)
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });
-}) 
-	->addMenuPage(Speaker::class, 300)
-    ->setIcon('fa fa-sliders');
+}); 
+	// ->addMenuPage(Speaker::class, 300)
+ //    ->setIcon('fa fa-sliders');

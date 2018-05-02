@@ -28,6 +28,6 @@ AdminSection::registerModel(Conference::class, function (ModelConfiguration $mod
             AdminFormElement::ckeditor('text', 'Текс')->required()
         );
     });
-}) 
-	->addMenuPage(Conference::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+	// ->addMenuPage(Conference::class, 300)
+ //    ->setIcon('fa fa-sliders');

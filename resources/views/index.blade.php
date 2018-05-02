@@ -95,7 +95,7 @@
                                     <img src="images/arrowWhireRight.png">
                                 </a>
                                 <div class="block-marquee">
-                                    <div class="marquee"><span>{{ $line->title }}<i>{{ $line->date }}</i></span></div>
+                                    <div class="marquee"><span>{{ $line->title }}<i></i></span></div>
                                 </div>
                             </div>
                         </div>

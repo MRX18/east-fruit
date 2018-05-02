@@ -34,6 +34,6 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });
-}) 
-	->addMenuPage(Event::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+	// ->addMenuPage(Event::class, 300)
+ //    ->setIcon('fa fa-sliders');

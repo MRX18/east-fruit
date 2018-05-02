@@ -27,7 +27,7 @@
         <div class="content">
             <div class="col-md-12">
                 <div class="east-header-logo">
-                    <img src="{{ asset('images/east-fruit.png') }}">
+                    <a href="/"><img src="{{ asset('images/east-fruit.png') }}"></a>
                 </div>
                 <div class="east-header-hamburger">
                     <img src="images/hamburger.png">
@@ -50,11 +50,11 @@
                             </form>
                             @endif
 
-                            <li> <a href="index.html#"><i class="fab fa-twitter"></i></a> </li>
-                            <li> <a href="index.html#"> <i class="fab fa-instagram"></i></a> </li>
-                            <li> <a href="index.html#"><i class="fab fa-facebook-f"></i></i></a></li>
-                            <li style="margin-right: 10px;"> <a href="index.html#"><i class="fab fa-telegram-plane"></i></a> </li>
-                            <li> <a href="index.html#"><i class="fab fa-viber"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
+                            <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                            <li style="margin-right: 10px;"> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                             <li>|</li>
                             <li>
                                 <div class="search-container">
@@ -197,16 +197,16 @@
                     <a href="{{ route('cooperation') }}">Сотрудничество</a>
                     <a href="{{ route('contact') }}">Контакты</a>
                     <!-- <a href="index.html">Медиа</a> -->
-                    <a href="{{ route('regulations') }}">Правила использоваия материалов</a>
+                    <a href="{{ route('regulations') }}">Правила использования материалов</a>
                 </div>
             </div>
             <div class="col-lg-7">
                 <ul>
-                    <li> <a href="index.html#"><i class="fab fa-twitter"></i></a> </li>
-                    <li> <a href="index.html#"> <i class="fab fa-instagram"></i></a> </li>
-                    <li> <a href="index.html#"><i class="fab fa-facebook-f"></i></i></a></li>
-                    <li style="margin-right: 10px;"> <a href="index.html#"><i class="fab fa-telegram-plane"></i></a> </li>
-                    <li> <a href="index.html#"><i class="fab fa-viber"></i></a> </li>
+                    <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
+                    <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
+                    <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                    <li style="margin-right: 10px;"> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
+                    <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                 </ul>
                 <p class="text"><b>EAST- FRUIT.com – место роста плодоовощного бизнеса</b><br>
 В фокусе проекта - повышение эффективности производства и качества продукции плодоовощного сектора; экспорт продуктов с высокой добавленной стоимостью; новые возможности для улучшения цепочек добавленной стоимости в поставках плодоовощной продукции. Аналитика, новости плодоовощного бизнеса, исследования, истории бизнеса, мониторинг цен, розничный аудит, обучающие поездки и семинары. Использование материалов сайта свободно при наличии активной ссылки на East-FRUIT.com.

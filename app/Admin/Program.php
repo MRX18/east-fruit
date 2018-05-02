@@ -31,6 +31,6 @@ AdminSection::registerModel(Program::class, function (ModelConfiguration $model)
             AdminFormElement::ckeditor('text', 'Текс')->required()
         );
     });
-}) 
-	->addMenuPage(Program::class, 300)
-    ->setIcon('fa fa-sliders');
+}); 
+	// ->addMenuPage(Program::class, 300)
+ //    ->setIcon('fa fa-sliders');
