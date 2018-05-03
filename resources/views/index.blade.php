@@ -35,7 +35,37 @@
 </div>                    
 </div>
 </div>
+
                 <div class="col-sm-8 col-lg-9">
+
+                    <div class="col-sm-6 col-lg-3 visible-xs">
+
+                        <div class="entry-post">
+                            <h3>Актуальное</h3>
+                            <!-- Begin .item-->
+                            @foreach($sitebarAdaptive as $sitebar)
+                            <div class="item">
+                                <div class="item-image">
+                                    <span class="item-image-date">{{ $sitebar->date }}</span>
+                                </div>
+                                <div class="item-content">
+                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
+                                    <div class="entry-meta bg-{{ rand(1,9) }}">
+                                        @if($sitebar->visible == 1)
+                                            {{ $sitebar->catigor }}
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="add-article" style="margin-bottom: 30px;">
+                                <a href="{{ route('all-articles') }}">Все статьи</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                     <div class="news-bredcrumbs">
                         <div id="w1" class="news-stroke">
                             
@@ -46,6 +76,21 @@
                             @endforeach
 
                         </div>                
+                    </div>
+                    <div class="auth">
+                        <ul>
+                            @if(!Auth::check())
+                        
+                                <li> <a href="/login">Вход</a> </li>
+                                <li> <a href="/register">Регистрация</a> </li>
+                            @else
+                                <li> <a href="/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Выход</a> </li>
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                            @endif
+                        </ul>
                     </div>
 
                     <div class="news-carousel">
@@ -99,33 +144,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3 visible-xs">
-
-                        <div class="entry-post">
-                            <h3>Актуальное</h3>
-                            <!-- Begin .item-->
-                            @foreach($sitebarAdaptive as $sitebar)
-                            <div class="item">
-                                <div class="item-image">
-                                    <span class="item-image-date">{{ $sitebar->date }}</span>
-                                </div>
-                                <div class="item-content">
-                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
-                                    <div class="entry-meta bg-{{ rand(1,9) }}">
-                                        @if($sitebar->visible == 1)
-                                            {{ $sitebar->catigor }}
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            <div class="add-article" style="margin-bottom: 30px;">
-                                <a href="{{ route('all-articles') }}">Все статьи</a>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="news-reserch">
@@ -455,10 +473,12 @@
             <div class="row no-gutter">
                 <h3>Организаторы</h3>
                 <div class="col-sm-5 col-md-6 col-xs-6 text-right">
-                    <img src="images/Logo&#32;FAO.png" alt="" />
+                    <div class="org-img">
+                        <img src="images/Logo&#32;FAO.png" alt="" />
+                    </div>
                 </div>
-                <div class="col-sm-6 col-md-5 col-xs-6 col-md-offset-1">
-                    <img src="images/ebrr_logo.png" alt="" />
+                <div style="max-width: 250px;" class="col-sm-6 col-md-5 col-xs-6 col-md-offset-1">
+                    <img style="width: 100%; margin-left: 20px;" src="images/ebrr_logo.jpg" alt="" />
                 </div>
             </div>
         </div>

@@ -60,29 +60,23 @@
                                 <div class="search-container">
                                     <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
                                     <div class="search-input">
-                                        <input type="search" class="search-bar" placeholder="Search..." title="Search"/>
+                                        <form action="">
+                                            <div class="search-form">
+                                                <input type="search" class="search-bar" placeholder="Search..." title="Search"/>
+                                                <button><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </li>
                         </ul>
 
                         <ul class="menu-auth-bottom">
-                            @if(!Auth::check())
-                            
-                                <li> <a style="color: #848AA2; font-size: 14px;" href="/login"><i class="fas fa-lock"></i></a> </li>
-                            @else
-                                <li> <a style="color: #848AA2; font-size: 14px;" href="/logout" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fas fa-unlock-alt"></i></a> </li>
-                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                            @endif
-
-                            <li> <a href="index.html#"><i class="fab fa-twitter"></i></a> </li>
-                            <li> <a href="index.html#"> <i class="fab fa-instagram"></i></a> </li>
-                            <li> <a href="index.html#"><i class="fab fa-facebook-f"></i></i></a></li>
-                            <li> <a href="index.html#"><i class="fab fa-telegram-plane"></i></a> </li>
-                            <li> <a href="index.html#"><i class="fab fa-viber"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
+                            <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                            <li> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
+                            <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                             <li>|</li>
                             <li style="margin-left: -20px;">
                                 <div class="search-container">

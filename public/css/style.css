@@ -21,6 +21,9 @@ a:hover {
 	text-decoration: none;
 }
 /*--------------------------------------------------------------------------------------------------*/
+.auth {
+	display: none;
+}
 .menu-auth-bottom {
 	display: none;
 }
@@ -125,69 +128,23 @@ section, footer, header{
 /*------------------------------------------------------------*/
 /* 2.1.1 - Search Button
     -----------------------------------------------------------------*/
-.search-container *, .search-container:after, .search-container:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.search-container:focus {
-	background: #fbfbfb;
-	color: #333;
-	outline: 0;
-	float: right;
-}
-.search-container {
-	display: table;
-	position: relative;
-	width: 40px;
-	height: 40px;
-	float: right;
-}
-.search-icon-btn {
-	height: 40px;
-	color: #dddde7;
-	position: relative;
-	text-align: center;
-	vertical-align: middle;
-	width: 40px;
-	z-index: 2;
-}
 .search-input {
-	position: absolute;
-	right: 0;
-	z-index: 1;
-	top: 20px;
 	display: none;
 }
-span:hover .search-input{
+.search-form {
+	display: flex;
+	position: absolute;
+	right: -10px;
+}
+.search-form input {
 	display: block;
+	outline: none;
+	border: none;
 }
-.search-input input.search-bar {
-	border: 1px solid #ccc;
-	height: 40px;
-	padding: 0;
-	width: 40px;
-}
-.search-input input.search-bar:focus {
-	padding-left: 60px;
-	padding-right: 10px;
-	width: 200px;
-	background-color: #f2f2f4;
-	color: #939399;
-}
-.search-input input.search-bar, .search-icon-btn {
-	-webkit-transition: all .5s;
-	-moz-transition: all .5s;
-	-ms-transition: all .5s;
-	-o-transition: all .5s;
-	transition: all .5s;
-}
-.search-container:hover > .search-input input.search-bar {
-	padding-left: 60px;
-	padding-right: 10px;
-	width: 200px;
-	background-color: #f2f2f4;
+.search-form button {
+	display: block;
+	outline: none;
+	border: none;
 }
 /*-------------------------------------------*/
 .east-menu{
@@ -606,9 +563,9 @@ li.slick-active button{
 	vertical-align: top;
 	width: 100px;
 }
-.entry-post .item .item-content {
+/*.entry-post .item .item-content {
 	padding-left: 15px;
-}
+}*/
 .ui-datepicker-calendar td, .ui-datepicker-calendar th {
     padding: 9px;
 }
@@ -1741,6 +1698,9 @@ footer .links a:hover{
 	.height {
 		height: 130px;
 	}
+	.title-item {
+		font-size: 20px;
+	}
 }
 @media screen and (max-width: 560px) {
 	.lid {
@@ -1790,11 +1750,44 @@ footer .links a:hover{
 		font-size: 14px;
 	}
 }
+@media screen and (max-width: 360px) {
+	.news-bredcrumbs {
+		display: none;
+	}
+	.auth {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		border-top: 2px solid #F1F1F1;
+		border-bottom: 2px solid #F1F1F1;
+	}
+	.auth ul {
+		position: relative;
+		margin-top: 6px;
+		margin-bottom: 5px;
+	}
+	.auth ul li {
+		float: left;
+		margin-right: 7px;
+		margin-left: 7px;
+	}
+	.auth ul li a {
+		font-size: 18px;
+		font-weight: bold;
+		color: #212840;
+	}
+	.auth ul li a:hover {
+		color: #33CC99;
+	}
+}
 @media screen and (max-width: 330px) {
 	.program {
 		display: block;
 	}
 	.text h3 {
+		font-size: 18px;
+	}
+	.title-item {
 		font-size: 18px;
 	}
 }
