@@ -40,5 +40,7 @@ Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-
 Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');
 Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+')->name('speakers');
 
+Route::get('/search/', 'SearchController@index')->name('search');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

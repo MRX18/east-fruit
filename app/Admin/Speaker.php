@@ -15,7 +15,7 @@ AdminSection::registerModel(Speaker::class, function (ModelConfiguration $model)
         	AdminColumn::text('id')->setLabel('ID'),
 
         	AdminColumn::text('title')->setLabel('Спикер'),
-            AdminColumn::image('img')->setLabel('Зображення')
+            AdminColumn::image('img')->setLabel('Изображение')
         ]);
         return $display;
     });
@@ -27,7 +27,7 @@ AdminSection::registerModel(Speaker::class, function (ModelConfiguration $model)
                 return $Event->title;
             })->required(),
 
-            AdminFormElement::ckeditor('text', 'Текс')->required(),
+            AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });

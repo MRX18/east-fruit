@@ -14,10 +14,10 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('title')->setLabel('Назва'),
+        	AdminColumn::text('title')->setLabel('Название'),
             AdminColumn::text('adres')->setLabel('Адрес'),
             AdminColumn::text('date')->setLabel('Дата'),
-            AdminColumn::image('img')->setLabel('Зображення')
+            AdminColumn::image('img')->setLabel('Изображение')
         ]);
         return $display;
     });

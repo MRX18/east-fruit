@@ -15,8 +15,8 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
-            AdminColumn::text('id_market')->setLabel('Рынки'),
-            AdminColumn::text('id_product')->setLabel('Продукты'),
+            AdminColumn::text('id_market')->setLabel('Страны'),
+            AdminColumn::text('id_product')->setLabel('Категории'),
             AdminColumn::text('price')->setLabel('Цена'),
             AdminColumn::text('date')->setLabel('Дата'),
         ]);
@@ -25,16 +25,17 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::select('id_product', 'Рынки')->setModelForOptions(new Product)->setDisplay(function($Product) {
+            AdminFormElement::select('id_product', 'Категории')->setModelForOptions(new Product)->setDisplay(function($Product) {
                 return $Product->name;
             })->required(),
-            AdminFormElement::select('id_market', 'Продукты')->setModelForOptions(new Market)->setDisplay(function($Market) {
+            AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
                 return $Market->market;
             })->required(),
             AdminFormElement::select('currency', 'Тип валюты')->setModelForOptions(new Currency)->setDisplay(function($Currency) {
                 return $Currency->currency;
             })->required(),
-            AdminFormElement::text('price', 'Цена')->required()
+            AdminFormElement::text('price', 'Цена')->required(),
+            AdminFormElement::date('date', 'Дата')->required()
 
         );
     });

@@ -21,11 +21,11 @@ AdminSection::registerModel(Conference::class, function (ModelConfiguration $mod
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::select('id_event', 'Собітие')->setModelForOptions(new Event)->setDisplay(function($Event) {
+            AdminFormElement::select('id_event', 'Событие')->setModelForOptions(new Event)->setDisplay(function($Event) {
                 return $Event->title;
             })->required(),
 
-            AdminFormElement::ckeditor('text', 'Текс')->required()
+            AdminFormElement::ckeditor('text', 'Текст')->required()
         );
     });
 });

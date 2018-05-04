@@ -7,14 +7,14 @@ AdminSection::registerModel(Program::class, function (ModelConfiguration $model)
    $model->enableAccessCheck();
 //     Запрет на удаление
 //    $model->disableDeleting();
-    $model->setTitle('Програма конференцыи');
+    $model->setTitle('Программа конференции');
     
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('title')->setLabel('Назва'),
+        	AdminColumn::text('title')->setLabel('Название'),
             AdminColumn::text('time')->setLabel('Время проведения'),
         ]);
         return $display;
@@ -22,13 +22,13 @@ AdminSection::registerModel(Program::class, function (ModelConfiguration $model)
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::text('title', 'Название')->required(),
             AdminFormElement::text('time', 'Время проведения')->required(),
             AdminFormElement::select('id_event', 'Событие')->setModelForOptions(new Event)->setDisplay(function($Event) {
                 return $Event->title;
             })->required(),
 
-            AdminFormElement::ckeditor('text', 'Текс')->required()
+            AdminFormElement::ckeditor('text', 'Текст')->required()
         );
     });
 }); 

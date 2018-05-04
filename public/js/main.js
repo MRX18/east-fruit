@@ -18,6 +18,17 @@ $( document ).ready(function() {
         });
     });
 
+
+    $('.search-icon-btn').click(function() {
+        $('.search-input').css('display', 'block');
+    });
+
+    $('.close-search').click(function() {
+        $('.search-input').css('display', 'none');
+    });
+
+
+
     $('.img-cont').magnificPopup({
         delegate: 'a',
         type: 'image',

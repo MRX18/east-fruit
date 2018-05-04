@@ -14,8 +14,8 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('title')->setLabel('Назва'),
-            AdminColumn::image('img')->setLabel('Зображення')
+        	AdminColumn::text('title')->setLabel('Название'),
+            AdminColumn::image('img')->setLabel('Изображение')
         ]);
         return $display;
     });
@@ -26,16 +26,16 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
 
             AdminFormElement::checkbox('baner', 'Показать в главном слайдере'),
             AdminFormElement::checkbox('toptwenty', 'Показать в верхнем слайдере'),
-            AdminFormElement::checkbox('line', 'Показать в бегающей линии'),
+            AdminFormElement::checkbox('line', 'Показать в бегущей линии'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
-            AdminFormElement::select('id_catigories', 'Категорія')->setModelForOptions(new CatigorTop)->setDisplay(function($CatigorTop) {
+            AdminFormElement::select('id_catigories', 'Категория')->setModelForOptions(new CatigorTop)->setDisplay(function($CatigorTop) {
                 return $CatigorTop->title;
             })->required(),
 
 
             AdminFormElement::textarea('lid', 'Лид')->required(),
-            AdminFormElement::ckeditor('text', 'Текс')->required(),
+            AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::datetime('datetime', 'Время публикации статьи')->required(),
             AdminFormElement::image('img', 'Изображение')->required()

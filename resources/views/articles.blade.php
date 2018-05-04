@@ -100,10 +100,10 @@
         {{ csrf_field() }}
         @if(!Auth::check())
         <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-            <div class="auth" style="width: 49%;">
+            <div class="auth-forma" style="width: 49%;">
                 <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя">
             </div>
-            <div class="auth" style="width: 49%;">
+            <div class="auth-forma" style="width: 49%;">
                 <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email">
             </div>
         </div>
@@ -198,7 +198,7 @@
     </div>
     @endforeach
     <div class="add-article" style="margin-bottom: 30px;">
-        <a href="{{ route('all-articles') }}">Все статьи</a>
+        <a href="{{ route('all-articles') }}">Больше новостей</a>
     </div>
 
 </div></div>

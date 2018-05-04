@@ -55,7 +55,7 @@ class BlogController extends Controller
 
         $articles = $_blog->allArticlesBlog(20);
         foreach($articles as $article) {
-            $article->date = $this->date($article->date);
+            $article->date = $this->dateFirst($article->date);
 
             $users = $_user->user($article->id_user);
             $article->name_user = $users->name;
@@ -133,11 +133,11 @@ class BlogController extends Controller
         $comment = BlogComment::where('id_blog', $id)->orderByDesc('id')->get();
         $reads = Article::orderByDesc('id')->limit(10)->get();
         foreach($reads as $read) {
-            $read->date = $this->date($read->date);
+            $read->date = $this->dateFirst($read->date);
         }
 
         $title = $article->title;
-        $article->date = $this->date($article->date);
+        $article->date = $this->dateFirst($article->date);
         $author = $_user->user($article->id_user);
 
     	return view('articles-blog')->with([

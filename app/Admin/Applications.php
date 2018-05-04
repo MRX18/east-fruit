@@ -15,7 +15,7 @@ AdminSection::registerModel(Application::class, function (ModelConfiguration $mo
             AdminColumn::custom()->setLabel('Активность')->setCallback(function ($instance) {
                 return $instance->unread ? '<i class="fa fa-check bg-success"></i>' : '<i class="fa fa-minus text-danger bg-danger"></i>';
             })->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('name')->setLabel('Імя'),
+            AdminColumn::text('name')->setLabel('Имя'),
             AdminColumn::text('email')->setLabel('Email')
         ]);
         return $display;
@@ -24,7 +24,7 @@ AdminSection::registerModel(Application::class, function (ModelConfiguration $mo
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::checkbox('unread', 'Просмотрено'),
-            AdminFormElement::text('name', 'Им\'я')->setReadonly(true),
+            AdminFormElement::text('name', 'Имя')->setReadonly(true),
             AdminFormElement::text('email', 'Email')->setReadonly(true),
             AdminFormElement::textarea('text', 'Текст')->setReadonly(true)
         );

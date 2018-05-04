@@ -97,10 +97,10 @@
         
         @if(!Auth::check())
         <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-            <div class="auth" style="width: 49%;">
+            <div class="auth-forma" style="width: 49%;">
                 <input style="width: 100%;" class="form-control" type="text" name="name" placeholder="Имя">
             </div>
-            <div class="auth" style="width: 49%;">
+            <div class="auth-forma" style="width: 49%;">
                 <input style="width: 100%;" class="form-control" type="email" name="email" placeholder="Email">
             </div>
         </div>
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     <div class="item-content">
-                        <p class="ellipsis"><a href="">{{ $read->title }}</a></p>
+                        <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->id]) }}">{{ $read->title }}</a></p>
                         <div class="entry-meta-descr"><p style="text-align: justify;">{{ mb_substr(strip_tags($read->text), 0, 350).'...' }}</div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         </div>
                         @endforeach
                         <div class="add-article" style="margin-bottom: 30px;">
-                            <a href="{{ route('all-articles') }}">Все статьи</a>
+                            <a href="{{ route('all-articles') }}">Больше новостей</a>
                         </div>
 
                     </div></div>

@@ -13,8 +13,8 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('title')->setLabel('Назва'),
-            AdminColumn::image('img')->setLabel('Зображення')
+        	AdminColumn::text('title')->setLabel('Название'),
+            AdminColumn::image('img')->setLabel('Изображение')
         ]);
         return $display;
     });

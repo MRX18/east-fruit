@@ -60,10 +60,11 @@
                                 <div class="search-container">
                                     <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
                                     <div class="search-input">
-                                        <form action="">
+                                        <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
-                                                <input type="search" class="search-bar" placeholder="Search..." title="Search"/>
+                                                <input type="search" name="s" placeholder="Search..." title="Search"/>
                                                 <button><i class="fas fa-search"></i></button>
+                                                <a class="close-search"><i class="fas fa-times"></i></a>
                                             </div>
                                         </form>
                                     </div>
@@ -82,7 +83,13 @@
                                 <div class="search-container">
                                     <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
                                     <div class="search-input">
-                                        <input type="search" class="search-bar" placeholder="Search..." title="Search"/>
+                                        <form action="{{ route('search') }}" method="get">
+                                            <div class="search-form">
+                                                <input type="search" name="s" placeholder="Search..." title="Search"/>
+                                                <button><i class="fas fa-search"></i></button>
+                                                <a class="close-search"><i class="fas fa-times"></i></a>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </li>

@@ -8,7 +8,7 @@ AdminSection::registerModel(ArticlesComment::class, function (ModelConfiguration
    $model->enableAccessCheck();
 //     Запрет на удаление
 //    $model->disableDeleting();
-    $model->setTitle('Коментарии к статьям');
+    $model->setTitle('Комментарии к статьям');
     
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
@@ -17,7 +17,7 @@ AdminSection::registerModel(ArticlesComment::class, function (ModelConfiguration
             AdminColumn::custom()->setLabel('Активность')->setCallback(function ($instance) {
                 return $instance->visible ? '<i class="fa fa-check bg-success"></i>' : '<i class="fa fa-minus text-danger bg-danger"></i>';
             })->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-        	AdminColumn::text('user')->setLabel('Пользоватьель'),
+        	AdminColumn::text('user')->setLabel('Пользователь'),
             AdminColumn::text('email')->setLabel('Email')
         ]);
         return $display;
@@ -26,14 +26,14 @@ AdminSection::registerModel(ArticlesComment::class, function (ModelConfiguration
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::checkbox('visible', 'Активность'),
-            AdminFormElement::text('user', 'Пользоватьель')->setReadonly(true),
+            AdminFormElement::text('user', 'Пользователь')->setReadonly(true),
             AdminFormElement::text('email', 'Email')->setReadonly(true),
             AdminFormElement::select('id_articles', 'Статья')->setModelForOptions(new Article)->setDisplay(function($Article) {
                 return $Article->title;
             })->setReadonly(true),
 
 
-            AdminFormElement::textarea('text', 'Коментарий')->setReadonly(true)
+            AdminFormElement::textarea('text', 'Комментарий')->setReadonly(true)
         );
     });
 }) 

@@ -19,7 +19,7 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
                 return $instance->visible ? '<i class="fa fa-check bg-success"></i>' : '<i class="fa fa-minus text-danger bg-danger"></i>';
             })->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
 
-        	AdminColumn::text('title')->setLabel('Назва')
+        	AdminColumn::text('title')->setLabel('Название')
         ]);
         return $display;
     });
@@ -33,7 +33,7 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
                 return $User->name;
             })->required(),
 
-            AdminFormElement::ckeditor('text', 'Текс')->required(),
+            AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::date('date', 'Дата')->required()
         );
     });
