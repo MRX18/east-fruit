@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 use App\CatigorTop;
 use App\Article;
@@ -93,6 +94,11 @@ class CatigorController extends Controller
         $products = Product::get();
         $currencys = Currency::get();
 
+        date_default_timezone_set('Europe/Kiev');
+        $date = Carbon::now()->toDateString();
+        $date = explode('-', $date);
+        // dd($date);
+
         if($request->isMethod('post')) {
             
             $validator = Validator::make($request->all(),
@@ -166,7 +172,8 @@ class CatigorController extends Controller
 
             'markets' => $markets,
             'products' => $products,
-            'currencys' => $currencys
+            'currencys' => $currencys,
+            'date' => $date
         ]);
     }
 

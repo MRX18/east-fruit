@@ -21,8 +21,8 @@
 				    <div class="col-sm-10">
 				      <div class="form-inline">
 
-				      	<div class="form-group" style="margin-right: 30px; margin-left: 0px;">
-				      		<label for="exampleInputName2">С </label>
+				      	<div class="form-group" style="margin-right: 0px; margin-left: 0px;">
+				      		  <label style="font-size: 14px;" for="exampleInputName2">С </label>
 						      <select class="form-control" name="deyMin">
 						      	@for($i=1; $i<=31; $i++)
 									@if(strlen($i) == 1)
@@ -46,41 +46,61 @@
 									<option value="{{ $i }}">{{ $i }}</option>
 						      	@endfor
 						      </select>
-						    </div>
+						</div>
 
-						    <div class="form-group">
-				      		<label for="exampleInputName2">По </label>
+						<div class="form-group" style="margin-right: 0px; margin-left: 0px;">
+				      		<label style="font-size: 14px;" for="exampleInputName2">По </label>
 						      <select class="form-control" name="deyMax">
 						      	@for($i=1; $i<=31; $i++)
 									@if(strlen($i) == 1)
+										@if($date[2] == '0'.$i)
+										<option selected="selected" value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										@else
 										<option value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										@endif
 									@else
+										@if($date[2] == $i)
+										<option selected="selected" value="{{ $i }}">{{ $i }}</option>
+										@else
 										<option value="{{ $i }}">{{ $i }}</option>
+										@endif
 									@endif
 						      	@endfor
 						      </select>
 						      <select class="form-control" name="monthMax">
 						      	@for($i=1; $i<=12; $i++)
 									@if(strlen($i) == 1)
+										@if($date[1] == '0'.$i)
+										<option selected="selected" value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										@else
 										<option value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										@endif
 									@else
+										@if($date[1] == $i)
+										<option selected="selected" value="{{ $i }}">{{ $i }}</option>
+										@else
 										<option value="{{ $i }}">{{ $i }}</option>
+										@endif
 									@endif
 						      	@endfor
 						      </select>
 						      <select class="form-control" name="yearMax">
 						      	@for($i=2000; $i<=2025; $i++)
+						      		@if($date[0] == $i)
+									<option selected="selected" value="{{ $i }}">{{ $i }}</option>
+									@else
 									<option value="{{ $i }}">{{ $i }}</option>
+									@endif
 						      	@endfor
 						      </select>
-						    </div>
+						</div>
 
 					  	</div>
 				    </div>
 				  </div>
 
 					<div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">Рынки</label>
+				    <label for="inputEmail3" class="col-sm-2 control-label">Страны</label>
 				    <div class="col-sm-10">
 				      <select class="form-control" name="market">
 				      	@foreach($markets as $velue)
@@ -91,7 +111,7 @@
 				  </div>
 
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">Товары</label>
+				    <label for="inputEmail3" class="col-sm-2 control-label">Категории</label>
 				    <div class="col-sm-10">
 				      <select class="form-control" name="product">
 				      	@foreach($products as $velue)
