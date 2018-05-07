@@ -6,7 +6,7 @@ use App\Market;
 use App\Currency;
 
 AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
-   // $model->enableAccessCheck();
+   $model->enableAccessCheck();
 //     Запрет на удаление
 //    $model->disableDeleting();
     $model->setTitle('Цены');
@@ -39,6 +39,6 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
 
         );
     });
-}) 
-	->addMenuPage(Price::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+	// ->addMenuPage(Price::class, 300)
+ //    ->setIcon('fa fa-sliders');

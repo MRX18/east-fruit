@@ -36,6 +36,7 @@ Route::match(['get', 'post'],'/contact', 'StaticController@contact')->name('cont
 Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
 Route::get('/events/{id}', 'CalendarController@index')->where('id','[0-9]+')->name('event');
+Route::get('/event-day/{id}', 'CalendarController@eventDay')->name('eventDay');
 Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-9]+')->name('conference');
 Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');
 Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+')->name('speakers');

@@ -232,5 +232,6 @@
 <script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
 <script src="{{ asset('slick/slick.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/plugins.js') }}"></script>    </body>
+<script src="{{ asset('js/plugins.js') }}"></script>
+</body>
 </html>

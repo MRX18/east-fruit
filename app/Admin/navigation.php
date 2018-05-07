@@ -68,21 +68,21 @@ return [
         ]
     ],
 
-    // [
-    //     'title' => "Цены",
-    //     'icon' => 'fa fa-credit-card',
-    //     'pages' => [
-    //         (new Page(\App\Permission::class))
-    //             ->setIcon('fa fa-key')
-    //             ->setPriority(0),
-    //         (new Page(\App\Role::class))
-    //             ->setIcon('fa fa-graduation-cap')
-    //             ->setPriority(100),
-    //         (new Page(\App\User::class))
-    //             ->setIcon('fa fa-user')
-    //             ->setPriority(200)
-    //     ]
-    // ],
+    [
+        'title' => "Цены",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Price::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\Product::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100),
+            (new Page(\App\Market::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(200)
+        ]
+    ],
 
     // Examples
     // [

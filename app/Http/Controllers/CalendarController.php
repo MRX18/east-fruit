@@ -13,7 +13,7 @@ use App\Conference;
 class CalendarController extends Controller
 {
     public function index($id) {
-    	$title = "Все события";
+    	$title = "События";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -114,5 +114,27 @@ class CalendarController extends Controller
             'event' => $event,
             'speakers' => $speakers
     	]);
+    }
+
+    public function eventDay($id) {
+        $title = "События | ".$this->dateFirst($id);
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_event = new Event;
+        $_year = new Yaer;
+
+        $years = $_year->years();
+
+        $events = $_event->eventDаy($id, 10);
+
+        return view('calendar-of-events')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+
+            'events' => $events,
+            'years' => $years
+        ]);
     }
 }

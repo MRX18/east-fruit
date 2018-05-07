@@ -2,6 +2,12 @@
 
 $( document ).ready(function() {
 
+    /*сlic calendar*/
+    // $('td').click(function() {
+    //     alert('test');
+    // });
+    /*-------------*/
+
     $('.east-header-hamburger').on('click',function () {
 
         $( '.east-menu' ).slideToggle( "slow", function() {
@@ -49,6 +55,10 @@ $( document ).ready(function() {
 
     /* 4. Calendar */
     $('#calendar').datepicker({
+        onSelect: function(date) {
+            // alert(date)
+            location="http://east-fruit/event-day/"+date
+        },
         dateFormat : "yy-mm-dd",
         minDate: new Date($('#hiddendelivdate').val()),
         monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
