@@ -51,6 +51,7 @@ class CalendarController extends Controller
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
+
         $conference = $_conferense->conference($id);
 
     	return view('conference')->with([

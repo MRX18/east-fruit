@@ -94,8 +94,8 @@ $('.news-comments-slick_slider-slider').slick({
 });
 
 $('.news-stroke').slick({
-    centerMode: true,
-    centerPadding: '20px',
+    //centerMode: true,
+    //centerPadding: '20px',
     slidesToShow: 3,
     nfinite: true,
     speed: 300,

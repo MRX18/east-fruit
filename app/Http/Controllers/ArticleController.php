@@ -94,7 +94,8 @@ class ArticleController extends Controller
 
     		'article' => $article,
     		'reads' => $read,
-    		'comments' => $comments
+    		'comments' => $comments,
+            'artID' => $article->id
     	]);
     }
 }

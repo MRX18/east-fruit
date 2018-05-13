@@ -100,14 +100,15 @@
                         <div id="section-vote">
                             <div class="question">Действует ли в Украини система дотаций АПК?</div>
                             <div class="main">
-
+                                <form action="/question" method="get" name="web">
                                 <div class="checkbox">
-                                    <label><input type="checkbox"> Да, это очень действенный механизм поддержки сельхозпроизводителей.</label>
-                                    <label><input type="checkbox"> Нет, все дотации получает только крупный бизнес.</label>
-                                    <label><input type="checkbox"> В нашей стране это очередная схема присвоения бюджетных средств.</label>
+                                    <label><input type="checkbox" value="1"> Да, это очень действенный механизм поддержки сельхозпроизводителей.</label>
+                                    <label><input type="checkbox" value="1"> Нет, все дотации получает только крупный бизнес.</label>
+                                    <label><input type="checkbox" value="1"> В нашей стране это очередная схема присвоения бюджетных средств.</label>
                                 </div>
 
                                 <button type="button" class="btn btn-primary comment-add"> Голосовать</button>
+                                </form>
                             </div>
                         </div>
                     </div>

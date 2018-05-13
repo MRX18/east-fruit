@@ -41,11 +41,11 @@
         <div class="descr-item">
             
             @foreach($programs as $program)
-            <div class="program">
+            <div class="program" style="max-width: 100%;">
                 <div class="program-left">{{ $program->time }}</div>
                 <div class="program-right">
                     <h3>{{ $program->title }}</h3>
-                    <div class="prog-text">{!! $program->text !!}</div>
+                    <div class="prog-text" style="max-width: 100%;">{!! $program->text !!}</div>
                 </div>
             </div>
             @endforeach

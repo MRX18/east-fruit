@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="_token" content="{!! csrf_token() !!}">
         <title>{{ $title }}</title>
         <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -23,6 +24,23 @@
     </head>
     <body>
 <div class="top-header">
+    @if(Auth::check() && Auth::user()->can('admin-show'))
+    <div class="admin-header">
+        <div class="content">
+            <div class="col-md-12">
+                <ul>
+                    <li><a href="{{ asset('/admin') }}"><i class="fas fa-home"></i> Admin Panel</a></li>
+                    @if(Auth::user()->can('article-create'))
+                    <li><a href="{{ asset('/admin/articles/create') }}"><i class="fas fa-plus"></i> Добавить статью</a></li>
+                    @endif
+                    @if(Auth::user()->can('article-edit') && isset($artID))
+                    <li><a href="{{ asset('/admin/articles/'.$artID.'/edit') }}"><i class="fas fa-pencil-alt"></i> Редактировать статью</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="east-header">
         <div class="content">
             <div class="col-md-12">
@@ -52,7 +70,7 @@
 
                             <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
                             <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
-                            <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                            <li> <a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></i></a></li>
                             <li style="margin-right: 10px;"> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
                             <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                             <li>|</li>

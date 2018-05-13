@@ -15,7 +15,12 @@ class Event extends Model
     }
 
     public function onceEvent($id) {
-    	return $this->where('id', $id)->first();
+        $_controller = new Controller;
+
+    	$event = $this->where('id', $id)->first();
+        $event->date = $_controller->dateFirst($event->date);
+
+        return $event;
     }
 
     public function eventDаy($id, $count) {

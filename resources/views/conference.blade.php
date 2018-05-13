@@ -38,7 +38,7 @@
 
         <h2 class="title-item">О конференции</h2>
 
-        <div class="descr-item" style="max-width: 100%;">
+        <div class="descr-item">
             {!! $conference->text !!}
         </div>
 

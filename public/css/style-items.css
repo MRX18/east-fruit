@@ -50,6 +50,10 @@
 
 .news-more-item{
     float: left;
+    width: 100%;
+}
+.descr-item {
+    width: 100%;
 }
 .title-item{
     color: #33cb98;

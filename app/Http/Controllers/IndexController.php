@@ -5,6 +5,7 @@ use App\Article;
 use App\Image;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
@@ -16,7 +17,7 @@ class IndexController extends Controller
         $_article = new Article();
         $_image = new Image();
 
-        $sitebar = $_article->sitebar(10);
+        $sitebar = $_article->sitebar(17);
         $sitebarAdaptive =$_article->sitebar(5);
 
 
@@ -88,5 +89,13 @@ class IndexController extends Controller
             'images' => $images,
             'imagesM' => $imagesM
     	]);
+    }
+
+    public function question(Request $request) {
+        if($request->isMethod('post')) {
+            dd($request->all());
+        } else {
+
+        }
     }
 }

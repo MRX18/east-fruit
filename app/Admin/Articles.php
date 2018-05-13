@@ -29,16 +29,32 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
             AdminFormElement::checkbox('line', 'Показать в бегущей линии'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::text('slug', 'Заголовок статьи транслитерацией')->required(),
             AdminFormElement::select('id_catigories', 'Категория')->setModelForOptions(new CatigorTop)->setDisplay(function($CatigorTop) {
                 return $CatigorTop->title;
             })->required(),
 
-
+            AdminFormElement::textarea('keywords', 'Слова (фразы) по которым google будет искать эту статью')->required(),
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::datetime('datetime', 'Время публикации статьи')->required(),
-            AdminFormElement::image('img', 'Изображение')->required()
+            AdminFormElement::image('img', 'Изображение')->required()->setUploadSettings([
+                'orientate' => [],
+                'resize' => [850, NULL, function ($constraint) {
+                    $constraint->upsize();
+                    $constraint->aspectRatio();
+                }]//,
+                // 'fit' => [200, 300, function ($constraint) {
+                //     $constraint->upsize();
+                //     $constraint->aspectRatio();
+                // }]
+            ])
+
+
+
+
+
         );
     });
 }) 

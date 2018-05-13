@@ -13,6 +13,8 @@ use App\Product;
 use App\Price;
 use App\Currency;
 use App\Image;
+use App\Question;
+use App\Answer;
 
 class CatigorController extends Controller
 {
@@ -28,6 +30,8 @@ class CatigorController extends Controller
     	}
 
         $_article = new Article();
+        $_question = new Question();
+        $_answer = new Answer();
 
         $articles = $_article->articleCatigor($id, 24);
         $slider = $_article->articleInIndexPage('baner', 1, 3);
@@ -40,13 +44,19 @@ class CatigorController extends Controller
     		}
     	}
 
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
     	return view('catigories')->with([
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
 
     		'articles' => $articles,
-            'slider' => $slider
+            'slider' => $slider,
+
+            'question' => $question,
+            'answer' => $answer
     	]);
     }
 
@@ -159,7 +169,8 @@ class CatigorController extends Controller
                     'productTable' => $productTable,
                     'dateTable' => $dateTable,
                     'priceTable' => $number,
-                    'error' => $error
+                    'error' => $error,
+                    'date' => $date
                 ]);
             }
         }

@@ -35,7 +35,33 @@ a:hover {
 .height {
 	height: 230px;
 }
-
+/*admin-header*/
+.admin-header {
+	width: 100%;
+	float: left;
+	background: #23282D;
+	position: relative;
+    z-index: 10000;
+}
+.admin-header ul {
+	display: flex;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-size: 14px;
+}
+.admin-header ul li {
+	margin-right: 18px;
+}
+.admin-header ul li a {
+	color: #EEE1E1;
+}
+.admin-header ul li a:hover, .admin-header ul li a:hover i {
+	color: #37CA96;
+}
+.admin-header ul li a i {
+	color: #9CA1A6;
+	margin-right: 3px;
+}
 
 .content{
 	max-width: 1204px;
@@ -1655,10 +1681,11 @@ footer .links a:hover{
 	margin-bottom: 20px;
 }
 .program-left {
-	width: 200px;
+	width: 24%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
 	background-color: #33CB98;
 	/*padding: 10px;*/
 	color: #fff;
@@ -1671,6 +1698,7 @@ footer .links a:hover{
 	width: 100%;
 }
 .program-right {
+	width: 76%;
 	padding: 10px;
 	text-align: left;
 }
@@ -1800,6 +1828,11 @@ footer .links a:hover{
 		font-size: 14px;
 	}
 }
+@media screen and (max-width: 425px){
+	.program-right {
+		width: 73%;
+	}
+}
 @media screen and (max-width: 360px) {
 	.news-bredcrumbs {
 		display: none;
@@ -1833,10 +1866,17 @@ footer .links a:hover{
 	.search-form input {
 		width: 160px;
 	}
+	/**/
+	.program-right {
+		width: 70%;
+	}
 
 @media screen and (max-width: 330px) {
 	.program {
 		display: block;
+	}
+	.program-right {
+		width: 100%;
 	}
 	.text h3 {
 		font-size: 18px;

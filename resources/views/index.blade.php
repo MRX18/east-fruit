@@ -70,7 +70,7 @@
                         <div id="w1" class="news-stroke">
                             
                             @foreach($topSlider as $slid)
-                            <div data-key="42" style="margin-right: 3px;">
+                            <div>
                                 <div><a href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title,0,60).'...' }}</a></div>
                             </div>
                             @endforeach

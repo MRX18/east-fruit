@@ -43,5 +43,7 @@ Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+'
 
 Route::get('/search/', 'SearchController@index')->name('search');
 
+Route::match(['get', 'post'], '/question', 'IndexController@question')->name('question');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
