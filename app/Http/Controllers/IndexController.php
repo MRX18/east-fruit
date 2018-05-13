@@ -56,6 +56,21 @@ class IndexController extends Controller
         // Интервю
         $interview = $_article->articleInIndexPage('id_catigories', 6, 10);
 
+
+        //ИСТОРИИ БИЗНЕСА
+        $stories = $_article->lineIndex('id_catigories', 9);
+
+        //РЕЙТИНГИ
+        $rating = $_article->lineIndex('id_catigories', 5);
+
+        //НОВОСТИ
+        $new = $_article->lineIndex('id_catigories', 1);
+
+
+
+
+
+
         $articles = $_article->allArticles(9);
 
         $images = $_image->images(18);
@@ -85,6 +100,10 @@ class IndexController extends Controller
     		'technologys' => $technologys,
     		'retailAudits' => $retailAudits,
             'interview' => $interview,
+            'stories' => $stories,
+            'rating' => $rating,
+            'new' => $new,
+
             'articles' => $articles,
             'images' => $images,
             'imagesM' => $imagesM

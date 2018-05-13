@@ -265,45 +265,51 @@
                     <div class="news-history hidden-xs">
                         <div class="col-md-12 col-lg-4 text-center">
                             <h3>Истории бизнеса</h3>
+                            @if(isset($stories))
                             <div class="item">
-                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <p>{{ $stories->title }}</p>
                                 <div class="item-img">
-                                    <img src="images/image_350x247.jpg"/>
+                                    <img src="{{ asset($stories->img) }}"/>
                                 </div>
                                 <div class="item-link">
-                                    <span>05 мар 09:30</span>
+                                    <span>{{ $stories->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <div class="hover"></div>
+                                <a href="{{ route('article', ['id'=>$stories->id]) }}"><div class="hover"></div></a>
                             </div>
+                            @endif
                         </div>
                         <div class="col-md-12 col-lg-4 text-center">
                             <h3>Рейтинги</h3>
+                            @if(isset($rating))
                             <div class="item">
-                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <p>{{ $rating->title }}</p>
                                 <div class="item-img">
-                                    <img src="images/image_350x247.jpg"/>
+                                    <img src="{{ asset($rating->img) }}"/>
                                 </div>
                                 <div class="item-link">
-                                    <span>05 мар 09:30</span>
+                                    <span>{{ $rating->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <div class="hover"></div>
+                                <a href="{{ route('article', ['id'=>$rating->id]) }}"><div class="hover"></div></a>
                             </div>
+                            @endif
                         </div>
                         <div class="col-md-12 col-lg-4 text-center">
-                            <h3>Цены</h3>
+                            <h3>Новости</h3>
+                            @if(isset($new))
                             <div class="item">
-                                <p>Истории успешного агробизнеса: Оксана Просоленко</p>
+                                <p>{{ $new->title }}</p>
                                 <div class="item-img">
-                                    <img src="images/image_350x247.jpg"/>
+                                    <img src="{{ asset($new->img) }}"/>
                                 </div>
                                 <div class="item-link">
-                                    <span>05 мар 09:30</span>
+                                    <span>{{ $new->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <div class="hover"></div>
+                                <a href="{{ route('article', ['id'=>$new->id]) }}"><div class="hover"></div></a>
                             </div>
+                            @endif
                         </div>
                     </div>
 

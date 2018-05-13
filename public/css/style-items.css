@@ -56,7 +56,8 @@
     width: 100%;
 }
 .title-item{
-    color: #33cb98;
+    /*color: #33cb98;*/
+    color: #212840;
     font-style: 'Arial';
     font-weight: 700;
     padding: 5px 0;

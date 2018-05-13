@@ -32,9 +32,17 @@ class Article extends Model
     }
 
     public function lineIndex($namePole, $data) {
+        $_controller = new Controller;
+
         date_default_timezone_set('Europe/Kiev');
         $date = Carbon::now()->toDateTimeString();
-    	return $this->where('datetime','<=',$date)->where($namePole,$data)->orderByDesc('datetime')->first();
+    	$line = $this->where('datetime','<=',$date)->where($namePole,$data)->orderByDesc('datetime')->first();
+        if(isset($line->date)) {
+            $line->date = $_controller->dateFirst($line->date);
+        }
+
+
+        return $line;
     }
     /********Atricle page********/
     public function article($id) {
