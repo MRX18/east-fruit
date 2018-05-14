@@ -5,7 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="_token" content="{!! csrf_token() !!}">
-        <title>{{ $title }}</title>
+        @if(isset($keywords))
+        <meta name="keywords" content="{{ $keywords }}" />
+        @endif
+        @if(isset($description))
+        <meta name="description" content="{{ $description }}" />
+        @endif 
+        <title>{{ $title.' - Eastfruit, Аналитика, Новости плодоовощного рынка,Информация АПК, Цены на овощи и фрукты, Исследования, Конференции' }}</title>
+        <link rel="shortcut icon" href="{{ asset('/images/logo.png') }}" type="image/png">
         <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 

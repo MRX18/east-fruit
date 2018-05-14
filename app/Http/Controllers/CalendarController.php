@@ -14,6 +14,8 @@ class CalendarController extends Controller
 {
     public function index($id) {
     	$title = "События";
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -34,6 +36,8 @@ class CalendarController extends Controller
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'events' => $events,
             'years' => $years
@@ -129,12 +133,22 @@ class CalendarController extends Controller
 
         $events = $_event->eventDаy($id, 10);
 
+        $id = explode('-', $id);
+        $id = $id[0];
+        foreach($years as $year) {
+            if($year->year == $id) {
+                $id = $year->id;
+            }
+        }
+        $eventsAll = $_event->allEvent($id, 10);
+
         return view('calendar-of-events')->with([
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
 
             'events' => $events,
+            'eventsAll' => $eventsAll,
             'years' => $years
         ]);
     }

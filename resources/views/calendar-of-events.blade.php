@@ -45,7 +45,30 @@
                             </div>
                             @endforeach
                         @else
-                            <h2>Событий нет!</h2>
+                            <h3><span>На запрашиваемую дату событий нет!</span> Хотите посетить профильный семинар или конференцию? Посмотрите наш календарь ближайших событий.</h3>
+                            @foreach($eventsAll as $event)
+                            <div class="event-article">
+                                <header class="header-event">
+                                    <h3><a href="{{ route('conference', ['id'=>$event->id]) }}">{{ $event->title }}</a></h3>
+                                </header>
+                                <div class="content-event">
+                                    <div class="event-left">
+                                        <div class="event-date">{{ $event->date }}</div>
+                                        <div class="event-img">
+                                            <img src="{{ asset($event->img) }}" alt="">
+                                        </div>
+                                        <div class="event-adres">{{ $event->adres }}</div>
+                                    </div>
+                                    <div class="event-right">
+                                        <ul>
+                                            <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
+                                            <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                                            <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         @endif
 
                     </div>

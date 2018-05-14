@@ -28,6 +28,8 @@ class CatigorController extends Controller
     			$title = $catigor->title;
     		}
     	}
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
 
         $_article = new Article();
         $_question = new Question();
@@ -51,6 +53,8 @@ class CatigorController extends Controller
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
     		'articles' => $articles,
             'slider' => $slider,
@@ -70,6 +74,8 @@ class CatigorController extends Controller
                 $title = $catigor->title;
             }
         }
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
 
         $_article = new Article();
         
@@ -88,6 +94,8 @@ class CatigorController extends Controller
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'articles' => $articles,
             'slider' => $slider
@@ -97,6 +105,8 @@ class CatigorController extends Controller
 
     public function prices(Request $request) {
         $title = 'Цены';
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -160,6 +170,8 @@ class CatigorController extends Controller
                     'title' => $title,
                     'catigories' => $catigories,
                     'otherCatigorTop' => $otherCatigorTop,
+                    'keywords' => $keywords,
+                    'description' => $description,
 
                     'markets' => $markets,
                     'products' => $products,
@@ -180,6 +192,8 @@ class CatigorController extends Controller
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'markets' => $markets,
             'products' => $products,
@@ -190,6 +204,8 @@ class CatigorController extends Controller
 
     public function allArticle() {
         $title = "Все статьи";
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - сайтa east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -208,6 +224,8 @@ class CatigorController extends Controller
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'articles' => $articles,
         ]);
@@ -215,6 +233,8 @@ class CatigorController extends Controller
 
     public function image() {
         $title = "Фотогалерея";
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -230,6 +250,8 @@ class CatigorController extends Controller
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'slider' => $slider,
             'images' => $images

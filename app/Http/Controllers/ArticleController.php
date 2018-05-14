@@ -70,6 +70,8 @@ class ArticleController extends Controller
     	$article = $_article->article($id);
 
     	$title = $article->title;
+        $keywords = $article->keywords;
+        $description = $article->lid;
 
     	foreach($catigories as $catigor) {
     		if($catigor->id == $article->id_catigories) {
@@ -90,6 +92,8 @@ class ArticleController extends Controller
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
     		'sitebarArticle' => $sitebar,
 
     		'article' => $article,

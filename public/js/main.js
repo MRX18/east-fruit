@@ -57,7 +57,8 @@ $( document ).ready(function() {
     $('#calendar').datepicker({
         onSelect: function(date) {
             // alert(date)
-            location="http://east-fruit/event-day/"+date
+            location="http://east-fruit.com/event-day/"+date
+            // location="http://east-fruit/event-day/"+date
         },
         dateFormat : "yy-mm-dd",
         minDate: new Date($('#hiddendelivdate').val()),

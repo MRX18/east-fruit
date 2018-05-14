@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\Image;
+use App\Answer;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,8 @@ class IndexController extends Controller
 {
     public function index() {
     	$title = "Главная";
+        $keywords = "фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = "Информация о рынках овощей и фруктов на восток от Евросоюза";
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -89,6 +92,9 @@ class IndexController extends Controller
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+
     		'sitebarArticle' => $sitebar,
             'sitebarAdaptive' => $sitebarAdaptive,
 
@@ -112,7 +118,13 @@ class IndexController extends Controller
 
     public function question(Request $request) {
         if($request->isMethod('post')) {
-            dd($request->all());
+            $idAnswer = array();
+
+            foreach($request->all() as $key => $value) {
+                $idAnswer[] = $value;
+            }
+            unset($idAnswer[0]);
+            Answer::where('id', 1)->update(array('count' => 1));
         } else {
 
         }

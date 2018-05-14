@@ -9,6 +9,8 @@ class SearchController extends Controller
 {
     public function index() {
     	$title = "Поиск";
+        $keywords = "фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = "Информация о рынках овощей и фруктов на восток от Евросоюза";
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -31,6 +33,8 @@ class SearchController extends Controller
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
 
             'search' => $search,
             'count' => $count,

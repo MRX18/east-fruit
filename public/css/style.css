@@ -914,7 +914,7 @@ li.slick-active button{
 	padding: 15px;
 }
 .news-carousel .items-more-item.active{
-	background: rgba(81, 192, 150, 0.77);
+	background: rgba(81, 192, 150, 0.8);
 }
 .news-carousel .items-more-item:hover{
 	background: rgba(0, 0, 0, 0.89)!important;
@@ -1605,6 +1605,15 @@ footer .links a:hover{
 	flex-wrap: wrap;
 	justify-content: space-between;
 	margin-top: 20px;
+}
+.event-conteiner > h3 {
+	display: block;
+	width: 100%;
+	font-size: 22px;
+	margin-bottom: 30px;
+}
+.event-conteiner > h3 span {
+	font-weight: bold;
 }
 .event-article {
 	width: 49%;

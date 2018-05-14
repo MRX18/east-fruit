@@ -98,16 +98,17 @@
                     <div class="vote-block">
                         <h4>Опрос</h4>
                         <div id="section-vote">
-                            <div class="question">Действует ли в Украини система дотаций АПК?</div>
+                            <div class="question">{{ $question->title }}</div>
                             <div class="main">
-                                <form action="/question" method="get" name="web">
+                                <form action="{{ route('question') }}" method="post" name="web">
+                                {{ csrf_field() }}
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="1"> Да, это очень действенный механизм поддержки сельхозпроизводителей.</label>
-                                    <label><input type="checkbox" value="1"> Нет, все дотации получает только крупный бизнес.</label>
-                                    <label><input type="checkbox" value="1"> В нашей стране это очередная схема присвоения бюджетных средств.</label>
+                                    @foreach($answer as $value)
+                                    <label><input type="checkbox" name="answer{{ $value->id }}" value="{{ $value->id }}"> {{ $value->title }}</label>
+                                    @endforeach
                                 </div>
 
-                                <button type="button" class="btn btn-primary comment-add"> Голосовать</button>
+                                <button type="submit" class="btn btn-primary comment-add"> Голосовать</button>
                                 </form>
                             </div>
                         </div>
