@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Question;
+use App\Answer;
 
 class SearchController extends Controller
 {
@@ -15,6 +17,8 @@ class SearchController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
     	$_article = new Article;
+        $_question = new Question();
+        $_answer = new Answer();
 
     	$search = $_GET['s'];
 
@@ -29,6 +33,9 @@ class SearchController extends Controller
     		}
     	}
 
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
     	return view('search')->with([
     		'title' => $title,
     		'catigories' => $catigories,
@@ -38,7 +45,10 @@ class SearchController extends Controller
 
             'search' => $search,
             'count' => $count,
-    		'articles' => $articles
+    		'articles' => $articles,4
+
+            'question' => $question,
+            'answer' => $answer
     	]);
     }
 }

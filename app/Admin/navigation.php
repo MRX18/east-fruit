@@ -84,6 +84,19 @@ return [
         ]
     ],
 
+    [
+        'title' => "Опросник",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Question::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\Answer::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100),
+        ]
+    ],
+
     // Examples
     // [
     //    'title' => 'Content',

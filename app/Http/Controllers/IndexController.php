@@ -123,10 +123,15 @@ class IndexController extends Controller
             foreach($request->all() as $key => $value) {
                 $idAnswer[] = $value;
             }
-            unset($idAnswer[0]);
-            Answer::where('id', 1)->update(array('count' => 1));
+            //unset($idAnswer[0]);
+            foreach($idAnswer as $id) {
+                $count = Answer::where('id', $id)->value('count');
+                $count++;
+                Answer::where('id', $id)->update(array('count' => $count));
+            }
+            return redirect()->back();
         } else {
-
+            return redirect()->back();
         }
     }
 }

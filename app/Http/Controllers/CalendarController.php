@@ -9,6 +9,8 @@ use App\Yaer;
 use App\Program;
 use App\Speaker;
 use App\Conference;
+use App\Question;
+use App\Answer;
 
 class CalendarController extends Controller
 {
@@ -21,6 +23,8 @@ class CalendarController extends Controller
 
         $_event = new Event;
         $_year = new Yaer;
+        $_question = new Question();
+        $_answer = new Answer();
 
         $years = $_year->years();
 
@@ -31,6 +35,8 @@ class CalendarController extends Controller
         }
 
         $events = $_event->allEvent($id, 10);
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
 
         return view('calendar-of-events')->with([
             'title' => $title,
@@ -40,7 +46,10 @@ class CalendarController extends Controller
             'description' => $description,
 
             'events' => $events,
-            'years' => $years
+            'years' => $years,
+
+            'question' => $question,
+            'answer' => $answer
         ]);
     }
 

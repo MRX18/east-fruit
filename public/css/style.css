@@ -927,6 +927,9 @@ li.slick-active button{
 	font-size: 15px;
 	font-family: "Arial";
 }
+.news-carousel .items-more-item p a {
+	text-shadow: 1px 1px 2px #000;
+}
 .news-carousel .items-more-item span{
 	color: #48e0ad;
 	font-size: 13px;

@@ -210,7 +210,13 @@ class CatigorController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
+        $_question = new Question();
+        $_answer = new Answer();
+
         $articles = $_article->allArticles(24);
+
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
 
         foreach($articles as $option) {
             foreach ($catigories as $catigor) {
@@ -228,6 +234,9 @@ class CatigorController extends Controller
             'description' => $description,
 
             'articles' => $articles,
+
+            'question' => $question,
+            'answer' => $answer
         ]);
     }
 

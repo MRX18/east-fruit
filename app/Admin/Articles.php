@@ -44,11 +44,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
                 'resize' => [850, NULL, function ($constraint) {
                     $constraint->upsize();
                     $constraint->aspectRatio();
-                }]//,
-                // 'fit' => [200, 300, function ($constraint) {
-                //     $constraint->upsize();
-                //     $constraint->aspectRatio();
-                // }]
+                }]
             ])
 
 

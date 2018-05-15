@@ -45,7 +45,7 @@
                 <div class="program-left" style="background-image: url({{ asset($speaker->img) }});"></div>
                 <div class="program-right">
                     <h3>{{ $speaker->title }}</h3>
-                    <div class="prog-text">
+                    <div class="prog-text" style="font-size: 16px; font-weight: normal;">
                         {!! $speaker->text !!}
                     </div>
                 </div>
