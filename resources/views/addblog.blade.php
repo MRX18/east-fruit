@@ -106,8 +106,20 @@
                                               <span>Выберите фото</span>
                                          </label>
                                     </div>
-                                    <div class="button">
-                                        <button type="submit">Загрузить фото</button>
+
+
+                                    <div class="form-group" style="margin-top: 7px;">
+                                        <label for="name">Имя:</label>
+                                        <input type="text" name="name" class="form-control" id="name" value="{{ $user->name }}">
+                                    </div>
+                                    <div class="form-group" style="margin-top: -5px;">
+                                        <label for="position">Род деятельности:</label>
+                                        <input type="text" name="position" class="form-control" id="position" value="{{ $user->position }}">
+                                    </div>
+
+
+                                    <div class="button" style="margin-top: -15px; margin-bottom: 15px;">
+                                        <button type="submit">Обновить информацию</button>
                                     </div>
                                 </div>
                             </form>

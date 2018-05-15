@@ -29,7 +29,9 @@ class BlogController extends Controller
 
                 $validator = Validator::make($request->all(),
                     array(
-                        'img' => 'required|image'
+                        'name' => 'between:4,32',
+                        'position' => 'between:3,32',
+                        'img' => 'image'
                     )
                 );
 
@@ -41,6 +43,7 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
+                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
                     return redirect()->back();
 
                 }
@@ -105,7 +108,9 @@ class BlogController extends Controller
 
                 $validator = Validator::make($request->all(),
                     array(
-                        'img' => 'required|image'
+                        'name' => 'between:4,32',
+                        'position' => 'between:3,32',
+                        'img' => 'image'
                     )
                 );
 
@@ -117,7 +122,9 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
+                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
                     return redirect()->back();
+
                 }
              }
         }
@@ -213,7 +220,9 @@ class BlogController extends Controller
 
                 $validator = Validator::make($request->all(),
                     array(
-                        'img' => 'required|image'
+                        'name' => 'between:4,32',
+                        'position' => 'between:3,32',
+                        'img' => 'image'
                     )
                 );
 
@@ -225,6 +234,7 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
+                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
                     return redirect()->back();
 
                 }
