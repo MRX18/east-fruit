@@ -45,5 +45,13 @@ Route::get('/search/', 'SearchController@index')->name('search');
 
 Route::match(['get', 'post'], '/question', 'IndexController@question')->name('question');
 
+
+Route::get('/study-trips', 'TrainingController@index')->name('study');
+Route::get('/training-event/{id}', 'TrainingController@event')->where('id','[0-9]+')->name('training-event');
+Route::get('/training-map/{id}', 'TrainingController@map')->where('id','[0-9]+')->name('training-map');
+Route::get('/training-organizer/{id}', 'TrainingController@organizer')->where('id','[0-9]+')->name('training-organizer');
+Route::get('/training-program/{id}', 'TrainingController@program')->where('id','[0-9]+')->name('training-program');
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -45,7 +45,7 @@ class SearchController extends Controller
 
             'search' => $search,
             'count' => $count,
-    		'articles' => $articles,4
+    		'articles' => $articles,
 
             'question' => $question,
             'answer' => $answer

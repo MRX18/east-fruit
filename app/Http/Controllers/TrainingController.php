@@ -3,42 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Article;
-use App\Event;
-use App\Yaer;
-use App\Program;
-use App\Speaker;
-use App\Conference;
 use App\Question;
 use App\Answer;
 
-class CalendarController extends Controller
+use App\Training;
+use App\TrainingEvent;
+use App\TrainingProgram;
+use App\TrainingOrganizer;
+use App\TrainingMap;
+
+class TrainingController extends Controller
 {
-    public function index($id) {
-    	$title = "События";
+    public function index() {
+    	$title = "Обучающие поездки";
         $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
         $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-        $_event = new Event;
-        $_year = new Yaer;
+        $_training = new Training;
         $_question = new Question();
         $_answer = new Answer();
 
-        $years = $_year->years();
 
-        foreach($years as $year) {
-            if($year->year == $id) {
-                $id = $year->id;
-            }
-        }
-
-        $events = $_event->allEvent($id, 10);
+        $events = $_training->allTraning(10);
         $question = $_question->question();
         $answer = $_answer->answer($question->id);
 
-        return view('calendar-of-events')->with([
+        return view('training')->with([
             'title' => $title,
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
@@ -46,28 +40,27 @@ class CalendarController extends Controller
             'description' => $description,
 
             'events' => $events,
-            'years' => $years,
 
             'question' => $question,
             'answer' => $answer
         ]);
     }
 
-    public function conference($id) {
-        $title = 'О конференции';
+    public function event($id) {
+    	$title = 'О мероприятии';
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
-        $_event = new Event;
-        $_conferense = new Conference;
+        $_event = new Training;
+        $_conferense = new TrainingEvent;
 
         $sitebar = $_article->sitebar(10);
-        $event = $_event->onceEvent($id);
+        $event = $_event->onceTraining($id);
 
-        $conference = $_conferense->conference($id);
+        $conference = $_conferense->event($id); // мероприятие
 
-    	return view('conference')->with([
+    	return view('training-event')->with([
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
@@ -84,18 +77,18 @@ class CalendarController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
-        $_event = new Event;
-        $_program = new Program;
+        $_event = new Training;
+        $_program = new TrainingProgram;
 
         $sitebar = $_article->sitebar(10);
-        $event = $_event->onceEvent($id);
-        $programs = $_program->programs($id);
+        $event = $_event->onceTraining($id);
+        $programs = $_program->program($id);
 
 
 
         $sitebar = Article::orderByDesc('id')->limit(10)->get();
 
-    	return view('program')->with([
+    	return view('training-program')->with([
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
@@ -106,20 +99,20 @@ class CalendarController extends Controller
     	]);
     }
 
-    public function speakers($id) {
-        $title = 'Спикеры';
+    public function organizer($id) {
+        $title = 'Организаторы';
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
-        $_event = new Event;
-        $_speaker = new Speaker;
+        $_event = new Training;
+        $_speaker = new TrainingOrganizer;
 
         $sitebar = $_article->sitebar(10);
-        $event = $_event->onceEvent($id);
-        $speakers = $_speaker->speacers($id);
+        $event = $_event->onceTraining($id);
+        $speakers = $_speaker->organizer($id);
 
-    	return view('speakers')->with([
+    	return view('training-organizer')->with([
     		'title' => $title,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
@@ -130,43 +123,28 @@ class CalendarController extends Controller
     	]);
     }
 
-    public function eventDay($id) {
-        $title = "События | ".$this->dateFirst($id);
-        $catigories = $this->catigorTop();
+    public function map($id) {
+    	$title = 'Место проведения';
+    	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-        $_event = new Event;
-        $_year = new Yaer;
-        $_question = new Question();
-        $_answer = new Answer();
+        $_article = new Article();
+        $_event = new Training;
+        $_conferense = new TrainingMap;
 
-        $years = $_year->years();
+        $sitebar = $_article->sitebar(10);
+        $event = $_event->onceTraining($id);
 
-        $events = $_event->eventDаy($id, 10);
+        $conference = $_conferense->map($id); // место проведения
 
-        $question = $_question->question();
-        $answer = $_answer->answer($question->id);
-
-        $id = explode('-', $id);
-        $id = $id[0];
-        foreach($years as $year) {
-            if($year->year == $id) {
-                $id = $year->id;
-            }
-        }
-        $eventsAll = $_event->allEvent($id, 10);
-
-        return view('calendar-of-events')->with([
-            'title' => $title,
-            'catigories' => $catigories,
+    	return view('training-map')->with([
+    		'title' => $title,
+    		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
+            'sitebarArticle' => $sitebar,
 
-            'events' => $events,
-            'eventsAll' => $eventsAll,
-            'years' => $years,
-
-            'question' => $question,
-            'answer' => $answer
-        ]);
+            'conference' => $conference,
+            'event' => $event
+    	]);
     }
 }

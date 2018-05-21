@@ -131,12 +131,13 @@ class CatigorController extends Controller
                     'monthMax'=>'required|size:2',
                     'yearMax'=>'required|size:4',
 
-                    'market'=>'required|integer',
+                    //'market'=>'required|integer',
                     'product'=>'required|integer',
                     'price'=>'required|integer',
                     'currency' => 'required|integer'
                 )
             );
+            dd($request->market);
 
             if ($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator->errors());

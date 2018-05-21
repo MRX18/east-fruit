@@ -24,7 +24,7 @@
 <link href="{{ asset('css/adaptive.css') }}" rel="stylesheet">
 <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
 <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
-<link href="{{ asset('slick/slick.css') }}" rel="stylesheet">        
+<link href="{{ asset('slick/slick.css') }}" rel="stylesheet">          
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

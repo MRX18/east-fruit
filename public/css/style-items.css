@@ -55,6 +55,13 @@
 .descr-item {
     width: 100%;
 }
+.descr-item iframe {
+    width: 100% !important;
+    height: 500px !important;
+}
+.descr-item img {
+    max-width: 100%;
+}
 .title-item{
     /*color: #33cb98;*/
     color: #212840;

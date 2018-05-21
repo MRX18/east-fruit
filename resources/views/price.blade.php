@@ -102,7 +102,8 @@
 					<div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Страны</label>
 				    <div class="col-sm-10">
-				      <select class="form-control" name="market">
+				      <!-- <select class="form-control"  name="market"> -->
+				      	<select class="form-control"  name="market">
 				      	@foreach($markets as $velue)
 							<option value="{{ $velue->id }}">{{ $velue->market }}</option>
 				      	@endforeach
