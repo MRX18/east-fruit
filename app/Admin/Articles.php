@@ -29,7 +29,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
             AdminFormElement::checkbox('line', 'Показать в бегущей линии'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
-            AdminFormElement::text('slug', 'Заголовок статьи транслитерацией')->required(),
+            AdminFormElement::text('slug', 'Заголовок статьи транслитерацией'),
             AdminFormElement::select('id_catigories', 'Категория')->setModelForOptions(new CatigorTop)->setDisplay(function($CatigorTop) {
                 return $CatigorTop->title;
             })->required(),

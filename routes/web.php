@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +54,13 @@ Route::get('/training-program/{id}', 'TrainingController@program')->where('id','
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/slug', function() {
+	$art = App\Article::get();
+	foreach($art as $value) {
+		$newOb = App\Article::find($value->id);
+
+		$newOb->slug = str_slug($value->title);
+		$newOb->save();
+	}
+});

@@ -85,4 +85,12 @@ class Article extends Model
 
         return $_controller->dateCatigor($article);
     }
+    /*admin*/
+    public function setSlugAttribute($value)
+    {
+        if (!$this->exists) {
+            return $this->attributes['slug'] = str_slug($this->attributes['title']);
+        } 
+        return $this->attributes['slug'] = $value;
+    }
 }
