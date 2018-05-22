@@ -29,6 +29,6 @@ AdminSection::registerModel(Training::class, function (ModelConfiguration $model
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });
-})
-	->addMenuPage(Training::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+	// ->addMenuPage(Training::class, 300)
+ //    ->setIcon('fa fa-sliders');

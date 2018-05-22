@@ -24,8 +24,9 @@ class CatigorController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
     	foreach($catigories as $catigor) {
-    		if($catigor->id == $id) {
+    		if($catigor->slug == $id) {
     			$title = $catigor->title;
+                $id = $catigor->id;
     		}
     	}
         $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
@@ -64,43 +65,43 @@ class CatigorController extends Controller
     	]);
     }
 
-    public function bottomCatigor($id) {
-        $title = "Главная";
-        $catigories = $this->catigorTop();
-        $otherCatigorTop = $this->otherCatigorTop();
+    // public function bottomCatigor($id) {
+    //     $title = "Главная";
+    //     $catigories = $this->catigorTop();
+    //     $otherCatigorTop = $this->otherCatigorTop();
 
-        foreach($catigories as $catigor) {
-            if($catigor->id == $id) {
-                $title = $catigor->title;
-            }
-        }
-        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
-        $description = $title." - на сайте east-fruit.com";
+    //     foreach($catigories as $catigor) {
+    //         if($catigor->id == $id) {
+    //             $title = $catigor->title;
+    //         }
+    //     }
+    //     $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+    //     $description = $title." - на сайте east-fruit.com";
 
-        $_article = new Article();
+    //     $_article = new Article();
         
-        $articles = $_article->articleCatigor($id, 24);
-        $slider = $_article->articleInIndexPage('baner', 1, 3);
+    //     $articles = $_article->articleCatigor($id, 24);
+    //     $slider = $_article->articleInIndexPage('baner', 1, 3);
 
-        foreach($articles as $option) {
-            foreach ($catigories as $catigor) {
-                if($option->id_catigories == $catigor->id) {
-                    $option->catigor = $catigor->title;
-                }
-            }
-        }
+    //     foreach($articles as $option) {
+    //         foreach ($catigories as $catigor) {
+    //             if($option->id_catigories == $catigor->id) {
+    //                 $option->catigor = $catigor->title;
+    //             }
+    //         }
+    //     }
 
-        return view('catigories')->with([
-            'title' => $title,
-            'catigories' => $catigories,
-            'otherCatigorTop' => $otherCatigorTop,
-            'keywords' => $keywords,
-            'description' => $description,
+    //     return view('catigories')->with([
+    //         'title' => $title,
+    //         'catigories' => $catigories,
+    //         'otherCatigorTop' => $otherCatigorTop,
+    //         'keywords' => $keywords,
+    //         'description' => $description,
 
-            'articles' => $articles,
-            'slider' => $slider
-        ]);
-    }
+    //         'articles' => $articles,
+    //         'slider' => $slider
+    //     ]);
+    // }
 
 
     public function prices(Request $request) {

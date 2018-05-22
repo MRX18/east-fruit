@@ -56,7 +56,7 @@
                 <!--<span class="item-image-time">09:30</span>-->
             </div>
             <div class="item-content">
-                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
+                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title}}</a></p>
                 <div class="entry-meta bg-{{ rand(1,9) }}">
                     @if($sitebar->visible == 1)
                         {{ $sitebar->catigor }}

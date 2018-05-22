@@ -11,6 +11,9 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
     
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
+        $display->setApply(function($query) {
+            $query->OrderByDesc('id');
+        });
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 

@@ -18,7 +18,7 @@
                     <!--<span class="item-image-time">09:30</span>-->
                 </div>
                 <div class="item-content">
-                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
+                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a></p>
                     <div class="entry-meta bg-{{ rand(1,9) }}">
                         @if($sitebar->visible == 1)
                             {{ $sitebar->catigor }}
@@ -49,7 +49,7 @@
                                     <span class="item-image-date">{{ $sitebar->date }}</span>
                                 </div>
                                 <div class="item-content">
-                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a></p>
+                                    <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a></p>
                                     <div class="entry-meta bg-{{ rand(1,9) }}">
                                         @if($sitebar->visible == 1)
                                             {{ $sitebar->catigor }}
@@ -71,7 +71,7 @@
                             
                             @foreach($topSlider as $slid)
                             <div>
-                                <div><a href="{{ route('article', ['id'=>$slid->id]) }}">{{ mb_substr($slid->title,0,60).'...' }}</a></div>
+                                <div><a href="{{ route('article', ['id'=>$slid->slug]) }}">{{ mb_substr($slid->title,0,60).'...' }}</a></div>
                             </div>
                             @endforeach
 
@@ -112,7 +112,7 @@
                                     <img src="{{ asset($slid->img) }}" />
                                     <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
                                         <span>{{ $slid->date }}</span>
-                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
+                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->slug]) }}">{{ $slid->title }}</a></p>
                                     </div>
                                     <div class="items-more" data-slide-to="0">
                                         <?php $j=1;?>
@@ -123,7 +123,7 @@
                                         @endif">
                                         <?php $j++;?>
                                             <span>{{ $slid->date }}</span>
-                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
+                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->slug]) }}">{{ $slid->title }}</a></p>
                                         </div>
                                         @endforeach
                                         <?php $i++;?>
@@ -155,7 +155,7 @@
                                 <div data-key="32">
                                     <div class="item">
                                         <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$research->id]) }}" class="item-hover">
+                                        <a href="{{ route('article', ['id'=>$research->slug]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
@@ -176,7 +176,7 @@
                                 <div data-key="32">
                                     <div class="item">
                                         <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$technology->id]) }}" class="item-hover">
+                                        <a href="{{ route('article', ['id'=>$technology->slug]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
@@ -197,7 +197,7 @@
                                 <div data-key="32">
                                     <div class="item">
                                         <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$retailAudit->id]) }}" class="item-hover">
+                                        <a href="{{ route('article', ['id'=>$retailAudit->slug]) }}" class="item-hover">
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">
@@ -220,7 +220,7 @@
                                 <div class="news-team-item-text">
                                     <p>{{ $value->title }}</p>
                                     <span>{{ $value->date }}</span>
-                                    <a href="{{ route('article', ['id'=>$value->id]) }}">Читать</a>
+                                    <a href="{{ route('article', ['id'=>$value->slug]) }}">Читать</a>
                                 </div>
                             </div>
                             @endforeach
@@ -275,7 +275,7 @@
                                     <span>{{ $stories->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <a href="{{ route('article', ['id'=>$stories->id]) }}"><div class="hover"></div></a>
+                                <a href="{{ route('article', ['id'=>$stories->slug]) }}"><div class="hover"></div></a>
                             </div>
                             @endif
                         </div>
@@ -291,7 +291,7 @@
                                     <span>{{ $rating->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <a href="{{ route('article', ['id'=>$rating->id]) }}"><div class="hover"></div></a>
+                                <a href="{{ route('article', ['id'=>$rating->slug]) }}"><div class="hover"></div></a>
                             </div>
                             @endif
                         </div>
@@ -307,7 +307,7 @@
                                     <span>{{ $new->date }}</span>
                                     <span class="arrow"></span>
                                 </div>
-                                <a href="{{ route('article', ['id'=>$new->id]) }}"><div class="hover"></div></a>
+                                <a href="{{ route('article', ['id'=>$new->slug]) }}"><div class="hover"></div></a>
                             </div>
                             @endif
                         </div>
@@ -322,7 +322,7 @@
                                     <div class="item-category">
                                         <div class="item item-category-image">
                                             <div class="item-hover">
-                                                <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
+                                                <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
                                             </div>
                                             <div class="item-img item-category-img">
                                                 <img src="{{ asset($article->img) }}"/>
@@ -333,7 +333,7 @@
                                         <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
 
                                         <div style="float: left;" class="title">
-                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                         </div>
 
 

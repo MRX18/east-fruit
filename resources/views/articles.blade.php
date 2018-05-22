@@ -159,7 +159,7 @@
             </div>
         </div>
         <div class="item-content">
-            <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->id]) }}">{{ $read->title }}</a></p>
+            <p class="ellipsis"><a href="{{ route('article', ['id'=>$read->slug]) }}">{{ $read->title }}</a></p>
             <div class="entry-meta-descr"><p style="text-align: justify;">{{ mb_substr(strip_tags($read->text), 0, 300) }}</div>
         </div>
     </div>
@@ -187,7 +187,7 @@
                 <!--<span class="item-image-time">09:30</span>-->
             </div>
             <div class="item-content">
-                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ $sitebar->title}}</a></p>
+                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title}}</a></p>
                 <div class="entry-meta bg-{{ rand(1,9) }}">
                     @if($sitebar->visible == 1)
                         {{ $sitebar->catigor }}

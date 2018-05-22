@@ -49,7 +49,7 @@ class Article extends Model
         $_controller = new Controller;
 
         // date_default_timezone_set('Europe/Kiev');
-    	$article = $this->where('id', $id)->first();
+    	$article = $this->where('slug', $id)->first();
         $article->date = $_controller->dateFirst($article->date);
         return $article;
     }

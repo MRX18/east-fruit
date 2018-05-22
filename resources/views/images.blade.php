@@ -7,48 +7,6 @@
             <div class="row no-gutter">
                 <div class="col-sm-8 col-lg-9">
 
-                    <div class="news-carousel">
-                        <div id="newsSlider" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#newsSlider" data-slide-to="0" class="active"></li>
-                                <li data-target="#newsSlider" data-slide-to="1"></li>
-                                <li data-target="#newsSlider" data-slide-to="2"></li>
-                            </ol>
-
-                             <div class="carousel-inner">
-                                <?php $i=1;?>
-                                @foreach($slider as $slid)
-                                <div class="item
-                                @if($i == 1)
-                                    active
-                                @endif">
-                                    <img src="{{ asset($slid->img) }}" />
-                                    <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
-                                        <span>{{ $slid->date }}</span>
-                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
-                                    </div>
-                                    <div class="items-more" data-slide-to="0">
-                                        <?php $j=1;?>
-                                        @foreach($slider as $slid)
-                                        <div class="items-more-item 
-                                        @if($i == $j)
-                                            active
-                                        @endif">
-                                        <?php $j++;?>
-                                            <span>{{ $slid->date }}</span>
-                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
-                                        </div>
-                                        @endforeach
-                                        <?php $i++;?>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-
-                        </div>
-                    </div>
-
                     <div class="wrapper-category">
                         <div class="img-cont">
                             <div class="calendar-news" style="display: block;">

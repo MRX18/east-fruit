@@ -29,79 +29,8 @@
                                 </div>
                             </div>
 
-
-
-                            <div class="news-reserch">
-                            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                                <h3>Исследования</h3>
-                                <div id="w2" class="list-view" style="position: relative; z-index: 100;">
-
-                                    @foreach($researchs as $research)
-                                    <div data-key="32">
-                                        <div class="item">
-                                            <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
-                                            <a href="{{ route('article', ['id'=>$research->id]) }}" class="item-hover">
-                                                <div class="search"></div>
-                                            </a>
-                                            <div class="item-img">
-                                                <img src="{{ asset($research->img) }}"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-
-                                </div>                        
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
-                                <h3>Технологии</h3>
-                                <div id="w3" class="list-view" style="position: relative; z-index: 100;">
-
-                                    @foreach($technologys as $technology)
-                                    <div data-key="32">
-                                        <div class="item">
-                                            <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>
-                                            <a href="{{ route('article', ['id'=>$technology->id]) }}" class="item-hover">
-                                                <div class="search"></div>
-                                            </a>
-                                            <div class="item-img">
-                                                <img src="{{ asset($technology->img) }}"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-
-                                </div>                        
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                                <h3>Розничный аудит</h3>
-                                <div id="w4" class="list-view" style="position: relative; z-index: 100;">
-
-                                    @foreach($retailAudits as $retailAudit)
-                                    <div data-key="32">
-                                        <div class="item">
-                                            <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>
-                                            <a href="{{ route('article', ['id'=>$retailAudit->id]) }}" class="item-hover">
-                                                <div class="search"></div>
-                                            </a>
-                                            <div class="item-img">
-                                                <img src="{{ asset($retailAudit->img) }}"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-
-                                </div>                        
-                            </div>
-                        </div>
-
-
                             
 
-                    </div>
-                    <div class="category-button">
-                        
                     </div>
                 </div>
 
@@ -185,7 +114,7 @@
 					                <!--<span class="item-image-time">09:30</span>-->
 					            </div>
 					            <div class="item-content">
-					                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->id]) }}">{{ mb_substr($sitebar->title, 0, 60)."..." }}</a></p>
+					                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a></p>
 					                <div class="entry-meta bg-{{ rand(1,9) }}">
 					                    @if($sitebar->visible == 1)
 					                        {{ $sitebar->catigor }}
@@ -209,12 +138,12 @@
             </div>
     </section>
 
-    <section id="slider-section">
+    <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -284,7 +213,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </section>
 @endsection

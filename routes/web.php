@@ -14,9 +14,9 @@
 Route::get('/', 'IndexController@index');
 
 
-Route::get('/catigor/{id}', 'CatigorController@index')->where('id', '[0-9]+')->name('catigor');
+Route::get('/catigor/{id}', 'CatigorController@index')->name('catigor');
 Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
-Route::get('/rating', 'CatigorController@rating');
+// Route::get('/rating', 'CatigorController@rating');
 Route::get('/all-articles', 'CatigorController@allArticle')->name('all-articles');
 Route::get('/image', 'CatigorController@image')->name('images');
 
@@ -27,7 +27,7 @@ Route::match(['get', 'post'], '/add-blog', 'BlogController@addblog')->name('addb
 Route::match(['get', 'post'], '/add-article-blog', 'BlogController@addartblog')->name('addartblog');
 
 
-Route::match(['get', 'post'],'/article/{id}', 'ArticleController@index')->where('id', '[0-9]+')->name('article');
+Route::match(['get', 'post'],'/article/{id}', 'ArticleController@index')->name('article');
 
 Route::get('/about', 'StaticController@about')->name('about');
 Route::get('/cooperation', 'StaticController@cooperation')->name('cooperation');
@@ -55,12 +55,12 @@ Route::get('/training-program/{id}', 'TrainingController@program')->where('id','
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/slug', function() {
-	$art = App\Article::get();
-	foreach($art as $value) {
-		$newOb = App\Article::find($value->id);
+// Route::get('/slug', function() {
+// 	$art = App\Article::get();
+// 	foreach($art as $value) {
+// 		$newOb = App\Article::find($value->id);
 
-		$newOb->slug = str_slug($value->title);
-		$newOb->save();
-	}
-});
+// 		$newOb->slug = str_slug($value->title);
+// 		$newOb->save();
+// 	}
+// });

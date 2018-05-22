@@ -7,48 +7,6 @@
             <div class="row no-gutter">
                 <div class="col-sm-8 col-lg-9">
 
-                    <div class="news-carousel">
-                        <div id="newsSlider" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#newsSlider" data-slide-to="0" class="active"></li>
-                                <li data-target="#newsSlider" data-slide-to="1"></li>
-                                <li data-target="#newsSlider" data-slide-to="2"></li>
-                            </ol>
-
-                             <div class="carousel-inner">
-                                <?php $i=1;?>
-                                @foreach($slider as $slid)
-                                <div class="item
-                                @if($i == 1)
-                                    active
-                                @endif">
-                                    <img src="{{ asset($slid->img) }}" />
-                                    <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
-                                        <span>{{ $slid->date }}</span>
-                                        <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
-                                    </div>
-                                    <div class="items-more" data-slide-to="0">
-                                        <?php $j=1;?>
-                                        @foreach($slider as $slid)
-                                        <div class="items-more-item 
-                                        @if($i == $j)
-                                            active
-                                        @endif">
-                                        <?php $j++;?>
-                                            <span>{{ $slid->date }}</span>
-                                            <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->id]) }}">{{ $slid->title }}</a></p>
-                                        </div>
-                                        @endforeach
-                                        <?php $i++;?>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-
-                        </div>
-                    </div>
-
                     <div class="wrapper-category">
                         <div id="w0" class="news-reserch category-block">
                             
@@ -58,7 +16,7 @@
                                     <div class="item-category">
                                         <div class="item item-category-image">
                                             <div class="item-hover">
-                                                <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
+                                                <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
                                             </div>
                                             <div class="item-img item-category-img">
                                                 <img src="{{ asset($article->img) }}"/>
@@ -66,10 +24,10 @@
 
                                         </div>
 
-                                        <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
+                                        <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
 
                                         <div style="float: left;" class="title">
-                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                         </div>
 
 
@@ -117,12 +75,12 @@
             </div>
     </section>
 
-    <section id="slider-section">
+    <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -192,7 +150,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </section>
 @endsection

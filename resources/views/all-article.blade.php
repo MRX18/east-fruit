@@ -16,7 +16,7 @@
                                     <div class="item-category">
                                         <div class="item item-category-image">
                                             <div class="item-hover">
-                                                <a href="{{ route('article', ['id'=>$article->id]) }}" class="search"></a>
+                                                <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
                                             </div>
                                             <div class="item-img item-category-img">
                                                 <img src="{{ asset($article->img) }}"/>
@@ -27,7 +27,7 @@
                                         <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
 
                                         <div style="float: left;" class="title">
-                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                         </div>
 
 
@@ -75,12 +75,12 @@
             </div>
     </section>
 
-    <section id="slider-section">
+    <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </section>
 @endsection

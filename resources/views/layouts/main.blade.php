@@ -131,9 +131,9 @@
                 @foreach($catigories as $catigor)
                     @if($catigor->menu == 1)
                         @if($catigor->color == 0)
-                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                            <a href="{{ route('catigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
                         @else
-                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
                         @endif
                     @endif
                     
@@ -160,9 +160,9 @@
                 @foreach($catigories as $catigor)
                     @if($catigor->menu == 2)
                         @if($catigor->color == 0)
-                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                            <a href="{{ route('catigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
                         @else
-                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
+                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->slug]) }}">{{ $catigor->title }}</a>
                         @endif
                     @endif
                     
