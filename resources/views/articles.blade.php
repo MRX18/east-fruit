@@ -35,10 +35,12 @@
             {!! $article->text !!}       
         </div>
 
+        <div class="share42init" data-url="{{ route('article', ['id' => $article->slug]) }}" data-title="{{ $article->title }}" data-image="{{ asset($article->img) }}" data-description="{{ $article->lid }}"></div>
+
+
         <ul class="category-item">
             <li class="entry-meta bg-7">{{ $article->catigor }}</li>
         </ul>
-
     </div>
 
     <div class="comments-item">

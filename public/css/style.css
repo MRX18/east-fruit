@@ -977,14 +977,14 @@ li.slick-active button{
 }
 .news-reserch .item-img{
 	width: 100%;
-	height: auto;
+	height: 180px;
 	overflow: hidden;
 	display: block;
 	float: left;
 }
 .news-reserch img{
-	width: auto;
-	height: 100%;
+	width: 100%;
+	height: auto;
 }
 .news-reserch .item-hover{
 	display: none;

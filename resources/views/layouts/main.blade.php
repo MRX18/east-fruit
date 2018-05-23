@@ -11,6 +11,9 @@
         @if(isset($description))
         <meta name="description" content="{{ $description }}" />
         @endif 
+        @if(isset($article->img))
+        <meta property="og:image" content="{{ asset($article->img) }}" />
+        @endif
         <title>{{ $title.' - Eastfruit, Аналитика, Новости плодоовощного рынка,Информация АПК, Цены на овощи и фрукты, Исследования, Конференции' }}</title>
         <link rel="shortcut icon" href="{{ asset('/images/logo.png') }}" type="image/png">
         <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
@@ -258,5 +261,6 @@
 <script src="{{ asset('slick/slick.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/share42/share42.js') }}"></script>
 </body>
 </html>

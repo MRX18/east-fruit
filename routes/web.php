@@ -57,6 +57,8 @@ Route::post('ulogin', 'UloginController@login');
 Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'IndexController@index')->name('home');
+Route::match(['get', 'post'], '/registration', 'RegisterController@register')->name('registration');
+Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email');
 
 // Route::get('/slug', function() {
 // 	$art = App\Article::get();
