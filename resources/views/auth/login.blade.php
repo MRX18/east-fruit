@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <script src="//ulogin.ru/js/ulogin.js"></script>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -60,9 +61,9 @@
                                 </a>
                             </div>
                         </div>
+
+                            <div class="text-center margin-bottom-20" style="margin-top: -5px;" id="uLogin" data-ulogin="display=panel;theme=flat;fields=first_name,last_name,email,nickname,photo,country;providers=facebook;hidden=twitter,google,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,vimeo,instagram,wargaming;redirect_uri={{ urlencode('http://' . $_SERVER['HTTP_HOST']) }}/ulogin;mobilebuttons=0;"></div>
                     </form>
-                    <script src="//ulogin.ru/js/ulogin.js"></script>
-<div style="margin: auto;" id="uLogin" data-ulogin="display=panel;theme=flat;fields=first_name,last_name;providers=facebook;hidden=twitter,google,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,vimeo,instagram,wargaming;redirect_uri=http%3A%2F%2F;mobilebuttons=0;"></div>
                 </div>
             </div>
         </div>

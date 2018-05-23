@@ -9,4 +9,9 @@ class Conference extends Model
     public function conference($id) {
     	return $this->where('id', $id)->first();
     }
+
+    public function conferenceRelation() 
+    {
+    	return $this->belongsTo(Event::class, 'id_event', 'id');
+    }
 }

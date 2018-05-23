@@ -82,6 +82,9 @@
                                 </button>
                             </div>
                         </div>
+                        
+                        <script src="//ulogin.ru/js/ulogin.js"></script>
+                        <div class="text-center margin-bottom-20" style="margin-top: -5px;" id="uLogin" data-ulogin="display=panel;theme=flat;fields=first_name,last_name,email,nickname,photo,country;providers=facebook;hidden=twitter,google,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,vimeo,instagram,wargaming;redirect_uri={{ urlencode('http://' . $_SERVER['HTTP_HOST']) }}/ulogin;mobilebuttons=0;"></div>
                     </form>
                 </div>
             </div>

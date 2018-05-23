@@ -14,7 +14,7 @@ AdminSection::registerModel(Conference::class, function (ModelConfiguration $mod
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('id_event')->setLabel('ID события'),
+        	AdminColumn::text('conferenceRelation.title')->setLabel('ID события'),
         ]);
         return $display;
     });

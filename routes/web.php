@@ -51,9 +51,12 @@ Route::get('/training-map/{id}', 'TrainingController@map')->where('id','[0-9]+')
 Route::get('/training-organizer/{id}', 'TrainingController@organizer')->where('id','[0-9]+')->name('training-organizer');
 Route::get('/training-program/{id}', 'TrainingController@program')->where('id','[0-9]+')->name('training-program');
 
+Route::post('ulogin', 'UloginController@login');
+
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'IndexController@index')->name('home');
 
 // Route::get('/slug', function() {
 // 	$art = App\Article::get();
