@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class Article extends Model
 {
+    use \KodiComponents\Support\Upload;
+
+    protected $casts = [
+        'pdf' => 'file', // or file | upload
+    ];
 
     public function sitebar($count) {
         $_controller = new Controller;

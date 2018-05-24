@@ -75,6 +75,10 @@
     font-weight: bold;
     font-family: inherit;
 }
+.img-item {
+    width: 90%;
+    margin: auto;
+}
 .img-item img {
     width: 100%;
     padding: 20px 0;

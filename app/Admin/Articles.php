@@ -42,6 +42,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::datetime('datetime', 'Время публикации статьи')->required(),
+            AdminFormElement::upload('pdf', 'PDF файл к статье'),
             AdminFormElement::image('img', 'Изображение')->required()->setUploadSettings([
                 'orientate' => [],
                 'resize' => [850, NULL, function ($constraint) {
@@ -50,11 +51,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
                 }]
             ])
 
-
-
-
-
-        );
+        )->setHtmlAttribute('enctype', 'multipart/form-data');
     });
 }) 
 	->addMenuPage(Article::class, 300)

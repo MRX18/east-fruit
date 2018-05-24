@@ -1,4 +1,5 @@
 <?php
+use App\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,3 +70,11 @@ Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email
 // 		$newOb->save();
 // 	}
 // });
+Route::get('/slug', function() {
+		$art = Article::get();
+
+		foreach($art as $value) {
+		Article::where('id', $value->id)
+            ->update(array('pdf' => NULL));
+        }
+});
