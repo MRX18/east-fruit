@@ -13,6 +13,10 @@ use App\User;
 class ArticleController extends Controller
 {
     public function index(Request $request, $id) {
+        $_article = new Article();
+        $article = $_article->article($id);
+
+        $ArticleId = $article->id;
 
         $addComment = false;
 
@@ -39,11 +43,11 @@ class ArticleController extends Controller
                 return redirect()->back()->withInput()->withErrors($validator->errors());
             } else {
                 if(!Auth::check()) {
-                    ArticlesComment::insert(['id_articles' => $id, 'user' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
+                    ArticlesComment::insert(['id_articles' => $ArticleId, 'user' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
                 } else {
                     $idUser = Auth::user()->id;
                     $user = User::where('id', $idUser)->first();
-                    ArticlesComment::insert(['id_articles' => $id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
+                    ArticlesComment::insert(['id_articles' => $ArticleId, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
                 }
 
                 $addComment = true;
@@ -56,7 +60,6 @@ class ArticleController extends Controller
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
-    	$_article = new Article();
         $sitebar = $_article->sitebar(10);
 
     	foreach($sitebar as $option) {
@@ -66,8 +69,6 @@ class ArticleController extends Controller
     			}
     		}
     	}
-
-    	$article = $_article->article($id);
 
     	$title = $article->title;
         $keywords = $article->keywords;
@@ -81,7 +82,7 @@ class ArticleController extends Controller
 
         $read = $_article->articleCatigor($article->id_catigories, 10);
 
-    	$comments = ArticlesComment::where('id_articles', $id)
+    	$comments = ArticlesComment::where('id_articles', $ArticleId)
             ->where('visible', 1)
             ->orderByDesc('id')
             ->get();

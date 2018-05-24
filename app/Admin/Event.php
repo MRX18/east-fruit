@@ -2,6 +2,7 @@
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Event;
 use App\Yaer;
+use App\EventCatigorie;
 
 AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
    $model->enableAccessCheck();
@@ -26,6 +27,9 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
         return $form = AdminForm::panel()->addBody(
 
             AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::select('id_catigor', 'Категория события')->setModelForOptions(new EventCatigorie)->setDisplay(function($EventCatigorie) {
+                return $EventCatigorie->title;
+            })->required(),
             AdminFormElement::text('adres', 'Адрес')->required(),
             AdminFormElement::date('date', 'Дата события')->required(),
             AdminFormElement::select('year', 'Год события')->setModelForOptions(new Yaer)->setDisplay(function($Yaer) {

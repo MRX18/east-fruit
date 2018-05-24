@@ -20,6 +20,7 @@
     <div class="news-more-item">
 
         <h2 class="title-item">{{ $article->title }}</h2>
+        
         <span class="date-item">{{ $article->date }}</span>
 
         <div class="img-item img-lid">
@@ -98,7 +99,7 @@
                 </div>
             @endif               
             <div class="comment-form-container">
-    <form name="com" id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->id]) }}" method="post">
+    <form name="com" id="comment-form" class="comment-box" action="{{ route('article', ['id'=>$article->slug]) }}" method="post">
         {{ csrf_field() }}
         @if(!Auth::check())
         <div class="forma" style="display: flex; justify-content: space-between; margin-bottom: 10px;">

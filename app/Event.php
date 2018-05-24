@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 
 class Event extends Model
 {
-    public function allEvent($id, $count) {
+    public function allEvent($id, $idCatigor, $count) {
     	$_controller = new Controller;
 
-    	$event = $this->where('year', $id)->orderByDesc('id')->paginate($count);
+    	$event = $this->where('year', $id)->where('id_catigor', $idCatigor)->orderByDesc('id')->paginate($count);
     	return $_controller->dateCatigor($event);
     }
 

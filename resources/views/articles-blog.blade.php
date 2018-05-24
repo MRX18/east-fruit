@@ -186,7 +186,7 @@
                                 <div class="form">
                                     <div class="file-upload">
                                          <label>
-                                              <input type="file" name="img">
+                                              <input id="userPhoto" type="file" name="img">
                                               <span>Выберите фото</span>
                                          </label>
                                     </div>
@@ -203,7 +203,7 @@
 
 
                                     <div class="button" style="margin-top: -15px; margin-bottom: 15px;">
-                                        <button type="submit">Обновить информацию</button>
+                                        <button id="userBlog" type="submit">Обновить информацию</button>
                                     </div>
                                 </div>
                             </form>

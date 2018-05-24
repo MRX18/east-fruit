@@ -1609,6 +1609,13 @@ footer .links a:hover{
 	justify-content: space-between;
 	margin-top: 20px;
 }
+.event-other {
+	width: 49%;
+}
+.event-other > h2 {
+	font-weight: bold;
+	color: #212840;
+}
 .event-conteiner > h3 {
 	display: block;
 	width: 100%;
@@ -1619,7 +1626,7 @@ footer .links a:hover{
 	font-weight: bold;
 }
 .event-article {
-	width: 49%;
+	width: 100%;
 	background-color: #F0F0F0;
 	margin-bottom: 15px;
 }
@@ -1740,7 +1747,7 @@ footer .links a:hover{
 	.event-conteiner {
 		display: block;
 	}
-	.event-article {
+	.event-other {
 		width: 100%;
 	}
 }
@@ -1756,7 +1763,7 @@ footer .links a:hover{
 	.event-conteiner {
 		display: flex;
 	}
-	.event-article {
+	.event-other {
 		width: 49%;
 	}
 }
@@ -1826,7 +1833,7 @@ footer .links a:hover{
 	.event-conteiner {
 		display: block;
 	}
-	.event-article {
+	.event-other {
 		width: 100%;
 	}
 	.event-right {

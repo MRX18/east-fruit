@@ -34,7 +34,9 @@ class CalendarController extends Controller
             }
         }
 
-        $events = $_event->allEvent($id, 10);
+        $eventEastFruit = $_event->allEvent($id, 1, 10); // east fruit
+        $eventOther = $_event->allEvent($id, 2, 10); // Other
+
         $question = $_question->question();
         $answer = $_answer->answer($question->id);
 
@@ -45,7 +47,8 @@ class CalendarController extends Controller
             'keywords' => $keywords,
             'description' => $description,
 
-            'events' => $events,
+            'eventEastFruit' => $eventEastFruit,
+            'eventOther' => $eventOther,
             'years' => $years,
 
             'question' => $question,

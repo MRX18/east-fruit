@@ -169,8 +169,8 @@ class BlogController extends Controller
                 $validator = Validator::make($request->all(),
                     array(
                         'name' => 'required|between:3,16',
-                        'email' => 'required|email|max:32',
-                        'comment' => 'required|between:4,500'
+                        'email' => 'required|email|between:2,500',
+                        'comment' => 'required'
                     )
                 );
             } else {
@@ -268,7 +268,7 @@ class BlogController extends Controller
                 $validator = Validator::make($request->all(),
                     array(
                         'title' => 'required|between:4,256',
-                        'article' => 'required|between:4,500'
+                        'article' => 'required'
                     )
                 );
                 $date = date('Y-m-d');

@@ -262,5 +262,12 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/share42/share42.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#userPhoto').on('change', function() {
+            $('#userBlog').click();
+        });
+    });
+</script>
 </body>
 </html>
