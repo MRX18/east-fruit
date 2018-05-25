@@ -11,32 +11,65 @@
                         <div id="w0" class="news-reserch category-block">
                             
                             @foreach($articles as $article)
-                            <div data-key="43">
-                                <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
-                                    <div class="item-category">
-                                        <div class="item item-category-image">
-                                            <div class="item-hover">
-                                                <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
+                            @if($article->top == 1)
+                                <div data-key="43">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
+                                        <div class="item-category">
+                                            <div class="item item-category-image">
+                                                <div class="item-hover">
+                                                    <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
+                                                </div>
+                                                <div class="item-img item-category-img">
+                                                    <img src="{{ asset($article->img) }}"/>
+                                                </div>
+
                                             </div>
-                                            <div class="item-img item-category-img">
-                                                <img src="{{ asset($article->img) }}"/>
+
+                                            <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
+
+                                            <div style="float: left;" class="title">
+                                                <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                             </div>
 
-                                        </div>
 
-                                        <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
-
-                                        <div style="float: left;" class="title">
-                                            <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
-                                        </div>
-
-
-                                        <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
-                                            {{ $article->date }}
+                                            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                                {{ $article->date }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
+                            @endforeach
+
+                            @foreach($articles as $article)
+                            @if($article->top != 1)
+                                <div data-key="43">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
+                                        <div class="item-category">
+                                            <div class="item item-category-image">
+                                                <div class="item-hover">
+                                                    <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
+                                                </div>
+                                                <div class="item-img item-category-img">
+                                                    <img src="{{ asset($article->img) }}"/>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
+
+                                            <div style="float: left;" class="title">
+                                                <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
+                                            </div>
+
+
+                                            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                                {{ $article->date }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             @endforeach
 
                     </div>

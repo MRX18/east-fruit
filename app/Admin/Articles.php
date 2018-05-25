@@ -25,10 +25,13 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
+            AdminFormElement::checkbox('top', 'Всегда отображать статью в топе своей категории'),
+
             AdminFormElement::checkbox('visible', 'Показывать категорию в сайдбаре'),
 
             AdminFormElement::checkbox('baner', 'Показать в главном слайдере'),
             AdminFormElement::checkbox('toptwenty', 'Показать в верхнем слайдере'),
+
             AdminFormElement::checkbox('line', 'Показать в бегущей линии'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),

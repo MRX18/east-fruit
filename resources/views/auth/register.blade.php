@@ -61,11 +61,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                              <label class="col-md-4 control-label" style="font-size: 14px;" for="exampleInputName2">Род деятельности</label>
+                              <div class="col-md-6">
+                              <select id="position-select" class="form-control" name="positionSelect">
+                                <option disabled selected>Выберите род деятельности</option>
+                                @foreach($occupations as $occupation)
+                                    <option value="{{ $occupation->id }}">{{ $occupation->title }}</option>
+                                @endforeach
+                                <option id="otherR" value="9999">Другое ( укажите род деятельности) </option>
+                              </select>
+                              </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
                             <label for="position" class="col-md-4 control-label">Должность</label>
 
                             <div class="col-md-6">
-                                <input id="position" type="position" class="form-control" name="position" value="{{ old('position') }}" required>
+                                <input id="position" type="position" class="form-control" name="position" value="{{ old('position') }}" disabled>
 
                                 @if ($errors->has('position'))
                                     <span class="help-block">

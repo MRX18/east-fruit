@@ -40,6 +40,8 @@ Route::get('/event-day/{id}', 'CalendarController@eventDay')->name('eventDay');
 Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-9]+')->name('conference');
 Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');
 Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+')->name('speakers');
+Route::get('/media-report', 'CalendarController@mediaReport')->name('media-report');
+
 
 Route::get('/search/', 'SearchController@index')->name('search');
 
@@ -58,6 +60,7 @@ Route::post('ulogin', 'UloginController@login');
 Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'IndexController@index')->name('home');
+Route::match(['get', 'post'], '/register', 'RegisterController@register')->name('register');
 Route::match(['get', 'post'], '/registration', 'RegisterController@register')->name('registration');
 Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email');
 
@@ -70,11 +73,11 @@ Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email
 // 		$newOb->save();
 // 	}
 // });
-Route::get('/slug', function() {
-		$art = Article::get();
+// Route::get('/slug', function() {
+// 		$art = Article::get();
 
-		foreach($art as $value) {
-		Article::where('id', $value->id)
-            ->update(array('pdf' => NULL));
-        }
-});
+// 		foreach($art as $value) {
+// 		Article::where('id', $value->id)
+//             ->update(array('pdf' => NULL));
+//         }
+// });

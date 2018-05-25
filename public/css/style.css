@@ -1749,6 +1749,31 @@ footer .links a:hover{
 	font-weight: normal;
 	margin-bottom: 7px;
 }
+/*media*/
+.media-report {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.media-conteiner {
+	width: 50%;
+	height: 250px;
+	overflow: hidden;
+	margin-bottom: -12px;
+}
+.media-conteiner img {
+	width: 100%;
+	height: auto;
+
+	-moz-transition: all 1s ease-out;
+	-o-transition: all 1s ease-out;
+	-webkit-transition: all 1s ease-out;
+}
+.media-conteiner img:hover{
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+ }
 
 @media screen and (max-width: 1199px) {
 	.event-right {

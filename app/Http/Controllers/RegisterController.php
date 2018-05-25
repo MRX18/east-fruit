@@ -5,18 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+
 use App\User;
+use App\Occupation;
 
 class RegisterController extends Controller
 {
     public function register(Request $request) {
+        $_occupation = new Occupation;
 
     	if($request->isMethod('post')) {
     		$validator = Validator::make($request->all(), [
 	            'name' => 'required|string|max:255',
 	            'email' => 'required|string|email|max:255|unique:users',
 	            'password' => 'required|string|min:6|confirmed',
-	            'position' => 'string|max:255'
+                'positionSelect' => 'required|integer',
+	            'position' => 'string|between:2,32'
 	        ]);
 
 	        if($validator->fails()) {
@@ -29,6 +33,7 @@ class RegisterController extends Controller
             		'name' => $request->name,
             		'email' => $request->email,
             		'password' => $request->password,
+                    'positionSelect' => $request->positionSelect,
             		'position' => $request->position
             	]);
 
@@ -36,7 +41,11 @@ class RegisterController extends Controller
             	return redirect('email');
             }
     	} else {
-    		return view('auth.register');
+            $occupation = $_occupation->allOccupation();
+
+    		return view('auth.register')->with([
+                'occupations' => $occupation
+            ]);
     	}
 
     }
@@ -52,12 +61,23 @@ class RegisterController extends Controller
                 return redirect('email')->withInput()->withErrors($validator->errors());
             } else {
             	if($request->cod == session('cod')) {
-            		User::create([
-			            'name' => session('name'),
-			            'position' => session('position'),
-			            'email' => session('email'),
-			            'password' => bcrypt(session('password'))
-			        ]);
+                // if($request->cod == 1111) {
+            		if(session('positionSelect') == 9999) {
+                        User::insert([
+                            'name' => session('name'),
+                            'position' => session('position'),
+                            'email' => session('email'),
+                            'password' => bcrypt(session('password'))
+                        ]);
+                    } else {
+                        User::insert([
+                            'id_occupation' => session('positionSelect'),
+                            'name' => session('name'),
+                            'position' => session('position'),
+                            'email' => session('email'),
+                            'password' => bcrypt(session('password'))
+                        ]);
+                    }
 			        $idUser = User::where('email',session('email'))->value('id');
 			        Auth::loginUsingId($idUser);
             		return redirect('/');

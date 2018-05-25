@@ -37,6 +37,8 @@ class CalendarController extends Controller
         $eventEastFruit = $_event->allEvent($id, 1, 10); // east fruit
         $eventOther = $_event->allEvent($id, 2, 10); // Other
 
+        $eventsAll = $_event->allEvents($id, 10); 
+
         $question = $_question->question();
         $answer = $_answer->answer($question->id);
 
@@ -49,6 +51,7 @@ class CalendarController extends Controller
 
             'eventEastFruit' => $eventEastFruit,
             'eventOther' => $eventOther,
+            'eventsAll' => $eventsAll,
             'years' => $years,
 
             'question' => $question,
@@ -157,7 +160,7 @@ class CalendarController extends Controller
                 $id = $year->id;
             }
         }
-        $eventsAll = $_event->allEvent($id, 10);
+        $eventsAll = $_event->allEvents($id, 10);
 
         return view('calendar-of-events')->with([
             'title' => $title,
@@ -170,6 +173,30 @@ class CalendarController extends Controller
 
             'question' => $question,
             'answer' => $answer
+        ]);
+    }
+
+    public function mediaReport($id = 1) {
+        $title = 'Спикеры';
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_event = new Event;
+        $_speaker = new Speaker;
+
+        $sitebar = $_article->sitebar(10);
+        $event = $_event->onceEvent($id);
+        $speakers = $_speaker->speacers($id);
+
+
+        return view('media-report')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'sitebarArticle' => $sitebar,
+
+            'event' => $event
         ]);
     }
 }

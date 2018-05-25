@@ -14,6 +14,14 @@ class Event extends Model
     	return $_controller->dateCatigor($event);
     }
 
+    public function allEvents($id, $count) {
+        $_controller = new Controller;
+
+        $event = $this->where('year', $id)->orderByDesc('id')->paginate($count);
+        return $_controller->dateCatigor($event);
+
+    }
+
     public function onceEvent($id) {
         $_controller = new Controller;
 

@@ -76,5 +76,19 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[id=position-select]').on('change', function() {
+                if($(this).val() == '9999') {
+                    $('#position').removeAttr('disabled');
+                } else {
+                    $('#position').attr("disabled","disabled");  
+                }
+                // alert($(this).val());
+                // $('#position').removeAttr('disabled');
+            });
+        });
+    </script>
 </body>
 </html>
