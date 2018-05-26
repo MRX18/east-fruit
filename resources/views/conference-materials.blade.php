@@ -33,25 +33,23 @@
                 <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
                 <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
-                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
-                <li><a class="date-active" href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
+                <li><a class="date-active" href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
+                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
             </ul>
         </div>
 
-        <h2 class="title-item">Медиа-отчет</h2>
+        <h2 class="title-item">Материалы конференции</h2>
 
         <div class="descr-item">
-            <div class="media-report img-cont">
-                @if(count($mediaReport) > 0)
-                    @foreach($mediaReport as $media)
-                    <div class="media-conteiner">
-                        <a href="{{ asset($media->img) }}" title="{{ $media->title }}"><img src="{{ asset($media->img) }}" alt="test 1"></a>
-                    </div>
+            <div class="materials">
+
+                @if(count($conferenceMaterial) > 0)
+                    @foreach($conferenceMaterial as $material)
+                        <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
                     @endforeach
                 @else
-                    <h3>Медиа-отчет отсутствует!</h3>
+                    <h3>Материалы конференции отсутствуют!</h3>
                 @endif
-
             </div>
         </div>
 

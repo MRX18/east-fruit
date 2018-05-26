@@ -22,7 +22,7 @@
                         
                         @if(count($eventEastFruit) > 0 || count($eventOther) > 0) 
                             <div class="event-other">
-                                <h2>East Fruit</h2>
+                                <h2><a href="#">East Fruit</a></h2>
                                 @foreach($eventEastFruit as $event)
                                 <div class="event-article">
                                     <header class="header-event">
@@ -41,6 +41,8 @@
                                                 <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
                                                 <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
                                                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                                                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
+                                                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -49,7 +51,7 @@
                             </div>
 
                             <div class="event-other">
-                                <h2>Другие</h2>
+                                <h2><a href="#">Другие</a></h2>
 
                                 @foreach($eventOther as $event)
                                 <div class="event-article">
@@ -69,6 +71,8 @@
                                                 <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
                                                 <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
                                                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                                                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
+                                                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -95,6 +99,8 @@
                                             <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
                                             <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
                                             <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                                            <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
+                                            <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -33,13 +33,17 @@
                 <li><a class="date-active" href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
                 <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
+                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
+                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
             </ul>
         </div>
 
         <h2 class="title-item">О конференции</h2>
 
         <div class="descr-item">
-            {!! $conference->text !!}
+            @if(isset($conference))
+                {!! $conference->text !!}
+            @endif
         </div>
 
     </div>

@@ -40,7 +40,8 @@ Route::get('/event-day/{id}', 'CalendarController@eventDay')->name('eventDay');
 Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-9]+')->name('conference');
 Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');
 Route::get('/speakers/{id}', 'CalendarController@speakers')->where('id','[0-9]+')->name('speakers');
-Route::get('/media-report', 'CalendarController@mediaReport')->name('media-report');
+Route::get('/media-report/{id}', 'CalendarController@mediaReport')->where('id','[0-9]+')->name('media-report');
+Route::get('/conference-materials/{id}', 'CalendarController@conferenceMaterials')->where('id','[0-9]+')->name('conference-materials');
 
 
 Route::get('/search/', 'SearchController@index')->name('search');

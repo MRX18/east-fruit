@@ -64,7 +64,13 @@ return [
                 ->setPriority(200),
             (new Page(\App\Speaker::class))
                 ->setIcon('fa fa-sliders')
-                ->setPriority(400)
+                ->setPriority(400),
+            (new Page(\App\MediaReport::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(800),
+            (new Page(\App\ConferenceMaterial::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(1600)
         ]
     ],
 

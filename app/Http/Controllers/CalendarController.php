@@ -11,6 +11,8 @@ use App\Speaker;
 use App\Conference;
 use App\Question;
 use App\Answer;
+use App\ConferenceMaterial;
+use App\MediaReport;
 
 class CalendarController extends Controller
 {
@@ -72,6 +74,7 @@ class CalendarController extends Controller
         $event = $_event->onceEvent($id);
 
         $conference = $_conferense->conference($id);
+        // dd($conference);
 
     	return view('conference')->with([
     		'title' => $title,
@@ -176,18 +179,18 @@ class CalendarController extends Controller
         ]);
     }
 
-    public function mediaReport($id = 1) {
-        $title = 'Спикеры';
+    public function mediaReport($id) {
+        $title = 'Медиа-отчет';
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
         $_event = new Event;
-        $_speaker = new Speaker;
+        $_media_report = new MediaReport;
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
-        $speakers = $_speaker->speacers($id);
+        $mediaReport = $_media_report->mediaReport($id);
 
 
         return view('media-report')->with([
@@ -196,7 +199,33 @@ class CalendarController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
 
-            'event' => $event
+            'event' => $event,
+            'mediaReport' => $mediaReport
+        ]);
+    }
+
+    public function conferenceMaterials($id) {
+        $title = 'Материалы конференции';
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_event = new Event;
+        $_conference_material = new ConferenceMaterial;
+
+        $sitebar = $_article->sitebar(10);
+        $event = $_event->onceEvent($id);
+        $conferenceMaterial = $_conference_material->conferenceMaterial($id);
+
+
+        return view('conference-materials')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'sitebarArticle' => $sitebar,
+
+            'event' => $event,
+            'conferenceMaterial' => $conferenceMaterial
         ]);
     }
 }

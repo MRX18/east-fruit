@@ -26,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         \App\Conference::class => \App\Policies\ConferencePolicy::class,
         \App\Program::class => \App\Policies\ProgramPolicy::class,
         \App\Speaker::class => \App\Policies\SpeakerPolicy::class,
+        \App\MediaReport::class => \App\Policies\MediaReportPolicy::class,
+        \App\ConferenceMaterial::class => \App\Policies\ConferenceMaterialPolicy::class,
 
         \App\Price::class => \App\Policies\PricePolicy::class,
         \App\Product::class => \App\Policies\ProductPolicy::class,

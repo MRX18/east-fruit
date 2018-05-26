@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Speaker extends Model
+class MediaReport extends Model
 {
-    public function speacers($id) {
+    public function mediaReport($id) {
     	return $this->where('id_event', $id)->get();
     }
 }
