@@ -8,114 +8,89 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
-                    
-                    <div class="menu-calendar">
-                        <ul>
-                            <!-- <li><a class="date-active" href="#">2018</a></li> -->
-                            @foreach($years as $year)
-                            <li><a href="{{ route('event', ['id'=>$year->year]) }}">{{ $year->year }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
+                        <div id="w0" class="news-reserch category-block">
+                            
+                            @foreach($articles as $article)
+                            @if($article->top == 1)
+                                <div data-key="43">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
+                                        <div class="item-category">
+                                            <div class="item item-category-image">
+                                                <div class="item-hover">
+                                                    @if($article->size == 1)
+                                                        <a href="{{ route('great-research', ['id'=>$article->slug]) }}" class="search"></a>
+                                                    @else
+                                                        <a href="{{ route('min-research', ['id'=>$article->id]) }}" class="search"></a>
+                                                    @endif
+                                                </div>
+                                                <div class="item-img item-category-img">
+                                                    <img src="{{ asset($article->img) }}"/>
+                                                </div>
 
-                    <div class="event-conteiner">
-                        
-                        @if(count($eventEastFruit) > 0 || count($eventOther) > 0) 
-                            <div class="event-other">
-                                <h2><a href="{{ route('event-catigor', ['id'=>'east-fruit']) }}">East Fruit</a></h2>
-                                @foreach($eventEastFruit as $event)
-                                <div class="event-article">
-                                    <header class="header-event">
-                                        <h3><a href="{{ route('conference', ['id'=>$event->id]) }}">{{ $event->title }}</a></h3>
-                                    </header>
-                                    <div class="content-event">
-                                        <div class="event-left">
-                                            <div class="event-date">{{ $event->date }}</div>
-                                            <div class="event-img">
-                                                <img src="{{ asset($event->img) }}" alt="">
                                             </div>
-                                            <div class="event-adres">{{ $event->adres }}</div>
-                                        </div>
-                                        <div class="event-right">
-                                            <ul>
-                                                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                                                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
-                                                <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
-                                                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
-                                                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
 
-                            <div class="event-other">
-                                <h2><a href="{{ route('event-catigor', ['id'=>'other']) }}">Другие</a></h2>
+                                            <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
 
-                                @foreach($eventOther as $event)
-                                <div class="event-article">
-                                    <header class="header-event">
-                                        <h3><a href="{{ route('conference', ['id'=>$event->id]) }}">{{ $event->title }}</a></h3>
-                                    </header>
-                                    <div class="content-event">
-                                        <div class="event-left">
-                                            <div class="event-date">{{ $event->date }}</div>
-                                            <div class="event-img">
-                                                <img src="{{ asset($event->img) }}" alt="">
+                                            <div style="float: left;" class="title">
+                                                @if($article->size == 1)
+                                                    <h4 style="text-align: left;"><a href="{{ route('great-research', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
+                                                @else
+                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                                @endif
                                             </div>
-                                            <div class="event-adres">{{ $event->adres }}</div>
-                                        </div>
-                                        <div class="event-right">
-                                            <ul>
-                                                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                                                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
-                                                <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
-                                                <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
-                                                <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
-                                            </ul>
+
+
+                                            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                                {{ $article->date }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <h3><span>На запрашиваемую дату событий нет!</span> Хотите посетить профильный семинар или конференцию? Посмотрите наш календарь ближайших событий.</h3>
-                            @foreach($eventsAll as $event)
-                            <div class="event-article">
-                                <header class="header-event">
-                                    <h3><a href="{{ route('conference', ['id'=>$event->id]) }}">{{ $event->title }}</a></h3>
-                                </header>
-                                <div class="content-event">
-                                    <div class="event-left">
-                                        <div class="event-date">{{ $event->date }}</div>
-                                        <div class="event-img">
-                                            <img src="{{ asset($event->img) }}" alt="">
-                                        </div>
-                                        <div class="event-adres">{{ $event->adres }}</div>
-                                    </div>
-                                    <div class="event-right">
-                                        <ul>
-                                            <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                                            <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
-                                            <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
-                                            <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
-                                            <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
                             @endforeach
-                        @endif
+
+                            @foreach($articles as $article)
+                            @if($article->top != 1)
+                                <div data-key="43">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center art">
+                                        <div class="item-category">
+                                            <div class="item item-category-image">
+                                                <div class="item-hover">
+                                                    @if($article->size == 1)
+                                                        <a href="{{ route('great-research', ['id'=>$article->slug]) }}" class="search"></a>
+                                                    @else
+                                                        <a href="{{ route('min-research', ['id'=>$article->id]) }}" class="search"></a>
+                                                    @endif
+                                                </div>
+                                                <div class="item-img item-category-img">
+                                                    <img src="{{ asset($article->img) }}"/>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
+
+                                            <div style="float: left;" class="title">
+                                                @if($article->size == 1)
+                                                    <h4 style="text-align: left;"><a href="{{ route('great-research', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
+                                                @else
+                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                                @endif
+                                            </div>
+
+
+                                            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                                {{ $article->date }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @endforeach
 
                     </div>
-
                     <div class="category-button">
-                        @if(count($eventEastFruit) > 9) 
-                            {{ $eventEastFruit->links() }}
-                        @elseif(count($eventOther) > 9)
-                            {{ $eventOther->links() }}
-                        @endif
+                        {{ $articles->links() }}
                     </div>
                 </div>
 

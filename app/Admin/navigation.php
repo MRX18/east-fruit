@@ -125,6 +125,19 @@ return [
         ]
     ],
 
+    [
+        'title' => "Исследования",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Research::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\ResearchContent::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100)
+        ]
+    ],
+
     // Examples
     // [
     //    'title' => 'Content',

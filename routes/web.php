@@ -16,6 +16,13 @@ Route::get('/', 'IndexController@index');
 
 
 Route::get('/catigor/{id}', 'CatigorController@index')->name('catigor');
+
+Route::get('/research', 'ResearchController@index')->name('research');
+Route::get('/great-research/{id}', 'ResearchController@greatResearch')->name('great-research');
+Route::get('/research/{id}', 'ResearchController@research')->name('min-research');
+
+
+
 Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
 // Route::get('/rating', 'CatigorController@rating');
 Route::get('/all-articles', 'CatigorController@allArticle')->name('all-articles');
@@ -36,6 +43,7 @@ Route::match(['get', 'post'],'/contact', 'StaticController@contact')->name('cont
 Route::get('/regulations', 'StaticController@regulations')->name('regulations');
 
 Route::get('/events/{id}', 'CalendarController@index')->where('id','[0-9]+')->name('event');
+Route::get('/event-catigor/{id}', 'CalendarController@eventCatigor')->name('event-catigor');
 Route::get('/event-day/{id}', 'CalendarController@eventDay')->name('eventDay');
 Route::get('/conference/{id}', 'CalendarController@conference')->where('id','[0-9]+')->name('conference');
 Route::get('/program/{id}', 'CalendarController@program')->where('id','[0-9]+')->name('program');

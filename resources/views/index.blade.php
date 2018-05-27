@@ -155,7 +155,11 @@
                                 <div data-key="32">
                                     <div class="item">
                                         <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$research->slug]) }}" class="item-hover">
+                                        @if($research->size == 1)
+                                        <a href="{{ route('great-research', ['id'=>$research->slug]) }}" class="item-hover">
+                                        @else
+                                        <a href="{{ route('min-research', ['id'=>$research->id]) }}" class="item-hover">
+                                        @endif
                                             <div class="search"></div>
                                         </a>
                                         <div class="item-img">

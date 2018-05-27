@@ -1633,6 +1633,10 @@ footer .links a:hover{
 }
 .event-other > h2 > a {
 	color: #212840;
+	transition: 0.3 all;
+}
+.event-other > h2 > a:hover {
+	color: #33CB98;
 }
 .event-conteiner > h3 {
 	display: block;

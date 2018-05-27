@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Image;
 use App\Answer;
+use App\Research;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,7 @@ class IndexController extends Controller
 
         $_article = new Article();
         $_image = new Image();
+        $_research = new Research();
 
         $sitebar = $_article->sitebar(17);
         $sitebarAdaptive =$_article->sitebar(5);
@@ -48,7 +50,7 @@ class IndexController extends Controller
 
 
         //иследования
-        $researchs = $_article->articleInIndexPage('id_catigories', 2, 2);
+        $researchs = $_research->allResearch(2);
 
     	//технологии
         $technologys = $_article->articleInIndexPage('id_catigories', 3, 2);

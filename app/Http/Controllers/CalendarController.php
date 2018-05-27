@@ -61,6 +61,58 @@ class CalendarController extends Controller
         ]);
     }
 
+    public function eventCatigor($id) {
+        $title = "События";
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_event = new Event;
+        $_year = new Yaer;
+        $_question = new Question();
+        $_answer = new Answer();
+
+        $years = $_year->years();
+
+        foreach($years as $year) {
+            if($year->year == $id) {
+                $id = $year->id;
+            }
+        }
+
+        // $eventEastFruit = $_event->allEvent($id, 1, 10); // east fruit
+        // $eventOther = $_event->allEvent($id, 2, 10); // Other
+
+        if($id == 'east-fruit') {
+            $events = $_event->catigorEvent(1, 10); // east fruit
+        } elseif($id == 'other') {
+            $events = $_event->catigorEvent(2, 10); // Other
+        } else {
+            return redirect()->back();
+        }
+
+        // $eventsAll = $_event->allEvents($id, 10); 
+
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
+        return view('catigor-events')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+
+            'events' => $events,
+
+            'years' => $years,
+
+            'question' => $question,
+            'answer' => $answer
+        ]);
+    }
+
     public function conference($id) {
         $title = 'О конференции';
     	$catigories = $this->catigorTop();
