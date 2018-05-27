@@ -11,6 +11,7 @@ use App\Article;
 use App\Blog;
 use App\User;
 use App\BlogComment;
+use App\Occupation;
 
 class BlogController extends Controller
 {
@@ -18,6 +19,9 @@ class BlogController extends Controller
         $_article = new Article();
         $_blog = new Blog();
         $_user = new User();
+        $_occupation = new Occupation;
+
+        $occupation = $_occupation->allOccupation();
 
         $auth = false;
         $idUser = 0;
@@ -30,7 +34,8 @@ class BlogController extends Controller
                 $validator = Validator::make($request->all(),
                     array(
                         'name' => 'between:4,32',
-                        'position' => 'between:3,32',
+                        'positionSelect' => 'required|integer',
+                        'position' => 'string|between:2,32',
                         'img' => 'image'
                     )
                 );
@@ -43,11 +48,15 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
-                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
+                    if($request->positionSelect == 9999) {
+                        User::where('id', $idUser)->update(array('id_occupation' =>0,'name'=>$request->name, 'position'=>$request->position));
+                    } else {
+                        User::where('id', $idUser)->update(array('id_occupation' =>$request->positionSelect, 'name'=>$request->name, 'position'=>$request->position));
+                    }
                     return redirect()->back();
 
                 }
-             }
+            }
         }
         $user = $_user->user($idUser);
 
@@ -67,15 +76,6 @@ class BlogController extends Controller
 
         $sitebar = $_article->sitebar(10);
 
-        //иследования
-        $researchs = $_article->articleInIndexPage('id_catigories', 2, 2);
-
-        //технологии
-        $technologys = $_article->articleInIndexPage('id_catigories', 3, 2);
-
-        //РОЗНИЧНЫЙ АУДИТ
-        $retailAudits = $_article->articleInIndexPage('id_catigories', 4, 2);
-
     	return view('blog')->with([
     		'title' => $title,
     		'catigories' => $catigories,
@@ -84,9 +84,7 @@ class BlogController extends Controller
 
             'articles' => $articles,
 
-            'researchs' => $researchs,
-            'technologys' => $technologys,
-            'retailAudits' => $retailAudits,
+            'occupations' => $occupation,
 
             'auth' => $auth,
             'user' => $user
@@ -97,6 +95,9 @@ class BlogController extends Controller
         $_article = new Article();
         $_blog = new Blog();
         $_user = new User();
+        $_occupation = new Occupation;
+
+        $occupation = $_occupation->allOccupation();
 
         $auth = false;
         $idUser = 0;
@@ -109,7 +110,8 @@ class BlogController extends Controller
                 $validator = Validator::make($request->all(),
                     array(
                         'name' => 'between:4,32',
-                        'position' => 'between:3,32',
+                        'positionSelect' => 'required|integer',
+                        'position' => 'string|between:2,32',
                         'img' => 'image'
                     )
                 );
@@ -122,11 +124,15 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
-                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
+                    if($request->positionSelect == 9999) {
+                        User::where('id', $idUser)->update(array('id_occupation' =>0,'name'=>$request->name, 'position'=>$request->position));
+                    } else {
+                        User::where('id', $idUser)->update(array('id_occupation' =>$request->positionSelect, 'name'=>$request->name, 'position'=>$request->position));
+                    }
                     return redirect()->back();
 
                 }
-             }
+            }
         }
         $user = $_user->user($idUser);
 
@@ -154,6 +160,7 @@ class BlogController extends Controller
             'sitebarArticle' => $sitebar,
             'auth' => $auth,
             'user' => $user,
+            'occupations' => $occupation,
 
             'article' => $article,
             'comment' => $comment,
@@ -208,6 +215,9 @@ class BlogController extends Controller
     public function addblog(Request $request) {
         $_article = new Article();
         $_user = new User();
+        $_occupation = new Occupation;
+
+        $occupation = $_occupation->allOccupation();
 
 
         $auth = false;
@@ -221,7 +231,8 @@ class BlogController extends Controller
                 $validator = Validator::make($request->all(),
                     array(
                         'name' => 'between:4,32',
-                        'position' => 'between:3,32',
+                        'positionSelect' => 'required|integer',
+                        'position' => 'string|between:2,32',
                         'img' => 'image'
                     )
                 );
@@ -234,11 +245,15 @@ class BlogController extends Controller
                         $file->move(public_path() . '/images/user', $file->getClientOriginalName());
                         User::where('id', $idUser)->update(array('img' => '/images/user/'.$file->getClientOriginalName()));
                     }
-                    User::where('id', $idUser)->update(array('name'=>$request->name, 'position'=>$request->position));
+                    if($request->positionSelect == 9999) {
+                        User::where('id', $idUser)->update(array('id_occupation' =>0,'name'=>$request->name, 'position'=>$request->position));
+                    } else {
+                        User::where('id', $idUser)->update(array('id_occupation' =>$request->positionSelect, 'name'=>$request->name, 'position'=>$request->position));
+                    }
                     return redirect()->back();
 
                 }
-             }
+            }
         } else {
             return redirect()->back();
         }
@@ -257,7 +272,8 @@ class BlogController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
             'user' => $user,
-            'auth' => $auth
+            'auth' => $auth,
+            'occupations' => $occupation
         ]);
     }
 

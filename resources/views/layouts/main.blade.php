@@ -267,6 +267,16 @@
         $('#userPhoto').on('change', function() {
             $('#userBlog').click();
         });
+
+        $('select[id=position-select]').on('change', function() {
+            if($(this).val() == '9999') {
+                $('#position').removeAttr('disabled');
+            } else {
+                $('#position').attr("disabled","disabled");  
+            }
+            // alert($(this).val());
+            // $('#position').removeAttr('disabled');
+        });
     });
 </script>
 </body>

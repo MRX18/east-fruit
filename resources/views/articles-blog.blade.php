@@ -196,9 +196,40 @@
                                         <label for="name">Имя:</label>
                                         <input type="text" name="name" class="form-control" id="name" value="{{ $user->name }}">
                                     </div>
-                                    <div class="form-group" style="margin-top: -5px;">
-                                        <label for="position">Род деятельности:</label>
-                                        <input type="text" name="position" class="form-control" id="position" value="{{ $user->position }}">
+                                    
+
+                                    <div class="form-group">
+                                          <label style="font-size: 14px;" for="exampleInputName2">Род деятельности</label>
+                                          <div>
+                                          <select id="position-select" class="form-control" name="positionSelect">
+                                            @if($user->id_occupation == 0)
+                                                <option disabled selected>Выберите род деятельности</option>
+                                            @endif
+
+                                            @foreach($occupations as $occupation)
+                                                @if($occupation->id == $user->id_occupation)
+                                                    <option selected value="{{ $occupation->id }}">{{ $occupation->title }}</option>
+                                                @else
+                                                    <option value="{{ $occupation->id }}">{{ $occupation->title }}</option>
+                                                @endif
+                                            @endforeach
+                                            <option id="otherR" value="9999">Другое ( укажите род деятельности) </option>
+                                          </select>
+                                          </div>
+                                    </div>
+
+                                    <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
+                                        <label for="position">Должность</label>
+
+                                        <div>
+                                            <input id="position" type="position" class="form-control" name="position" value="{{ $user->position }}" disabled>
+
+                                            @if ($errors->has('position'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('position') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
 
 
