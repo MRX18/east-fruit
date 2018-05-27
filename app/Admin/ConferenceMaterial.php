@@ -14,14 +14,14 @@ AdminSection::registerModel(ConferenceMaterial::class, function (ModelConfigurat
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
 
-        	AdminColumn::text('id_event')->setLabel('ID события')
+        	AdminColumn::text('ConferenceMaterialRelation.title')->setLabel('Cобытие')
         ]);
         return $display;
     });
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            // AdminFormElement::text('title', 'Медиа-отчет')->required(),
+            AdminFormElement::text('title', 'Материалы конференции')->required(),
             AdminFormElement::select('id_event', 'Событие')->setModelForOptions(new Event)->setDisplay(function($Event) {
                 return $Event->title;
             })->required(),

@@ -17,6 +17,7 @@
         </ul>
     </div>
 
+
     <div class="news-more-item">
 
         <div class="user-article">
@@ -45,10 +46,15 @@
 
                 @if(count($conferenceMaterial) > 0)
                     @foreach($conferenceMaterial as $material)
+                        @if($material->format == 'pdf')
+                        <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
                         <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
+                        @else
+                            <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
+                        @endif
                     @endforeach
                 @else
-                    <h3>Материалы конференции отсутствуют!</h3>
+                    <h3><span>Материалы конференции отсутствуют!</span> Они скоро появятся на сайте.</h3>
                 @endif
             </div>
         </div>

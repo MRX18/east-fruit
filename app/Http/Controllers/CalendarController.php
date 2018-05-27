@@ -61,6 +61,48 @@ class CalendarController extends Controller
         ]);
     }
 
+    public function eventDay($id) {
+        $title = "События | ".$this->dateFirst($id);
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_event = new Event;
+        $_year = new Yaer;
+        $_question = new Question();
+        $_answer = new Answer();
+
+        $years = $_year->years();
+
+        $eventEastFruit = $_event->eventDаy($id, 1, 10); // east fruit
+        $eventOther = $_event->eventDаy($id, 2, 10); // Other
+
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
+        $id = explode('-', $id);
+        $id = $id[0];
+        foreach($years as $year) {
+            if($year->year == $id) {
+                $id = $year->id;
+            }
+        }
+        $eventsAll = $_event->allEvents($id, 10);
+
+        return view('calendar-of-events')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+
+            'eventEastFruit' => $eventEastFruit,
+            'eventOther' => $eventOther,
+            'eventsAll' => $eventsAll,
+            'years' => $years,
+
+            'question' => $question,
+            'answer' => $answer
+        ]);
+    }
+
     public function eventCatigor($id) {
         $title = "События";
         $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
@@ -121,6 +163,9 @@ class CalendarController extends Controller
         $_article = new Article();
         $_event = new Event;
         $_conferense = new Conference;
+        $_year = new Yaer;
+
+        $years = $_year->years();
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
@@ -133,6 +178,7 @@ class CalendarController extends Controller
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
+            'years' => $years,
 
             'conference' => $conference,
             'event' => $event
@@ -147,6 +193,9 @@ class CalendarController extends Controller
         $_article = new Article();
         $_event = new Event;
         $_program = new Program;
+        $_year = new Yaer;
+
+        $years = $_year->years();
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
@@ -161,6 +210,7 @@ class CalendarController extends Controller
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
+            'years' => $years,
 
             'event' => $event,
             'programs' => $programs
@@ -175,6 +225,9 @@ class CalendarController extends Controller
         $_article = new Article();
         $_event = new Event;
         $_speaker = new Speaker;
+        $_year = new Yaer;
+
+        $years = $_year->years();
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
@@ -185,50 +238,11 @@ class CalendarController extends Controller
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
+            'years' => $years,
 
             'event' => $event,
             'speakers' => $speakers
     	]);
-    }
-
-    public function eventDay($id) {
-        $title = "События | ".$this->dateFirst($id);
-        $catigories = $this->catigorTop();
-        $otherCatigorTop = $this->otherCatigorTop();
-
-        $_event = new Event;
-        $_year = new Yaer;
-        $_question = new Question();
-        $_answer = new Answer();
-
-        $years = $_year->years();
-
-        $events = $_event->eventDаy($id, 10);
-
-        $question = $_question->question();
-        $answer = $_answer->answer($question->id);
-
-        $id = explode('-', $id);
-        $id = $id[0];
-        foreach($years as $year) {
-            if($year->year == $id) {
-                $id = $year->id;
-            }
-        }
-        $eventsAll = $_event->allEvents($id, 10);
-
-        return view('calendar-of-events')->with([
-            'title' => $title,
-            'catigories' => $catigories,
-            'otherCatigorTop' => $otherCatigorTop,
-
-            'events' => $events,
-            'eventsAll' => $eventsAll,
-            'years' => $years,
-
-            'question' => $question,
-            'answer' => $answer
-        ]);
     }
 
     public function mediaReport($id) {
@@ -239,6 +253,9 @@ class CalendarController extends Controller
         $_article = new Article();
         $_event = new Event;
         $_media_report = new MediaReport;
+        $_year = new Yaer;
+
+        $years = $_year->years();
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
@@ -250,6 +267,7 @@ class CalendarController extends Controller
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
+            'years' => $years,
 
             'event' => $event,
             'mediaReport' => $mediaReport
@@ -264,10 +282,18 @@ class CalendarController extends Controller
         $_article = new Article();
         $_event = new Event;
         $_conference_material = new ConferenceMaterial;
+        $_year = new Yaer;
+
+        $years = $_year->years();
 
         $sitebar = $_article->sitebar(10);
         $event = $_event->onceEvent($id);
         $conferenceMaterial = $_conference_material->conferenceMaterial($id);
+
+        foreach($conferenceMaterial as $material) {
+            $format = explode('.', $material->pdf);
+            $material->format = array_pop($format);
+        }
 
 
         return view('conference-materials')->with([
@@ -275,6 +301,7 @@ class CalendarController extends Controller
             'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'sitebarArticle' => $sitebar,
+            'years' => $years,
 
             'event' => $event,
             'conferenceMaterial' => $conferenceMaterial

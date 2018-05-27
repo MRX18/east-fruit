@@ -13,6 +13,7 @@ AdminSection::registerModel(MediaReport::class, function (ModelConfiguration $mo
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
+            AdminColumn::text('MediaReportRelation.title')->setLabel('Событие'),
 
         	AdminColumn::text('title')->setLabel('Медиа-отчет'),
             AdminColumn::image('img')->setLabel('Изображение')

@@ -8,6 +8,22 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
+                        <div class="menu-calendar">
+                            <ul>
+                                <!-- <li><a class="date-active" href="#">2018</a></li> -->
+                                @foreach($years as $year)
+                                <li><a href="{{ route('event', ['id'=>$year->year]) }}">{{ $year->year }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="menu-calendar">
+                            <ul>
+                                <!-- <li><a class="date-active" href="#">2018</a></li> -->
+                                <li><a href="{{ route('event-catigor', ['id'=>'east-fruit']) }}">East Fruit</a></li>
+                                <li><a href="{{ route('event-catigor', ['id'=>'other']) }}">Другие</a></li>
+                            </ul>
+                        </div>
                     
                     <!-- menu calendar -->
 

@@ -38,10 +38,10 @@ class Event extends Model
         return $event;
     }
 
-    public function eventDаy($id, $count) {
+    public function eventDаy($id, $idCatigor, $count) {
     	$_controller = new Controller;
 
-    	$event = $this->where('date', $id)->orderByDesc('id')->paginate($count);
+    	$event = $this->where('date', $id)->where('id_catigor', $idCatigor)->orderByDesc('id')->paginate($count);
 
     	return $_controller->dateCatigor($event);
     }

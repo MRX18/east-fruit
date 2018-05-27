@@ -15,4 +15,9 @@ class ConferenceMaterial extends Model
     public function conferenceMaterial($id) {
     	return $this->where('id_event', $id)->get();
     }
+
+    public function ConferenceMaterialRelation() 
+    {
+    	return $this->belongsTo(Event::class, 'id_event', 'id');
+    }
 }
