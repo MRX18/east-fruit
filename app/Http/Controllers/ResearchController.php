@@ -27,6 +27,11 @@ class ResearchController extends Controller
         $_answer = new Answer();
 
         $articles = $_research->allResearch(24);
+
+        foreach($articles as $article) {
+            $article->id_cont = ResearchContent::where('id_research', $article->id)->orderBy('id')->value('id');
+        }
+
         $slider = $_article->articleInIndexPage('baner', 1, 3);
 
 
@@ -95,8 +100,8 @@ class ResearchController extends Controller
         $_question = new Question();
         $_answer = new Answer();
 
-        $articles = $_research->researchArticle($id);
-        $articlesContent = $_research_content->onceResearchContent($articles->id);
+        $articlesContent = $_research_content->onceResearchContent($id);
+        $articles = $_research->researchArticle($articlesContent->id_research);
 
         $sitebar = $_article->sitebar(10);
 

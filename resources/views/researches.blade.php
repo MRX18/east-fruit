@@ -20,7 +20,7 @@
                                                     @if($article->size == 1)
                                                         <a href="{{ route('great-research', ['id'=>$article->slug]) }}" class="search"></a>
                                                     @else
-                                                        <a href="{{ route('min-research', ['id'=>$article->id]) }}" class="search"></a>
+                                                        <a href="{{ route('min-research', ['id'=>$article->id_cont]) }}" class="search"></a>
                                                     @endif
                                                 </div>
                                                 <div class="item-img item-category-img">
@@ -35,7 +35,7 @@
                                                 @if($article->size == 1)
                                                     <h4 style="text-align: left;"><a href="{{ route('great-research', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                                 @else
-                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id_cont]) }}">{{ $article->title }}</a></h4>
                                                 @endif
                                             </div>
 
@@ -59,7 +59,7 @@
                                                     @if($article->size == 1)
                                                         <a href="{{ route('great-research', ['id'=>$article->slug]) }}" class="search"></a>
                                                     @else
-                                                        <a href="{{ route('min-research', ['id'=>$article->id]) }}" class="search"></a>
+                                                        <a href="{{ route('min-research', ['id'=>$article->id_cont]) }}" class="search"></a>
                                                     @endif
                                                 </div>
                                                 <div class="item-img item-category-img">
@@ -74,7 +74,7 @@
                                                 @if($article->size == 1)
                                                     <h4 style="text-align: left;"><a href="{{ route('great-research', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
                                                 @else
-                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id]) }}">{{ $article->title }}</a></h4>
+                                                    <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$article->id_cont]) }}">{{ $article->title }}</a></h4>
                                                 @endif
                                             </div>
 
