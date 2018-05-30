@@ -91,7 +91,10 @@ class StaticController extends Controller
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
-    	$sitebar = Article::orderByDesc('id')->limit(10)->get();
+
+        $_article = new Article();
+        
+    	$sitebar = $_article->sitebar(10);
 
     	return view('contact')->with([
     		'title' => $title,
