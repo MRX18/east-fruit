@@ -2,6 +2,7 @@
 
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\User;
+use App\Occupation;
 
 AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
   $model->enableAccessCheck();
@@ -31,6 +32,11 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
             'User info' => new \SleepingOwl\Admin\Form\FormElements([
                 AdminFormElement::text('name', 'Name User')->required(),
                 AdminFormElement::text('email', 'Email')->required()->unique(),
+                AdminFormElement::select('id_occupation', 'Род деятельности')->setModelForOptions(new Occupation)->setDisplay(function($Occupation) {
+                    return $Occupation->title;
+                })->required(),
+                AdminFormElement::text('position', 'Должность')->required(),
+
                 AdminFormElement::multiselect('theroles', 'Роли')->setModelForOptions('App\Role')->setDisplay('display_name')
             ]),
             'Account' => new \SleepingOwl\Admin\Form\FormElements([

@@ -20,6 +20,9 @@ h3{
 a:hover {
 	text-decoration: none;
 }
+.event a {
+	border-bottom: 2px solid #33CB98;
+}
 /*--------------------------------------------------------------------------------------------------*/
 .auth {
 	display: none;
@@ -1771,6 +1774,7 @@ footer .links a:hover{
 	max-height: 250px;
 	overflow: hidden;
 	margin-bottom: 0px;
+	padding: 7px;
 }
 .media-conteiner img {
 	width: 100%;

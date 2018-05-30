@@ -54,17 +54,7 @@ $( document ).ready(function() {
     //---------------------------------------------------------------------------------------
 
     /* 4. Calendar */
-    $('#calendar').datepicker({
-        onSelect: function(date) {
-            // alert(date)
-            location="http://east-fruit.com/event-day/"+date
-            // location="http://east-fruit/event-day/"+date
-        },
-        dateFormat : "yy-mm-dd",
-        minDate: new Date($('#hiddendelivdate').val()),
-        monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-        dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
-    });
+    
 
     $('.p20-item').find('input[type=checkbox]').on('click',function(){
         if($(this).is(':checked')){

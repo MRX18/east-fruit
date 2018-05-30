@@ -1,6 +1,16 @@
     <!DOCTYPE html>
     <html lang="ru-RU">
     <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119485074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119485074-1');
+</script>
+
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -252,7 +262,6 @@
             </div>
         </div>
     </footer>
-
 <script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
 <script src="{{ asset('assets/8a33ea23/yii.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
@@ -277,6 +286,35 @@
             // alert($(this).val());
             // $('#position').removeAttr('disabled');
         });
+
+
+        /*calsendar*/
+        var eventDates = {};
+        @foreach($dateEvent as $date)
+            eventDates[new Date('{{ $date->date }}')] = new Date('{{ $date->date }}');
+        @endforeach
+
+        $('#calendar').datepicker({
+            onSelect: function(date) {
+                // alert(date)
+                location="http://east-fruit.com/event-day/"+date
+                // location="http://east-fruit/event-day/"+date
+            },
+            beforeShowDay: function(date) {
+                var highlight = eventDates[date];
+                if(highlight) {
+                    return [true, "event", "Tooltip text"];
+                } else {
+                    return [true, '', ''];
+                }
+            },
+            dateFormat : "yy-mm-dd",
+            minDate: new Date($('#hiddendelivdate').val()),
+            monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+            dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+        });
+
+        
     });
 </script>
 </body>
