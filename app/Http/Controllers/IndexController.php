@@ -5,6 +5,7 @@ use App\Article;
 use App\Image;
 use App\Answer;
 use App\Research;
+use App\Question;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,7 +23,7 @@ class IndexController extends Controller
         $_image = new Image();
         $_research = new Research();
 
-        $sitebar = $_article->sitebar(17);
+        $sitebar = $_article->sitebar(15);
         $sitebarAdaptive =$_article->sitebar(5);
 
 
@@ -131,9 +132,54 @@ class IndexController extends Controller
                 $count++;
                 Answer::where('id', $id)->update(array('count' => $count));
             }
-            return redirect()->back();
+
+            $questuinID = Answer::where('id', $idAnswer[1])->value('id_questions');
+            return redirect()->route('answer', ['id'=> $questuinID]);
         } else {
             return redirect()->back();
         }
+    }
+
+    public function answer($id) {
+
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+
+        $_article = new Article();
+        $_question = new Question();
+        $_answer = new Answer();
+
+        $question = $_question->questionID($id);
+
+        $title = $question->title;
+        $keywords = $title.", Опросник, фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title;
+
+        $answer = $_answer->answer($id);
+
+        $sum = 0;
+        foreach($answer as $value) {
+            $sum += $value->count;
+        }
+        $onceProcent = 100/$sum;
+        foreach($answer as $value) {
+            $value->procent = round($value->count*$onceProcent, 1);
+        }
+
+        
+        $sitebar = $_article->sitebar(5);
+
+        return view('question')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+            'sitebarArticle' => $sitebar,
+
+            'question' => $question,
+            'answers' => $answer
+        ]);
     }
 }

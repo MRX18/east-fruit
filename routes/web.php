@@ -55,6 +55,7 @@ Route::get('/conference-materials/{id}', 'CalendarController@conferenceMaterials
 Route::get('/search/', 'SearchController@index')->name('search');
 
 Route::match(['get', 'post'], '/question', 'IndexController@question')->name('question');
+Route::get('/vote/{id}', 'IndexController@answer')->where('id', '[0-9]+')->name('answer');
 
 
 Route::get('/study-trips', 'TrainingController@index')->name('study');

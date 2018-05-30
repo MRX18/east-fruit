@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
-                            <label for="position" class="col-md-4 control-label">Должность</label>
+                            <label for="position" class="col-md-4 control-label">Напишите, чем занимаетесь</label>
 
                             <div class="col-md-6">
                                 <input id="position" type="position" class="form-control" name="position" value="{{ old('position') }}" disabled>
