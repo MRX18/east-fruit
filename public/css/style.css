@@ -1834,11 +1834,29 @@ footer .links a:hover{
  	margin-bottom: -10px;
 
  }
+ /*galery article*/
+ .article-galery {
+	display: flex;
+	flex-wrap: wrap;
+ }
+ .article-galery a {
+ 	display: block;
+ 	width: 33.33%;
+ 	height: 150px;
+ 	overflow: hidden;
+ }
+ .article-galery a img {
+ 	width: 100%;
+ 	height: auto;
+ }
 
 @media screen and (max-width: 1199px) {
 	.event-right {
 		margin-right: 30px;
 	}
+	.article-galery a {
+	 	height: 100px;
+	 }
 }
 @media screen and (max-width: 990px) {
 	.lid:before {
@@ -1851,6 +1869,10 @@ footer .links a:hover{
 	.event-other {
 		width: 100%;
 	}
+
+	.article-galery a {
+	 	height: 80px;
+	 }
 }
 @media screen and (max-width: 974px) {
 	.height {
@@ -1867,11 +1889,17 @@ footer .links a:hover{
 	.event-other {
 		width: 49%;
 	}
+	.article-galery a {
+	 	height: 120px;
+	 }
 }
 @media screen and (max-width: 659px) {
 	.lid:before {
 		bottom: 150px;
 	}
+	.article-galery a {
+	 	height: 100px;
+	 }
 
 
 	/*blog*/
@@ -1942,6 +1970,9 @@ footer .links a:hover{
 		width: 100%;
 		height: auto;
 	}
+	.article-galery a {
+	 	height: 80px;
+	 }
 }
 @media screen and (max-width: 543px) {
 	.event-conteiner {
@@ -1970,6 +2001,10 @@ footer .links a:hover{
 	 }
 	.answer-pr {
 	 	width: 10%;
+	 }
+	 .article-galery a {
+	 	width: 50%;
+	 	height: 100px;
 	 }
 }
 @media screen and (max-width: 360px) {
@@ -2015,6 +2050,9 @@ footer .links a:hover{
 	.program-right {
 		width: 70%;
 	}
+	.article-galery a {
+	 	height: 80px;
+	 }
 
 @media screen and (max-width: 330px) {
 	.program {
@@ -2036,4 +2074,8 @@ footer .links a:hover{
 	.count-search {
 		font-size: 16px;
 	}
+	.article-galery a {
+		width: 100%;
+	 	height: auto;
+	 }
 }

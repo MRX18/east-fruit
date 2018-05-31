@@ -255,7 +255,6 @@ class CatigorController extends Controller
         $slider = $_article->articleInIndexPage('baner', 1, 3);
 
         $images = $_image->images(42);
-        $imagesM = $_image->images(9);
 
         return view('images')->with([
             'title' => $title,
@@ -266,6 +265,33 @@ class CatigorController extends Controller
 
             'slider' => $slider,
             'images' => $images
+        ]);
+    }
+
+    public function imageArticle($id) {
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_image = new Image();
+
+        $sitebar = $_article->sitebar(10);
+        $article = $_image->imageArticle($id);
+        $article->images = json_decode($article->images, true);
+
+        $title = $article->title;
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title;
+
+        return view('image-article')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+            'sitebarArticle' => $sitebar,
+
+            'article' => $article
         ]);
     }
 }

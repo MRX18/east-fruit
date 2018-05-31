@@ -473,11 +473,11 @@
                 <div class="col-sm-6 col-lg-4 text-right">
                     <div id='calendar'></div>
                 </div>
-                <div class="col-sm-6 col-lg-8 hidden-xs img-cont">
+                <div class="col-sm-6 col-lg-8 hidden-xs">
                     <div class="calendar-news">
 
                         @foreach($images as $image)
-                        <a href="{{ asset($image->img) }}" title="{{ $image->title }}" class="item">
+                        <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
                             <div class="item-hover">
                                 <img src="{{ asset($image->img) }}"/>
                             </div>
@@ -493,10 +493,10 @@
                     <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
                 </div> -->
                 <!-- mobail -->
-                <div class="col-sm-6 col-lg-8 visible-xs img-cont">
+                <div class="col-sm-6 col-lg-8 visible-xs">
                     <div class="calendar-news">
                         @foreach($imagesM as $image)
-                        <a href="{{ asset($image->img) }}" title="{{ $image->title }}" class="item">
+                        <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
                             <div class="item-hover">
                                 <img src="{{ asset($image->img) }}"/>
                             </div>

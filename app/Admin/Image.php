@@ -22,7 +22,9 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::text('title', 'Заголовок')->required(),
-            AdminFormElement::image('img', 'Изображение')->required()
+            AdminFormElement::image('img', 'Главное изображение')->required(),
+            AdminFormElement::ckeditor('text', 'Текст')->required(),
+            AdminFormElement::images('images', 'Галерея изображений')->storeAsJson()->required()
         );
     });
 }) 

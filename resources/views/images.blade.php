@@ -8,11 +8,11 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
-                        <div class="img-cont">
+                        <div>
                             <div class="calendar-news" style="display: block;">
 
                                 @foreach($images as $image)
-                                <a href="{{ asset($image->img) }}" title="{{ $image->title }}" class="item">
+                                <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
                                     <div class="item-hover">
                                         <img src="{{ asset($image->img) }}"/>
                                     </div>
