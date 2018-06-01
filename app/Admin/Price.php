@@ -4,6 +4,7 @@ use App\Price;
 use App\Product;
 use App\Market;
 use App\Currency;
+use App\Specification;
 
 AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
    $model->enableAccessCheck();
@@ -28,6 +29,9 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminFormElement::select('id_product', 'Категории')->setModelForOptions(new Product)->setDisplay(function($Product) {
                 return $Product->name;
             })->required(),
+            AdminFormElement::select('id_specification', 'Спецификация')->setModelForOptions(new Specification)->setDisplay(function($Specification) {
+                return $Specification->title;
+            }),
             AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
                 return $Market->market;
             })->required(),

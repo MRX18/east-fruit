@@ -41,6 +41,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     </head>
     <body>
 <div class="top-header">
@@ -267,12 +268,52 @@
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('slick/slick.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/share42/share42.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        /*price*/
+        $('select[id=product-price]').on('change', function() {
+            var product = $(this).val();
+
+            $('#specification').html('<option>Загрузка...<option>');
+            $('#specification').attr('disabled', true);
+
+            var data = {
+                    '_token' : "{!! csrf_token() !!}",
+                    'product' : product
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('specification') }}",
+                    data: data,
+                    success: function(res) {
+                        var specification = JSON.parse(res.specification);
+                        var option = '';
+                        // console.log(specification);
+                        $.each(specification, function(key, value) {
+                           option += '<option value="'+key+'">'+value+'</option>';
+                           // console.log(option);
+                        });
+                        $('#specification').html(option);
+                        $('#specification').attr('disabled', false);
+                    }
+                });
+                return false;
+        });
+
+
+        $('.selectpicker').selectpicker();
+
+        $('#market').on('change', function() {
+            $('#hidden_market').val($('#market').val());
+        });
+        /*---------------------------*/
+
+
         $('#userPhoto').on('change', function() {
             $('#userBlog').click();
         });
@@ -283,8 +324,6 @@
             } else {
                 $('#position').attr("disabled","disabled");  
             }
-            // alert($(this).val());
-            // $('#position').removeAttr('disabled');
         });
 
 
@@ -313,7 +352,6 @@
             monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
             dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
         });
-
         
     });
 </script>

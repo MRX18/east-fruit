@@ -11,6 +11,7 @@ use App\Article;
 use App\Market;
 use App\Product;
 use App\Price;
+use App\Specification;
 use App\Currency;
 use App\Image;
 use App\Question;
@@ -132,13 +133,14 @@ class CatigorController extends Controller
                     'monthMax'=>'required|size:2',
                     'yearMax'=>'required|size:4',
 
-                    //'market'=>'required|integer',
+                    'market'=>'required',
                     'product'=>'required|integer',
+                    'specification' => 'integer',
                     'price'=>'required|integer',
                     'currency' => 'required|integer'
                 )
             );
-            dd($request->market);
+            // dd($request->hidden_market);
 
             if ($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator->errors());
@@ -146,23 +148,74 @@ class CatigorController extends Controller
                 $dateMin = $request->yearMin.'-'.$request->monthMin.'-'.$request->deyMin;
                 $dateMax = $request->yearMax.'-'.$request->monthMax.'-'.$request->deyMax;
 
-                $_price = new Price;
-                $price = $_price->price($request->market, $request->product, $request->currency, $dateMin, $dateMax);
+                $market = explode(',', $request->hidden_market);
 
-                if($request->price == 1) { // минимальная цена
-                    $number = $price->min('price');
-                } elseif($request->price == 2) { // максимальная цена
-                    $number = $price->max('price');
-                } elseif($request->price == 3) { // средняя цена
-                    $number = $price->avg('price');
+                $_price = new Price;
+                if(isset($request->specification)) {
+                    $price = $_price->price($market, $request->product, $request->currency, $request->specification, $dateMin, $dateMax);
+                } else {
+                    $price = $_price->priceN($market, $request->product, $request->currency, $dateMin, $dateMax);
                 }
 
-                $marketTable = Market::where('id', $request->market)->value('market');
-                $productTable = Product::where('id', $request->product)->value('name');
+                // dd($price);
+                $priceTable = array();
+                if(count($price) != 0) {
+                    if($request->price == 1) { // минимальная цена
+                        for($i=0; $i<count($market); $i++) {
+                            $priceTable[$i] = $price->where('id_market', $market[$i])->sortBy('price')->first();
+                            if(isset($priceTable[$i])) {
+                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                if(isset($request->specification)) {
+                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                }
+                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                            } else {
+                                unset($priceTable[$i]);
+                            }
+                        }
+                    } elseif($request->price == 2) { // максимальная цена
+                        for($i=0; $i<count($market); $i++) {
+                            $priceTable[$i] = $price->where('id_market', $market[$i])->sortByDesc('price')->first();
+
+                            if(isset($priceTable[$i])) {
+                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                if(isset($request->specification)) {
+                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                }
+                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                            } else {
+                                unset($priceTable[$i]);
+                            }
+                        }
+                    } elseif($request->price == 3) { // средняя цена
+                        for($i=0; $i<count($market); $i++) {
+                            $priceAvg = $price->where('id_market', $market[$i])->avg('price');
+
+                            if(isset($priceAvg)) {
+                                $priceTable[$i] = $price->where('id_market', $market[$i])->first();
+                                $priceTable[$i]->price = $priceAvg;
+
+                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                if(isset($request->specification)) {
+                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                }
+                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                            } else {
+                                unset($priceTable[$i]);
+                            }
+                        }
+                    }
+                }
+                // dd($priceTable);
+
                 $dateTable = $request->deyMin.'.'.$request->monthMin.'.'.$request->yearMin.' - '.$request->deyMax.'.'.$request->monthMax.'.'.$request->yearMax;
 
 
-                if($number == null) {
+
+                if($priceTable == null) {
                     $error = true;
                 } else {
                     $error = false;
@@ -179,10 +232,8 @@ class CatigorController extends Controller
                     'products' => $products,
                     'currencys' => $currencys,
 
-                    'marketTable' => $marketTable,
-                    'productTable' => $productTable,
                     'dateTable' => $dateTable,
-                    'priceTable' => $number,
+                    'priceTable' => $priceTable,
                     'error' => $error,
                     'date' => $date
                 ]);
@@ -202,6 +253,19 @@ class CatigorController extends Controller
             'currencys' => $currencys,
             'date' => $date
         ]);
+    }
+
+    public function specification(Request $request) { //Спезализация в розделе цен
+        $_specification = new Specification;
+        $specification = $_specification->specification($request->product);
+        $spec = array();
+        foreach($specification as $value) {
+            $spec[$value->id] = $value->title;
+        }
+        $spec = json_encode($spec);
+        return response([
+            'specification' => $spec
+        ]); 
     }
 
     public function allArticle() {

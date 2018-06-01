@@ -24,6 +24,8 @@ Route::get('/research/{id}', 'ResearchController@research')->name('min-research'
 
 
 Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
+Route::post('/specification', 'CatigorController@specification')->name('specification');
+// Route::get('/specification/{id}', 'CatigorController@specification')->name('specification');
 // Route::get('/rating', 'CatigorController@rating');
 Route::get('/all-articles', 'CatigorController@allArticle')->name('all-articles');
 Route::get('/image', 'CatigorController@image')->name('images');

@@ -86,7 +86,13 @@ return [
                 ->setPriority(100),
             (new Page(\App\Market::class))
                 ->setIcon('fa fa-sliders')
-                ->setPriority(200)
+                ->setPriority(200),
+            (new Page(\App\Specification::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(400),
+            (new Page(\App\Currency::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(800)
         ]
     ],
 
