@@ -30,8 +30,8 @@
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                <li><a class="date-active" href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О событии</a></li>
+                <li><a class="date-active" href="{{ route('program', ['id'=>$event->id]) }}">Программа события</a></li>
                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
                 <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
                 <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
@@ -41,7 +41,7 @@
         <h2 class="title-item"Программа</h2>
 
         <div class="descr-item">
-            
+            @if(isset($programs))
             @foreach($programs as $program)
             <div class="program" style="max-width: 100%;">
                 <div class="program-left">{{ $program->time }}</div>
@@ -51,6 +51,9 @@
                 </div>
             </div>
             @endforeach
+            @else 
+                <h3><span>Материалы скоро появятся на сайте!</span></h3>
+            @endif
 
         </div>
 

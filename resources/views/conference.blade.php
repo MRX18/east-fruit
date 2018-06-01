@@ -30,8 +30,8 @@
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a class="date-active" href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a class="date-active" href="{{ route('conference', ['id'=>$event->id]) }}">О событии</a></li>
+                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа события</a></li>
                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
                 <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
                 <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
@@ -43,6 +43,8 @@
         <div class="descr-item">
             @if(isset($conference))
                 {!! $conference->text !!}
+            @else
+                <h3><span>Материалы скоро появятся на сайте!</span></h3>
             @endif
         </div>
 

@@ -20,7 +20,7 @@ class RegisterController extends Controller
 	            'email' => 'required|string|email|max:255|unique:users',
 	            'password' => 'required|string|min:6|confirmed',
                 'positionSelect' => 'required|integer',
-	            'position' => 'string|between:2,32'
+	            'position' => 'string|min:2'
 	        ]);
 
 	        if($validator->fails()) {

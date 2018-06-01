@@ -31,8 +31,8 @@
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О событии</a></li>
+                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа события</a></li>
                 <li><a href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
                 <li><a class="date-active" href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
                 <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
@@ -47,14 +47,20 @@
                 @if(count($conferenceMaterial) > 0)
                     @foreach($conferenceMaterial as $material)
                         @if($material->format == 'pdf')
-                        <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
-                        <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
+                            <div class="embed">
+                                <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
+                                <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
+                                <h2>{{ $material->title }}</h2>
+                                @if(isset($material->speacer))
+                                    <p>{{ $material->speacer }}</p>
+                                @endif
+                            </div>
                         @else
                             <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
                         @endif
                     @endforeach
                 @else
-                    <h3><span>Материалы конференции отсутствуют!</span> Они скоро появятся на сайте.</h3>
+                    <h3><span>Материалы скоро появятся на сайте!</span></h3>
                 @endif
             </div>
         </div>

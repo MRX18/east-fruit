@@ -26,7 +26,10 @@
                         <div class="answer-sh" style="width: {{ $answer->procent }}%"></div>
                     </div>
                 </div>
-                <div class="answer-pr">{{ $answer->procent }}%</div>
+                <div class="answer-pr">
+                    <h2>{{ $answer->procent }}%</h2>
+                    <p>{{ $answer->count }}</p>
+                </div>
             </div>
             @endforeach
 

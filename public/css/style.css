@@ -1609,7 +1609,7 @@ footer .links a:hover{
 .menu-calendar a {
 	display: block;
 	padding: 10px 20px;
-	font-size: 18px;
+	font-size: 17px;
 	outline: none;
 	color: #FFFFFF;
 	transition: 0.1s all;
@@ -1798,14 +1798,24 @@ footer .links a:hover{
 	color: #33CB98;
 	font-weight: bold;
 }
- .materials embed {
+.embed {
 	margin-bottom: 20px;
- } 
+}
+ .embed h2 {
+ 	font-size: 24px;
+ 	font-weight: bold;
+ 	margin-top: 0px;
+ 	color: #262D49;
+ }
+ .embed p {
+ 	margin-top: -10px;
+ }
  /*answer*/
  .answer {
  	width: 100%;
  	display: flex;
  	justify-content: space-between;
+ 	align-items: flex-end;
  	margin-bottom: 30px;
  }
  .answer-content {
@@ -1826,13 +1836,22 @@ footer .links a:hover{
  .answer-pr {
  	display: flex;
  	align-items: flex-end;
+ 	flex-direction: column;
  	width: 15%;
  	font-size: 40px;
  	font-weight: bold;
  	color: #32CB98;
  	text-align: right;
- 	margin-bottom: -10px;
+ 	margin-bottom: -20px;
 
+ }
+ .answer-pr h2 {
+ 	font-weight: bold;
+ }
+ .answer-pr p {
+	font-size: 20px;
+	color: #212840;
+	margin-top: -15px;
  }
  /*galery article*/
  .article-galery {
@@ -1916,9 +1935,6 @@ footer .links a:hover{
 		margin-right: 20px;
 	}
 
-	.answer {
-		justify-content: flex-start;
-	}
 	.answer-content {
 	 	width: 80%;
 	 }
@@ -2077,5 +2093,8 @@ footer .links a:hover{
 	.article-galery a {
 		width: 100%;
 	 	height: auto;
+	 }
+	 .answer-pr {
+	 	margin-bottom: -37px;
 	 }
 }

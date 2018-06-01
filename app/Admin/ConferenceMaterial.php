@@ -22,11 +22,12 @@ AdminSection::registerModel(ConferenceMaterial::class, function (ModelConfigurat
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::text('title', 'Материалы конференции')->required(),
+            AdminFormElement::text('speacer', 'Спикер'),
             AdminFormElement::select('id_event', 'Событие')->setModelForOptions(new Event)->setDisplay(function($Event) {
                 return $Event->title;
             })->required(),
 
-            AdminFormElement::upload('pdf', 'PDF файл к статье')->required()
+            AdminFormElement::upload('pdf', 'PDF файл к статье')
         )->setHtmlAttribute('enctype', 'multipart/form-data');
     });
 });

@@ -30,8 +30,8 @@
 
         <div style="margin-top: 30px;" class="menu-calendar">
             <ul>
-                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О конференции</a></li>
-                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа</a></li>
+                <li><a href="{{ route('conference', ['id'=>$event->id]) }}">О событии</a></li>
+                <li><a href="{{ route('program', ['id'=>$event->id]) }}">Программа события</a></li>
                 <li><a class="date-active" href="{{ route('speakers', ['id'=>$event->id]) }}">Спикеры</a></li>
                 <li><a href="{{ route('conference-materials', ['id'=>$event->id]) }}">Материалы конференции</a></li>
                 <li><a href="{{ route('media-report', ['id'=>$event->id]) }}">Медиа-отчет</a></li>
@@ -41,18 +41,21 @@
         <h2 class="title-item"Спикеры</h2>
 
         <div class="descr-item">
-            
-            @foreach($speakers as $speaker)
-            <div class="program">
-                <div class="program-left" style="background-image: url({{ asset($speaker->img) }});"></div>
-                <div class="program-right">
-                    <h3>{{ $speaker->title }}</h3>
-                    <div class="prog-text" style="font-size: 16px; font-weight: normal;">
-                        {!! $speaker->text !!}
+            @if(isset($speakers))
+                @foreach($speakers as $speaker)
+                <div class="program">
+                    <div class="program-left" style="background-image: url({{ asset($speaker->img) }});"></div>
+                    <div class="program-right">
+                        <h3>{{ $speaker->title }}</h3>
+                        <div class="prog-text" style="font-size: 16px; font-weight: normal;">
+                            {!! $speaker->text !!}
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @else
+                <h3><span>Материалы скоро появятся на сайте!</span></h3>
+            @endif
 
         </div>
 

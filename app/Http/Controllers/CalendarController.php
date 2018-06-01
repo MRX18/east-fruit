@@ -156,7 +156,7 @@ class CalendarController extends Controller
     }
 
     public function conference($id) {
-        $title = 'О конференции';
+        $title = 'О событии';
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
@@ -186,7 +186,7 @@ class CalendarController extends Controller
     }
 
     public function program($id) {
-        $title = 'Программа';
+        $title = 'Программа события';
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
 
