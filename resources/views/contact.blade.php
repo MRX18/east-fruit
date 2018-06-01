@@ -22,7 +22,7 @@
         <h2 class="title-item">Контакты</h2>
 
         <div class="descr-item">
-            <p>Вопросы, отзывы и предложения относительно работы EAST-FRUIT.com отправляйте на e-mail: info@east-fruit.com</p>      
+            <p>Вопросы, отзывы и предложения относительно работы East-fruit.com отправляйте на e-mail: info@east-fruit.com</p>      
         </div>
         
 
