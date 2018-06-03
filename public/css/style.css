@@ -23,6 +23,10 @@ a:hover {
 .event a {
 	border-bottom: 2px solid #33CB98;
 }
+.wrapper-category > h1 {
+	font-weight: bold;
+	color: #30C695;
+}
 /*--------------------------------------------------------------------------------------------------*/
 .auth {
 	display: none;
