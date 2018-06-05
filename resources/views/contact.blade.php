@@ -101,7 +101,6 @@
 
 </div></div>
 
-                    <div id='calendar'></div>
                 </div>
 
             </div>

@@ -88,7 +88,9 @@
     </div>
 
 </div></div>
-
+                    <div class="calendar-ev">
+                        <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
+                    </div>
                     <div id='calendar'></div>
                 </div>
 

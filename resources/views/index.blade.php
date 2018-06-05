@@ -471,6 +471,9 @@
         <div class="container">
             <div class="row no-gutter">
                 <div class="col-sm-6 col-lg-4 text-right">
+                    <div class="calendar-ev">
+                        <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
+                    </div>
                     <div id='calendar'></div>
                 </div>
                 <div class="col-sm-6 col-lg-8 hidden-xs">

@@ -43,6 +43,9 @@
 
                 </div>
                 <div class="col-sm-4 col-lg-3 hidden-xs category-left-block">
+                    <div class="calendar-ev">
+                        <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
+                    </div>
                     <div id='calendar'></div>
 
                     <div class="banner-category">

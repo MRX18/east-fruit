@@ -23,6 +23,15 @@ a:hover {
 .event a {
 	border-bottom: 2px solid #33CB98;
 }
+.calendar-ev {
+	background-color: #33CB98;
+	text-align: center;
+}
+.calendar-ev a {
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+}
 .wrapper-category > h1 > a {
 	font-weight: bold;
 	color: #30C695;
