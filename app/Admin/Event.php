@@ -35,6 +35,7 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
             AdminFormElement::select('year', 'Год события')->setModelForOptions(new Yaer)->setDisplay(function($Yaer) {
                 return $Yaer->year;
             })->required(),
+            AdminFormElement::ckeditor('description_media_report', 'Описание медиа-отчета'),
             AdminFormElement::image('img', 'Изображение')->required()
         );
     });

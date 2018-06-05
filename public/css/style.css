@@ -1771,7 +1771,17 @@ footer .links a:hover{
 	font-weight: normal;
 	margin-bottom: 7px;
 }
+.prog-text ul, .prog-text ol {
+	list-style-type: disc;
+	font-size: 16px;
+	font-weight: lighter;
+	margin-left: 40px;
+}
 /*media*/
+.text-media-report h1, .text-media-report h2, .text-media-report h3, .text-media-report h4, .text-media-report h5, .text-media-report h6 {
+	color: #262D49;
+	font-weight: bold;
+}
 .media-report {
 	width: 100%;
 	display: flex;

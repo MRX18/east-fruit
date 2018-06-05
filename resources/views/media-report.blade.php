@@ -41,6 +41,10 @@
         <h2 class="title-item">Медиа-отчет</h2>
 
         <div class="descr-item">
+            <div class="text-media-report">
+                {!! $event->description_media_report !!}
+            </div>
+
             <div class="media-report img-cont">
                 @if(count($mediaReport) > 0)
                     @foreach($mediaReport as $media)
