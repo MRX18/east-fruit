@@ -170,7 +170,7 @@
     <div class="east-menu east-second-menu">
         <div class="content">
             <div class="col-md-12 bottom-menu">
-                 <a href="/">Главная</a>
+                 <!--<a href="/">Главная</a>-->
                 @foreach($catigories as $catigor)
                     @if($catigor->menu == 2)
                         @if($catigor->color == 0)
@@ -204,33 +204,33 @@
     <!--========== BEGIN #FOOTER==========-->
     <footer id="footer">
         <div class="container">
-            <div class="col-lg-12 border-bottom text-center hidden-xs">
-                <div class="menu">
-                    <a href="/">Главная</a>
-                @foreach($catigories as $catigor)
-                    @if($catigor->menu == 2)
-                        @if($catigor->color == 0)
-                            <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
-                        @else
-                            <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>
-                        @endif
-                    @endif
+            <!--<div class="col-lg-12 border-bottom text-center hidden-xs">-->
+            <!--    <div class="menu">-->
+            <!--        <a href="/">Главная</a>-->
+            <!--    @foreach($catigories as $catigor)-->
+            <!--        @if($catigor->menu == 2)-->
+            <!--            @if($catigor->color == 0)-->
+            <!--                <a href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>-->
+            <!--            @else-->
+            <!--                <a class="current-link" href="{{ route('catigor', ['id'=>$catigor->id]) }}">{{ $catigor->title }}</a>-->
+            <!--            @endif-->
+            <!--        @endif-->
                     
-                @endforeach
+            <!--    @endforeach-->
 
-                @foreach($otherCatigorTop as $catigor)
+            <!--    @foreach($otherCatigorTop as $catigor)-->
 
-                     @if($catigor->menu == 2)
-                        @if($catigor->slug == 'events')
-                            <a href="{{ '/'.$catigor->slug.'/'.date('Y') }}">{{ $catigor->title }}</a>
-                        @else
-                            <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>
-                        @endif
-                    @endif
+            <!--         @if($catigor->menu == 2)-->
+            <!--            @if($catigor->slug == 'events')-->
+            <!--                <a href="{{ '/'.$catigor->slug.'/'.date('Y') }}">{{ $catigor->title }}</a>-->
+            <!--            @else-->
+            <!--                <a href="{{ '/'.$catigor->slug }}">{{ $catigor->title }}</a>-->
+            <!--            @endif-->
+            <!--        @endif-->
                     
-                @endforeach
-                </div>
-            </div>
+            <!--    @endforeach-->
+            <!--    </div>-->
+            <!--</div>-->
             <div class="col-lg-3">
                 <div class="links" style="position: relative; z-index: 100;">
                     <a href="{{ route('about') }}">О проекте</a>

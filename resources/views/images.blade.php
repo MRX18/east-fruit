@@ -8,6 +8,7 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
+                        <h1><a href="{{ route('images') }}">{{ $title }}</a></h1>
                         <div>
                             <div class="calendar-news" style="display: block;">
 

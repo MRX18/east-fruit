@@ -4,6 +4,9 @@
 <section id="main-section">
 	<section id="news-section">
 		<div class="container">
+			<div class="wrapper-category">
+				<h1><a href="{{ route('price') }}">{{ $title }}</a></h1>
+			</div>
 			<div class="content" style="margin-top: 30px; margin-bottom: 50px;">
 				@if (count($errors) > 0)
 				  <div class="alert alert-danger">

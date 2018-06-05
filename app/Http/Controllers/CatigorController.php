@@ -23,6 +23,7 @@ class CatigorController extends Controller
     	$title = "Главная";
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
+        $slug_catigor = $id;
 
     	foreach($catigories as $catigor) {
     		if($catigor->slug == $id) {
@@ -53,6 +54,7 @@ class CatigorController extends Controller
 
     	return view('catigories')->with([
     		'title' => $title,
+            'slug_catigor' => $slug_catigor,
     		'catigories' => $catigories,
             'otherCatigorTop' => $otherCatigorTop,
             'keywords' => $keywords,

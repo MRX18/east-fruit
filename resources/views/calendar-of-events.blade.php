@@ -8,7 +8,7 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
-                    
+                    <h1><a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a></h1>
                     <div class="menu-calendar">
                         <ul>
                             <!-- <li><a class="date-active" href="#">2018</a></li> -->

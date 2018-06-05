@@ -8,7 +8,7 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
-                        <h1>{{ $title }}</h1>
+                        <h1><a href="{{ route('catigor', ['id'=>$slug_catigor]) }}">{{ $title }}</a></h1>
                         <div id="w0" class="news-reserch category-block">
                             
                             @foreach($articles as $article)
