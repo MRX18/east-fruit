@@ -168,14 +168,14 @@
                             </div>
                             <div class="news-slider-controls">
                                 <!-- Left and right controls -->
-                                <a class="carousel-control" href="index.html#newsSlider" data-slide="prev">
+                                <!-- <a class="carousel-control" href="index.html#newsSlider" data-slide="prev">
                                     <img src="images/arrowWhireLeft.png">
                                 </a>
                                 <a class="right carousel-control" href="index.html#newsSlider" data-slide="next">
                                     <img src="images/arrowWhireRight.png">
-                                </a>
+                                </a> -->
                                 <div class="block-marquee">
-                                    <div class="marquee"><span>{{ $line->title }}<i></i></span></div>
+                                    <div class="marquee"><span><a href="{{ route('article', ['id'=>$line->slug]) }}">{{ $line->title }}</a><i></i></span></div>
                                 </div>
                             </div>
                         </div>
@@ -183,7 +183,7 @@
 
                     <div class="news-reserch">
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                            <h3>Исследования</h3>
+                            <h3 class="catigor-title-top"><a href="{{ route('research') }}">Исследования</a></h3>
                             <div id="w2" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($researchs as $research)
@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
-                            <h3>Технологии</h3>
+                            <h3  class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'technologies']) }}">Технологии</a></h3>
                             <div id="w3" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($technologys as $technology)
@@ -229,7 +229,7 @@
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                            <h3>Розничный аудит</h3>
+                            <h3 class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'retail-audit']) }}">Розничный аудит</a></h3>
                             <div id="w4" class="list-view" style="position: relative; z-index: 100;">
 
                                 @foreach($retailAudits as $retailAudit)
@@ -302,8 +302,8 @@
                         </script>
                     </div>
                     <div class="news-history hidden-xs">
-                        <div class="col-md-12 col-lg-4 text-center">
-                            <h3>Истории бизнеса</h3>
+                        <div class="col-md-12 col-lg-4 text-center catigor-conteiner-bottom">
+                            <h3 class="catigor-title-bottom"><a href="{{ route('catigor', ['id'=>'business-history']) }}">Истории бизнеса</a></h3>
                             @if(isset($stories))
                             <div class="item">
                                 <p>{{ $stories->title }}</p>
@@ -318,8 +318,8 @@
                             </div>
                             @endif
                         </div>
-                        <div class="col-md-12 col-lg-4 text-center">
-                            <h3>Рейтинги</h3>
+                        <div class="col-md-12 col-lg-4 text-center catigor-conteiner-bottom">
+                            <h3 class="catigor-title-bottom"><a href="{{ route('catigor', ['id'=>'ratings']) }}">Рейтинги</a></h3>
                             @if(isset($rating))
                             <div class="item">
                                 <p>{{ $rating->title }}</p>
@@ -334,8 +334,8 @@
                             </div>
                             @endif
                         </div>
-                        <div class="col-md-12 col-lg-4 text-center">
-                            <h3>Новости</h3>
+                        <div class="col-md-12 col-lg-4 text-center catigor-conteiner-bottom">
+                            <h3 class="catigor-title-bottom"><a href="{{ route('catigor', ['id'=>'news']) }}">Новости</a></h3>
                             @if(isset($new))
                             <div class="item">
                                 <p>{{ $new->title }}</p>
@@ -476,19 +476,18 @@
                     </div>
                     <div id='calendar'></div>
                 </div>
-                <div class="col-sm-6 col-lg-8 hidden-xs">
+                <div class="col-sm-6 col-lg-8">
                     <div class="calendar-news">
 
-                        @foreach($images as $image)
-                        <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
-                            <div class="item-hover">
-                                <img src="{{ asset($image->img) }}"/>
+                        <div class="photo-gallery">
+                            @foreach($images as $image)
+                            <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="images" style="background-image: url('{{ asset($image->img) }}');" title="{{ $image->title }}">
+                            </a>
+                            @endforeach
+                        </div>
+                        <div class="but">
+                                <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
                             </div>
-                            <div class="item-img">
-                                <img src="{{ asset($image->img) }}"/>
-                            </div>
-                        </a>
-                        @endforeach
 
                     </div>
                 </div>
@@ -496,39 +495,13 @@
                     <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
                 </div> -->
                 <!-- mobail -->
-                <div class="col-sm-6 col-lg-8 visible-xs">
-                    <div class="calendar-news">
-                        @foreach($imagesM as $image)
-                        <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
-                            <div class="item-hover">
-                                <img src="{{ asset($image->img) }}"/>
-                            </div>
-                            <div class="item-img">
-                                <img src="{{ asset($image->img) }}"/>
-                            </div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="but">
-                    <a class="image-but" href="{{ route('images') }}">Фотогалерея</a>
-                </div>
             </div>
         </div>
     </section>
     <section id="org-section">
-        <div class="container">
-            <div class="row no-gutter">
-                <h3>Организаторы</h3>
-                <div class="col-sm-5 col-md-6 col-xs-6 text-right">
-                    <div class="org-img">
-                        <img src="images/Logo&#32;FAO.png" alt="" />
-                    </div>
-                </div>
-                <div style="max-width: 250px;" class="col-sm-6 col-md-5 col-xs-6 col-md-offset-1">
-                    <img style="width: 100%; margin-left: 20px;" src="images/ebrr_logo.jpg" alt="" />
-                </div>
-            </div>
+        <div class="container authors-project">
+            <h2>Авторы проекта</h2>
+            <p>Региональный проект «Улучшение возможностей для торговли продукцией с высокой добавленной стоимостью в Грузии, Молдове, Таджикистане и Узбекистане» реализуется Продовольственной и сельскохозяйственной организацией объединённых наций (ФАО) совместно с Европейским банком реконструкции и развития (ЕБРР) и отраслевыми ассоциациями при поддержке EU4Business.</p>
         </div>
     </section>
     <section id="partners-section">

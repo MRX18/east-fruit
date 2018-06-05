@@ -79,8 +79,7 @@ class IndexController extends Controller
 
         $articles = $_article->allArticles(9);
 
-        $images = $_image->images(18);
-        $imagesM = $_image->images(9);
+        $images = $_image->images(6);
 
         foreach($articles as $option) {
             foreach ($catigories as $catigor) {
@@ -114,8 +113,7 @@ class IndexController extends Controller
             'new' => $new,
 
             'articles' => $articles,
-            'images' => $images,
-            'imagesM' => $imagesM
+            'images' => $images
     	]);
     }
 

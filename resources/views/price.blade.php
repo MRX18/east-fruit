@@ -107,7 +107,7 @@
 				    <div class="col-sm-10">
 				      <!-- <select class="form-control"  name="market"> -->
 				      	<select class="selectpicker" multiple name="market" data-width="100%" id="market">
-				      		<option disabled>Выбирите страну</option>
+				      		<option disabled>Выберите страну</option>
 				      	@foreach($markets as $velue)
 							<option value="{{ $velue->id }}">{{ $velue->market }}</option>
 				      	@endforeach
@@ -120,7 +120,7 @@
 				    <label for="inputEmail3" class="col-sm-2 control-label">Категории</label>
 				    <div class="col-sm-10">
 				      <select class="form-control" name="product" id="product-price">
-				      	<option selected disabled>Выбирите категорию</option>
+				      	<option selected disabled>Выберите категорию</option>
 				      	@foreach($products as $velue)
 							<option value="{{ $velue->id }}">{{ $velue->name }}</option>
 				      	@endforeach
@@ -132,7 +132,7 @@
 				    <label for="inputEmail3" class="col-sm-2 control-label">Спецификация</label>
 				    <div class="col-sm-10">
 				      <select class="form-control" name="specification" id="specification" disabled>
-				      	<option selected disabled>Выбирите спецификацию</option>
+				      	<option selected disabled>Выберите спецификацию</option>
 				      </select>
 				    </div>
 				  </div>
@@ -141,7 +141,7 @@
 				    <label for="inputEmail3" class="col-sm-2 control-label">Тип валюты</label>
 				    <div class="col-sm-10">
 				      <select class="form-control" name="currency">
-				      	<option selected disabled>Выбирите валюту</option>
+				      	<option selected disabled>Выберите валюту</option>
 				      	@foreach($currencys as $velue)
 							<option value="{{ $velue->id }}">{{ $velue->currency }}</option>
 				      	@endforeach
