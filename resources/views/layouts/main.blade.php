@@ -10,7 +10,8 @@
 
   gtag('config', 'UA-119485074-1');
 </script>
-
+        
+        <meta name="google-site-verification" content="13xvaFAbWVM56NminxJcNt69yC2qybn5jCaIIWFGwMM" />
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,16 +98,30 @@
                             <li>|</li>
                             <li>
                                 <div class="search-container">
-                                    <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
+                                    <div id="search-bth" class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
                                     <div class="search-input">
-                                        <form action="{{ route('search') }}" method="get">
+                                        <!-- <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
                                                 <input type="search" name="s" placeholder="Search..." title="Search"/>
                                                 <button><i class="fas fa-search"></i></button>
                                                 <a class="close-search"><i class="fas fa-times"></i></a>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
+
+<script>
+  (function() {
+    var cx = '014474192692953994249:5mommp5jfhu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+
                                 </div>
                             </li>
                         </ul>
@@ -120,15 +135,29 @@
                             <li>|</li>
                             <li style="margin-left: -20px;">
                                 <div class="search-container">
-                                    <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
+                                    <div id="search-bth" class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
                                     <div class="search-input">
-                                        <form action="{{ route('search') }}" method="get">
+                                        <!-- <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
                                                 <input type="search" name="s" placeholder="Search..." title="Search"/>
                                                 <button><i class="fas fa-search"></i></button>
                                                 <a class="close-search"><i class="fas fa-times"></i></a>
                                             </div>
-                                        </form>
+                                        </form> -->
+
+                                        <script>
+                                          (function() {
+                                            var cx = '014474192692953994249:5mommp5jfhu';
+                                            var gcse = document.createElement('script');
+                                            gcse.type = 'text/javascript';
+                                            gcse.async = true;
+                                            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                                            var s = document.getElementsByTagName('script')[0];
+                                            s.parentNode.insertBefore(gcse, s);
+                                          })();
+                                        </script>
+                                        <gcse:searchbox-only></gcse:searchbox-only>
+
                                     </div>
                                 </div>
                             </li>

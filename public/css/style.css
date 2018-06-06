@@ -188,7 +188,38 @@ section, footer, header{
 .search-input {
 	display: none;
 }
-.search-form {
+.gsc-search-box {
+	width: 400px !important;
+	position: absolute;
+	right: -5px;
+	bottom: 0px;
+}
+.gsc-search-button-v2 {
+	position: relative;
+	height: 32px;
+	background-color: #8CD6BD !important;
+}
+.gsc-search-button-v2 svg {
+	position: absolute;
+	top: 5px;
+	left: 17px;
+}
+.gsc-input-box, .gstl_50, .gsib_a, .gsc-input, .gsst_a, .gscb_a{
+	height: 30px !important;
+	padding: 0px 0px !important;
+	margin: 0px 0px !important;
+}
+.gsc-input {
+	background-color: transparent !important;
+}
+.gscb_a {
+	padding: 8px !important;
+}
+.gscb_a:hover {
+	background-color: transparent !important;
+}
+
+/*.search-form {
 	display: flex;
 	position: absolute;
 	right: -15px;
@@ -232,7 +263,7 @@ section, footer, header{
 .search-form a:hover {
 	background-color: #E4533E;
 	cursor: pointer;
-}
+}*/
 /**/
 .search-article {
 	width: 100%;
@@ -2059,8 +2090,10 @@ footer .links a:hover{
 		font-size: 20px;
 	}
 	/*search*/
-	.search-form input {
-		width: 250px;
+	.gsc-search-box {
+		width: 400px !important;
+		right: -8px;
+		bottom: -3px;
 	}
 }
 @media screen and (max-width: 560px) {
@@ -2132,6 +2165,10 @@ footer .links a:hover{
 	 	width: 50%;
 	 	height: 100px;
 	 }
+	.gsc-search-box {
+		width: 290px !important;
+		right: -4px;
+	}
 }
 @media screen and (max-width: 360px) {
 	.answer-content {
@@ -2171,6 +2208,10 @@ footer .links a:hover{
 	/*search*/
 	.search-form input {
 		width: 160px;
+	}
+	.gsc-search-box {
+		width: 290px !important;
+		right: -40px;
 	}
 	/**/
 	.program-right {
