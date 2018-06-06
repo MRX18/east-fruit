@@ -98,8 +98,8 @@
                             <li>|</li>
                             <li>
                                 <div class="search-container">
-                                    <div id="search-bth" class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
-                                    <div class="search-input">
+                                    <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
+                                    <div id="search-bth" class="search-input">
                                         <!-- <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
                                                 <input type="search" name="s" placeholder="Search..." title="Search"/>
@@ -108,19 +108,19 @@
                                             </div>
                                         </form>
                                     </div> -->
-
-<script>
-  (function() {
-    var cx = '014474192692953994249:5mommp5jfhu';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchbox-only></gcse:searchbox-only>
+    <script>
+      (function() {
+        var cx = '014474192692953994249:5mommp5jfhu';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:searchbox-only></gcse:searchbox-only>
+    <div class="search-exit"><i class="fas fa-times"></i></div>
 
                                 </div>
                             </li>
@@ -135,8 +135,8 @@
                             <li>|</li>
                             <li style="margin-left: -20px;">
                                 <div class="search-container">
-                                    <div id="search-bth" class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
-                                    <div class="search-input">
+                                    <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
+                                    <div id="search-bth" class="search-input">
                                         <!-- <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
                                                 <input type="search" name="s" placeholder="Search..." title="Search"/>
@@ -157,6 +157,7 @@
                                           })();
                                         </script>
                                         <gcse:searchbox-only></gcse:searchbox-only>
+                                        <div class="search-exit"><i class="fas fa-times"></i></div>
 
                                     </div>
                                 </div>

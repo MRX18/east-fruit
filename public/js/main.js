@@ -29,16 +29,17 @@ $( document ).ready(function() {
         $('.search-input').css('display', 'block');
     });
 
-    // $('.close-search)').click(function() {
-    //     $('.search-input').css('display', 'none');
-    // });
-    $(document).mouseup(function (e){ // событие клика по веб-документу
-        var div = $("#search-bth"); // тут указываем ID элемента
-        if (!div.is(e.target) // если клик был не по нашему блоку
-            && div.has(e.target).length === 0) { // и не по его дочерним элементам
-            $('.search-input').css('display', 'none');
-        }
+    $('.search-exit').click(function() {
+        $('.search-input').css('display', 'none');
     });
+
+    // $(document).mouseup(function (e){ // событие клика по веб-документу
+    //     var div = $("#search-bth"); // тут указываем ID элемента
+    //     if (!div.is(e.target) // если клик был не по нашему блоку
+    //         && div.has(e.target).length === 0) { // и не по его дочерним элементам
+    //         $('.search-input').css('display', 'none');
+    //     }
+    // });
 
 
 
