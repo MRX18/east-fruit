@@ -265,7 +265,7 @@
                 <div class="links" style="position: relative; z-index: 100;">
                     <a href="{{ route('about') }}">О проекте</a>
                     <a href="{{ route('cooperation') }}">Сотрудничество</a>
-                    <a href="{{ route('contact') }}">Контакты</a>
+                    <a href="{{ route('contact') }}">Связаться с нами</a>
                     <!-- <a href="index.html">Медиа</a> -->
                 </div>
             </div>

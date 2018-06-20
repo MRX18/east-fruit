@@ -5,7 +5,34 @@
         <div class="container">
             <div class="row no-gutter">
                 <div class="col-sm-4 col-lg-3 hidden-xs">
-
+<!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup" style="margin-top: -30px;">
+<form action="https://east-fruit.us18.list-manage.com/subscribe/post?u=1f5fa0f4967175e9e576cb0ca&amp;id=6e49ceab61" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+    <h2 style="font-weight: bold; font-size: 20px;
+    margin-bottom: 3px; color: #212840;">Подпишитесь на обновление наших материалов</h2>
+<div class="mc-field-group">
+    <label for="mce-EMAIL" style="color: #30C593;">Адрес электронной почты <span class="asterisk">*</span>
+</label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+    <div style="margin-top: -10px;" id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1f5fa0f4967175e9e576cb0ca_6e49ceab61" tabindex="-1" value=""></div>
+    <div class="clear"><input style="background-color: #262D49;" type="submit" value="Подписаться" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
                     <div class="entry-post">
                         <h3>Актуальное</h3>
                         <!-- Begin .item-->
@@ -38,6 +65,15 @@
 
 
 
+
+
+
+
+</div>
+
+                <div class="col-sm-8 col-lg-9">
+
+                    <div class="col-sm-6 col-lg-3 visible-xs">
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -49,7 +85,7 @@
 <form action="https://east-fruit.us18.list-manage.com/subscribe/post?u=1f5fa0f4967175e9e576cb0ca&amp;id=6e49ceab61" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
     <h2 style="font-weight: bold; font-size: 20px;
-    margin-bottom: 3px; color: #212840;">Подпишитесь на нашу почтовую рассылку</h2>
+    margin-bottom: 3px; color: #212840;">Подпишитесь на обновление наших материалов</h2>
 <div class="mc-field-group">
     <label for="mce-EMAIL" style="color: #30C593;">Адрес электронной почты <span class="asterisk">*</span>
 </label>
@@ -66,15 +102,6 @@
 </div>
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
-
-
-
-</div>
-
-                <div class="col-sm-8 col-lg-9">
-
-                    <div class="col-sm-6 col-lg-3 visible-xs">
-
                         <div class="entry-post">
                             <h3>Актуальное</h3>
                             <!-- Begin .item-->
@@ -181,74 +208,74 @@
                         </div>
                     </div>
 
-                    <div class="news-reserch">
-                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                            <h3 class="catigor-title-top"><a href="{{ route('research') }}">Исследования</a></h3>
-                            <div id="w2" class="list-view" style="position: relative; z-index: 100;">
+                    <!--<div class="news-reserch">-->
+                    <!--    <div class="col-lg-4 col-md-4 col-sm-4 text-center">-->
+                    <!--        <h3 class="catigor-title-top"><a href="{{ route('research') }}">Исследования</a></h3>-->
+                    <!--        <div id="w2" class="list-view" style="position: relative; z-index: 100;">-->
 
-                                @foreach($researchs as $research)
-                                <div data-key="32">
-                                    <div class="item">
-                                        <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>
-                                        @if($research->size == 1)
-                                        <a href="{{ route('great-research', ['id'=>$research->slug]) }}" class="item-hover">
-                                        @else
-                                        <a href="{{ route('min-research', ['id'=>$research->id]) }}" class="item-hover">
-                                        @endif
-                                            <div class="search"></div>
-                                        </a>
-                                        <div class="item-img">
-                                            <img src="{{ asset($research->img) }}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                    <!--            @foreach($researchs as $research)-->
+                    <!--            <div data-key="32">-->
+                    <!--                <div class="item">-->
+                    <!--                    <p style="text-shadow: 1px 1px 0px #000;">{{ $research->title }}</p>-->
+                    <!--                    @if($research->size == 1)-->
+                    <!--                    <a href="{{ route('great-research', ['id'=>$research->slug]) }}" class="item-hover">-->
+                    <!--                    @else-->
+                    <!--                    <a href="{{ route('min-research', ['id'=>$research->id]) }}" class="item-hover">-->
+                    <!--                    @endif-->
+                    <!--                        <div class="search"></div>-->
+                    <!--                    </a>-->
+                    <!--                    <div class="item-img">-->
+                    <!--                        <img src="{{ asset($research->img) }}"/>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <!--            </div>-->
+                    <!--            @endforeach-->
 
-                            </div>                        
-                        </div>
+                    <!--        </div>                        -->
+                    <!--    </div>-->
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 text-center border">
-                            <h3  class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'technologies']) }}">Технологии</a></h3>
-                            <div id="w3" class="list-view" style="position: relative; z-index: 100;">
+                    <!--    <div class="col-lg-4 col-md-4 col-sm-4 text-center border">-->
+                    <!--        <h3  class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'technologies']) }}">Технологии</a></h3>-->
+                    <!--        <div id="w3" class="list-view" style="position: relative; z-index: 100;">-->
 
-                                @foreach($technologys as $technology)
-                                <div data-key="32">
-                                    <div class="item">
-                                        <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$technology->slug]) }}" class="item-hover">
-                                            <div class="search"></div>
-                                        </a>
-                                        <div class="item-img">
-                                            <img src="{{ asset($technology->img) }}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                    <!--            @foreach($technologys as $technology)-->
+                    <!--            <div data-key="32">-->
+                    <!--                <div class="item">-->
+                    <!--                    <p style="text-shadow: 1px 1px 10px #000;">{{ $technology->title }}</p>-->
+                    <!--                    <a href="{{ route('article', ['id'=>$technology->slug]) }}" class="item-hover">-->
+                    <!--                        <div class="search"></div>-->
+                    <!--                    </a>-->
+                    <!--                    <div class="item-img">-->
+                    <!--                        <img src="{{ asset($technology->img) }}"/>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <!--            </div>-->
+                    <!--            @endforeach-->
 
-                            </div>                        
-                        </div>
+                    <!--        </div>                        -->
+                    <!--    </div>-->
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                            <h3 class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'retail-audit']) }}">Розничный аудит</a></h3>
-                            <div id="w4" class="list-view" style="position: relative; z-index: 100;">
+                    <!--    <div class="col-lg-4 col-md-4 col-sm-4 text-center">-->
+                    <!--        <h3 class="catigor-title-top"><a href="{{ route('catigor', ['id'=>'retail-audit']) }}">Розничный аудит</a></h3>-->
+                    <!--        <div id="w4" class="list-view" style="position: relative; z-index: 100;">-->
 
-                                @foreach($retailAudits as $retailAudit)
-                                <div data-key="32">
-                                    <div class="item">
-                                        <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>
-                                        <a href="{{ route('article', ['id'=>$retailAudit->slug]) }}" class="item-hover">
-                                            <div class="search"></div>
-                                        </a>
-                                        <div class="item-img">
-                                            <img src="{{ asset($retailAudit->img) }}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                    <!--            @foreach($retailAudits as $retailAudit)-->
+                    <!--            <div data-key="32">-->
+                    <!--                <div class="item">-->
+                    <!--                    <p style="text-shadow: 1px 1px 10px #000;">{{ $retailAudit->title }}</p>-->
+                    <!--                    <a href="{{ route('article', ['id'=>$retailAudit->slug]) }}" class="item-hover">-->
+                    <!--                        <div class="search"></div>-->
+                    <!--                    </a>-->
+                    <!--                    <div class="item-img">-->
+                    <!--                        <img src="{{ asset($retailAudit->img) }}"/>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <!--            </div>-->
+                    <!--            @endforeach-->
 
-                            </div>                        
-                        </div>
-                    </div>
+                    <!--        </div>                        -->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <div class="news-slick_slider">
                         <div class="news-comments-slick_slider-slider">
                             @foreach($interview as $value)
@@ -369,7 +396,7 @@
 
                                         </div>
 
-                                        <!-- <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> -->
+                                         <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> 
 
                                         <div style="float: left;" class="title">
                                             <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
@@ -498,12 +525,12 @@
             </div>
         </div>
     </section>
-    <section id="org-section">
-        <div class="container authors-project">
-            <h2>Авторы проекта</h2>
-            <p>Региональный проект «Улучшение возможностей для торговли продукцией с высокой добавленной стоимостью в Грузии, Молдове, Таджикистане и Узбекистане» реализуется Продовольственной и сельскохозяйственной организацией объединённых наций (ФАО) совместно с Европейским банком реконструкции и развития (ЕБРР) и отраслевыми ассоциациями при поддержке EU4Business.</p>
-        </div>
-    </section>
+    <!--<section id="org-section">-->
+    <!--    <div class="container authors-project">-->
+    <!--        <h2>Авторы проекта</h2>-->
+    <!--        <p>Региональный проект «Улучшение возможностей для торговли продукцией с высокой добавленной стоимостью в Грузии, Молдове, Таджикистане и Узбекистане» реализуется Продовольственной и сельскохозяйственной организацией объединённых наций (ФАО) совместно с Европейским банком реконструкции и развития (ЕБРР) и отраслевыми ассоциациями при поддержке EU4Business.</p>-->
+    <!--    </div>-->
+    <!--</section>-->
     <section id="partners-section">
         <div class="container">
             <div class="row no-gutter">

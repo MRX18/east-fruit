@@ -35,10 +35,8 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
                 return $Market->market;
             })->required(),
-            AdminFormElement::select('currency', 'Тип валюты')->setModelForOptions(new Currency)->setDisplay(function($Currency) {
-                return $Currency->currency;
-            })->required(),
-            AdminFormElement::text('price', 'Цена')->required(),
+
+            AdminFormElement::text('price', 'Цена(грн)')->required(),
             AdminFormElement::date('date', 'Дата')->required()
 
         );

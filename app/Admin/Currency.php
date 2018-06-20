@@ -20,7 +20,8 @@ AdminSection::registerModel(Currency::class, function (ModelConfiguration $model
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             
-            AdminFormElement::text('currency', 'Название')->required()
+            AdminFormElement::text('currency', 'Название')->required(),
+            AdminFormElement::text('charCode', 'Символьный код')->required()
 
         );
     });

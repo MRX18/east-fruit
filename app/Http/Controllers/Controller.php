@@ -45,4 +45,20 @@ class Controller extends BaseController
 
         return $colection;
     }
+
+
+
+
+    public function currency() {
+        header("Content-Type: text/html; charset=utf-8");
+        $date = date("d/m/Y"); // Текущая дата
+        $content = simplexml_load_file("https://www.cbr.ru/scripts/XML_daily.asp?date_req=".$date);
+
+        $currency = array();
+        
+        foreach($content->Valute as $cur) { 
+            $currency["{$cur->CharCode}"] = [str_replace(",", ".", $cur->Value), (int)$cur->Nominal];
+        }
+        return $currency;
+    }
 }

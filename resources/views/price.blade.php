@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('content')
-
 <section id="main-section">
 	<section id="news-section">
 		<div class="container">
@@ -143,12 +142,27 @@
 				      <select class="form-control" name="currency">
 				      	<option selected disabled>Выберите валюту</option>
 				      	@foreach($currencys as $velue)
-							<option value="{{ $velue->id }}">{{ $velue->currency }}</option>
+							<option value="{{ $velue->charCode }}">{{ $velue->currency }}</option>
 				      	@endforeach
 				      </select>
 				    </div>
 				  </div>
+	
+				<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">Вид даных</label>
+				    <div class="col-sm-10">
+				      <div class="form-inline">
 
+						    <label class="radio-inline">
+								  <input type="radio" name="view" id="inlineRadio1" value="1"> График
+								</label>
+								<label class="radio-inline">
+								  <input type="radio" name="view" id="inlineRadio2" value="2"> Таблица
+								</label>
+
+					  	</div>
+				    </div>
+				  </div>
 
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Цена</label>
@@ -179,34 +193,88 @@
 			
 			@if(isset($error))
 				@if($error == false)
-				<div class="tabl" style="margin-bottom: 50px;">
-					<table class="table">
-					  <thead class="thead-default">
-					    <tr>
-					      <th scope="row">Рынок</th>
-					      <th>Товар</th>
-					      <th>Спецификация</th>
-					      <th>Цена</th>
-					      <th>Период</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					  	@foreach($priceTable as $price)
-					    <tr>
-					      <td scope="row">{{ $price->id_market }}</td>
-					      <td>{{ $price->id_product }}</td>
-					      @if($price->id_specification)
-							<td>{{ $price->id_specification }}</td>
-					      @else
-							<td></td>
-					      @endif
-					      <td>{{ $price->price }}</td>
-					      <td>{{ $dateTable }}</td>
-					    </tr>
-					    @endforeach
-					  </tbody>
-					</table>
-				</div>
+					@if($view == 1)
+						<canvas id="myChart"></canvas>
+
+						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+						<script type="text/javascript">
+							var ctx = document.getElementById('myChart').getContext('2d');
+							var chart = new Chart(ctx, {
+							    // The type of chart we want to create
+							    type: 'line',
+
+							    // The data for our dataset
+							    data: {
+							        labels: [
+							        	@foreach($priceYeras as $value)
+							        		{{ $value }},
+							        	@endforeach
+							        ],
+
+							        datasets: [
+							        @for($i=0; $i<count($market); $i++)
+							        {
+							            label: 
+							            	@foreach($markets as $value)
+							            	 	@if($market[$i] == $value->id)
+							            			"{{ $value->market }}"
+							            		@endif
+							            	@endforeach
+							            ,
+
+
+							            backgroundColor: 'transparent',
+							            borderColor: 'rgb({{ rand(0, 255) }}, {{ rand(0, 255) }}, {{ rand(0, 255) }})',
+							            data: [
+							            	@for($j=0; $j<count($priceYeras); $j++)
+							            		{{ $priceTable[$i][$j]->price }},
+							            	@endfor
+							            ],
+							        },
+							        @endfor
+							        // {
+							        //     label: "My First dataset",
+							        //     backgroundColor: 'transparent',
+							        //     borderColor: 'rgb(205, 99, 172)',
+							        //     data: [47589, 25879, 36925],
+							        // },
+							        ]
+							    },
+
+							    // Configuration options go here
+							    options: {}
+							});
+						</script>
+					@else
+						<div class="tabl" style="margin-bottom: 50px;">
+							<table class="table">
+							  <thead class="thead-default">
+							    <tr>
+							      <th scope="row">Рынок</th>
+							      <th>Товар</th>
+							      <th>Спецификация</th>
+							      <th>Цена</th>
+							      <th>Период</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							  	@foreach($priceTable as $price)
+							    <tr>
+							      <td scope="row">{{ $price->id_market }}</td>
+							      <td>{{ $price->id_product }}</td>
+							      @if($price->id_specification)
+									<td>{{ $price->id_specification }}</td>
+							      @else
+									<td></td>
+							      @endif
+							      <td>{{ $price->price }}</td>
+							      <td>{{ $dateTable }}</td>
+							    </tr>
+							    @endforeach
+							  </tbody>
+							</table>
+						</div>
+					@endif
 				@elseif($error == true)
 					<div class="alert alert-danger" style="margin-bottom: 50px;">
 				    	По вашему запросу ничего не найдено!

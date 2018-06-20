@@ -113,6 +113,7 @@ class CatigorController extends Controller
         $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
+        // dd($this->currency());
 
         $markets = Market::get();
         $products = Product::get();
@@ -139,7 +140,8 @@ class CatigorController extends Controller
                     'product'=>'required|integer',
                     'specification' => 'integer',
                     'price'=>'required|integer',
-                    'currency' => 'required|integer'
+                    'currency' => 'required',
+                    'view'=>'required|integer'
                 )
             );
             // dd($request->hidden_market);
@@ -154,64 +156,122 @@ class CatigorController extends Controller
 
                 $_price = new Price;
                 if(isset($request->specification)) {
-                    $price = $_price->price($market, $request->product, $request->currency, $request->specification, $dateMin, $dateMax);
+                    $price = $_price->price($market, $request->product, $request->specification, $dateMin, $dateMax);
                 } else {
-                    $price = $_price->priceN($market, $request->product, $request->currency, $dateMin, $dateMax);
+                    $price = $_price->priceN($market, $request->product, $dateMin, $dateMax);
                 }
 
-                // dd($price);
-                $priceTable = array();
-                if(count($price) != 0) {
-                    if($request->price == 1) { // минимальная цена
+                // узнаю есть ли указаная валюта
+                if(array_key_exists($request->currency, $this->currency())) {
+                    $currency = $this->currency()[$request->currency];
+                } else {
+                    $currency = $this->currency()['USD'];
+                }
+                $currency = $currency[0]/$currency[1];
+                $uan = $this->currency()['UAH'][0]/$this->currency()['UAH'][1];
+
+                /*онвертируем валюту*/
+                foreach($price as $value) {
+                    $rub = $value->price*$uan;
+                    $value->price = round($rub/$currency);
+                }
+
+                $priceYeras = array();
+                $yearP = array();
+                if($request->view == 1) { // график
+                    $priceTable = $price;
+                    foreach($priceTable as $price) {
+                        $year = explode('-', $price->date);
+                        $price->date = $year[0];
+                        $priceYeras[] = $year[0];
+                    }
+                    $priceTable = $priceTable->sortBy('date');
+                    $priceYeras = array_unique($priceYeras);
+                    foreach($priceYeras as $py) {
+                        $yearP[] = $py;
+                    }
+
+
+                    $data = array();
+                    if($request->price == 1) {
                         for($i=0; $i<count($market); $i++) {
-                            $priceTable[$i] = $price->where('id_market', $market[$i])->sortBy('price')->first();
-                            if(isset($priceTable[$i])) {
-                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
-                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
-                                if(isset($request->specification)) {
-                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
-                                }
-                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
-                            } else {
-                                unset($priceTable[$i]);
+                            for($j=0; $j<count($priceYeras); $j++) {
+                                $data[$i][$j] = $priceTable->where('id_market', $market[$i])->where('date', $yearP[$j])->sortBy('price')->first();
+                            }
+                        } 
+                    } else if($request->price == 2) {
+                        for($i=0; $i<count($market); $i++) {
+                            for($j=0; $j<count($priceYeras); $j++) {
+                                $data[$i][$j] = $priceTable->where('id_market', $market[$i])->where('date', $yearP[$j])->sortByDesc('price')->first();
                             }
                         }
-                    } elseif($request->price == 2) { // максимальная цена
-                        for($i=0; $i<count($market); $i++) {
-                            $priceTable[$i] = $price->where('id_market', $market[$i])->sortByDesc('price')->first();
+                    } else if($request->price == 3) {
+                       for($i=0; $i<count($market); $i++) {
+                            for($j=0; $j<count($priceYeras); $j++) {
+                                $p = $priceTable->where('id_market', $market[$i])->where('date', $yearP[$j])->avg('price');
+                                $pt = $priceTable->where('id_market', $market[$i])->where('date', $yearP[$j])->first();
+                                $pt->price = $p;
 
-                            if(isset($priceTable[$i])) {
-                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
-                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
-                                if(isset($request->specification)) {
-                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
-                                }
-                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
-                            } else {
-                                unset($priceTable[$i]);
+
+                                $data[$i][$j] = $pt;
                             }
-                        }
-                    } elseif($request->price == 3) { // средняя цена
-                        for($i=0; $i<count($market); $i++) {
-                            $priceAvg = $price->where('id_market', $market[$i])->avg('price');
+                        } 
+                    }
+                    $priceTable = $data;
 
-                            if(isset($priceAvg)) {
-                                $priceTable[$i] = $price->where('id_market', $market[$i])->first();
-                                $priceTable[$i]->price = $priceAvg;
-
-                                $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
-                                $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
-                                if(isset($request->specification)) {
-                                    $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                } else { // таблиця
+                    $priceTable = array();
+                    if(count($price) != 0) {
+                        if($request->price == 1) { // минимальная цена
+                            for($i=0; $i<count($market); $i++) {
+                                $priceTable[$i] = $price->where('id_market', $market[$i])->sortBy('price')->first();
+                                if(isset($priceTable[$i])) {
+                                    $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                    $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                    if(isset($request->specification)) {
+                                        $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                    }
+                                    // $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                                } else {
+                                    unset($priceTable[$i]);
                                 }
-                                $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
-                            } else {
-                                unset($priceTable[$i]);
+                            }
+                        } elseif($request->price == 2) { // максимальная цена
+                            for($i=0; $i<count($market); $i++) {
+                                $priceTable[$i] = $price->where('id_market', $market[$i])->sortByDesc('price')->first();
+
+                                if(isset($priceTable[$i])) {
+                                    $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                    $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                    if(isset($request->specification)) {
+                                        $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                    }
+                                    // $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                                } else {
+                                    unset($priceTable[$i]);
+                                }
+                            }
+                        } elseif($request->price == 3) { // средняя цена
+                            for($i=0; $i<count($market); $i++) {
+                                $priceAvg = $price->where('id_market', $market[$i])->avg('price');
+
+                                if(isset($priceAvg)) {
+                                    $priceTable[$i] = $price->where('id_market', $market[$i])->first();
+                                    $priceTable[$i]->price = $priceAvg;
+
+                                    $priceTable[$i]->id_market = Market::where('id', $market[$i])->value('market');
+                                    $priceTable[$i]->id_product = Product::where('id', $request->product)->value('name');
+                                    if(isset($request->specification)) {
+                                        $priceTable[$i]->id_specification = Specification::where('id', $request->specification)->value('title');
+                                    }
+                                    // $priceTable[$i]->currency = Currency::where('id', $request->currency)->value('currency');
+                                } else {
+                                    unset($priceTable[$i]);
+                                }
                             }
                         }
                     }
                 }
-                // dd($priceTable);
 
                 $dateTable = $request->deyMin.'.'.$request->monthMin.'.'.$request->yearMin.' - '.$request->deyMax.'.'.$request->monthMax.'.'.$request->yearMax;
 
@@ -222,6 +282,8 @@ class CatigorController extends Controller
                 } else {
                     $error = false;
                 }
+
+                // dd($priceTable); 
 
                 return view('price')->with([
                     'title' => $title,
@@ -237,7 +299,10 @@ class CatigorController extends Controller
                     'dateTable' => $dateTable,
                     'priceTable' => $priceTable,
                     'error' => $error,
-                    'date' => $date
+                    'date' => $date,
+                    'view' => $request->view,
+                    'market' => $market,
+                    'priceYeras' => $yearP
                 ]);
             }
         }
