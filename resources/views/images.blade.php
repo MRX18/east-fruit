@@ -10,17 +10,38 @@
                     <div class="wrapper-category">
                         <h1><a href="{{ route('images') }}">{{ $title }}</a></h1>
                         <div>
-                            <div class="calendar-news" style="display: block;">
+                            <div id="w0" class="news-reserch category-block">
 
                                 @foreach($images as $image)
-                                <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
+                                <!-- <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="item">
                                     <div class="item-hover">
                                         <img src="{{ asset($image->img) }}"/>
                                     </div>
                                     <div class="item-img">
                                         <img src="{{ asset($image->img) }}"/>
                                     </div>
-                                </a>
+                                </a> -->
+
+                                <div data-key="43">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center art" style="height: 250px;">
+                                        <div class="item-category">
+                                            <div class="item item-category-image">
+                                                <div class="item-hover">
+                                                    <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="search"></a>
+                                                </div>
+                                                <div class="item-img item-category-img">
+                                                    <img src="{{ asset($image->img) }}"/>
+                                                </div>
+
+                                            </div>
+
+                                            <div style="float: left;" class="title">
+                                                <h4 style="text-align: left;"><a href="{{ route('image-article', ['id'=>$image->id]) }}">{{ $image->title }}</a></h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                                 @endforeach
 
                             </div>

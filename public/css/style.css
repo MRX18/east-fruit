@@ -1968,6 +1968,7 @@ footer .links a:hover{
  	width: 33.33%;
  	height: 150px;
  	overflow: hidden;
+ 	padding: 5px;
  }
  .article-galery a img {
  	width: 100%;
