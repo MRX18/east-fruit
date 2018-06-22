@@ -16,8 +16,8 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
-            AdminColumn::text('id_market')->setLabel('Страны'),
-            AdminColumn::text('id_product')->setLabel('Категории'),
+            AdminColumn::text('MarketRelation.market')->setLabel('Страны'),
+            AdminColumn::text('ProductRelation.name')->setLabel('Категории'),
             AdminColumn::text('price')->setLabel('Цена'),
             AdminColumn::text('date')->setLabel('Дата'),
         ]);

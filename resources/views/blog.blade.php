@@ -19,7 +19,14 @@
 									</div>
 									<div class="information">
 										<span class="name">{{ $article->name_user }}</span>
-										<h3><a href="{{ route('articleBlog', ['id'=>$article->id]) }}">{{ $article->title }}</a></h3>
+
+                                        @if($article->slug == NULL)
+										  <h3><a href="{{ route('articleBlog', ['id'=>$article->id]) }}">{{ $article->title }}</a></h3>
+                                        @else
+                                            <h3><a href="{{ route('articleBlog', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h3>
+                                        @endif
+
+
 										<span class="text">{!! mb_substr($article->text, 0, 200).'...' !!}</span>
 										<span class="date" style="display: block; color: #000; font-size: 12px; margin-top: 5px;">{{ $article->date }}</span>
 									</div>

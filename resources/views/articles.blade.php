@@ -19,7 +19,7 @@
 
     <div class="news-more-item">
 
-        <h2 class="title-item">{{ $article->title }}</h2>
+        <h1 class="title-item">{{ $article->title }}</h1>
         
         @if(isset($article->pdf))
             <a class="article-download" href="{{ asset($article->pdf) }}" download>Скачать полную версию </a>
@@ -44,7 +44,7 @@
 
 
         <ul class="category-item">
-            <li class="entry-meta bg-7">{{ $article->catigor }}</li>
+            <li class="entry-meta bg-{{ $article->id_catigories }}">{{ $article->catigor }}</li>
         </ul>
 
         @if(isset($article->pdf))

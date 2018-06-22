@@ -141,7 +141,12 @@ class BlogController extends Controller
 
         $sitebar = $_article->sitebar(10);
 
-        $article = $_blog->oneArticle($id);
+        if(preg_match('/[0-9]+/',$id)) {  
+            $article = $_blog->oneArticleId($id);
+        } else {
+            $article = $_blog->oneArticleSlug($id);
+        }
+
 
         $comment = BlogComment::where('id_blog', $id)->orderByDesc('id')->get();
         $reads = Article::orderByDesc('id')->limit(10)->get();
@@ -288,13 +293,14 @@ class BlogController extends Controller
                     )
                 );
                 $date = date('Y-m-d');
+                $slug = str_slug($request->title);
 
                 if($validator->fails()) {
                     return redirect()->back()->withInput()->withErrors($validator->errors());
                 } else {
                     $idUser = Auth::user()->id;
 
-                    Blog::insert(['id_user'=>$idUser, 'title'=>$request->title, 'text'=>$request->article, 'date'=>$date]);
+                    Blog::insert(['id_user'=>$idUser, 'title'=>$request->title, 'slug'=>$slug, 'text'=>$request->article, 'date'=>$date]);
 
                     $addComment = true;
                     return redirect()->back()->with('addComment', $addComment);

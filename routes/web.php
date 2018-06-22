@@ -32,7 +32,7 @@ Route::get('/image', 'CatigorController@image')->name('images');
 Route::get('/image-article/{id}', 'CatigorController@imageArticle')->where('id', '[0-9]+')->name('image-article');
 
 Route::match(['get', 'post'], '/blog', 'BlogController@index')->name('blog');
-Route::match(['get', 'post'],'/blog/article/{id}', 'BlogController@article')->where('id', '[0-9]+')->name('articleBlog');
+Route::match(['get', 'post'],'/blog/article/{id}', 'BlogController@article')->name('articleBlog');
 Route::match(['get','post'],'/addcommen/{id}', 'BlogController@addcomment')->where('id', '[0-9]+')->name('addcomment');
 Route::match(['get', 'post'], '/add-blog', 'BlogController@addblog')->name('addblog');
 Route::match(['get', 'post'], '/add-article-blog', 'BlogController@addartblog')->name('addartblog');

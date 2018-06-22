@@ -171,7 +171,7 @@
                                 @if($i == 1)
                                     active
                                 @endif">
-                                    <img src="{{ asset($slid->img) }}" />
+                                    <img src="{{ asset($slid->img) }}" alt="{{ $slid->title }}"/>
                                     <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
                                         <span>{{ $slid->date }}</span>
                                         <p><a style="color: #fff;" href="{{ route('article', ['id'=>$slid->slug]) }}">{{ $slid->title }}</a></p>
@@ -281,7 +281,7 @@
                             @foreach($interview as $value)
                             <div class="news-team-item">
                                 <div class="news-slick-item-img">
-                                    <img src="{{ asset($value->img) }}" />
+                                    <img src="{{ asset($value->img) }}" alt="{{ $value->title }}"/>
                                 </div>
                                 <div class="news-team-item-text">
                                     <p>{{ $value->title }}</p>
@@ -335,7 +335,7 @@
                             <div class="item">
                                 <p>{{ $stories->title }}</p>
                                 <div class="item-img">
-                                    <img src="{{ asset($stories->img) }}"/>
+                                    <img src="{{ asset($stories->img) }}" alt="{{ $stories->title }}"/>
                                 </div>
                                 <div class="item-link">
                                     <span>{{ $stories->date }}</span>
@@ -351,7 +351,7 @@
                             <div class="item">
                                 <p>{{ $rating->title }}</p>
                                 <div class="item-img">
-                                    <img src="{{ asset($rating->img) }}"/>
+                                    <img src="{{ asset($rating->img) }}" alt="{{ $rating->title }}"/>
                                 </div>
                                 <div class="item-link">
                                     <span>{{ $rating->date }}</span>
@@ -367,7 +367,7 @@
                             <div class="item">
                                 <p>{{ $new->title }}</p>
                                 <div class="item-img">
-                                    <img src="{{ asset($new->img) }}"/>
+                                    <img src="{{ asset($new->img) }}" alt="{{ $new->title }}"/>
                                 </div>
                                 <div class="item-link">
                                     <span>{{ $new->date }}</span>
@@ -380,7 +380,7 @@
                     </div>
 
                     <div class="wrapper-category">
-                        <div id="w0" class="news-reserch category-block">
+                        <div  class="news-reserch category-block">
                             
                             @foreach($articles as $article)
                             <div data-key="43">
@@ -391,12 +391,12 @@
                                                 <a href="{{ route('article', ['id'=>$article->slug]) }}" class="search"></a>
                                             </div>
                                             <div class="item-img item-category-img">
-                                                <img src="{{ asset($article->img) }}"/>
+                                                <img src="{{ asset($article->img) }}" alt="{{ $article->title }}"/>
                                             </div>
 
                                         </div>
 
-                                         <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div> 
+                                         <div class="entry-meta bg-{{ $article->id_catigories }}">{{ $article->catigor }}</div> 
 
                                         <div style="float: left;" class="title">
                                             <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>
@@ -416,14 +416,15 @@
 
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- <section id="slider-section">
         <div class="container">
             <div class="row no-gutter">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <!-- <ol class="carousel-indicators">
+                  Indicators 
+                   <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -541,7 +542,7 @@
                     <img src="images/UHA.png" alt="" />
                 </div>
                 <div class="col-sm-3 col-md-3 col-xs-6 text-center">
-                    <img src="images/400x400&#32;(1).png" alt="" />
+                    <img src="images/400x400.png" alt="" />
                 </div>
             </div>
         </div>

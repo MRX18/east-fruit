@@ -67,10 +67,10 @@
         <div class="content">
             <div class="col-md-12">
                 <div class="east-header-logo">
-                    <a href="/"><img src="{{ asset('images/east-fruit.png') }}"></a>
+                    <a href="/"><img src="{{ asset('images/east-fruit.png') }}" alt="East-fruit logo"></a>
                 </div>
                 <div class="east-header-hamburger">
-                    <img src="images/hamburger.png">
+                    <img src="images/hamburger.png" alt="menu icon">
                 </div>
                 <div class="east-header-phone">
                     <p>Информация о рынках овощей и фруктов на восток от Евросоюза</p>
@@ -92,7 +92,7 @@
 
                             <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
                             <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
-                            <li> <a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></i></a></li>
+                            <li> <a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></a></li>
                             <li style="margin-right: 10px;"> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
                             <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                             <li>|</li>
@@ -119,9 +119,11 @@
         s.parentNode.insertBefore(gcse, s);
       })();
     </script>
-    <gcse:searchbox-only></gcse:searchbox-only>
+    <div class="gcse-searchbox-only"></div>
+    <!--<gcse:searchbox-only></gcse:searchbox-only>-->
     <div class="search-exit"><i class="fas fa-times"></i></div>
 
+                                </div>
                                 </div>
                             </li>
                         </ul>
@@ -129,14 +131,14 @@
                         <ul class="menu-auth-bottom">
                             <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
                             <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
-                            <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                            <li> <a href="/"><i class="fab fa-facebook-f"></i></a></li>
                             <li> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
                             <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                             <li>|</li>
                             <li style="margin-left: -20px;">
                                 <div class="search-container">
                                     <div class="search-icon-btn"> <span style="cursor:pointer"><i class="fas fa-search"></i></span> </div>
-                                    <div id="search-bth" class="search-input">
+                                    <div class="search-input">
                                         <!-- <form action="{{ route('search') }}" method="get">
                                             <div class="search-form">
                                                 <input type="search" name="s" placeholder="Search..." title="Search"/>
@@ -156,7 +158,8 @@
                                             s.parentNode.insertBefore(gcse, s);
                                           })();
                                         </script>
-                                        <gcse:searchbox-only></gcse:searchbox-only>
+                                        <div class="gcse-searchbox-only"></div>
+                                        <!--<gcse:searchbox-only></gcse:searchbox-only>-->
                                         <div class="search-exit"><i class="fas fa-times"></i></div>
 
                                     </div>
@@ -273,7 +276,7 @@
                 <ul>
                     <li> <a href="/"><i class="fab fa-twitter"></i></a> </li>
                     <li> <a href="/"> <i class="fab fa-instagram"></i></a> </li>
-                    <li> <a href="/"><i class="fab fa-facebook-f"></i></i></a></li>
+                    <li> <a href="/"><i class="fab fa-facebook-f"></i></a></li>
                     <li style="margin-right: 10px;"> <a href="/"><i class="fab fa-telegram-plane"></i></a> </li>
                     <li> <a href="/"><i class="fab fa-viber"></i></a> </li>
                 </ul>
@@ -288,7 +291,7 @@
             </div>
             <div class="col-lg-2 east-footer-copy">
                 <div class="">
-                    <img src="{{ asset('images/east-fruit.png') }}">
+                    <img src="{{ asset('images/east-fruit.png') }}" alt="East-fruit logo">
                 </div>
                 <div class="">
                     <p class="copy">© 2018 Аналитическая платформа для роста плодоовощного бизнеса</p>

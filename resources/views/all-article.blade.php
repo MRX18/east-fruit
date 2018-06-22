@@ -25,7 +25,7 @@
 
                                         </div>
 
-                                        <div class="entry-meta bg-{{ rand(1,9) }}">{{ $article->catigor }}</div>
+                                        <div class="entry-meta bg-{{ $article->id_catigories }}">{{ $article->catigor }}</div>
 
                                         <div style="float: left;" class="title">
                                             <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>

@@ -10,7 +10,11 @@ class Blog extends Model
     	return $this->where('visible', 1)->orderByDesc('id')->paginate($count);
     }
 
-    public function oneArticle($id) {
+    public function oneArticleId($id) {
     	return $this->where('id', $id)->first();
     } 
+
+    public function oneArticleSlug($slug) {
+    	return $this->where('slug', $slug)->first();
+    }
 }
