@@ -17,9 +17,7 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
             AdminColumn::text('MarketRelation.market')->setLabel('Страны'),
-            AdminColumn::text('ProductRelation.name')->setLabel('Категории'),
-            AdminColumn::text('price')->setLabel('Цена'),
-            AdminColumn::text('date')->setLabel('Дата'),
+            AdminColumn::text('ProductRelation.name')->setLabel('Категории')
         ]);
         return $display;
     });
@@ -36,8 +34,8 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                 return $Market->market;
             })->required(),
 
-            AdminFormElement::text('price', 'Цена(грн)')->required(),
-            AdminFormElement::date('date', 'Дата')->required()
+            AdminFormElement::textarea('price', 'Цена(грн)')->required(),
+            AdminFormElement::textarea('date', 'Дата')->required()
 
         );
     });

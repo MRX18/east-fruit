@@ -46,6 +46,22 @@ class Controller extends BaseController
         return $colection;
     }
 
+    public function dateRange($first, $last) { //Виртає всі дати в указаном діапазоні
+        $step = '+1 day';
+        $dates = array();
+        $current = strtotime($first);
+        $last = strtotime($last);
+
+        while( $current <= $last ) {
+
+            $dates[] = date('Y-m-d', $current);
+            $current = strtotime($step, $current);
+        }
+
+
+        return $dates;
+    }
+
 
 
 
@@ -60,5 +76,26 @@ class Controller extends BaseController
             $currency["{$cur->CharCode}"] = [str_replace(",", ".", $cur->Value), (int)$cur->Nominal];
         }
         return $currency;
+    }
+
+    public function avgPrice($array) {
+        $unique = array_values(array_unique($array));
+        $count = array();
+        for($i=0; $i<count($unique); $i++) {
+            $count[$unique[$i]] = 0;
+        }
+
+        for($i=0; $i<count($unique); $i++) {
+            for($j=0; $j<count($array); $j++) {
+                if($unique[$i] == $array[$j]) {
+                    $count[$unique[$i]] += 1;
+                }
+            }
+        }
+
+        $max = max($count);
+        $key = array_search($max, $count);
+
+        return $key;
     }
 }

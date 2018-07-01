@@ -86,9 +86,9 @@
                     </div>
                     <div id='calendar'></div>
 
-                    <div class="banner-category">
-                        <img src="../../images/page-category/Layer&#32;920.png" alt="Banner">
-                    </div>
+                    <!--<div class="banner-category">-->
+                    <!--    <img src="../../images/page-category/Layer&#32;920.png" alt="Banner">-->
+                    <!--</div>-->
 
                     <div class="vote-block">
                         <h4>Опрос</h4>

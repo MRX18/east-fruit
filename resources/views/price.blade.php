@@ -212,11 +212,11 @@
 							        ],
 
 							        datasets: [
-							        @for($i=0; $i<count($market); $i++)
+							        @foreach($priceTable as $price)
 							        {
 							            label: 
 							            	@foreach($markets as $value)
-							            	 	@if($market[$i] == $value->id)
+							            	 	@if($price->id_market == $value->id)
 							            			"{{ $value->market }}"
 							            		@endif
 							            	@endforeach
@@ -226,12 +226,12 @@
 							            backgroundColor: 'transparent',
 							            borderColor: 'rgb({{ rand(0, 255) }}, {{ rand(0, 255) }}, {{ rand(0, 255) }})',
 							            data: [
-							            	@for($j=0; $j<count($priceYeras); $j++)
-							            		{{ $priceTable[$i][$j]->price }},
-							            	@endfor
+							            	@foreach($price->datePrice as $datePrice)
+							            		{{ $datePrice}},
+							            	@endforeach
 							            ],
 							        },
-							        @endfor
+							        @endforeach
 							        // {
 							        //     label: "My First dataset",
 							        //     backgroundColor: 'transparent',
@@ -259,17 +259,33 @@
 							  </thead>
 							  <tbody>
 							  	@foreach($priceTable as $price)
-							    <tr>
-							      <td scope="row">{{ $price->id_market }}</td>
-							      <td>{{ $price->id_product }}</td>
-							      @if($price->id_specification)
-									<td>{{ $price->id_specification }}</td>
-							      @else
-									<td></td>
-							      @endif
-							      <td>{{ $price->price }}</td>
-							      <td>{{ $dateTable }}</td>
-							    </tr>
+                                    @foreach($price->datePrice as $key => $datePrice)
+                                        <tr>
+                                            @foreach($markets as $value)
+                                                @if($price->id_market == $value->id)
+                                                    <td scope="row">{{ $value->market }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach($products as $value)
+                                                @if($price->id_product == $value->id)
+                                                    <td>{{ $value->name }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @if($price->id_specification)
+                                                @foreach($specification as $value)
+                                                    @if($price->id_specification == $value->id)
+                                                        <td>{{ $value->title }}</td>
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <td>Нет</td>
+                                            @endif
+                                            <td>{{ $datePrice }}</td>
+                                            <td>{{ $key }}</td>
+                                        </tr>
+                                    @endforeach
 							    @endforeach
 							  </tbody>
 							</table>

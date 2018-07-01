@@ -19,7 +19,7 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
         $display->setColumns([
             AdminColumn::text('name')->setLabel('Name'),
             AdminColumn::email('email')->setLabel('Email'),
-            AdminColumn::lists('roles.name', 'Роли')->append(AdminColumn::filter('roles.display_name')),
+            AdminColumn::lists('roles.display_name', 'Роли')->append(AdminColumn::filter('roles.display_name')),
             AdminColumn::text('created_at')->setLabel('created_at')
         ]);
         return $display;
@@ -30,6 +30,7 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
 
         $tabs = AdminDisplay::tabbed([
             'User info' => new \SleepingOwl\Admin\Form\FormElements([
+                AdminFormElement::checkbox('admin', 'Команда East-fruit'),
                 AdminFormElement::text('name', 'Name User')->required(),
                 AdminFormElement::text('email', 'Email')->required()->unique(),
                 AdminFormElement::select('id_occupation', 'Род деятельности')->setModelForOptions(new Occupation)->setDisplay(function($Occupation) {
@@ -38,6 +39,7 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
                 AdminFormElement::text('position', 'Должность')->required(),
 
                 AdminFormElement::multiselect('theroles', 'Роли')->setModelForOptions('App\Role')->setDisplay('display_name')
+//                AdminFormElement::image('img', 'Изображение')->required()
             ]),
             'Account' => new \SleepingOwl\Admin\Form\FormElements([
             ]),

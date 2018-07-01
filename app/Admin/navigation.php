@@ -109,27 +109,27 @@ return [
         ]
     ],
 
-    [
-        'title' => "Обучающие поездки",
-        'icon' => 'fa fa-sliders',
-        'pages' => [
-            (new Page(\App\Training::class))
-                ->setIcon('fa fa-sliders')
-                ->setPriority(0),
-            (new Page(\App\TrainingEvent::class))
-                ->setIcon('fa fa-sliders')
-                ->setPriority(100),
-            (new Page(\App\TrainingProgram::class))
-                ->setIcon('fa fa-sliders')
-                ->setPriority(200),
-            (new Page(\App\TrainingOrganizer::class))
-                ->setIcon('fa fa-sliders')
-                ->setPriority(400),
-            (new Page(\App\TrainingMap::class))
-                ->setIcon('fa fa-sliders')
-                ->setPriority(800)
-        ]
-    ],
+//    [
+//        'title' => "Обучающие поездки",
+//        'icon' => 'fa fa-sliders',
+//        'pages' => [
+//            (new Page(\App\Training::class))
+//                ->setIcon('fa fa-sliders')
+//                ->setPriority(0),
+//            (new Page(\App\TrainingEvent::class))
+//                ->setIcon('fa fa-sliders')
+//                ->setPriority(100),
+//            (new Page(\App\TrainingProgram::class))
+//                ->setIcon('fa fa-sliders')
+//                ->setPriority(200),
+//            (new Page(\App\TrainingOrganizer::class))
+//                ->setIcon('fa fa-sliders')
+//                ->setPriority(400),
+//            (new Page(\App\TrainingMap::class))
+//                ->setIcon('fa fa-sliders')
+//                ->setPriority(800)
+//        ]
+//    ],
 
     [
         'title' => "Исследования",

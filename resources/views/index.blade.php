@@ -47,7 +47,7 @@
                 </div>
                 <div class="item-content">
                     <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a></p>
-                    <div class="entry-meta bg-{{ rand(1,9) }}">
+                    <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                         @if($sitebar->visible == 1)
                             {{ $sitebar->catigor }}
                         @endif
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="item-content">
                                     <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a></p>
-                                    <div class="entry-meta bg-{{ rand(1,9) }}">
+                                    <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                         @if($sitebar->visible == 1)
                                             {{ $sitebar->catigor }}
                                         @endif
@@ -193,18 +193,18 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <div class="news-slider-controls">
+                            <!--<div class="news-slider-controls">-->
                                 <!-- Left and right controls -->
                                 <!-- <a class="carousel-control" href="index.html#newsSlider" data-slide="prev">
-                                    <img src="images/arrowWhireLeft.png">
-                                </a>
-                                <a class="right carousel-control" href="index.html#newsSlider" data-slide="next">
-                                    <img src="images/arrowWhireRight.png">
-                                </a> -->
-                                <div class="block-marquee">
-                                    <div class="marquee"><span><a href="{{ route('article', ['id'=>$line->slug]) }}">{{ $line->title }}</a><i></i></span></div>
-                                </div>
-                            </div>
+                            <!--        <img src="images/arrowWhireLeft.png">-->
+                            <!--    </a>-->
+                            <!--    <a class="right carousel-control" href="index.html#newsSlider" data-slide="next">-->
+                            <!--        <img src="images/arrowWhireRight.png">-->
+                            <!--    </a> -->
+                            <!--    <div class="block-marquee">-->
+                            <!--        <div class="marquee"><span><a href="{{ route('article', ['id'=>$line->slug]) }}">{{ $line->title }}</a><i></i></span></div>-->
+                            <!--    </div>-->
+                            <!--</div>-->
                         </div>
                     </div>
 
@@ -396,7 +396,7 @@
 
                                         </div>
 
-                                         <div class="entry-meta bg-{{ $article->id_catigories }}">{{ $article->catigor }}</div> 
+                                         <!--<div class="entry-meta bg-{{ $article->id_catigories }}">{{ $article->catigor }}</div> -->
 
                                         <div style="float: left;" class="title">
                                             <h4 style="text-align: left;"><a href="{{ route('article', ['id'=>$article->slug]) }}">{{ $article->title }}</a></h4>

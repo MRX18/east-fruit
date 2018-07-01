@@ -27,7 +27,7 @@
                                         @endif
 
 
-										<span class="text">{!! mb_substr($article->text, 0, 200).'...' !!}</span>
+										<span class="text">{!! strip_tags(mb_substr($article->text, 0, 200)).'...' !!}</span>
 										<span class="date" style="display: block; color: #000; font-size: 12px; margin-top: 5px;">{{ $article->date }}</span>
 									</div>
 								</div>
