@@ -20,9 +20,9 @@
                         <i class="fa fa-pencil"></i>
                     </a>
 
-                    <a href="http://east-fruit/admin/users/44/edit" class="btn btn-xs btn-danger btn-delete" title="" data-toggle="tooltip" data-original-title="Удалить">
-                        <i class="fa fa-trash"></i>
-                    </a>
+                    {{--<a href="http://east-fruit/admin/users/44/edit" class="btn btn-xs btn-danger btn-delete" title="" data-toggle="tooltip" data-original-title="Удалить">--}}
+                        {{--<i class="fa fa-trash"></i>--}}
+                    {{--</a>--}}
                 </td>
             </tr>
         @endforeach

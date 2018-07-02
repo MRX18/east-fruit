@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use App\Control;
+use Auth;
 
 class Article extends Model
 {
@@ -93,6 +95,10 @@ class Article extends Model
     /*admin*/
     public function setSlugAttribute($value)
     {
+        Control::insert(
+            ['id_user' => Auth::user()->id]
+        );
+
         if (!$this->exists) {
             return $this->attributes['slug'] = str_slug($this->attributes['title']);
         } 

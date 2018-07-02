@@ -33,11 +33,7 @@ return [
         'icon'  => 'fa fa-exclamation-circle',
         'url'   => route('admin.information'),
     ],
-    [
-        'title' => 'Команда East-Fruit',
-        'icon'  => 'fa fa-users',
-        'url'   => route('eastfruit'),
-    ],
+
     [
         'title' => "Пользователи",
         'icon' => 'fa fa-credit-card',
@@ -50,7 +46,13 @@ return [
                 ->setPriority(100),
             (new Page(\App\User::class))
                 ->setIcon('fa fa-user')
-                ->setPriority(200)
+                ->setPriority(200),
+            [
+                'title' => 'Команда East-Fruit',
+                'icon'  => 'fa fa-users',
+                'url'   => route('eastfruit'),
+                'priority' => 400,
+            ],
         ]
     ],
 /**/
