@@ -19,7 +19,6 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
         $display->setColumns([
             AdminColumn::text('name')->setLabel('Name'),
             AdminColumn::email('email')->setLabel('Email'),
-            AdminColumn::lists('roles.display_name', 'Роли')->append(AdminColumn::filter('roles.display_name')),
             AdminColumn::text('created_at')->setLabel('created_at')
         ]);
         return $display;

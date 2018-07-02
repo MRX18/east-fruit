@@ -34,6 +34,11 @@ return [
         'url'   => route('admin.information'),
     ],
     [
+        'title' => 'Команда East-Fruit',
+        'icon'  => 'fa fa-users',
+        'url'   => route('eastfruit'),
+    ],
+    [
         'title' => "Пользователи",
         'icon' => 'fa fa-credit-card',
         'pages' => [

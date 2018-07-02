@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function user($idUser) {
         return $this->where('id', $idUser)->first();
     }
+
+    public function eastfruit() {
+        return $this->where('admin', 1)->orderByDesc('id')->get();
+    }
 }
