@@ -51,6 +51,15 @@ a:hover {
 .catigor-title-bottom a:hover {
 	color: #fff;
 }
+/*banner*/
+.banner-category {
+	width: 100%;
+	margin-top: 10px;
+}
+.banner-category img {
+	width: 100%;
+}
+}
 /*--------------------------------------------------------------------------------------------------*/
 .auth {
 	display: none;

@@ -13,6 +13,7 @@ use App\Currency;
 use App\Image;
 use App\Question;
 use App\Answer;
+
 class CatigorController extends Controller
 {
     public function index($id) {
@@ -339,10 +340,19 @@ class CatigorController extends Controller
         $description = $title." - на сайте east-fruit.com";
         $catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
+
         $_article = new Article();
         $_image = new Image();
+        $_question = new Question();
+        $_answer = new Answer();
+
         $slider = $_article->articleInIndexPage('baner', 1, 3);
         $images = $_image->images(42);
+
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
+
         return view('images')->with([
             'title' => $title,
             'catigories' => $catigories,
@@ -350,7 +360,10 @@ class CatigorController extends Controller
             'keywords' => $keywords,
             'description' => $description,
             'slider' => $slider,
-            'images' => $images
+            'images' => $images,
+
+            'question' => $question,
+            'answer' => $answer
         ]);
     }
     public function imageArticle($id) {
