@@ -1,83 +1,108 @@
 @extends('layouts.main')
 @section('content')
-<section id="main-section">
+    <section id="main-section">
 
-    <section id="news-section">
-        <div class="container">
-            <div class="row no-gutter">
+        <section id="news-section">
+            <div class="container">
+                <div class="row no-gutter">
 
-                <link rel="stylesheet" href="../../css/style-items.css"/>
-<div class="col-sm-8 col-lg-9">
-    <div class="news-bredcrumbs-item">
-        <ul>
-            <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная"></li>
-            <li><a href="/">Главная</a></li>
-            <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
-            <li><a style="font-weight: normal;" href="{{ route('images') }}">Фотогалерея</a></li>
-        </ul>
-    </div>
+                    <link rel="stylesheet" href="../../css/style-items.css"/>
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="news-bredcrumbs-item">
+                            <ul>
+                                <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная">
+                                </li>
+                                <li><a href="/">Главная</a></li>
+                                <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
+                                <li><a style="font-weight: normal;" href="{{ route('images') }}">Фотогалерея</a></li>
+                            </ul>
+                        </div>
 
-    <div class="news-more-item">
+                        <div class="news-more-item">
 
-        <h2 class="title-item">{{ $article->title }}</h2>
+                            <h2 class="title-item">{{ $article->title }}</h2>
 
-        <div class="img-item img-lid">
-            <img src="{{ asset($article->img) }}" alt="">
-        </div>
+                            <div class="img-item img-lid">
+                                <img src="{{ asset($article->img) }}" alt="">
+                            </div>
 
-        <div class="descr-item">
-            {!! $article->text !!}
-            
-            @if(isset($article->images))
-            <div class="img-cont article-galery">
-                @foreach($article->images as $image)
-                <a href="{{ asset($image) }}" class="item"><img src="{{ asset($image) }}"></a>
-                @endforeach
-            </div>
-            @endif
-        </div>
+                            <div class="descr-item">
+                                {!! $article->text !!}
 
-    </div>
+                                @if(isset($article->images))
+                                    <div class="img-cont article-galery">
+                                        @foreach($article->images as $image)
+                                            <a href="{{ asset($image) }}" class="item"><img
+                                                        src="{{ asset($image) }}"></a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
 
-    </div>
+                        </div>
 
-
-                <div class="col-sm-4 col-lg-3 hidden-xs">
-                    
-<div class="entry-post">
-    <h3>Актуальное</h3>
-    <!-- Begin .item-->
-    <div id="w4" class="list-view">
-
-    @foreach($sitebarArticle as $sitebar)
-    <div data-key="43">
-        <div class="item">
-            <div class="item-image">
-                <span class="item-image-date">{{ $sitebar->date }}</span>
-                <!--<span class="item-image-time">09:30</span>-->
-            </div>
-            <div class="item-content">
-                <p class="ellipsis"><a href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title}}</a></p>
-                <div class="entry-meta bg-{{ rand(1,9) }}">
-                    @if($sitebar->visible == 1)
-                        {{ $sitebar->catigor }}
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
-
-</div></div>
-                    <div class="calendar-ev">
-                        <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
                     </div>
-                    <div id='calendar'></div>
+
+
+                    <div class="col-sm-4 col-lg-3 hidden-xs">
+
+                        <div class="entry-post">
+                            <h3>Актуальное</h3>
+                            <!-- Begin .item-->
+                            <div id="w4" class="list-view">
+
+                                @foreach($sitebarArticle as $sitebar)
+                                    <div data-key="43">
+                                        <div class="item">
+                                            <div class="item-image">
+                                                <span class="item-image-date">{{ $sitebar->date }}</span>
+                                                <!--<span class="item-image-time">09:30</span>-->
+                                            </div>
+                                            <div class="item-content">
+                                                <p class="ellipsis"><a
+                                                            href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title}}</a>
+                                                </p>
+                                                <div class="entry-meta bg-{{ rand(1,9) }}">
+                                                    @if($sitebar->visible == 1)
+                                                        {{ $sitebar->catigor }}
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                @foreach($blogSitebar as $sitebar)
+                                    <div data-key="43">
+                                        <div class="item">
+                                            <div class="item-image">
+                                                <span class="item-image-date">{{ $sitebar->date }}</span>
+                                                <!--<span class="item-image-time">09:30</span>-->
+                                            </div>
+                                            <div class="item-content">
+                                                <p class="ellipsis"><a
+                                                            href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                </p>
+                                                <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
+                                                    @if($sitebar->visible == 1)
+                                                        {{ $sitebar->catigor }}
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                        <div class="calendar-ev">
+                            <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
+                        </div>
+                        <div id='calendar'></div>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-</section>
+    </section>
 @endsection

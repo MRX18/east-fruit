@@ -83,7 +83,6 @@ class ArticleController extends Controller
         $read = $_article->articleCatigor($article->id_catigories, 10);
 
     	$comments = ArticlesComment::where('id_articles', $ArticleId)
-            ->where('visible', 1)
             ->orderByDesc('id')
             ->get();
 

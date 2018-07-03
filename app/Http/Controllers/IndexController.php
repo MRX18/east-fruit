@@ -23,7 +23,7 @@ class IndexController extends Controller
         $_image = new Image();
         $_research = new Research();
 
-        $sitebar = $_article->sitebar(15);
+        $sitebar = $_article->sitebar(10);
         $sitebarAdaptive =$_article->sitebar(5);
 
 
