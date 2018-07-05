@@ -67,6 +67,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <h3>Актуальное в блоге</h3>
                                 @foreach($blogSitebar as $sitebar)
                                     <div data-key="43">
                                         <div class="item">
@@ -75,8 +76,11 @@
                                                 <!--<span class="item-image-time">09:30</span>-->
                                             </div>
                                             <div class="item-content">
-                                                <p class="ellipsis"><a
-                                                            href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                <p class="ellipsis">                       @if($sitebar->slug == NULL)
+										  <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
+                                        @else
+                                            <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                        @endif
                                                 </p>
                                                 <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                     @if($sitebar->visible == 1)

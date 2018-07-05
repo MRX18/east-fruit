@@ -10,9 +10,9 @@
 <div class="col-sm-8 col-lg-9">
     <div class="news-bredcrumbs-item">
         <ul>
-            <li class="img-logo"><img src="../../images/page-item/Layer&#32;968.png" alt="Главная"></li>
+            <li class="img-logo"><img src="../../images/page-item/Laye-968.png" alt="Главная"></li>
             <li><a href="/">Главная</a></li>
-            <li><img src="../../images/page-item/Polygon&#32;968.png" alt="/"></li>
+            <li><img src="../../images/page-item/Polygon-968.png" alt="/"></li>
             <li><a style="font-weight: normal;" href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a></li>
         </ul>
     </div>
@@ -95,6 +95,7 @@
                             </div>
                         </div>
                         @endforeach
+                        <h3>Актуальное в блоге</h3>
                         @foreach($blogSitebar as $sitebar)
                             <div data-key="43">
                                 <div class="item">
@@ -103,8 +104,11 @@
                                         <!--<span class="item-image-time">09:30</span>-->
                                     </div>
                                     <div class="item-content">
-                                        <p class="ellipsis"><a
-                                                    href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                        <p class="ellipsis">                       @if($sitebar->slug == NULL)
+										  <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
+                                        @else
+                                            <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                        @endif
                                         </p>
                                         <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                             @if($sitebar->visible == 1)
