@@ -8,7 +8,7 @@
                 <div class="col-sm-8 col-lg-9">
 
                     <div class="wrapper-category">
-                        <h1><a href="{{ route('images') }}">{{ $title }}</a></h1>
+                        <h1><a href="{{ route('video') }}">{{ $title }}</a></h1>
                         <div>
                             <div id="w0" class="news-reserch category-block">
 
