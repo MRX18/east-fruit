@@ -6,6 +6,7 @@ use App\Image;
 use App\Answer;
 use App\Research;
 use App\Question;
+use App\Video;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +23,7 @@ class IndexController extends Controller
         $_article = new Article();
         $_image = new Image();
         $_research = new Research();
+        $_video = new Video();
 
         $sitebar = $_article->sitebar(10);
         $sitebarAdaptive =$_article->sitebar(5);
@@ -72,9 +74,13 @@ class IndexController extends Controller
         //НОВОСТИ
         $new = $_article->lineIndex('id_catigories', 1);
 
-
-
-
+        //НОВОСТИ
+        $video = $_video->video(3);
+        $i = 0;
+        foreach($video as $value) {
+            $value->active = $i;
+            $i++;
+        }
 
 
         $articles = $_article->allArticles(9);
@@ -113,7 +119,8 @@ class IndexController extends Controller
             'new' => $new,
 
             'articles' => $articles,
-            'images' => $images
+            'images' => $images,
+            'video' => $video
     	]);
     }
 

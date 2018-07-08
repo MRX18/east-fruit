@@ -13,6 +13,7 @@ use App\Currency;
 use App\Image;
 use App\Question;
 use App\Answer;
+use App\Video;
 
 class CatigorController extends Controller
 {
@@ -387,4 +388,65 @@ class CatigorController extends Controller
             'article' => $article
         ]);
     }
+
+    /*video*/
+    public function video() {
+        $title = "Видео";
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title." - на сайте east-fruit.com";
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_video = new Video();
+        $_question = new Question();
+        $_answer = new Answer();
+
+        $slider = $_article->articleInIndexPage('baner', 1, 3);
+        $video = $_video->video(42);
+
+        $question = $_question->question();
+        $answer = $_answer->answer($question->id);
+
+
+        return view('video')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+            'slider' => $slider,
+            'images' => $video,
+
+            'question' => $question,
+            'answer' => $answer
+        ]);
+    }
+
+    public function videoArticle($id) {
+        $catigories = $this->catigorTop();
+        $otherCatigorTop = $this->otherCatigorTop();
+
+        $_article = new Article();
+        $_video = new Video();
+
+        $sitebar = $_article->sitebar(10);
+        $article = $_video->article($id);
+
+
+        $title = $article->title;
+        $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
+        $description = $title;
+        return view('video-article')->with([
+            'title' => $title,
+            'catigories' => $catigories,
+            'otherCatigorTop' => $otherCatigorTop,
+            'keywords' => $keywords,
+            'description' => $description,
+            'sitebarArticle' => $sitebar,
+            'article' => $article
+        ]);
+    }
+
+
 }

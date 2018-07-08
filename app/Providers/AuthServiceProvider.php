@@ -49,6 +49,8 @@ class AuthServiceProvider extends ServiceProvider
 
         \App\Banners::class => \App\Policies\BannersPolicy::class,
 
+        \App\Video::class => \App\Policies\VideoPolicy::class,
+
 //        \App\Permission::class => \App\Policies\PermissionPolicy::class,
     ];
 

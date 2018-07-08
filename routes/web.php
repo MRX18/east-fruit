@@ -77,6 +77,10 @@ Route::match(['get', 'post'], '/register', 'RegisterController@register')->name(
 Route::match(['get', 'post'], '/registration', 'RegisterController@register')->name('registration');
 Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email');
 
+
+Route::get('/video', 'CatigorController@video')->name('video');
+Route::get('/video-article/{id}', 'CatigorController@videoArticle')->name('video-article');
+
 // Route::get('/slug', function() {
 // 	$art = App\Article::get();
 // 	foreach($art as $value) {

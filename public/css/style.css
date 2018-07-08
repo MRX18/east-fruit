@@ -59,6 +59,19 @@ a:hover {
 .banner-category img {
 	width: 100%;
 }
+.video-container iframe {
+	max-width: 560px !important;
+	min-height: 250px !important;
+}
+.video-container-article {
+	margin-bottom: 25px;
+	width: 100%;
+}
+.video-container-article iframe {
+	width: 100% !important;
+	min-height: 400px !important;
+}
+
 /*--------------------------------------------------------------------------------------------------*/
 .auth {
 	display: none;
@@ -1084,6 +1097,10 @@ li.slick-active button{
 .news-reserch img{
 	width: 100%;
 	height: auto;
+}
+.news-reserch iframe {
+	width: 100% !important;
+	height: auto !important;
 }
 .news-reserch .item-hover{
 	display: none;
@@ -2184,6 +2201,9 @@ footer .links a:hover{
 	/**/
 	.photo-gallery a {
 		width: 100%;
+	}
+	.video-container-article iframe {
+		min-height: 300px !important;
 	}
 }
 @media screen and (max-width: 425px){

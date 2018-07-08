@@ -555,82 +555,52 @@
             </div>
         </section>
 
-        <!-- <section id="slider-section">
+        <section id="slider-section">
             <div class="container">
                 <div class="row no-gutter">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                      Indicators
+
                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                           @foreach($video as $value)
+                               @if($value->active == 0)
+                                    <li data-target="#myCarousel" data-slide-to="{{ $value->active }}" class="active"></li>
+                               @else
+                                   <li data-target="#myCarousel" data-slide-to="{{ $value->active }}"></li>
+                               @endif
+                           @endforeach
                         </ol>
 
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <div class="video-container">
-                                        <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
-                                                class="video" title="Advertisement"></iframe>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <h3>В Турции повысился урожай цитрусовых</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum.</p>
-                                    <p><span>05 МАР 09:30</span></p>
-                                    <p><a href="index.html">Подробнее</a></p>
-                                </div>
-                            </div>
 
-                            <div class="item">
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <div class="video-container">
-                                        <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
-                                                class="video" title="Advertisement"></iframe>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <h3>В Турции повысился урожай цитрусовых</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum.</p>
-                                    <p><span>05 МАР 09:30</span></p>
-                                    <p><a href="index.html">Подробнее</a></p>
-                                </div>
-                            </div>
+                            @foreach($video as $value)
+                                @if($value->active == 0)
+                                    <div class="item active">
+                                @else
+                                    <div class="item">
+                                @endif
 
-                            <div class="item">
-                                <div class="col-sm-6 col-md-6 text">
+                                <div class="col-sm-6 col-lg-6 text">
                                     <div class="video-container">
-                                        <iframe src="https://player.vimeo.com/video/115603554?title=0&byline=0&portrait=0"
-                                                class="video" title="Advertisement"></iframe>
+                                        {!! $value->video !!}
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 text">
-                                    <h3>В Турции повысился урожай цитрусовых</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum.</p>
-                                    <p><span>05 МАР 09:30</span></p>
-                                    <p><a href="index.html">Подробнее</a></p>
+                                    <h3>{{ $value->title }}</h3>
+                                    <p>{{ mb_substr(strip_tags($value->text), 0, 400).'...' }}</p>
+                                    <p><span>{{ $value->date }}</span></p>
+                                    <p><a href="{{ route('video-article', ['id'=>$value->slug]) }}">Подробнее</a></p>
                                 </div>
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
+
+
+
         <section id="calendar-section">
             <div class="container">
                 <div class="row no-gutter">
