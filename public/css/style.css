@@ -2224,17 +2224,6 @@ footer .links a:hover{
 		width: 290px !important;
 		right: -4px;
 	}
-}
-@media screen and (max-width: 360px) {
-	.answer-content {
-	 	width: 70%;
-	 }
-	.answer-pr {
-	 	font-size: 30px;
-	 }
-	.news-bredcrumbs {
-		display: none;
-	}
 	.auth {
 		width: 100%;
 		display: flex;
@@ -2260,6 +2249,21 @@ footer .links a:hover{
 	.auth ul li a:hover {
 		color: #33CC99;
 	}
+	.menu-auth .li-auth {
+		display: none;
+	}
+}
+@media screen and (max-width: 360px) {
+	.answer-content {
+	 	width: 70%;
+	 }
+	.answer-pr {
+	 	font-size: 30px;
+	 }
+	.news-bredcrumbs {
+		display: none;
+	}
+
 	/*search*/
 	.search-form input {
 		width: 160px;
