@@ -29,7 +29,7 @@ class ResearchController extends Controller
         $articles = $_research->allResearch(24);
 
         foreach($articles as $article) {
-            $article->id_cont = ResearchContent::where('id_research', $article->id)->orderBy('id')->value('id');
+            $article->id_cont = ResearchContent::where('id_research', $article->id)->orderBy('id')->value('slug');
         }
 
         $slider = $_article->articleInIndexPage('baner', 1, 3);

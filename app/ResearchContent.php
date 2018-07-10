@@ -17,6 +17,14 @@ class ResearchContent extends Model
     }
 
     public function onceResearchContent($id) {
-    	return $this->where('id', $id)->first();
+    	return $this->where('slug', $id)->first();
+    }
+
+    public function setSlugAttribute($value)
+    {
+        if (!$this->exists) {
+            return $this->attributes['slug'] = str_slug($this->attributes['title']);
+        }
+        return $this->attributes['slug'] = $value;
     }
 }

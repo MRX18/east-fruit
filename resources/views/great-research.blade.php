@@ -16,7 +16,7 @@
                                         <div class="item-category">
                                             <div class="item item-category-image">
                                                 <div class="item-hover">
-                                                    <a href="{{ route('min-research', ['id'=>$articleCont->id]) }}" class="search"></a>
+                                                    <a href="{{ route('min-research', ['id'=>$articleCont->slug]) }}" class="search"></a>
                                                 </div>
                                                 <div class="item-img item-category-img">
                                                     <img src="{{ asset($articles->img) }}"/>
@@ -26,7 +26,7 @@
 
 
                                             <div style="float: left;" class="title">
-                                                <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$articleCont->id]) }}">{{ $articles->title.'-'.$articleCont->title }}</a></h4>
+                                                <h4 style="text-align: left;"><a href="{{ route('min-research', ['id'=>$articleCont->slug]) }}">{{ $articles->title.'-'.$articleCont->title }}</a></h4>
                                             </div>
 
 

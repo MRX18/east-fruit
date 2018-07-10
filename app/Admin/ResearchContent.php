@@ -26,6 +26,7 @@ AdminSection::registerModel(ResearchContent::class, function (ModelConfiguration
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::text('slug', 'Заголовок статьи транслитерацией'),
             AdminFormElement::select('id_research', 'Главное исследование')->setModelForOptions(new Research)->setDisplay(function($Research) {
                 return $Research->title;
             })->required(),
