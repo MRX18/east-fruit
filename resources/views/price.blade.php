@@ -212,23 +212,25 @@
 							        ],
 
 							        datasets: [
-							        @foreach($priceTable as $price)
+							        @foreach($market as $mr)
 							        {
-							            label: 
-							            	@foreach($markets as $value)
-							            	 	@if($price->id_market == $value->id)
-							            			"{{ $value->market }}"
-							            		@endif
-							            	@endforeach
+							            label:
+											@foreach($markets as $value)
+												@if($mr == $value->id)
+													"{{ $value->market }}"
+												@endif
+											@endforeach
 							            ,
 
 
 							            backgroundColor: 'transparent',
 							            borderColor: 'rgb({{ rand(0, 255) }}, {{ rand(0, 255) }}, {{ rand(0, 255) }})',
 							            data: [
-							            	@foreach($price->datePrice as $datePrice)
-							            		{{ $datePrice}},
-							            	@endforeach
+							            	@for($i=0; $i<count($priceTable); $i++)
+							            		@if($priceTable[$i]->id_market == $mr)
+													{{ $priceTable[$i]->price }},
+												@endif
+							            	@endfor
 							            ],
 							        },
 							        @endforeach
@@ -254,39 +256,45 @@
 							      <th>Товар</th>
 							      <th>Спецификация</th>
 							      <th>Цена</th>
-							      <th>Период</th>
+								  <th>Валюта</th>
+							      <th>Год</th>
 							    </tr>
 							  </thead>
 							  <tbody>
-							  	@foreach($priceTable as $price)
-                                    @foreach($price->datePrice as $key => $datePrice)
-                                        <tr>
-                                            @foreach($markets as $value)
-                                                @if($price->id_market == $value->id)
-                                                    <td scope="row">{{ $value->market }}</td>
-                                                @endif
-                                            @endforeach
+								@foreach($priceTable as $price)
+									<tr>
+										@foreach($markets as $value)
+											@if($price->id_market == $value->id)
+												<td scope="row">{{ $value->market }}</td>
+											@endif
+										@endforeach
 
-                                            @foreach($products as $value)
-                                                @if($price->id_product == $value->id)
-                                                    <td>{{ $value->name }}</td>
-                                                @endif
-                                            @endforeach
+										@foreach($products as $value)
+											@if($price->id_product == $value->id)
+												<td>{{ $value->name }}</td>
+											@endif
+										@endforeach
 
-                                            @if($price->id_specification)
-                                                @foreach($specification as $value)
-                                                    @if($price->id_specification == $value->id)
-                                                        <td>{{ $value->title }}</td>
-                                                    @endif
-                                                @endforeach
-                                            @else
-                                                <td>Нет</td>
-                                            @endif
-                                            <td>{{ $datePrice }}</td>
-                                            <td>{{ $key }}</td>
-                                        </tr>
-                                    @endforeach
-							    @endforeach
+										@if($price->id_specification)
+											@foreach($specification as $value)
+												@if($price->id_specification == $value->id)
+													<td>{{ $value->title }}</td>
+												@endif
+											@endforeach
+										@else
+											<td>Нет</td>
+										@endif
+										<td>{{ $price->price }}</td>
+
+										@foreach($currencys as $value)
+											@if($currency == $value->charCode)
+												<td>{{ $value->currency }}</td>
+											@endif
+										@endforeach
+
+										<td>{{ $price->date }}</td>
+									</tr>
+								@endforeach
 							  </tbody>
 							</table>
 						</div>

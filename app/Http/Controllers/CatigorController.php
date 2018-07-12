@@ -138,99 +138,68 @@ class CatigorController extends Controller
 
                 $_price = new Price;
                 if (isset($request->specification)) {
-                    $price = $_price->price($market, $request->product, $request->specification);
+                    $price = $_price->price($market, $request->product, $request->specification, $dateMin, $dateMax);
                 } else {
-                    $price = $_price->priceN($market, $request->product);
+                    $price = $_price->priceN($market, $request->product, $dateMin, $dateMax);
                 }
 
                 /**/
                 foreach ($price as $value) { // розбиваю строку в массив
-                    $value->price = explode(',', $value->price);
-                    $value->date = explode(',', $value->date);
+                    $value->price = explode('-', $value->price);
                 }
 
-                $dateRang = $this->dateRange($dateMin, $dateMax); // нахожу всі дати в указаному діапазоні
-
-                foreach($price as $value) { // вибвраю тільки ті дати які підходять вказаному діапазоні
-                    for($i=0; $i<count($value->date); $i++) {
-                        for($j=0; $j<count($dateRang); $j++) {
-                            if(trim($value->date[$i]) == trim($dateRang[$j])) {
-                                $ymd[] = $value->date[$i];
-                                $priceYmd[] = $value->price[$i];
-                            }
-                        }
-                    }
-                    $value->date = $ymd;
-                    $value->price = $priceYmd;
-                    unset($ymd);
-                    unset($priceYmd);
-                }
 
                 foreach($price as $value) { // узнаю всі роки із дат
-                    for($i=0; $i<count($value->date); $i++) {
-                        $priceYmd = explode('-', $value->date[$i]);
-                        $ymd[] = trim($priceYmd[0]);
-                        $allYmd[] = trim($priceYmd[0]);
-                    }
-                    $value->date = $ymd;
-                    unset($ymd);
+                        $priceYmd = explode('-', $value->date);
+                        $allYmd[] = $priceYmd[0];
+                        $value->date = $priceYmd[0];
+
                 }
 
                 $allYmd = array_values(array_unique($allYmd)); // вибираю уникальні значення з массиву і скидаю нумерацію індексів массиву
+                $allYmd[] = sort($allYmd);
+                unset($allYmd[count($allYmd)-1]);
 
-                for($i=0; $i<count($allYmd); $i++) { // сортірую дати
-                    for($j=0; $j<$i; $j++) {
-                        if($allYmd[$i] < $allYmd[$j]) {
-                            $var = $allYmd[$i];
-                            $allYmd[$i] = $allYmd[$j];
-                            $allYmd[$j] = $var;
-                        }
-                    }
-                }
+                /****/
 
-                foreach($price as $value) { // прикріплюю ціни до дат
-                    for($j=0; $j<count($allYmd); $j++) {
-                        for($i=0; $i<count($value->date); $i++) {
-                            if($value->date[$i] == $allYmd[$j]) {
-                                $idPrice[] = $value->price[$i];
-                            }
-                        }
-                        $datePrice[$allYmd[$j]] = $idPrice;
-                        unset($idPrice);
-
-                    }
-                    $value->datePrice = $datePrice;
-                    unset($value->price);
-                    unset($value->date);
-                }
 
                 if($request->price == 1) {
                     foreach($price as $value) {
-                        foreach($value->datePrice as $key => $dp) {
-                            $datePrice[$key] = min($dp);
+                        $value->price = $value->price[0];
+                    }
+
+                    for($i=0; $i<count($market); $i++) {
+                        for($j=0; $j<count($allYmd); $j++) {
+                            $p = $price->where('id_market', $market[$i])->where('date', $allYmd[$j])->min('price');
+                            $collectionPrice = $price->where('id_market', $market[$i])->where('date', $allYmd[$j])->first();
+                            $collectionPrice->price = $p;
+                            $priceTable[] = $collectionPrice;
                         }
-                        $value->datePrice = $datePrice;
-                        unset($datePrice);
                     }
                 } elseif($request->price == 2) {
                     foreach($price as $value) {
-                        foreach($value->datePrice as $key => $dp) {
-                            $datePrice[$key] = max($dp);
+                        $value->price = $value->price[2];
+                    }
+
+                    for($i=0; $i<count($market); $i++) {
+                        for($j=0; $j<count($allYmd); $j++) {
+                            $p = $price->where('id_market', $market[$i])->where('date', $allYmd[$j])->max('price');
+                            $collectionPrice = $price->where('id_market', $market[$i])->where('date', $allYmd[$j])->first();
+                            $collectionPrice->price = $p;
+                            $priceTable[] = $collectionPrice;
                         }
-                        $value->datePrice = $datePrice;
-                        unset($datePrice);
                     }
                 } elseif($request->price == 3) {
                     foreach($price as $value) {
-                        foreach($value->datePrice as $key => $dp) {
-                            $datePrice[$key] = $this->avgPrice($dp);
+                        $value->price = $value->price[1];
+                    }
+
+                    for($i=0; $i<count($market); $i++) {
+                        for($j=0; $j<count($allYmd); $j++) {
+                            $priceTable[] = $price->where('id_market', $market[$i])->where('date', $allYmd[$j])->first();
                         }
-                        $value->datePrice = $datePrice;
-                        unset($datePrice);
                     }
                 }
-//                dd($price);
-
                 // узнаю есть ли указаная валюта
 
                 if (array_key_exists($request->currency, $this->currency())) {
@@ -243,17 +212,12 @@ class CatigorController extends Controller
 
 
                 /*конвертируем валюту*/
-                foreach($price as $value) {
-                    foreach($value->datePrice as $key => $dp) {
-                        $rub = $dp*$uan;
-                        $datePrice[$key] = round($rub/$currency);
-
-                    }
-                    $value->datePrice = $datePrice;
-                    unset($datePrice);
+                for($i=0; $i<count($priceTable); $i++) {
+                    $rub = $priceTable[$i]->price*$uan;
+                    $priceTable[$i]->price = round($rub/$currency);
                 }
 
-                if($price == null) {
+                if($priceTable == null) {
                     $error = true;
                 } else {
                     $error = false;
@@ -274,8 +238,9 @@ class CatigorController extends Controller
                     'error' => $error,
                     'view' => $request->view,
                     'priceYeras' => $allYmd,
+                    'currency' => $request->currency,
                     'market' => $market,
-                    'priceTable' => $price
+                    'priceTable' => $priceTable
 
                 ]);
             }

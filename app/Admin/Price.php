@@ -34,8 +34,8 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                 return $Market->market;
             })->required(),
 
-            AdminFormElement::textarea('price', 'Цена(грн)')->required(),
-            AdminFormElement::textarea('date', 'Дата')->required()
+            AdminFormElement::text('price', 'Цена(грн)')->required(),
+            AdminFormElement::date('date', 'Дата')->required()
 
         );
     });
