@@ -35,8 +35,12 @@
 
                                             </div>
 
-                                            <div style="float: left;" class="title">
+                                            <div style="float: left; width: 100%;" class="title">
                                                 <h4 style="text-align: left;"><a href="{{ route('video-article', ['id'=>$image->slug]) }}">{{ $image->title }}</a></h4>
+                                            </div>
+
+                                            <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
+                                                {{ $image->date }}
                                             </div>
 
                                         </div>

@@ -2061,6 +2061,10 @@ footer .links a:hover{
 	 .photo-gallery a {
 	 	width: 50%;
 	 }
+
+	.news-bredcrumbs {
+		height: 54px;
+	}
 }
 @media screen and (max-width: 990px) {
 	.lid:before {

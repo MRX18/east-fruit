@@ -91,8 +91,7 @@
 
                                             @if(Session::has('addComment'))
                                                 <div class="alert alert-success">
-                                                    <strong>Ваш комментарий был отправлен!</strong> Он будет опубликован
-                                                    после одобрения модератора.
+                                                    <strong>Ваш комментарий был отправлен!</strong>
                                                 </div>
                                             @endif
                                             <div class="comment-form-container">
@@ -101,47 +100,37 @@
                                                       method="post">
                                                     {{ csrf_field() }}
 
-                                                    @if(!Auth::check())
-                                                        <div class="forma"
-                                                             style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                                            <div class="auth-forma" style="width: 49%;">
-                                                                <input style="width: 100%;" class="form-control"
-                                                                       type="text" name="name" placeholder="Имя">
-                                                            </div>
-                                                            <div class="auth-forma" style="width: 49%;">
-                                                                <input style="width: 100%;" class="form-control"
-                                                                       type="email" name="email" placeholder="Email">
-                                                            </div>
-                                                        </div>
-                                                    @endif
-
-                                                    <div class="form-group field-commentmodel-content required">
+                                                    @if(Auth::check())
+                                                        <div class="form-group field-commentmodel-content required">
                                                         <textarea id="commentmodel-content" class="form-control"
                                                                   name="comment" rows="4"
                                                                   placeholder="Добавить комментарий..."
                                                                   data-comment="content"
                                                                   aria-required="true"></textarea>
-                                                        <div class="help-block"></div>
-                                                    </div>
+                                                            <div class="help-block"></div>
+                                                        </div>
 
-                                                    <div class="p20-item">
-                                                        <div class="row">
-                                                            <div class="col-md-9">
-                                                                <div class="checkbox">
-                                                                    <label><input type="checkbox"> Размещая комментарий,
-                                                                        я соглашаюсь с Правилами сайта</label>
+                                                        <div class="p20-item">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox"> Размещая комментарий,
+                                                                            я соглашаюсь с Правилами сайта</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary comment-add comment-submit"
+                                                                            disabled="disabled"><img
+                                                                                src="../../images/page-item/comments/add-comment.png"
+                                                                                alt="add-comment"> Добавить
+                                                                    </button>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-3">
-                                                                <button type="submit"
-                                                                        class="btn btn-primary comment-add comment-submit"
-                                                                        disabled="disabled"><img
-                                                                            src="../../images/page-item/comments/add-comment.png"
-                                                                            alt="add-comment"> Добавить
-                                                                </button>
-                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @else
+                                                        <h4 style="font-size: 16px;">Для того чтобы оставить комментарий вы должны <a href="/login">авторизоваться</a> или <a href="/register">зарегистрироваться</a>!</h4>
+                                                    @endif
                                                 </form>
                                                 <div class="clearfix"></div>
                                             </div>
@@ -316,10 +305,10 @@
                                             </div>
                                             <div class="item-content">
                                                 <p class="ellipsis">                       @if($sitebar->slug == NULL)
-										  <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
-                                        @else
-                                            <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
-                                        @endif
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
+                                                    @else
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                    @endif
                                                 </p>
                                                 <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                     @if($sitebar->visible == 1)

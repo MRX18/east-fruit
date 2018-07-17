@@ -177,15 +177,7 @@ class BlogController extends Controller
     public function addcomment(Request $request, $id) {
 
         if($request->isMethod('post')) {
-            if(!Auth::check()) {
-                $validator = Validator::make($request->all(),
-                    array(
-                        'name' => 'required|between:3,16',
-                        'email' => 'required|email|between:2,500',
-                        'comment' => 'required'
-                    )
-                );
-            } else {
+            if(Auth::check()) {
                 $validator = Validator::make($request->all(),
                     array(
                         'comment' => 'required|between:4,500'
@@ -200,9 +192,7 @@ class BlogController extends Controller
                 return redirect()->back()->withInput()->withErrors($validator->errors());
             } else {
 
-                if(!Auth::check()) {
-                    BlogComment::insert(['id_blog' => $id, 'user' => $request->name, 'email' => $request->email, 'time' => $time, 'date' => $date, 'text' => $request->comment]);
-                } else {
+                if(Auth::check()) {
                     $idUser = Auth::user()->id;
                     $user = User::where('id', $idUser)->first();
                     BlogComment::insert(['id_blog' => $id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);

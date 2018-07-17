@@ -100,13 +100,13 @@
                                             </div>
                                             <div class="item-content">
                                                 <p class="ellipsis">
-                                                       @if($sitebar->slug == NULL)
-										  <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
-                                        @else
-                                            <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
-                                        @endif
-                                                
-                                                
+                                                    @if($sitebar->slug == NULL)
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
+                                                    @else
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                    @endif
+
+
                                                 </p>
                                                 <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                     @if($sitebar->visible == 1)
@@ -211,7 +211,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                  <h3>Актуальное в блоге</h3>
+                                <h3>Актуальное в блоге</h3>
                                 @foreach($blogSitebar as $sitebar)
                                     <div data-key="43">
                                         <div class="item">
@@ -221,11 +221,11 @@
                                             </div>
                                             <div class="item-content">
                                                 <p class="ellipsis">                       @if($sitebar->slug == NULL)
-										  <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
-                                        @else
-                                            <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
-                                        @endif
-                                        </p>
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
+                                                    @else
+                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                    @endif
+                                                </p>
                                                 <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                     @if($sitebar->visible == 1)
                                                         {{ $sitebar->catigor }}
@@ -555,50 +555,54 @@
             </div>
         </section>
 
-        <section id="slider-section">
-            <div class="container">
-                <div class="row no-gutter">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        @if(count($video) > 0)
+            <section id="slider-section">
+                <div class="container">
+                    <div class="row no-gutter">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                       <ol class="carousel-indicators">
-                           @foreach($video as $value)
-                               @if($value->active == 0)
-                                    <li data-target="#myCarousel" data-slide-to="{{ $value->active }}" class="active"></li>
-                               @else
-                                   <li data-target="#myCarousel" data-slide-to="{{ $value->active }}"></li>
-                               @endif
-                           @endforeach
-                        </ol>
+                            <ol class="carousel-indicators">
+                                @foreach($video as $value)
+                                    @if($value->active == 0)
+                                        <li data-target="#myCarousel" data-slide-to="{{ $value->active }}"
+                                            class="active"></li>
+                                    @else
+                                        <li data-target="#myCarousel" data-slide-to="{{ $value->active }}"></li>
+                                    @endif
+                                @endforeach
+                            </ol>
 
-                        <div class="carousel-inner">
+                            <div class="carousel-inner">
 
-                            @foreach($video as $value)
-                                @if($value->active == 0)
-                                    <div class="item active">
-                                @else
-                                    <div class="item">
-                                @endif
+                                @foreach($video as $value)
+                                    @if($value->active == 0)
+                                        <div class="item active">
+                                            @else
+                                                <div class="item">
+                                                    @endif
 
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <div class="video-container">
-                                        {!! $value->video !!}
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 text">
-                                    <h3>{{ $value->title }}</h3>
-                                    <p>{{ mb_substr(strip_tags($value->text), 0, 400).'...' }}</p>
-                                    <p><span>{{ $value->date }}</span></p>
-                                    <p><a href="{{ route('video-article', ['id'=>$value->slug]) }}">Подробнее</a></p>
-                                </div>
+                                                    <div class="col-sm-6 col-lg-6 text">
+                                                        <div class="video-container">
+                                                            {!! $value->video !!}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-lg-6 text">
+                                                        <h3>{{ $value->title }}</h3>
+                                                        <p>{{ mb_substr(strip_tags($value->text), 0, 400).'...' }}</p>
+                                                        <p><span>{{ $value->date }}</span></p>
+                                                        <p><a href="{{ route('video-article', ['id'=>$value->slug]) }}">Подробнее</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+
+                                        </div>
                             </div>
-                            @endforeach
-
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
+            </section>
+        @endif
 
 
         <section id="calendar-section">

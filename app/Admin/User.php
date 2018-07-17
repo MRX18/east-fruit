@@ -12,7 +12,8 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
     // Запрет на удаление
 //    $model->disableDeleting();
     $model->onDisplay(function () {
-        $display = AdminDisplay::datatables();
+        $display = AdminDisplay::datatables()->setDisplaySearch(true);
+
         $display->setApply(function($query) {
             $query->where('id', '!=', '9');
         });
