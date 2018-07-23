@@ -2100,6 +2100,11 @@ footer .links a:hover{
 	.article-galery a {
 	 	height: 120px;
 	 }
+	.photo-gallery a {
+		width: 45%;
+		margin: 10px;
+	}
+
 }
 @media screen and (max-width: 659px) {
 	.lid:before {
