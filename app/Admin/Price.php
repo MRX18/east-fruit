@@ -14,16 +14,27 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
     
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
+
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
             AdminColumn::text('MarketRelation.market')->setLabel('Страны'),
-            AdminColumn::text('ProductRelation.name')->setLabel('Категории')
+            AdminColumn::text('ProductRelation.name')->setLabel('Категории'),
+            AdminColumn::text('SpecificationRelation.title')->setLabel('Спецификация'),
+            AdminColumn::text('CurrencyRelation.currency')->setLabel('Валюта'),
+            AdminColumn::text('price_input')->setLabel('Цена'),
+            AdminColumn::text('date')->setLabel('Дата')
         ]);
         return $display;
     });
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
+            AdminFormElement::date('date', 'Дата')->required(),
+
+            AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
+                return $Market->market;
+            })->required(),
+
             AdminFormElement::select('id_product', 'Категории')->setModelForOptions(new Product)->setDisplay(function($Product) {
                 return $Product->name;
             })->required(),
@@ -35,17 +46,12 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                     return $query->where('id_product', $item->getDependValue('id_product'));
             }),
 
-            AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
-                return $Market->market;
-            })->required(),
-
             AdminFormElement::select('currency', 'Валюта')->setModelForOptions(new Currency)->setDisplay(function($Currency) {
                 return $Currency->currency;
             })->required(),
 
-            AdminFormElement::hidden('price', 'Цена(грн)'),
             AdminFormElement::text('price_input', 'Цена')->required(),
-            AdminFormElement::date('date', 'Дата')->required()
+            AdminFormElement::hidden('price', 'Цена(грн)')
 
         );
     });

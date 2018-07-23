@@ -19,7 +19,10 @@ class AuthServiceProvider extends ServiceProvider
         \App\Application::class => \App\Policies\ApplicationPolicy::class,
         \App\Article::class => \App\Policies\ArticlePolicy::class,
         \App\Permission::class => \App\Policies\PermissionPolicy::class,
+
         \App\Blog::class => \App\Policies\BlogPolicy::class,
+        \App\BlogComment::class => \App\Policies\BlogCommentPolicy::class,
+
         \App\Image::class => \App\Policies\ImagePolicy::class,
 
         \App\Event::class => \App\Policies\EventPolicy::class,

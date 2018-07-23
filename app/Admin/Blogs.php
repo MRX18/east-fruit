@@ -29,6 +29,7 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
             AdminFormElement::checkbox('visible', 'Опубликовать в блоге'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::text('slug', 'Слаг'),
             AdminFormElement::select('id_user', 'Пользователь')->setModelForOptions(new User)->setDisplay(function($User) {
                 return $User->name;
             })->required(),
@@ -37,6 +38,6 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
             AdminFormElement::date('date', 'Дата')->required()
         );
     });
-}) 
-	->addMenuPage(Blog::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+//	->addMenuPage(Blog::class, 300)
+//    ->setIcon('fa fa-sliders');

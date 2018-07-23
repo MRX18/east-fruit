@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
         /*новые записи блога для сайтбара*/
         $_blog = new Blog;
-        $blog = $_blog->sitebar(3);
+        $blog = $_blog->allArticlesBlog(3);
 
 
         /*реклама на сайте*/

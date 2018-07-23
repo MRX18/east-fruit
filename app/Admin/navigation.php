@@ -151,6 +151,32 @@ return [
         ]
     ],
 
+    [
+        'title' => "Статьи",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Article::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\ArticlesComment::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100),
+        ]
+    ],
+
+    [
+        'title' => "Блог",
+        'icon' => 'fa fa-sliders',
+        'pages' => [
+            (new Page(\App\Blog::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(0),
+            (new Page(\App\BlogComment::class))
+                ->setIcon('fa fa-sliders')
+                ->setPriority(100),
+        ]
+    ],
+
     // Examples
     // [
     //    'title' => 'Content',

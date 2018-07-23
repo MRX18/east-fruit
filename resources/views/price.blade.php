@@ -7,16 +7,8 @@
 				<h1><a href="{{ route('price') }}">{{ $title }}</a></h1>
 			</div>
 			<div class="content" style="margin-top: 30px; margin-bottom: 50px;">
-				@if (count($errors) > 0)
-				  <div class="alert alert-danger">
-				    <ul>
-				      @foreach ($errors->all() as $error)
-				        <li>{{ $error }}</li>
-				      @endforeach
-				    </ul>
-				  </div>
-				@endif
-				<form class="form-horizontal" action="{{ route('price') }}" method="post">
+				<div class="error"></div>
+				<form class="form-horizontal">
 				{{ csrf_field() }}
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Период</label>
@@ -35,18 +27,30 @@
 						      	@endfor
 						      </select>
 						      <select class="form-control" name="monthMin">
-						      	@for($i=1; $i<=12; $i++)
-									@if(strlen($i) == 1)
-										<option value="{{ '0'.$i }}">{{ '0'.$i }}</option>
-									@else
-										<option value="{{ $i }}">{{ $i }}</option>
-									@endif
-						      	@endfor
+								  @for($i=1; $i<=12; $i++)
+									  @if(strlen($i) == 1)
+										  @if($date[1] == '0'.$i)
+											  <option selected="selected" value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										  @else
+											  <option value="{{ '0'.$i }}">{{ '0'.$i }}</option>
+										  @endif
+									  @else
+										  @if($date[1] == $i)
+											  <option selected="selected" value="{{ $i }}">{{ $i }}</option>
+										  @else
+											  <option value="{{ $i }}">{{ $i }}</option>
+										  @endif
+									  @endif
+								  @endfor
 						      </select>
 						      <select class="form-control" name="yearMin">
-						      	@for($i=2000; $i<=2025; $i++)
-									<option value="{{ $i }}">{{ $i }}</option>
-						      	@endfor
+								  @for($i=2000; $i<=2025; $i++)
+									  @if($date[0] == $i)
+										  <option selected="selected" value="{{ $i }}">{{ $i }}</option>
+									  @else
+										  <option value="{{ $i }}">{{ $i }}</option>
+									  @endif
+								  @endfor
 						      </select>
 						</div>
 
@@ -185,126 +189,16 @@
 
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
-				      <button type="submit" class="btn btn-default">Показать</button>
+				      <button id="bth-form" type="submit" class="btn btn-default">Показать</button>
 				    </div>
 				  </div>
 				</form>
 			</div>
-			
-			@if(isset($error))
-				@if($error == false)
-					@if($view == 1)
-						<canvas id="myChart"></canvas>
 
-						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-						<script type="text/javascript">
-							var ctx = document.getElementById('myChart').getContext('2d');
-							var chart = new Chart(ctx, {
-							    // The type of chart we want to create
-							    type: 'line',
+			<canvas id="myChart"></canvas>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
-							    // The data for our dataset
-							    data: {
-							        labels: [
-							        	@foreach($priceYeras as $value)
-							        		{{ $value }},
-							        	@endforeach
-							        ],
-
-							        datasets: [
-							        @foreach($market as $mr)
-							        {
-							            label:
-											@foreach($markets as $value)
-												@if($mr == $value->id)
-													"{{ $value->market }}"
-												@endif
-											@endforeach
-							            ,
-
-
-							            backgroundColor: 'transparent',
-							            borderColor: 'rgb({{ rand(0, 255) }}, {{ rand(0, 255) }}, {{ rand(0, 255) }})',
-							            data: [
-							            	@for($i=0; $i<count($priceTable); $i++)
-							            		@if($priceTable[$i]->id_market == $mr)
-													{{ $priceTable[$i]->price }},
-												@endif
-							            	@endfor
-							            ],
-							        },
-							        @endforeach
-							        // {
-							        //     label: "My First dataset",
-							        //     backgroundColor: 'transparent',
-							        //     borderColor: 'rgb(205, 99, 172)',
-							        //     data: [47589, 25879, 36925],
-							        // },
-							        ]
-							    },
-
-							    // Configuration options go here
-							    options: {}
-							});
-						</script>
-					@else
-						<div class="tabl" style="margin-bottom: 50px;">
-							<table class="table">
-							  <thead class="thead-default">
-							    <tr>
-							      <th scope="row">Рынок</th>
-							      <th>Товар</th>
-							      <th>Спецификация</th>
-							      <th>Цена</th>
-								  <th>Валюта</th>
-							      <th>Год</th>
-							    </tr>
-							  </thead>
-							  <tbody>
-								@foreach($priceTable as $price)
-									<tr>
-										@foreach($markets as $value)
-											@if($price->id_market == $value->id)
-												<td scope="row">{{ $value->market }}</td>
-											@endif
-										@endforeach
-
-										@foreach($products as $value)
-											@if($price->id_product == $value->id)
-												<td>{{ $value->name }}</td>
-											@endif
-										@endforeach
-
-										@if($price->id_specification)
-											@foreach($specification as $value)
-												@if($price->id_specification == $value->id)
-													<td>{{ $value->title }}</td>
-												@endif
-											@endforeach
-										@else
-											<td>Нет</td>
-										@endif
-										<td>{{ $price->price }}</td>
-
-										@foreach($currencys as $value)
-											@if($currency == $value->charCode)
-												<td>{{ $value->currency }}</td>
-											@endif
-										@endforeach
-
-										<td>{{ $price->date }}</td>
-									</tr>
-								@endforeach
-							  </tbody>
-							</table>
-						</div>
-					@endif
-				@elseif($error == true)
-					<div class="alert alert-danger" style="margin-bottom: 50px;">
-				    	По вашему запросу ничего не найдено!
-				 	</div>
-				@endif
-			@endif
+			<div class="view"></div>
 		</div>
 	</section>
 </section>

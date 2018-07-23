@@ -56,6 +56,6 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
 
         )->setHtmlAttribute('enctype', 'multipart/form-data');
     });
-}) 
-	->addMenuPage(Article::class, 300)
-    ->setIcon('fa fa-sliders');
+});
+//	->addMenuPage(Article::class, 300)
+//    ->setIcon('fa fa-sliders');

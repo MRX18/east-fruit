@@ -23,7 +23,9 @@ Route::get('/research/{id}', 'ResearchController@research')->name('min-research'
 
 
 
-Route::match(['get', 'post'],'/prices', 'CatigorController@prices')->name('price');
+Route::get('/prices', 'CatigorController@prices')->name('price');
+Route::post('/price-ajax', 'CatigorController@priceAjax');
+
 Route::post('/specification', 'CatigorController@specification')->name('specification');
 // Route::get('/specification/{id}', 'CatigorController@specification')->name('specification');
 // Route::get('/rating', 'CatigorController@rating');

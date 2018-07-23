@@ -108,11 +108,11 @@
 
 
                                                 </p>
-                                                <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
-                                                    @if($sitebar->visible == 1)
-                                                        {{ $sitebar->catigor }}
-                                                    @endif
-                                                </div>
+                                                {{--<div class="entry-meta bg-{{ $sitebar->id_catigories }}">--}}
+                                                    {{--@if($sitebar->visible == 1)--}}
+                                                        {{--{{ $sitebar->catigor }}--}}
+                                                    {{--@endif--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>

@@ -354,8 +354,15 @@
                         option += '<option value="' + key + '">' + value + '</option>';
                         // console.log(option);
                     });
-                    $('#specification').html(option);
-                    $('#specification').attr('disabled', false);
+                    if(option) {
+                        $('#specification').html(option);
+                        $('#specification').attr('disabled', false);
+                    } else {
+                        $('#specification').html("<option>Спецификаций у этой категории нет!<option>");
+                        $('#specification').attr('disabled', true);
+                    }
+                    // $('#specification').html(option);
+                    // $('#specification').attr('disabled', false);
                 }
             });
             return false;

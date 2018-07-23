@@ -1,5 +1,33 @@
 ﻿var min_id = 0;
 
+$('.form-horizontal').on('submit', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+        type: "POST",
+        url: "/price-ajax",
+        data: $('.form-horizontal').serialize(),
+        success: function(res) {
+            if(res.errors) {
+                $('.error').html(res.errors);
+            } else if(res.graph) {
+                $('.view').html(res.graph);
+                $('#myChart').css({'display': 'block'});
+            } else if(res.table) {
+                $('#myChart').css({'display': 'none'});
+                $('.view').html(res.table);
+            } else {
+                $('.error').html("");
+                $('.view').html("");
+                $('#myChart').css({'display': 'none'});
+            }
+        },
+        error: function(res) {
+            alert("error");
+        }
+    });
+});
+
 $( document ).ready(function() {
 
     /*сlic calendar*/
