@@ -42,22 +42,22 @@ class Price extends Model
                 ->get();
     }
 
-    public function MarketRelation() 
+    public function Market()
     {
         return $this->belongsTo(Market::class, 'id_market', 'id');
     }
 
-    public function ProductRelation() 
+    public function Product()
     {
         return $this->belongsTo(Product::class, 'id_product', 'id');
     }
 
-    public function SpecificationRelation()
+    public function Specification()
     {
         return $this->belongsTo(Specification::class, 'id_specification', 'id');
     }
 
-    public function CurrencyRelation()
+    public function Currency()
     {
         return $this->belongsTo(Currency::class, 'currency', 'id');
     }

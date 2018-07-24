@@ -15,14 +15,53 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
 
+        $display->setFilters(
+            AdminDisplayFilter::related('id_market')->setModel(Market::class),
+            AdminDisplayFilter::related('id_product')->setModel(Product::class),
+            AdminDisplayFilter::related('id_specification')->setModel(Specification::class),
+            AdminDisplayFilter::related('currency')->setModel(Currency::class),
+            AdminDisplayFilter::related('price_input')->setModel(Price::class),
+            AdminDisplayFilter::related('date')->setModel(Price::class)
+        );
+
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
-            AdminColumn::text('MarketRelation.market')->setLabel('Страны'),
-            AdminColumn::text('ProductRelation.name')->setLabel('Категории'),
-            AdminColumn::text('SpecificationRelation.title')->setLabel('Спецификация'),
-            AdminColumn::text('CurrencyRelation.currency')->setLabel('Валюта'),
-            AdminColumn::text('price_input')->setLabel('Цена'),
-            AdminColumn::text('date')->setLabel('Дата')
+
+            $country = AdminColumn::text('Market.market', 'Страны')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('id_market')
+                ),
+
+            $country = AdminColumn::text('Product.name', 'Категории')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('id_product')
+                ),
+
+            $country = AdminColumn::text('Specification.title', 'Спецификация')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('id_specification')
+                ),
+
+            $country = AdminColumn::text('Currency.currency', 'Валюта')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('currency')
+                ),
+
+            $country = AdminColumn::text('price_input', 'Цена')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('price_input')
+                ),
+
+            $country = AdminColumn::text('date', 'Дата')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('date')
+                ),
         ]);
         return $display;
     });
