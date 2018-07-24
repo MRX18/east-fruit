@@ -23,7 +23,7 @@ $('.form-horizontal').on('submit', function(e) {
             }
         },
         error: function(res) {
-            alert("error");
+            alert("По выбранным критериям данных нет!");
         }
     });
 });

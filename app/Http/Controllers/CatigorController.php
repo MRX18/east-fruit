@@ -266,7 +266,7 @@ class CatigorController extends Controller
                     } else {
                         $price->id_specification = "Нет";
                     }
-                    $price->currency = Currency::where('id', $price->currency)->value('currency');
+                    $price->currency = Currency::where('charCode', $request->currency)->value('currency');
                 }
 
                 $returnHTML = view('includes.table')->with(['prices'=>$prices])->render();
