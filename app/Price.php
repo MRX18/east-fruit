@@ -8,9 +8,9 @@ use App\Currency;
 
 class Price extends Model
 {
-    public function setPriceAttribute($value)
+    public function setPriceMinAttribute($value)
     {
-        $price = $this->attributes['price_input'];
+        $price = $this->attributes['price_input_min'];
         $_controller = new Controller();
 
         $currencys = $_controller->currency();
@@ -22,8 +22,45 @@ class Price extends Model
 
         $p = round(($price*$currency)/$uan, 2);
 
-        return $this->attributes['price'] = $p;
+        return $this->attributes['price_min'] = $p;
     }
+
+    public function setPriceAvgAttribute($value)
+    {
+        $price = $this->attributes['price_input_avg'];
+        $_controller = new Controller();
+
+        $currencys = $_controller->currency();
+        $currency = Currency::where('id', $this->attributes['currency'])->value('charCode');
+
+        $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
+        $uan = $currencys["UAH"][0]/$currencys["UAH"][1];
+
+
+        $p = round(($price*$currency)/$uan, 2);
+
+        return $this->attributes['price_avg'] = $p;
+    }
+
+    public function setPriceMaxAttribute($value)
+    {
+        $price = $this->attributes['price_input_max'];
+        $_controller = new Controller();
+
+        $currencys = $_controller->currency();
+        $currency = Currency::where('id', $this->attributes['currency'])->value('charCode');
+
+        $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
+        $uan = $currencys["UAH"][0]/$currencys["UAH"][1];
+
+
+        $p = round(($price*$currency)/$uan, 2);
+
+        return $this->attributes['price_max'] = $p;
+    }
+
+
+
 
     public function price($market, $product, $specification, $dateMin, $dateMax) {
     	return $this->whereIn('id_market', $market)

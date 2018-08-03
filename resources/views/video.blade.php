@@ -35,7 +35,7 @@
 
                                             </div>
 
-                                            <div style="float: left; width: 100%;" class="title">
+                                            <div class="title">
                                                 <h4 style="text-align: left;"><a href="{{ route('video-article', ['id'=>$image->slug]) }}">{{ $image->title }}</a></h4>
                                             </div>
 

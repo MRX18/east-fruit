@@ -23,6 +23,10 @@ a:hover {
 .event {
 	background-color: #FF6600;
 }
+.title {
+	float: left;
+	width: 100%;
+}
 /*.event a {
 	border-bottom: 2px solid #33CB98;
 }*/
@@ -203,6 +207,29 @@ section, footer, header{
 #news-section{
 	background: #fff;
 }
+/*------------------------------------------------------------*/
+/* comment sitebar
+    -----------------------------------------------------------------*/
+.comment-sitebar {
+	border-bottom: 1px solid #dfdfdf;
+	margin-bottom: 15px;
+}
+.comment-sitebar a {
+	display: block;
+	font-size: 13px;
+	line-height: 17px !important;
+	margin-bottom: 3px;
+}
+.comment-content {
+	font-size: 14px;
+	line-height: 19px;
+}
+.comment-content span {
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+
 /*------------------------------------------------------------*/
 /* 2.1.1 - Search Button
     -----------------------------------------------------------------*/
@@ -2264,11 +2291,13 @@ footer .links a:hover{
 }
 @media screen and (max-width: 360px) {
 	.answer-content {
-	 	width: 70%;
-	 }
+		width: 70%;
+	}
+
 	.answer-pr {
-	 	font-size: 30px;
-	 }
+		font-size: 30px;
+	}
+
 	.news-bredcrumbs {
 		display: none;
 	}
@@ -2277,46 +2306,58 @@ footer .links a:hover{
 	.search-form input {
 		width: 160px;
 	}
+
 	.gsc-search-box {
 		width: 240px !important;
 		right: -13px;
 	}
+
 	.search-exit {
 		right: -67px;
 	}
+
 	/**/
 	.program-right {
 		width: 70%;
 	}
-	.article-galery a {
-	 	height: 81px;
-	 }
 
-@media screen and (max-width: 330px) {
-	.program {
-		display: block;
-	}
-	.program-right {
-		width: 100%;
-	}
-	.text h3 {
-		font-size: 18px;
-	}
-	.title-item {
-		font-size: 18px;
-	}
-	/*search*/
-	.result-search {
-		font-size: 20px;
-	}
-	.count-search {
-		font-size: 16px;
-	}
 	.article-galery a {
-		width: 100%;
-	 	height: auto;
-	 }
-	 .answer-pr {
-	 	margin-bottom: -37px;
-	 }
+		height: 81px;
+	}
+
+	@media screen and (max-width: 330px) {
+		.program {
+			display: block;
+		}
+
+		.program-right {
+			width: 100%;
+		}
+
+		.text h3 {
+			font-size: 18px;
+		}
+
+		.title-item {
+			font-size: 18px;
+		}
+
+		/*search*/
+		.result-search {
+			font-size: 20px;
+		}
+
+		.count-search {
+			font-size: 16px;
+		}
+
+		.article-galery a {
+			width: 100%;
+			height: auto;
+		}
+
+		.answer-pr {
+			margin-bottom: -37px;
+		}
+	}
 }

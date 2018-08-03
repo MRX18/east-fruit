@@ -39,8 +39,10 @@ class Controller extends BaseController
 
     public function dateCatigor($colection) {
         foreach($colection as $article) {
-            $date = explode('-', $article->date);
-            $article->date = $date[2].'.'.$date[1].'.'.$date[0];
+            if(isset($article->date)) {
+                $date = explode('-', $article->date);
+                $article->date = $date[2].'.'.$date[1].'.'.$date[0];
+            }
         }
 
         return $colection;

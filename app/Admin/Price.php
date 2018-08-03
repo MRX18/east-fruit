@@ -20,7 +20,9 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminDisplayFilter::related('id_product')->setModel(Product::class),
             AdminDisplayFilter::related('id_specification')->setModel(Specification::class),
             AdminDisplayFilter::related('currency')->setModel(Currency::class),
-            AdminDisplayFilter::related('price_input')->setModel(Price::class),
+            AdminDisplayFilter::related('price_input_min')->setModel(Price::class),
+            AdminDisplayFilter::related('price_input_max')->setModel(Price::class),
+            AdminDisplayFilter::related('price_input_avg')->setModel(Price::class),
             AdminDisplayFilter::related('date')->setModel(Price::class)
         );
 
@@ -51,11 +53,28 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                     AdminColumn::filter('currency')
                 ),
 
-            $country = AdminColumn::text('price_input', 'Цена')
+
+
+
+            $country = AdminColumn::text('price_input_min', 'Цена(мин)')
                 ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
                 ->append(
-                    AdminColumn::filter('price_input')
+                    AdminColumn::filter('price_input_min')
                 ),
+
+            $country = AdminColumn::text('price_input_max', 'Цена(макс)')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('price_input_max')
+                ),
+
+            $country = AdminColumn::text('price_input_avg', 'Цена(сред)')
+                ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
+                ->append(
+                    AdminColumn::filter('price_input_avg')
+                ),
+
+
 
             $country = AdminColumn::text('date', 'Дата')
                 ->setHtmlAttribute('class', 'hidden-sm hidden-xs hidden-md')
@@ -68,7 +87,7 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::date('date', 'Дата')->required(),
+            AdminFormElement::date('date', 'Дата')->required()->setCurrentDate(),
 
             AdminFormElement::select('id_market', 'Страны')->setModelForOptions(new Market)->setDisplay(function($Market) {
                 return $Market->market;
@@ -89,8 +108,14 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                 return $Currency->currency;
             })->required(),
 
-            AdminFormElement::text('price_input', 'Цена')->required(),
-            AdminFormElement::hidden('price', 'Цена(грн)')
+            AdminFormElement::text('price_input_min', 'Минимальная цена')->required(),
+            AdminFormElement::hidden('price_min', 'Цена'),
+
+            AdminFormElement::text('price_input_avg', 'Средняя цена')->required(),
+            AdminFormElement::hidden('price_avg', 'Цена'),
+
+            AdminFormElement::text('price_input_max', 'Максимальная цена')->required(),
+            AdminFormElement::hidden('price_max', 'Цена')
 
         );
     });

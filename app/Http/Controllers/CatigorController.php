@@ -161,6 +161,24 @@ class CatigorController extends Controller
                 $prices = $_price->priceN($market, $request->product, $dateMin, $dateMax);
             }
 
+
+            if($request->price == 1) {
+                foreach ($prices as $price) {
+                    $price->price = $price->price_min;
+                    $price->price_input = $price->price_input_min;
+                }
+            } elseif($request->price == 2) {
+                foreach ($prices as $price) {
+                    $price->price = $price->price_max;
+                    $price->price_input = $price->price_input_max;
+                }
+            } elseif($request->price == 3) {
+                foreach ($prices as $price) {
+                    $price->price = $price->price_avg;
+                    $price->price_input = $price->price_input_avg;
+                }
+            }
+
             $date = array();
             foreach($prices as $price) {
                 $priceDate = explode('-', $price->date);

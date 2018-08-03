@@ -24,7 +24,8 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::image('img', 'Главное изображение')->required(),
             AdminFormElement::ckeditor('text', 'Текст')->required(),
-            AdminFormElement::images('images', 'Галерея изображений')->storeAsJson()->required()
+            AdminFormElement::images('images', 'Галерея изображений')->storeAsJson()->required(),
+            AdminFormElement::date('date', 'Дата')->required()
         );
     });
 }) 

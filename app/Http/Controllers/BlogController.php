@@ -144,7 +144,7 @@ class BlogController extends Controller
         $article = $_blog->oneArticleSlug($id);
 
 
-        $comment = BlogComment::where('id_blog', $id)->orderByDesc('id')->get();
+        $comment = BlogComment::where('id_blog', Blog::where('slug',$id)->value('id'))->orderByDesc('id')->get();
         $reads = Article::orderByDesc('id')->limit(10)->get();
         foreach($reads as $read) {
             $read->date = $this->dateFirst($read->date);

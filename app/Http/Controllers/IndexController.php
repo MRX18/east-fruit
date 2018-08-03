@@ -25,7 +25,7 @@ class IndexController extends Controller
         $_research = new Research();
         $_video = new Video();
 
-        $sitebar = $_article->sitebar(10);
+        $sitebar = $_article->sitebar(9);
         $sitebarAdaptive =$_article->sitebar(5);
 
 

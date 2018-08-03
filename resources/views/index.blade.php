@@ -79,7 +79,7 @@
                                             </div>
                                             <div class="item-content">
                                                 <p class="ellipsis"><a
-                                                            href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                            href="{{ $sitebar->slug }}">{{ $sitebar->title }}</a>
                                                 </p>
                                                 <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                     @if($sitebar->visible == 1)
@@ -90,38 +90,25 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <h3>Актуальное в блоге</h3>
-                                @foreach($blogSitebar as $sitebar)
-                                    <div data-key="43">
-                                        <div class="item">
-                                            <div class="item-image">
-                                                <span class="item-image-date">{{ $sitebar->date }}</span>
-                                                <!--<span class="item-image-time">09:30</span>-->
-                                            </div>
-                                            <div class="item-content">
-                                                <p class="ellipsis">
-                                                    @if($sitebar->slug == NULL)
-                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
-                                                    @else
-                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
-                                                    @endif
-
-
-                                                </p>
-                                                {{--<div class="entry-meta bg-{{ $sitebar->id_catigories }}">--}}
-                                                    {{--@if($sitebar->visible == 1)--}}
-                                                        {{--{{ $sitebar->catigor }}--}}
-                                                    {{--@endif--}}
-                                                {{--</div>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
                                 <div class="add-article" style="margin-bottom: 30px;">
                                     <a href="{{ route('all-articles') }}">Больше новостей</a>
                                 </div>
 
                             </div>
+                        </div>
+
+                        <div class="entry-post">
+                            <h3>Последние комментарии</h3>
+
+                            @foreach($sitebarComment as $comment)
+                            <div class="comment-sitebar">
+                                <div class="comment-article"><a href="{{ $comment->article_slug }}">{{ $comment->article_title }}</a></div>
+                                <div class="comment-content">
+                                    <p><span>{{ $comment->user }}</span>{!! mb_substr($comment->text, 0, 150)."..." !!}</p>
+                                </div>
+                            </div>
+                            @endforeach
+
                         </div>
 
 
@@ -201,36 +188,12 @@
                                         </div>
                                         <div class="item-content">
                                             <p class="ellipsis"><a
-                                                        href="{{ route('article', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
+                                                        href="{{ $sitebar->slug }}">{{ $sitebar->title }}</a>
                                             </p>
                                             <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
                                                 @if($sitebar->visible == 1)
                                                     {{ $sitebar->catigor }}
                                                 @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <h3>Актуальное в блоге</h3>
-                                @foreach($blogSitebar as $sitebar)
-                                    <div data-key="43">
-                                        <div class="item">
-                                            <div class="item-image">
-                                                <span class="item-image-date">{{ $sitebar->date }}</span>
-                                                <!--<span class="item-image-time">09:30</span>-->
-                                            </div>
-                                            <div class="item-content">
-                                                <p class="ellipsis">                       @if($sitebar->slug == NULL)
-                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>
-                                                    @else
-                                                        <a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>
-                                                    @endif
-                                                </p>
-                                                <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
-                                                    @if($sitebar->visible == 1)
-                                                        {{ $sitebar->catigor }}
-                                                    @endif
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
