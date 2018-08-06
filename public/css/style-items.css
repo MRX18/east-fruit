@@ -88,6 +88,19 @@
     color: #3b3b3b;
     text-align: justify;
 }
+.descr-item .marker {
+    background-color: #FFFF00;
+}
+.descr-item ol {
+    /*display: block;*/
+    list-style-type: decimal;
+    margin-left: 60px !important;
+}
+.descr-item ul {
+    /*display: block;*/
+    list-style-type: disc;
+    margin-left: 60px !important;
+}
 .category-item {
     height: 50px;
     display: block;

@@ -62,14 +62,6 @@ class ArticleController extends Controller
 
         $sitebar = $_article->sitebar(10);
 
-    	foreach($sitebar as $option) {
-    		foreach ($catigories as $catigor) {
-    			if($option->id_catigories == $catigor->id) {
-    				$option->catigor = $catigor->title;
-    			}
-    		}
-    	}
-
     	$title = $article->title;
         $keywords = $article->keywords;
         $description = $article->lid;

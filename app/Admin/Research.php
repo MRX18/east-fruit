@@ -25,6 +25,8 @@ AdminSection::registerModel(Research::class, function (ModelConfiguration $model
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
+            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+
             AdminFormElement::checkbox('size', 'Большое иследование'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),

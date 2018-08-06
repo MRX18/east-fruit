@@ -26,6 +26,8 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
 
+            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::select('id_catigor', 'Категория события')->setModelForOptions(new EventCatigorie)->setDisplay(function($EventCatigorie) {
                 return $EventCatigorie->title;

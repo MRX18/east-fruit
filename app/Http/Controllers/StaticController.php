@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\Application;
 use App\User;
+use App\Page;
 
 class StaticController extends Controller
 {
@@ -19,8 +20,12 @@ class StaticController extends Controller
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
+
     	$_article = new Article();
-        
+    	$_page = new Page();
+
+        $content = $_page->pageContent('about');
+
         $sitebar = $_article->sitebar(10);
 
     	return view('about')->with([
@@ -29,7 +34,8 @@ class StaticController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
             'keywords' => $keywords,
             'description' => $description,
-    		'sitebarArticle' => $sitebar
+    		'sitebarArticle' => $sitebar,
+            'content' => $content
     	]);
     }
 
@@ -40,7 +46,11 @@ class StaticController extends Controller
 
     	$catigories = $this->catigorTop();
         $otherCatigorTop = $this->otherCatigorTop();
+
     	$_article = new Article();
+        $_page = new Page();
+
+        $content = $_page->pageContent('cooperation');
         
         $sitebar = $_article->sitebar(10);
 
@@ -50,7 +60,8 @@ class StaticController extends Controller
             'otherCatigorTop' => $otherCatigorTop,
             'keywords' => $keywords,
             'description' => $description,
-    		'sitebarArticle' => $sitebar
+    		'sitebarArticle' => $sitebar,
+            'content' => $content
     	]);
     }
 
@@ -97,6 +108,9 @@ class StaticController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
+        $_page = new Page();
+
+        $content = $_page->pageContent('contact');
         
     	$sitebar = $_article->sitebar(10);
 
@@ -108,7 +122,8 @@ class StaticController extends Controller
             'description' => $description,
     		'sitebarArticle' => $sitebar,
 
-            'addApplications' => $addApplications
+            'addApplications' => $addApplications,
+            'content' => $content
     	]);
     }
     

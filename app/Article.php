@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use App\CatigorTop;
 use App\Blog;
 use App\Research;
 use App\ResearchContent;
@@ -31,7 +32,7 @@ class Article extends Model
         $date = Carbon::now()->toDateTimeString();
 
     	$articles =  $this->where('datetime','<=',$date)->orderByDesc('datetime')->limit($count)->get();
-    	$blogs = Blog::orderByDesc('date')->limit($count)->get();
+    	$blogs = Blog::where('visible', 1)->orderByDesc('date')->limit($count)->get();
     	$researchs = Research::orderByDesc('date')->limit($count)->get();
         $images = Image::orderByDesc('date')->limit($count)->get();
         $videos = Video::orderByDesc('date')->limit($count)->get();
@@ -41,27 +42,32 @@ class Article extends Model
         $collection = array();
         foreach($articles as $value) {
             $value->slug = '/article/'.$value->slug;
+            $value->catigor = CatigorTop::where('id', $value->id_catigories)->value('title');
             $collection[] = $value;
         }
 
         foreach($blogs as $value) {
             $value->slug = '/blog/article/'.$value->slug;
+            $value->catigor = 'Блог';
             $collection[] = $value;
         }
 
         foreach($images as $value) {
             $value->slug = '/image-article/'.$value->id;
+            $value->catigor = 'Фотогалерея';
             $collection[] = $value;
         }
 
         foreach($videos as $value) {
             $value->slug = '/video-article/'.$value->slug;
+            $value->catigor = 'Видео';
             $collection[] = $value;
         }
 
         foreach($events as $value) {
             $value->slug = '/conference/'.$value->id;
             $value->date = date("Y-m-d", strtotime($value->created_at));
+            $value->catigor = 'Календарь событий';
             $collection[] = $value;
         }
 
@@ -71,10 +77,12 @@ class Article extends Model
             } else {
                 $value->slug = '/research/'.ResearchContent::where('id_research', $value->id)->orderBy('id')->value('slug');
             }
+            $value->catigor = 'Исследования';
             $collection[] = $value;
         }
 
         $articles = collect($collection);
+
         $articles = $articles->sortByDesc('date')->take($count);
 
 //        dd($articles);

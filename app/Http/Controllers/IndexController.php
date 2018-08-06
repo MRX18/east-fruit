@@ -31,13 +31,6 @@ class IndexController extends Controller
 
         $slider = $_article->articleInIndexPage('baner', 1, 3);
 
-    	foreach($sitebar as $option) {
-    		foreach ($catigories as $catigor) {
-    			if($option->id_catigories == $catigor->id) {
-    				$option->catigor = $catigor->title;
-    			}
-    		}
-    	}
 
         foreach($sitebarAdaptive as $option) {
             foreach ($catigories as $catigor) {

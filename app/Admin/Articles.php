@@ -27,7 +27,7 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::checkbox('top', 'Всегда отображать статью в топе своей категории'),
 
-            AdminFormElement::checkbox('visible', 'Показывать категорию в сайдбаре'),
+            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
 
             AdminFormElement::checkbox('baner', 'Показать в главном слайдере'),
             AdminFormElement::checkbox('toptwenty', 'Показать в верхнем слайдере'),

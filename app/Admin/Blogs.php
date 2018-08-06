@@ -27,6 +27,7 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::checkbox('visible', 'Опубликовать в блоге'),
+            AdminFormElement::checkbox('catigor_visible', 'Показывать название категории в сайдбаре'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::text('slug', 'Слаг'),

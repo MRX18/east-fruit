@@ -21,6 +21,8 @@ AdminSection::registerModel(Video::class, function (ModelConfiguration $model) {
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
+            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::text('slug', 'Слаг(Не обязателен для заполнения)'),
             AdminFormElement::textarea('video', 'Главное видео(iframe)')->required(),

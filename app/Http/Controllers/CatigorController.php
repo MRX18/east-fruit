@@ -57,38 +57,7 @@ class CatigorController extends Controller
             'answer' => $answer
         ]);
     }
-    // public function bottomCatigor($id) {
-    //     $title = "Главная";
-    //     $catigories = $this->catigorTop();
-    //     $otherCatigorTop = $this->otherCatigorTop();
-    //     foreach($catigories as $catigor) {
-    //         if($catigor->id == $id) {
-    //             $title = $catigor->title;
-    //         }
-    //     }
-    //     $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
-    //     $description = $title." - на сайте east-fruit.com";
-    //     $_article = new Article();
 
-    //     $articles = $_article->articleCatigor($id, 24);
-    //     $slider = $_article->articleInIndexPage('baner', 1, 3);
-    //     foreach($articles as $option) {
-    //         foreach ($catigories as $catigor) {
-    //             if($option->id_catigories == $catigor->id) {
-    //                 $option->catigor = $catigor->title;
-    //             }
-    //         }
-    //     }
-    //     return view('catigories')->with([
-    //         'title' => $title,
-    //         'catigories' => $catigories,
-    //         'otherCatigorTop' => $otherCatigorTop,
-    //         'keywords' => $keywords,
-    //         'description' => $description,
-    //         'articles' => $articles,
-    //         'slider' => $slider
-    //     ]);
-    // }
     public function prices() {
         $title = 'Цены';
         $keywords = $title.", фрукты, овощи, новости, плодоовощной рынок, аналитика, маркетинг, east-fruit, Центральная Азия, Кавказ, Восточная Европа.";
@@ -382,7 +351,9 @@ class CatigorController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
         $_article = new Article();
         $_image = new Image();
+
         $sitebar = $_article->sitebar(10);
+
         $article = $_image->imageArticle($id);
         $article->images = json_decode($article->images, true);
         $title = $article->title;

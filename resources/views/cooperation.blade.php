@@ -21,24 +21,10 @@
 
                         <div class="news-more-item">
 
-                            <h2 class="title-item">Сотрудничество</h2>
+                            <h2 class="title-item">{{ $content->title }}</h2>
 
                             <div class="descr-item">
-                                <p>East-fruit.com открыт к сотрудничеству с медиа-агентствами, СМИ, профильными
-                                    ассоциациями, государственными и негосударственными структурами для улучшения
-                                    эффективности торговли плодоовощной продукцией в регионе Кавказа, Центральной Азии и
-                                    Восточной Европы.</p>
-
-                                <p>Как повысить эффективность использования ресурсов для выращивания высокоценных
-                                    культур, которые могут быть экспортированы или реализованы на локальном рынке? Что
-                                    необходимо для повышения конкурентоспособности на международных рынках и улучшения
-                                    инвестиционного климата в плодоовощном секторе стран? На эти и другие вопросы
-                                    аудитория сайта East-fruit.com найдет ответ в новостях, обзорах рынка,
-                                    исследованиях, мониторинге цен, анализе данных и различных моделей развития
-                                    плодоовощного сектора, а также посредством профильных мероприятий (тренингов,
-                                    семинаров, конференций) для плодоовощного бизнеса.</p>
-
-
+                                {!! $content->text !!}
                             </div>
 
                         </div>
@@ -48,58 +34,7 @@
 
                     <div class="col-sm-4 col-lg-3 hidden-xs">
 
-                        <div class="entry-post">
-                            <h3>Актуальное</h3>
-                            <!-- Begin .item-->
-                            <div id="w4" class="list-view">
-
-                                @foreach($sitebarArticle as $sitebar)
-                                    <div data-key="43">
-                                        <div class="item">
-                                            <div class="item-image">
-                                                <span class="item-image-date">{{ $sitebar->date }}</span>
-                                                <!--<span class="item-image-time">09:30</span>-->
-                                            </div>
-                                            <div class="item-content">
-                                                <p class="ellipsis"><a
-                                                            href="{{ $sitebar->slug }}">{{ $sitebar->title }}</a>
-                                                </p>
-                                                <div class="entry-meta bg-{{ rand(1,9) }}">
-                                                    @if($sitebar->visible == 1)
-                                                        {{ $sitebar->catigor }}
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                {{--<h3>Актуальное в блоге</h3>--}}
-                                {{--@foreach($blogSitebar as $sitebar)--}}
-                                    {{--<div data-key="43">--}}
-                                        {{--<div class="item">--}}
-                                            {{--<div class="item-image">--}}
-                                                {{--<span class="item-image-date">{{ $sitebar->date }}</span>--}}
-                                                {{--<!--<span class="item-image-time">09:30</span>-->--}}
-                                            {{--</div>--}}
-                                            {{--<div class="item-content">--}}
-                                                {{--<p class="ellipsis">                       @if($sitebar->slug == NULL)--}}
-										  {{--<a href="{{ route('articleBlog', ['id'=>$sitebar->id]) }}">{{ $sitebar->title }}</a>--}}
-                                        {{--@else--}}
-                                            {{--<a href="{{ route('articleBlog', ['id'=>$sitebar->slug]) }}">{{ $sitebar->title }}</a>--}}
-                                        {{--@endif--}}
-                                                {{--</p>--}}
-                                                {{--<div class="entry-meta bg-{{ $sitebar->id_catigories }}">--}}
-                                                    {{--@if($sitebar->visible == 1)--}}
-                                                        {{--{{ $sitebar->catigor }}--}}
-                                                    {{--@endif--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--@endforeach--}}
-
-                            </div>
-                        </div>
+                        @include('includes.sitebar', ['$sitebarArticle' => $sitebarArticle])
 
                     </div>
 

@@ -54,6 +54,8 @@ class AuthServiceProvider extends ServiceProvider
 
         \App\Video::class => \App\Policies\VideoPolicy::class,
 
+        \App\Page::class => \App\Policies\PagePolicy::class,
+
 //        \App\Permission::class => \App\Policies\PermissionPolicy::class,
     ];
 
