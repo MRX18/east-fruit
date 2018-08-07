@@ -16,6 +16,11 @@ class Image extends Model
     }
 
     public function imageArticle($id) {
-    	return $this->where('id', $id)->first();
+        $_controller = new Controller();
+
+        $article = $this->where('id', $id)->first();
+        $article->date = $_controller->dateFirst($article->date);
+
+    	return $article;
     }
 }

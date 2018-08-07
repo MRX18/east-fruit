@@ -76,7 +76,7 @@ class IndexController extends Controller
         }
 
 
-        $articles = $_article->allArticles(9);
+        $articles = $_article->allArticles(15);
 
         $images = $_image->images(6);
 

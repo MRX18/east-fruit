@@ -1,9 +1,9 @@
 <div class="entry-post">
-    <h3>Актуальное</h3>
+    <h3><a href="{{ route('all-articles') }}">Актуальное</a></h3>
     <!-- Begin .item-->
     <div id="w4" class="list-view">
 
-        @foreach($sitebarArticle as $sitebar)
+        @foreach($articleSitebar as $sitebar)
             <div data-key="43">
                 <div class="item">
                     <div class="item-image">

@@ -21,12 +21,18 @@
                         <div class="news-more-item">
 
                             <h2 class="title-item">{{ $article->title }}</h2>
+                            <span class="date-item">{{ $article->date }}</span>
 
                             <div class="img-item img-lid">
                                 <img src="{{ asset($article->img) }}" alt="">
+                                @if(!empty($article->lid))
+                                    <div class="lid">
+                                        <p>{{ $article->lid }}</p>
+                                    </div>
+                                @endif
                             </div>
 
-                            <div class="descr-item">
+                            <div class="images-item">
                                 {!! $article->text !!}
 
                                 @if(isset($article->images))

@@ -32,7 +32,7 @@
                             <span class="date-item">{{ $article->date }}</span>
 
                             <div class="img-item img-lid">
-                                <img src="{{ asset($article->img) }}" alt="{{ $article->title }}">
+                                <img href="{{ asset($article->img) }}" src="{{ asset($article->img) }}" alt="{{ $article->title }}">
                                 @if(!empty($article->lid))
                                     <div class="lid">
                                         <p>{{ $article->lid }}</p>

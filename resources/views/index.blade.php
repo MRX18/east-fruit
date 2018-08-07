@@ -553,10 +553,15 @@
 
                             <div class="photo-gallery">
                                 @foreach($images as $image)
-                                    <a href="{{ route('image-article', ['id'=>$image->id]) }}" class="images"
-                                       style="background-image: url('{{ asset($image->img) }}');"
-                                       title="{{ $image->title }}">
-                                    </a>
+                                    <div class="photo-gallery-conateiner">
+                                        <a href="{{ route('image-article', ['id'=>$image->id]) }}"><div class="gallery-img">
+                                            <img src="{{ asset($image->img) }}" alt="Images">
+                                        </div></a>
+                                        <div class="gallery-text">
+                                            <a href="{{ route('image-article', ['id'=>$image->id]) }}">{{ $image->title }}</a>
+                                            <span>{{ $image->date }}</span>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </div>
                             <div class="but">

@@ -86,6 +86,20 @@ $( document ).ready(function() {
     });
 
 
+    $('.descr-item img, .img-item img, .img img').click(function(){
+        $.magnificPopup.open({
+            items: {
+                src: $(this).attr('src')
+            },
+            type: 'image',
+
+            gallery: {
+                enabled: true
+            }
+        });
+    });
+
+
 
     //---------------------------------------------------------------------------------------
 

@@ -63,13 +63,18 @@ class AppServiceProvider extends ServiceProvider
 
         $comments = collect($collection);
         $comments = $comments->sortByDesc('date')->take(5);
+        /*--Актуальное--*/
+        $_article = new Article();
+        $articleSitebar = $_article->sitebar(15);
+
 
 
         View::share([
             'dateEvent' => $dateEvent,
             'blogSitebar' => $blog,
             'banner' => $banner,
-            'sitebarComment' => $comments
+            'sitebarComment' => $comments,
+            'articleSitebar' => $articleSitebar
         ]);
     }
 
