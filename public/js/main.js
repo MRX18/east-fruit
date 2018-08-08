@@ -99,6 +99,10 @@ $( document ).ready(function() {
         });
     });
 
+    $('#plugin').click(function () {
+        alert('click');
+    });
+
 
 
     //---------------------------------------------------------------------------------------
@@ -171,6 +175,15 @@ $('.news-stroke').slick({
             }
         }
     ]
+});
+
+$('.index-carousel').slick({
+    autoplay: true,
+    infinite: true,
+    speed: 300,
+    autoplaySpeed: 15000,
+    arrows: true,
+    dots: true
 });
 //---------------------------------------------------------------
 

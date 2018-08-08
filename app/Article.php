@@ -43,6 +43,7 @@ class Article extends Model
         foreach($articles as $value) {
             $value->slug = '/article/'.$value->slug;
             $value->catigor = CatigorTop::where('id', $value->id_catigories)->value('title');
+            $value->date = date("Y-m-d", strtotime($value->datetime));
             $collection[] = $value;
         }
 

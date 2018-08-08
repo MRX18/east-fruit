@@ -649,7 +649,22 @@ li.slick-active button {
 }
 
 /*-------------------------------------------slider-------------------------------------------------------*/
-
+.item {
+    position: relative;
+}
+.items-more{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.index-carousel {
+    position: relative;
+}
+.slick-dots {
+    position: absolute;
+    bottom: 35px !important;
+    left: 50px !important;
+}
 /*-------------------------------------------news-------------------------------------------------------*/
 
 /*-------------------------------------------about-------------------------------------------------------*/
@@ -1205,14 +1220,14 @@ li.slick-active button {
     font-size: 14px;
 }
 
-.news-carousel .carousel-inner .text {
+.news-carousel .index-carousel .text {
     position: absolute;
     top: 160px;
     left: 50px;
     width: 50%;
 }
 
-.news-carousel .carousel-inner .text p {
+.news-carousel .index-carousel .text p {
     font-size: 20px;
     font-family: "Arial";
     color: #fff;
@@ -1220,7 +1235,7 @@ li.slick-active button {
     margin-top: 15px;
 }
 
-.news-carousel .carousel-inner .text span {
+.news-carousel .index-carousel .text span {
     font-size: 18px;
     color: #48e0ad;
 }
@@ -2501,7 +2516,7 @@ footer .links a:hover {
     }
 }
 @media screen and (max-width: 768px) {
-    .entry-post > h3 {
+    .entry-post h3 {
         display: none;
     }
 }

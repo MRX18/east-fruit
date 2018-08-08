@@ -87,13 +87,16 @@
                         <ul class="menu-auth">
                             @if(!Auth::check())
 
-                                <li class="li-auth" style="margin-right: 10px;"><a style="color: #848AA2; font-size: 14px;"
-                                                                   href="/login">Вход</a></li>
-                                <li class="li-auth" style="margin-right: 60px;"><a style="color: #848AA2; font-size: 14px;"
-                                                                   href="/register">Регистрация</a></li>
+                                <li class="li-auth" style="margin-right: 10px;"><a
+                                            style="color: #848AA2; font-size: 14px;"
+                                            href="/login">Вход</a></li>
+                                <li class="li-auth" style="margin-right: 60px;"><a
+                                            style="color: #848AA2; font-size: 14px;"
+                                            href="/register">Регистрация</a></li>
                             @else
-                                <li class="li-auth" style="margin-right: 20px;"><a style="color: #848AA2; font-size: 14px;"
-                                                                   href="/logout" onclick="event.preventDefault();
+                                <li class="li-auth" style="margin-right: 20px;"><a
+                                            style="color: #848AA2; font-size: 14px;"
+                                            href="/logout" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Выход</a></li>
                                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                                     {{ csrf_field() }}
@@ -354,7 +357,7 @@
                         option += '<option value="' + key + '">' + value + '</option>';
                         // console.log(option);
                     });
-                    if(option) {
+                    if (option) {
                         $('#specification').html(option);
                         $('#specification').attr('disabled', false);
                     } else {

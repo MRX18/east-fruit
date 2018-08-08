@@ -72,12 +72,16 @@
                             <h3>Последние комментарии</h3>
 
                             @foreach($sitebarComment as $comment)
-                            <div class="comment-sitebar">
-                                <div class="comment-article"><a href="{{ $comment->article_slug }}">{{ $comment->article_title }}</a></div>
-                                <div class="comment-content">
-                                    <p><span>{{ $comment->user }}</span>{!! mb_substr($comment->text, 0, 150)."..." !!}</p>
+                                <div class="comment-sitebar">
+                                    <div class="comment-article"><a
+                                                href="{{ $comment->article_slug }}">{{ $comment->article_title }}</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>
+                                            <span>{{ $comment->user }}</span>{!! mb_substr($comment->text, 0, 150)."..." !!}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
                             @endforeach
 
                         </div>
@@ -208,20 +212,14 @@
 
                         <div class="news-carousel">
                             <div id="newsSlider" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#newsSlider" data-slide-to="0" class="active"></li>
-                                    <li data-target="#newsSlider" data-slide-to="1"></li>
-                                    <li data-target="#newsSlider" data-slide-to="2"></li>
-                                </ol>
 
-                                <div class="carousel-inner">
+                                <div class="index-carousel">
                                     <?php $i = 1;?>
                                     @foreach($slider as $slid)
                                         <div class="item
-                                @if($i == 1)
+                                            @if($i == 1)
                                                 active
-@endif">
+                                            @endif">
                                             <img src="{{ asset($slid->img) }}" alt="{{ $slid->title }}"/>
                                             <div class="text" style="background-color: rgba(0,0,0,0.5); padding: 5px;">
                                                 <span>{{ $slid->date }}</span>
@@ -233,9 +231,9 @@
                                                 <?php $j = 1;?>
                                                 @foreach($slider as $slid)
                                                     <div class="items-more-item
-                                        @if($i == $j)
+                                                        @if($i == $j)
                                                             active
-@endif">
+                                                        @endif">
                                                         <?php $j++;?>
                                                         <span>{{ $slid->date }}</span>
                                                         <p><a style="color: #fff;"
@@ -554,9 +552,11 @@
                             <div class="photo-gallery">
                                 @foreach($images as $image)
                                     <div class="photo-gallery-conateiner">
-                                        <a href="{{ route('image-article', ['id'=>$image->id]) }}"><div class="gallery-img">
-                                            <img src="{{ asset($image->img) }}" alt="Images">
-                                        </div></a>
+                                        <a href="{{ route('image-article', ['id'=>$image->id]) }}">
+                                            <div class="gallery-img">
+                                                <img src="{{ asset($image->img) }}" alt="Images">
+                                            </div>
+                                        </a>
                                         <div class="gallery-text">
                                             <a href="{{ route('image-article', ['id'=>$image->id]) }}">{{ $image->title }}</a>
                                             <span>{{ $image->date }}</span>
