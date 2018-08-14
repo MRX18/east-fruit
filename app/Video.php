@@ -7,20 +7,18 @@ use App\Http\Controllers\Controller;
 
 class Video extends Model
 {
+    use \KodiComponents\Support\Upload;
+
+    protected $casts = [
+        'video' => 'file', // or file | upload
+    ];
+
     public function setSlugAttribute($value)
     {
         if (!$this->exists) {
             return $this->attributes['slug'] = str_slug($this->attributes['title']);
         }
         return $this->attributes['slug'] = $value;
-    }
-
-    public function video($count) {
-        $_controller = new Controller();
-
-        $video = $this->orderByDesc('date')->paginate($count);
-
-        return $_controller->dateCatigor($video);
     }
 
     public function article($slug) {

@@ -28,7 +28,8 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::images('images', 'Галерея изображений')->storeAsJson()->required(),
-            AdminFormElement::date('date', 'Дата')->required()
+            AdminFormElement::date('date', 'Дата')->required(),
+            AdminFormElement::datetime('datetime', 'Время публикации статьи')->required()
         );
     });
 }) 

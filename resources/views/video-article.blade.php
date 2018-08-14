@@ -14,7 +14,7 @@
                                 </li>
                                 <li><a href="/">Главная</a></li>
                                 <li><img src="../../images/page-item/Polygon-968.png" alt="/"></li>
-                                <li><a style="font-weight: normal;" href="{{ route('images') }}">Фотогалерея</a></li>
+                                <li><a style="font-weight: normal;" href="{{ route('video') }}">Видео</a></li>
                             </ul>
                         </div>
 
@@ -22,8 +22,18 @@
 
                             <h2 class="title-item">{{ $article->title }}</h2>
 
+                            <span class="date-item">{{ date("d.m.Y", strtotime($article->date)) }}</span>
+
                             <div class="video-container-article">
-                               {!! $article->video !!}
+                                @if($article->video_view == 1)
+                                    {!! $article->video_iframe !!}
+                                @else
+                                    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
+                                           poster="{{ asset($article->video_img) }}"
+                                           data-setup="{}">
+                                        <source src="{{ asset($article->video) }}" type='video/mp4' />
+                                    </video>
+                                @endif
                             </div>
 
                             <div class="descr-item">

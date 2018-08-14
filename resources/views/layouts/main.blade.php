@@ -43,6 +43,8 @@
     <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/video-js.css') }}" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -77,7 +79,7 @@
                     <a href="/"><img src="{{ asset('images/east-fruit.png') }}" alt="East-fruit logo"></a>
                 </div>
                 <div class="east-header-hamburger">
-                    <img src="images/hamburger.png" alt="menu icon">
+                    <img src="{{ asset('images/hamburger.png') }}" alt="menu icon">
                 </div>
                 <div class="east-header-phone">
                     <p>Информация о рынках овощей и фруктов на восток от Евросоюза</p>
@@ -329,11 +331,13 @@
 <script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('slick/slick.min.js') }}"></script>
+<script src="{{ asset('js/video.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/share42/share42.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        videojs.options.flash.swf = "video-js.swf";
         /*price*/
         $('select[id=product-price]').on('change', function () {
             var product = $(this).val();

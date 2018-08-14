@@ -379,12 +379,14 @@ class CatigorController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $_article = new Article();
-        $_video = new Video();
+//        $_video = new Video();
         $_question = new Question();
         $_answer = new Answer();
 
         $slider = $_article->articleInIndexPage('baner', 1, 3);
-        $video = $_video->video(42);
+//        $video = $_video->video(42);
+        $date = Carbon::now()->toDateTimeString();
+        $video = Video::where('datetime','<=',$date)->orderByDesc('datetime')->paginate(42);
 
         $question = $_question->question();
         $answer = $_answer->answer($question->id);

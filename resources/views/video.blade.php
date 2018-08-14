@@ -30,7 +30,7 @@
                                                     <a href="{{ route('video-article', ['id'=>$image->slug]) }}" class="search"></a>
                                                 </div>
                                                 <div class="item-img item-category-img">
-                                                    {!! $image->video !!}
+                                                    <img src="{{ asset($image->video_img) }}"/>
                                                 </div>
 
                                             </div>
@@ -40,7 +40,7 @@
                                             </div>
 
                                             <div style="float:left; color: #3c9; font-weight: 600;" class="item-category-date">
-                                                {{ $image->date }}
+                                                {{ date("d.m.Y", strtotime($image->date)) }}
                                             </div>
 
                                         </div>

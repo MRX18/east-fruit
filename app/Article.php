@@ -32,10 +32,10 @@ class Article extends Model
         $date = Carbon::now()->toDateTimeString();
 
     	$articles =  $this->where('datetime','<=',$date)->orderByDesc('datetime')->limit($count)->get();
-    	$blogs = Blog::where('visible', 1)->orderByDesc('date')->limit($count)->get();
-    	$researchs = Research::orderByDesc('date')->limit($count)->get();
-        $images = Image::orderByDesc('date')->limit($count)->get();
-        $videos = Video::orderByDesc('date')->limit($count)->get();
+    	$blogs = Blog::where('visible', 1)->orderByDesc('created_at')->limit($count)->get();
+    	$researchs = Research::where('datetime','<=',$date)->orderByDesc('datetime')->limit($count)->get();
+        $images = Image::where('datetime','<=',$date)->orderByDesc('datetime')->limit($count)->get();
+        $videos = Video::where('datetime','<=',$date)->orderByDesc('datetime')->limit($count)->get();
         $events = Event::orderByDesc('created_at')->limit($count)->get();
 
 
@@ -43,13 +43,22 @@ class Article extends Model
         foreach($articles as $value) {
             $value->slug = '/article/'.$value->slug;
             $value->catigor = CatigorTop::where('id', $value->id_catigories)->value('title');
-            $value->date = date("Y-m-d", strtotime($value->datetime));
+//            $value->date = date("Y-m-d", strtotime($value->datetime));
             $collection[] = $value;
         }
 
         foreach($blogs as $value) {
             $value->slug = '/blog/article/'.$value->slug;
             $value->catigor = 'Блог';
+            $value->datetime = $value->created_at;
+            $collection[] = $value;
+        }
+
+        foreach($events as $value) {
+            $value->slug = '/conference/'.$value->id;
+            $value->date = date("Y-m-d", strtotime($value->created_at));
+            $value->datetime = $value->created_at;
+            $value->catigor = 'Календарь событий';
             $collection[] = $value;
         }
 
@@ -65,13 +74,6 @@ class Article extends Model
             $collection[] = $value;
         }
 
-        foreach($events as $value) {
-            $value->slug = '/conference/'.$value->id;
-            $value->date = date("Y-m-d", strtotime($value->created_at));
-            $value->catigor = 'Календарь событий';
-            $collection[] = $value;
-        }
-
         foreach($researchs as $value) {
             if($value->size == 1) {
                 $value->slug = '/great-research/'.$value->slug;
@@ -84,7 +86,7 @@ class Article extends Model
 
         $articles = collect($collection);
 
-        $articles = $articles->sortByDesc('date')->take($count);
+        $articles = $articles->sortByDesc('datetime')->take($count);
 
 //        dd($articles);
 

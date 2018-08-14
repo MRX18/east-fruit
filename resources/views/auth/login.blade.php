@@ -56,7 +56,7 @@
                                     Вход
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password-restoring') }}">
                                     Забыли свой пароль?
                                 </a>
                             </div>

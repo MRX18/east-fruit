@@ -69,8 +69,23 @@ class Controller extends BaseController
 
     public function currency() {
         header("Content-Type: text/html; charset=utf-8");
+
         $date = date("d/m/Y"); // Текущая дата
-        $content = simplexml_load_file("https://www.cbr.ru/scripts/XML_daily.asp?date_req=".$date);
+        $feed ="https://www.cbr.ru/scripts/XML_daily.asp?date_req=".$date;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $feed);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // get the result of http query
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        $content = simplexml_load_string($output);
+
+//        ini_set("allow_url_fopen", true);
+//        header("Content-Type: text/html; charset=utf-8");
+//        $date = date("d/m/Y"); // Текущая дата
+//        $content = simplexml_load_file("https://www.cbr.ru/scripts/XML_daily.asp?date_req=".$date);
 
         $currency = array();
         

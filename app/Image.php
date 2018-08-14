@@ -4,13 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class Image extends Model
 {
     public function images($count) {
         $_controller = new Controller();
 
-    	$iamges = $this->orderByDesc('id')->paginate($count);
+        $date = Carbon::now()->toDateTimeString();
+
+    	$iamges = $this->where('datetime','<=', $date)->orderByDesc('datetime')->paginate($count);
 
         return $_controller->dateCatigor($iamges);
     }

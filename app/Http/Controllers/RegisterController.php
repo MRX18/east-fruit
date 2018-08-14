@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 use App\User;
 use App\Occupation;
@@ -90,5 +91,55 @@ class RegisterController extends Controller
     		return view('auth.email');
     	}
 
+    }
+
+    /*востановление пароля*/
+    public function restoring(Request $request) {
+        $message = false;
+
+        if($request->isMethod('post')) {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|exists:users',
+            ]);
+
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator->errors());
+            } else {
+                $hash = Crypt::encryptString($request->email);
+                $url = route('restoring-link', ['hash'=>$hash]);
+                session(['hash' => $hash]);
+
+                mail($request->email, 'Восстановления пароля', 'Ссылка для восстановления пароля на сайте east-fruit.com: '.$url);
+                $message = true;
+                return view('auth.passwords.email', compact('message'));
+            }
+        }
+
+        return view('auth.passwords.email', compact('message'));
+    }
+
+    public function restoringLink(Request $request) {
+        $hash = session('hash');
+        if($request->hash == $hash) {
+//            dd(Crypt::decryptString($hash));
+            if($request->isMethod('post')) {
+                $validator = Validator::make($request->all(), [
+                    'password' => 'required|string|min:6|confirmed'
+                ]);
+
+                if($validator->fails()) {
+                    return redirect()->back()->withInput()->withErrors($validator->errors());
+                } else {
+                    User::where('email', Crypt::decryptString($hash))->update(['password'=>bcrypt($request->password)]);
+                    $userId = User::where('email', Crypt::decryptString($hash))->value('id');
+
+                    Auth::loginUsingId($userId);
+                    return redirect('/');
+                }
+            }
+            return view('auth.passwords.reset', compact('hash'));
+        } else {
+            return redirect()->back();
+        }
     }
 }

@@ -10,6 +10,7 @@ use App\Video;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -67,8 +68,9 @@ class IndexController extends Controller
         //НОВОСТИ
         $new = $_article->lineIndex('id_catigories', 1);
 
-        //НОВОСТИ
-        $video = $_video->video(3);
+        //Видео
+        $date = Carbon::now()->toDateTimeString();
+        $video = Video::where('datetime','<=',$date)->orderByDesc('datetime')->paginate(3);
         $i = 0;
         foreach($video as $value) {
             $value->active = $i;

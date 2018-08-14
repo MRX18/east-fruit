@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 
 class Research extends Model
@@ -19,7 +20,9 @@ class Research extends Model
     public function allResearch($count) {
         $_controller = new Controller;
 
-    	$research = $this->orderByDesc('id')->paginate($count);
+        $date = Carbon::now()->toDateTimeString();
+
+    	$research = $this->where('datetime','<=',$date)->orderByDesc('datetime')->paginate($count);
 
     	return $_controller->dateCatigor($research);
     }

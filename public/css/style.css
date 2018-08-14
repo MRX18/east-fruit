@@ -90,7 +90,7 @@ a:hover {
     width: 100%;
 }
 
-.video-container-article iframe {
+.video-container-article iframe, .video-js {
     width: 100% !important;
     min-height: 400px !important;
 }
@@ -2672,7 +2672,7 @@ footer .links a:hover {
         width: 100%;
     }
 
-    .video-container-article iframe {
+    .video-container-article iframe, .video-js {
         min-height: 300px !important;
     }
 }

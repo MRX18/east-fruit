@@ -79,6 +79,9 @@ Route::match(['get', 'post'], '/register', 'RegisterController@register')->name(
 Route::match(['get', 'post'], '/registration', 'RegisterController@register')->name('registration');
 Route::match(['get', 'post'], '/email', 'RegisterController@email')->name('email');
 
+Route::match(['get', 'post'], '/password/restoring', 'RegisterController@restoring')->name('password-restoring');
+Route::match(['get', 'post'], '/password/restoring/{hash}', 'RegisterController@restoringLink')->name('restoring-link');
+
 
 Route::get('/video', 'CatigorController@video')->name('video');
 Route::get('/video-article/{id}', 'CatigorController@videoArticle')->name('video-article');

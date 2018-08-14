@@ -34,6 +34,7 @@ AdminSection::registerModel(Research::class, function (ModelConfiguration $model
 
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
+            AdminFormElement::datetime('datetime', 'Время публикации статьи')->required(),
             AdminFormElement::image('img', 'Изображение')->required()->setUploadSettings([
                 'orientate' => [],
                 'resize' => [850, NULL, function ($constraint) {

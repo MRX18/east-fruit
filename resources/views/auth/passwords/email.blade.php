@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
+                    @if($message == true)
+                        <div class="alert alert-success" role="alert">
+                            На ваш емайл было отправлено сообщение. Для того чтобы изменить пароль перейдите по ссылке в сообщении!
+                        </div>
+                    @endif
+
+                    <form class="form-horizontal" method="POST" action="{{ route('password-restoring') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
