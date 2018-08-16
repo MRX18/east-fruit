@@ -153,30 +153,23 @@
                                 }(jQuery));
                                 var $mcj = jQuery.noConflict(true);</script>
                             <!--End mc_embed_signup-->
-                            <div class="entry-post">
-                                <h3>Актуальное</h3>
-                                <!-- Begin .item-->
-                                @foreach($sitebarAdaptive as $sitebar)
-                                    <div class="item">
-                                        <div class="item-image">
-                                            <span class="item-image-date">{{ $sitebar->date }}</span>
-                                        </div>
-                                        <div class="item-content">
-                                            <p class="ellipsis"><a
-                                                        href="{{ $sitebar->slug }}">{{ $sitebar->title }}</a>
-                                            </p>
-                                            <div class="entry-meta bg-{{ $sitebar->id_catigories }}">
-                                                @if($sitebar->visible == 1)
-                                                    {{ $sitebar->catigor }}
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div class="add-article" style="margin-bottom: 30px;">
-                                    <a href="{{ route('all-articles') }}">Больше новостей</a>
-                                </div>
+                            <div class="auth">
+                                <ul>
+                                    @if(!Auth::check())
+
+                                        <li><a href="/login">Вход</a></li>
+                                        <li><a href="/register">Регистрация</a></li>
+                                    @else
+                                        <li><a href="/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Выход</a></li>
+                                        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    @endif
+                                </ul>
                             </div>
+
+                            @include('includes.sitebar', ['$sitebarArticle' => $sitebarArticle])
 
                         </div>
 
@@ -193,21 +186,6 @@
                                 @endforeach
 
                             </div>
-                        </div>
-                        <div class="auth">
-                            <ul>
-                                @if(!Auth::check())
-
-                                    <li><a href="/login">Вход</a></li>
-                                    <li><a href="/register">Регистрация</a></li>
-                                @else
-                                    <li><a href="/logout" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Выход</a></li>
-                                    <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                @endif
-                            </ul>
                         </div>
 
                         <div class="news-carousel">

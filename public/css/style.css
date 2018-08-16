@@ -2706,6 +2706,7 @@ footer .links a:hover {
         justify-content: center;
         border-top: 2px solid #F1F1F1;
         border-bottom: 2px solid #F1F1F1;
+        margin-bottom: 20px;
     }
 
     .auth ul {
