@@ -22,6 +22,11 @@
 
                             <h2 class="title-item">{{ $article->title }}</h2>
 
+                            @if(isset($article->pdf))
+                                <a class="article-download" href="{{ asset($article->pdf) }}" download>Скачать полную
+                                    версию </a>
+                            @endif
+
                             <span class="date-item">{{ date("d.m.Y", strtotime($article->date)) }}</span>
 
                             <div class="video-container-article">
@@ -39,6 +44,11 @@
                             <div class="descr-item">
                                 {!! $article->text !!}
                             </div>
+
+                            @if(isset($article->pdf))
+                                <embed width="100%" height="350px" name="plugin" id="plugin"
+                                       src="{{ asset($article->pdf) }}" type="application/pdf" internalinstanceid="4">
+                            @endif
 
                         </div>
 

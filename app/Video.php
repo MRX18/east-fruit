@@ -11,6 +11,7 @@ class Video extends Model
 
     protected $casts = [
         'video' => 'file', // or file | upload
+        'pdf' => 'file',
     ];
 
     public function setSlugAttribute($value)

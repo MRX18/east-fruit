@@ -54,6 +54,7 @@
 }
 .descr-item, .images-item {
     width: 100%;
+    margin-bottom: 20px;
 }
 .descr-item iframe, .images-item iframe {
     width: 100% !important;

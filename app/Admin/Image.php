@@ -27,10 +27,11 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
             AdminFormElement::image('img', 'Главное изображение')->required(),
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::textarea('lid', 'Лид')->required(),
+            AdminFormElement::upload('pdf', 'Загрузить pdf'),
             AdminFormElement::images('images', 'Галерея изображений')->storeAsJson()->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::datetime('datetime', 'Время публикации статьи')->required()
-        );
+        )->setHtmlAttribute('enctype', 'multipart/form-data');
     });
 }) 
 	->addMenuPage(Image::class, 300)

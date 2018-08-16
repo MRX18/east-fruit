@@ -8,6 +8,12 @@ use Carbon\Carbon;
 
 class Image extends Model
 {
+    use \KodiComponents\Support\Upload;
+
+    protected $casts = [
+        'pdf' => 'file', // or file | upload
+    ];
+
     public function images($count) {
         $_controller = new Controller();
 

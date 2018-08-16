@@ -29,6 +29,7 @@ AdminSection::registerModel(Video::class, function (ModelConfiguration $model) {
             AdminFormElement::image('video_img', 'Изображение видео')->required(),
             AdminFormElement::textarea('video_iframe', 'Главное видео(iframe)'),
             AdminFormElement::upload('video', 'Загрузить видео'),
+            AdminFormElement::upload('pdf', 'Загрузить pdf'),
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::date('date', 'Дата')->required(),
             AdminFormElement::datetime('datetime', 'Время публикации статьи')->required()
