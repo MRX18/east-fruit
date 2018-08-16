@@ -2473,6 +2473,45 @@ footer .links a:hover {
     text-align: center;
     color: #212840;
 }
+/*----------актуальное с 3 категорий----------*/
+.news-sitebar {
+    width: 100%;
+}
+.news-sitebar-conteiner {
+    width: 100%;
+}
+.news-sitebar-conteiner h3 {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.news-sitebar-conteiner h3 a {
+    color: #33CB98;
+}
+.news-sitebat-article {
+    margin-bottom: 20px;
+}
+.news-sitebar-img {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.news-sitebar-img img {
+    width: 100%;
+    transition: .4s all;
+}
+.news-sitebar-img img:hover {
+    transform: scale(1.1);
+}
+.news-sitebar-text a {
+    display: block;
+    color: #262D49;
+}
+.news-sitebar-text span {
+    display: block;
+    color: #33CB98;
+    font-weight: bold;
+}
 
 @media screen and (max-width: 1199px) {
     .event-right {

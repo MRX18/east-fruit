@@ -69,6 +69,7 @@
                             <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
                         </div>
                         <div id='calendar'></div>
+
                     </div>
 
                 </div>

@@ -190,9 +190,11 @@
 
                         @include('includes.sitebar', ['$sitebarArticle' => $sitebarArticle])
 
-                        <div class="banner-category">
-                            <img src="../../images/page-category/Layer&#32;920.png" alt="Banner">
-                        </div>
+                        @if(isset($banner))
+                            <div class="banner-category">
+                                <img src="{{ asset($banner->img) }}" alt="Banner">
+                            </div>
+                        @endif
 
                     </div>
 

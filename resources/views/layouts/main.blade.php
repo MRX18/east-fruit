@@ -108,7 +108,7 @@
                             <li><a href="/"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="/"> <i class="fab fa-instagram"></i></a></li>
                             <li><a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></a></li>
-                            <li style="margin-right: 10px;"><a href="/"><i class="fab fa-telegram-plane"></i></a></li>
+                            <li style="margin-right: 10px;"><a href="https://t.me/eastfruit"><i class="fab fa-telegram-plane"></i></a></li>
                             <li><a href="/"><i class="fab fa-viber"></i></a></li>
                             <li>|</li>
                             <li>
@@ -147,8 +147,8 @@
                         <ul class="menu-auth-bottom">
                             <li><a href="/"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="/"> <i class="fab fa-instagram"></i></a></li>
-                            <li><a href="/"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="/"><i class="fab fa-telegram-plane"></i></a></li>
+                            <li><a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://t.me/eastfruit"><i class="fab fa-telegram-plane"></i></a></li>
                             <li><a href="/"><i class="fab fa-viber"></i></a></li>
                             <li>|</li>
                             <li style="margin-left: -20px;">
@@ -295,8 +295,8 @@
             <ul>
                 <li><a href="/"><i class="fab fa-twitter"></i></a></li>
                 <li><a href="/"> <i class="fab fa-instagram"></i></a></li>
-                <li><a href="/"><i class="fab fa-facebook-f"></i></a></li>
-                <li style="margin-right: 10px;"><a href="/"><i class="fab fa-telegram-plane"></i></a></li>
+                <li><a href="https://www.facebook.com/eastfruit/"><i class="fab fa-facebook-f"></i></a></li>
+                <li style="margin-right: 10px;"><a href="https://t.me/eastfruit"><i class="fab fa-telegram-plane"></i></a></li>
                 <li><a href="/"><i class="fab fa-viber"></i></a></li>
             </ul>
             <p class="text"><b>East-fruit.com – место роста плодоовощного бизнеса</b></p>

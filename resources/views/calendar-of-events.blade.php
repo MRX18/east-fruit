@@ -120,37 +120,9 @@
                 </div>
 
                 </div>
-                <div class="col-sm-4 col-lg-3 hidden-xs category-left-block">
-                    <div class="calendar-ev">
-                        <a href="{{ route('event', ['id'=>date('Y')]) }}">Календарь событий</a>
-                    </div>
-                    <div id='calendar'></div>
 
-                    @if(isset($banner))
-                        <div class="banner-category">
-                            <img src="{{ asset($banner->img) }}" alt="Banner">
-                        </div>
-                    @endif
+                @include('includes.news-sitebar')
 
-                    <div class="vote-block">
-                        <h4>Опрос</h4>
-                        <div id="section-vote">
-                            <div class="question">{{ $question->title }}</div>
-                            <div class="main">
-                                <form action="{{ route('question') }}" method="post" name="web">
-                                {{ csrf_field() }}
-                                <div class="checkbox">
-                                    @foreach($answer as $value)
-                                    <label><input type="checkbox" name="answer{{ $value->id }}" value="{{ $value->id }}"> {{ $value->title }}</label>
-                                    @endforeach
-                                </div>
-
-                                <button type="submit" class="btn btn-primary comment-add"> Голосовать</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
     </section>
 

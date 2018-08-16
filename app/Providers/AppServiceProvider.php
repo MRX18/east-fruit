@@ -6,10 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Event;
 use App\Blog;
+use App\Image;
 use App\BlogComment;
 use App\Banners;
 use App\ArticlesComment;
 use App\Article;
+use App\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +21,13 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {   
+    {
+        $_article = new Article();
+        $_event = new Event();
+        $_image = new Image();
+        $_banners = new Banners;
+        $_blog = new Blog;
+
         /*события в календаре*/
         $dateEvent = Event::select('date')->get();
         foreach($dateEvent as $event) {
@@ -29,12 +37,10 @@ class AppServiceProvider extends ServiceProvider
 
 
         /*новые записи блога для сайтбара*/
-        $_blog = new Blog;
         $blog = $_blog->allArticlesBlog(3);
 
 
         /*реклама на сайте*/
-        $_banners = new Banners;
         $banner = $_banners->index();
 
         /*комментарии для сайтбара*/
@@ -63,9 +69,18 @@ class AppServiceProvider extends ServiceProvider
 
         $comments = collect($collection);
         $comments = $comments->sortByDesc('date')->take(5);
+
         /*--Актуальное--*/
-        $_article = new Article();
         $articleSitebar = $_article->sitebar(15);
+
+        /*--Актуальное с 3 категориями--*/
+        $blogСurrent  = $_blog->allArticlesBlog(2);
+        foreach($blogСurrent as $current) {
+            $current->img = User::where('id', $current->id_user)->value('img');
+        }
+        $eventСurrent = Event::orderByDesc('created_at')->limit(2)->get();
+        $imageСurrent = $_image->images(2);
+
 
 
 
@@ -74,7 +89,11 @@ class AppServiceProvider extends ServiceProvider
             'blogSitebar' => $blog,
             'banner' => $banner,
             'sitebarComment' => $comments,
-            'articleSitebar' => $articleSitebar
+            'articleSitebar' => $articleSitebar,
+
+            'blogСurrent' => $blogСurrent,
+            'eventСurrent' => $eventСurrent,
+            'imageСurrent' => $imageСurrent
         ]);
     }
 
