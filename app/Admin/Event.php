@@ -26,12 +26,13 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
 
-            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+            AdminFormElement::checkbox('visible', 'Показывать название подписи в сайдбаре'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::select('id_catigor', 'Категория события')->setModelForOptions(new EventCatigorie)->setDisplay(function($EventCatigorie) {
                 return $EventCatigorie->title;
             })->required(),
+            AdminFormElement::text('signature', 'Подпись для актуального'),
             AdminFormElement::text('adres', 'Адрес')->required(),
             AdminFormElement::date('date', 'Дата события')->required(),
             AdminFormElement::select('year', 'Год события')->setModelForOptions(new Yaer)->setDisplay(function($Yaer) {

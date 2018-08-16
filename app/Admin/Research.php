@@ -25,12 +25,14 @@ AdminSection::registerModel(Research::class, function (ModelConfiguration $model
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+            AdminFormElement::checkbox('visible', 'Показывать название подписи в сайдбаре'),
 
             AdminFormElement::checkbox('size', 'Большое иследование'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::text('slug', 'Заголовок статьи транслитерацией'),
+
+            AdminFormElement::text('signature', 'Подпись для актуального'),
 
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::date('date', 'Дата')->required(),

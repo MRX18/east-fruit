@@ -17,11 +17,11 @@
                         <div class="entry-meta bg-{{ rand(1,9) }}">
                             @if(isset($sitebar->catigor_visible))
                                 @if($sitebar->catigor_visible == 1)
-                                    {{ $sitebar->catigor }}
+                                    {{ $sitebar->signature }}
                                 @endif
                             @else
                                 @if($sitebar->visible == 1)
-                                    {{ $sitebar->catigor }}
+                                    {{ $sitebar->signature }}
                                 @endif
                             @endif
                         </div>

@@ -21,11 +21,12 @@ AdminSection::registerModel(Video::class, function (ModelConfiguration $model) {
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+            AdminFormElement::checkbox('visible', 'Показывать название подписи в сайдбаре'),
             AdminFormElement::checkbox('video_view', 'Поставьте галочку если загружаите видео через iframe и не ставьте галочку если загружаите с ПК'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::text('slug', 'Слаг(Не обязателен для заполнения)'),
+            AdminFormElement::text('signature', 'Подпись для актуального'),
             AdminFormElement::image('video_img', 'Изображение видео')->required(),
             AdminFormElement::textarea('video_iframe', 'Главное видео(iframe)'),
             AdminFormElement::upload('video', 'Загрузить видео'),

@@ -27,10 +27,13 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::checkbox('visible', 'Опубликовать в блоге'),
-            AdminFormElement::checkbox('catigor_visible', 'Показывать название категории в сайдбаре'),
+            AdminFormElement::checkbox('catigor_visible', 'Показывать название подписи в сайдбаре'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
             AdminFormElement::text('slug', 'Слаг'),
+
+            AdminFormElement::text('signature', 'Подпись для актуального'),
+
             AdminFormElement::select('id_user', 'Пользователь')->setModelForOptions(new User)->setDisplay(function($User) {
                 return $User->name;
             })->required(),

@@ -21,9 +21,10 @@ AdminSection::registerModel(Image::class, function (ModelConfiguration $model) {
     // Create And Edit
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::checkbox('visible', 'Показывать название категории в сайдбаре'),
+            AdminFormElement::checkbox('visible', 'Показывать название подписи в сайдбаре'),
 
             AdminFormElement::text('title', 'Заголовок')->required(),
+            AdminFormElement::text('signature', 'Подпись для актуального'),
             AdminFormElement::image('img', 'Главное изображение')->required(),
             AdminFormElement::ckeditor('text', 'Текст')->required(),
             AdminFormElement::textarea('lid', 'Лид')->required(),
