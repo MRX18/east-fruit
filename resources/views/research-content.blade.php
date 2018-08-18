@@ -54,6 +54,7 @@
                                 <embed width="100%" height="350px" name="plugin" id="plugin"
                                        src="{{ asset($articlesContent->pdf) }}" type="application/pdf"
                                        internalinstanceid="4">
+                                <a class="article-download" href="{{ asset($articlesContent->pdf) }}" target="_blank">Посмотреть полную версию</a>
                             @endif
                         </div>
 
