@@ -1,6 +1,7 @@
 <?php
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Currency;
+use App\Market;
 
 AdminSection::registerModel(Currency::class, function (ModelConfiguration $model) {
    $model->enableAccessCheck();
@@ -21,6 +22,11 @@ AdminSection::registerModel(Currency::class, function (ModelConfiguration $model
         return $form = AdminForm::panel()->addBody(
             
             AdminFormElement::text('currency', 'Название')->required(),
+
+            AdminFormElement::select('id_market', 'Страна')->setModelForOptions(new Market)->setDisplay(function($Market) {
+                return $Market->market;
+            }),
+
             AdminFormElement::text('charCode', 'Символьный код')->required()
 
         );

@@ -143,10 +143,10 @@
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Тип валюты</label>
 				    <div class="col-sm-10">
-				      <select class="form-control" name="currency">
+				      <select class="form-control" name="currency" id="currency">
 				      	<option selected disabled>Выберите валюту</option>
 				      	@foreach($currencys as $velue)
-							<option value="{{ $velue->charCode }}">{{ $velue->currency }}</option>
+							<option data-id="{{ $velue->id_market }}" value="{{ $velue->charCode }}">{{ $velue->currency }}</option>
 				      	@endforeach
 				      </select>
 				    </div>

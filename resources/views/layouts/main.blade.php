@@ -379,6 +379,7 @@
         $('.selectpicker').selectpicker();
 
         $('#market').on('change', function () {
+            $('select[id=currency] option[data-id='+$('#market').val()+']').attr('selected', true);
             $('#hidden_market').val($('#market').val());
         });
         /*---------------------------*/
@@ -388,13 +389,13 @@
             $('#userBlog').click();
         });
 
-        $('select[id=position-select]').on('change', function () {
-            if ($(this).val() == '9999') {
-                $('#position').removeAttr('disabled');
-            } else {
-                $('#position').attr("disabled", "disabled");
-            }
-        });
+        // $('select[id=position-select]').on('change', function () {
+        //     if ($(this).val() == '9999') {
+        //         $('#position').removeAttr('disabled');
+        //     } else {
+        //         $('#position').attr("disabled", "disabled");
+        //     }
+        // });
 
 
         /*calsendar*/

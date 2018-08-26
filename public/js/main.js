@@ -28,6 +28,14 @@ $('.form-horizontal').on('submit', function(e) {
     });
 });
 
+$('select[id=position-select]').on('change', function () {
+    if ($(this).val() == '9999') {
+        $('#position').removeAttr('disabled');
+    } else {
+        $('#position').attr("disabled", "disabled");
+    }
+});
+
 $( document ).ready(function() {
 
     /*сlic calendar*/
