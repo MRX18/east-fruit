@@ -46,17 +46,25 @@
 
                 @if(count($conferenceMaterial) > 0)
                     @foreach($conferenceMaterial as $material)
-                        @if($material->format == 'pdf')
-                            <div class="embed">
-                                <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
-                                <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
-                                <h2>{{ $material->title }}</h2>
-                                @if(isset($material->speacer))
-                                    <p>{{ $material->speacer }}</p>
-                                @endif
-                            </div>
+
+                        @if(!isset($material->pdf) || empty($material->pdf))
+                            <h2>{{ $material->title }}</h2>
+                            {!! $material->text !!}
                         @else
-                            <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
+
+                            @if($material->format == 'pdf')
+                                <div class="embed">
+                                    <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
+                                    <embed width="100%" height="400px" name="plugin" id="plugin" src="{{ asset($material->pdf) }}" type="application/pdf" internalinstanceid="4">
+                                    <h2>{{ $material->title }}</h2>
+                                    @if(isset($material->speacer))
+                                        <p>{{ $material->speacer }}</p>
+                                    @endif
+                                </div>
+                            @else
+                                <a class="article-download" href="{{ asset($material->pdf) }}" download>{{ $material->title.'.'.$material->format.' скачать' }}</a>
+                            @endif
+
                         @endif
                     @endforeach
                 @else

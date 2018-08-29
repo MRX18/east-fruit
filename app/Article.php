@@ -161,13 +161,14 @@ class Article extends Model
     /*admin*/
     public function setSlugAttribute($value)
     {
-        if(Auth::check()) {
-            Control::insert(
-                ['id_user' => Auth::user()->id]
-            );
-        }
-
         if (!$this->exists) {
+
+            if(Auth::check()) {
+                Control::insert(
+                    ['id_user' => Auth::user()->id]
+                );
+            }
+
             return $this->attributes['slug'] = str_slug($this->attributes['title']);
         } 
         return $this->attributes['slug'] = $value;

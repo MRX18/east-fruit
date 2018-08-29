@@ -39,7 +39,7 @@
 
                             @if($addApplications)
                                 <div class="alert alert-success">
-                                    <strong>Ваша заявки була отправлена!</strong>
+                                    <strong>Ваша заявка была отправлена. Спасибо!</strong>
                                 </div>
                             @endif
                             <form name="com" id="comment-form" class="comment-box" action="{{ route('contact') }}"

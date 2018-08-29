@@ -28,6 +28,8 @@ AdminSection::registerModel(ConferenceMaterial::class, function (ModelConfigurat
                 return $Event->title;
             })->required(),
 
+            AdminFormElement::ckeditor('text', 'Текст'),
+
             AdminFormElement::upload('pdf', 'PDF файл к статье')
         )->setHtmlAttribute('enctype', 'multipart/form-data');
     });
