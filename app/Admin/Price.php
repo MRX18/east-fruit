@@ -97,6 +97,10 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                 return $Product->name;
             })->required(),
 
+//            AdminFormElement::select('id_specification', 'Категории')->setModelForOptions(new Specification)->setDisplay(function($Specification) {
+//                return $Specification->title;
+//            })->required(),
+
             AdminFormElement::dependentselect('id_specification', 'Спецификация')
                 ->setModelForOptions(\App\Specification::class, 'title')
                 ->setDataDepends(['id_product'])

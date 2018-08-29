@@ -11,7 +11,7 @@ use Auth;
 class EastfruitController extends Controller
 {
     public function eastfruit() {
-        if(!Auth::check()) {
+        if(!Auth::check() || !Auth::user()->can('users-list')) {
             return redirect()->back();
         }
 

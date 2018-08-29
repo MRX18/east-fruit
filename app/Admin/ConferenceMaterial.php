@@ -13,7 +13,8 @@ AdminSection::registerModel(ConferenceMaterial::class, function (ModelConfigurat
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
-
+            AdminColumn::text('title')->setLabel('Материал конференции'),
+//            AdminColumn::text('speacer')->setLabel('Спикер'),
         	AdminColumn::text('ConferenceMaterialRelation.title')->setLabel('Cобытие')
         ]);
         return $display;
