@@ -99,7 +99,13 @@ return [
                 ->setPriority(400),
             (new Page(\App\Currency::class))
                 ->setIcon('fa fa-sliders')
-                ->setPriority(800)
+                ->setPriority(800),
+            [
+                'title' => 'Цены Excel',
+                'icon'  => 'fa fa-users',
+                'url'   => route('excel'),
+                'priority' => 1000,
+            ],
         ]
     ],
 

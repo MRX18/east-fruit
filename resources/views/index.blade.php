@@ -493,13 +493,13 @@
 
                                                     <div class="col-sm-6 col-lg-6 text">
                                                         <div class="video-container">
-                                                            {!! $value->video !!}
+                                                            <img style="width: 100%;" src="{{ asset($value->video_img) }}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-lg-6 text">
                                                         <h3>{{ $value->title }}</h3>
                                                         <p>{{ mb_substr(strip_tags($value->text), 0, 400).'...' }}</p>
-                                                        <p><span>{{ $value->date }}</span></p>
+                                                        <p><span>{{ date("d.m.Y", strtotime($value->date)) }}</span></p>
                                                         <p><a href="{{ route('video-article', ['id'=>$value->slug]) }}">Подробнее</a>
                                                         </p>
                                                     </div>

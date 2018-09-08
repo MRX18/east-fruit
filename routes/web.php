@@ -86,6 +86,8 @@ Route::match(['get', 'post'], '/password/restoring/{hash}', 'RegisterController@
 Route::get('/video', 'CatigorController@video')->name('video');
 Route::get('/video-article/{id}', 'CatigorController@videoArticle')->name('video-article');
 
+//Route::match(['get', 'post'], '/excel', 'ExcelController@uploadExsel')->name('excel');
+
 // Route::get('/slug', function() {
 // 	$art = App\Article::get();
 // 	foreach($art as $value) {

@@ -379,8 +379,8 @@
         $('.selectpicker').selectpicker();
 
         $('#market').on('change', function () {
-            $('select[id=currency] option[data-id='+$('#market').val()+']').attr('selected', true);
             $('#hidden_market').val($('#market').val());
+            $('select[id=currency] option[data-id='+$('#market').val()+']').attr('selected', true);
         });
         /*---------------------------*/
 

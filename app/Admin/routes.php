@@ -16,3 +16,5 @@ Route::get('information', ['as' => 'admin.information', function () {
 
 Route::get('/east-fruit',['as' => 'eastfruit','uses' => '\App\Http\Controllers\EastfruitController@eastfruit']);
 Route::get('/east-fruit/edit/{id}',['as' => 'eastfruit-user','uses' => '\App\Http\Controllers\EastfruitController@user']);
+
+Route::match(['get', 'post'], '/excel',['as' => 'excel','uses' => '\App\Http\Controllers\ExcelController@uploadExsel']);
