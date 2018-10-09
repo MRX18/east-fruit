@@ -40,7 +40,9 @@
 
                             <div class="images-item">
                                 {!! $article->text !!}
-
+                               <p>Основные новости и аналитика плодоовощного рынка на <a href="https://www.facebook.com/eastfruit/">Facebook</a> и в <a href="https://t.me/eastfruit">Telegram</a> East-Fruit.com 
+<br>Подписывайтесь!</p>
+<p style="font-size: 14px">Использование материалов сайта свободно при наличии прямой, открытой для поисковых систем, ссылки на конкретную публикацию аналитической платформы <a href="https://east-fruit.com">East-fruit.com</a>.</p>
                                 @if(isset($article->images))
                                     <div class="img-cont article-galery">
                                         @foreach($article->images as $image)
@@ -50,6 +52,9 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="share42init" data-url="{{ route('image-article', ['id' => $article->id]) }}"
+                                 data-title="{{ $article->title }}" data-image="{{ asset($article->img) }}"
+                                 data-description="{{ $article->lid }}"></div>
 
                             @if(isset($article->pdf))
                                 <embed width="100%" height="350px" name="plugin" id="plugin"

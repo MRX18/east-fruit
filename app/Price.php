@@ -16,11 +16,14 @@ class Price extends Model
         $currencys = $_controller->currency();
         $currency = Currency::where('id', $this->attributes['currency'])->value('charCode');
 
-        $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
         $uan = $currencys["UAH"][0]/$currencys["UAH"][1];
 
-
-        $p = round(($price*$currency)/$uan, 2);
+        if($currency=='RUB'){
+            $p = round($price/$uan, 2);  
+        }else{
+            $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
+           $p = round(($price*$currency)/$uan, 2);   
+        }
 
         return $this->attributes['price_min'] = $p;
     }
@@ -33,11 +36,14 @@ class Price extends Model
         $currencys = $_controller->currency();
         $currency = Currency::where('id', $this->attributes['currency'])->value('charCode');
 
-        $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
         $uan = $currencys["UAH"][0]/$currencys["UAH"][1];
 
-
-        $p = round(($price*$currency)/$uan, 2);
+        if($currency=='RUB'){
+            $p = round($price/$uan, 2);  
+        }else{
+            $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
+           $p = round(($price*$currency)/$uan, 2);   
+        }
 
         return $this->attributes['price_avg'] = $p;
     }
@@ -50,11 +56,14 @@ class Price extends Model
         $currencys = $_controller->currency();
         $currency = Currency::where('id', $this->attributes['currency'])->value('charCode');
 
-        $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
         $uan = $currencys["UAH"][0]/$currencys["UAH"][1];
 
-
-        $p = round(($price*$currency)/$uan, 2);
+        if($currency=='RUB'){
+            $p = round($price/$uan, 2);  
+        }else{
+            $currency = $currencys[$currency][0]/$currencys[$currency][1]; // указаная валюта
+           $p = round(($price*$currency)/$uan, 2);   
+        }
 
         return $this->attributes['price_max'] = $p;
     }

@@ -19,7 +19,7 @@ AdminSection::registerModel(Role::class, function (ModelConfiguration $model) {
         $display = AdminDisplay::datatables()->setColumns([
             AdminColumn::text('name')->setLabel('Name'),
             AdminColumn::text('display_name')->setLabel('Display name'),
-            AdminColumn::text('description')->setLabel('Description name'),
+            AdminColumn::text('description')->setLabel('Description'),
         ]);
         $display->paginate(10);
         return $display;
@@ -30,7 +30,7 @@ AdminSection::registerModel(Role::class, function (ModelConfiguration $model) {
             AdminFormElement::multiselect('thepermits', 'Права доступа')->setModelForOptions('App\Permission')->setDisplay('display_name'),
             AdminFormElement::text('name', 'Name')->required(),
             AdminFormElement::text('display_name', 'Display name')->required(),
-            AdminFormElement::textarea('description', 'Description name')->required()
+            AdminFormElement::textarea('description', 'Description')->required()
         );
         return $form;
     });

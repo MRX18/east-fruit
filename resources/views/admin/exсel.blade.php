@@ -35,7 +35,7 @@
 
         <div class="date">
             <label for="sel1">Дата:</label><br>
-            <input type="date" name="date">
+            <input type="date" name="date" value="<?php echo date("Y-m-d");?>">
         </div><br>
 
         <button class="btn btn-primary" type="submit">Добавить</button>

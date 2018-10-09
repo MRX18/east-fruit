@@ -20,7 +20,7 @@ AdminSection::registerModel(Permission::class, function (ModelConfiguration $mod
         $display = AdminDisplay::datatables()->setColumns([
             AdminColumn::text('name')->setLabel('Name'),
             AdminColumn::text('display_name')->setLabel('Display name'),
-            AdminColumn::text('description')->setLabel('Description name'),
+            AdminColumn::text('description')->setLabel('Description'),
         ]);
         $display->paginate(10);
         return $display;
@@ -30,7 +30,7 @@ AdminSection::registerModel(Permission::class, function (ModelConfiguration $mod
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::text('name', 'Name')->required(),
             AdminFormElement::text('display_name', 'Display name')->required(),
-            AdminFormElement::textarea('description', 'Description name')->required()
+            AdminFormElement::textarea('description', 'Description')->required()
         );
         return $form;
     });

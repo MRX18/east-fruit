@@ -34,6 +34,9 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
                 AdminFormElement::checkbox('admin', 'Команда East-fruit'),
                 AdminFormElement::text('name', 'Name User')->required(),
                 AdminFormElement::text('email', 'Email')->required()->unique(),
+                AdminFormElement::password('password', 'Password')->hashWithBcrypt()->required(),
+                // AdminFormElement::text('password', 'Password')->required()->unique(),
+                
                 AdminFormElement::select('id_occupation', 'Род деятельности')->setModelForOptions(new Occupation)->setDisplay(function($Occupation) {
                     return $Occupation->title;
                 })->required(),

@@ -40,7 +40,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">Ошибка 503</div>
+                <a href="/">На главную</a>
             </div>
         </div>
     </body>

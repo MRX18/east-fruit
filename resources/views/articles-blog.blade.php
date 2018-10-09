@@ -35,7 +35,12 @@
                             <div class="descr-item">
                                 {!! $article->text !!}
                             </div>
-
+                            <p>Основные новости и аналитика плодоовощного рынка на <a href="https://www.facebook.com/eastfruit/">Facebook</a> и в <a href="https://t.me/eastfruit">Telegram</a> East-Fruit.com 
+<br>Подписывайтесь!</p>
+<p style="font-size: 14px">Использование материалов сайта свободно при наличии прямой, открытой для поисковых систем, ссылки на конкретную публикацию аналитической платформы <a href="https://east-fruit.com">East-fruit.com</a>.</p>
+                            <div class="share42init" data-url="{{ route('articleBlog', ['id' => $article->slug]) }}"
+                                 data-title="{{ $article->title }}" data-image="{{ asset($author->img) }}"
+                                 data-description="{{ $author->name }}"></div>
                         </div>
 
                         <div class="comments-item">
@@ -262,9 +267,9 @@
                                     </form>
                                 </div>
 
-                                <div class="add-article">
-                                    <a href="{{ route('addblog') }}">Добавить статью</a>
-                                </div>
+                                <!--<div class="add-article">-->
+                                <!--    <a href="{{ route('addblog') }}">Добавить статью</a>-->
+                                <!--</div>-->
                             @else
                                 <div class="add-article">
                                     <a href="/login">Авторизироваться</a>

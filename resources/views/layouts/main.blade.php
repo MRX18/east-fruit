@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru-RU">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119485074-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-119485074-1');
-    </script>
 
     <meta name="google-site-verification" content="13xvaFAbWVM56NminxJcNt69yC2qybn5jCaIIWFGwMM"/>
     <meta charset="UTF-8">
@@ -33,8 +21,9 @@
     <link rel="shortcut icon" href="{{ asset('/images/logo.png') }}" type="image/png">
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://east-fruit.com/rss/feed_rss.php">
 
-<!-- <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> -->
+ <!--<link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/fontawesome/web-fonts-with-css/css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css') }}" rel="stylesheet">
 
@@ -320,10 +309,43 @@
             <div class="">
                 <p class="copy">© 2018 Аналитическая платформа для роста плодоовощного бизнеса</p>
                 <p class="copy">Все права защищены</p>
+<p><a href="http://feeds.feedburner.com/east-fruit/rss" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0 margin-bottom:0; width:16px; margin-right:5px"/></a>&nbsp;<a href="http://feeds.feedburner.com/east-fruit/rss" rel="alternate" type="application/rss+xml">Подписатся</a></p>
             </div>
         </div>
     </div>
 </footer>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119485074-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119485074-1');
+    </script>
+<!--    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">-->
+
+<!-- <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> -->
+<!--    <link href="{{ asset('css/fontawesome/web-fonts-with-css/css/fontawesome.min.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css') }}" rel="stylesheet">-->
+
+<!--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('css/adaptive.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ asset('css/video-js.css') }}" rel="stylesheet" type="text/css">-->
+
+<!--    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
+<!--    <link rel="stylesheet"-->
+<!--          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">-->
 <script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
 <script src="{{ asset('assets/8a33ea23/yii.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>

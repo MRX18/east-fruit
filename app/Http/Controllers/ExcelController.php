@@ -45,8 +45,13 @@ class ExcelController extends Controller
 
                 $currency = $this->currency();
                 $currencyID = Currency::where('charCode', $request->currencies)->value('id');
+                
+                if($request->currencies=='RUB'){
+                    $cur=1;
+                }else{
+                    $cur = $currency[$request->currencies][0]/$currency[$request->currencies][1]; // указаная валюта
+                }
 
-                $cur = $currency[$request->currencies][0]/$currency[$request->currencies][1]; // указаная валюта
                 $uan = $currency["UAH"][0]/$currency["UAH"][1]; // гривна
 
                 foreach ($table as $t) {
@@ -56,11 +61,18 @@ class ExcelController extends Controller
                         (isset($t->avg) && $t->avg != 0)
                     ) {
                         $productID = Product::where('name', 'LIKE', $t->product)->value('id');
-                        $specificationID = Specification::where('title', 'LIKE', $t->specification)->value('id');
+                       if (empty($t->specification)) {
+                           $specificationID=null;
+                       }else{
+                            $specificationID = Specification::where('title', 'LIKE', $t->specification)->value('id'); 
+                       }
+                     
 
-                        $priceMin = round(($t->min*$cur)/$uan, 2);
-                        $priceMax = round(($t->max*$cur)/$uan, 2);
-                        $priceAvg = round(($t->avg*$cur)/$uan, 2);
+                            $priceMin = round(($t->min*$cur)/$uan, 2);
+                            $priceMax = round(($t->max*$cur)/$uan, 2);
+                            $priceAvg = round(($t->avg*$cur)/$uan, 2);
+
+
 
                         Price::insert([
                             'id_product' => $productID,
@@ -73,13 +85,14 @@ class ExcelController extends Controller
                             'price_max' => $priceMax,
                             'price_avg' => $priceAvg,
 
-                            'price_input_min' => $t->min,
-                            'price_input_max' => $t->max,
-                            'price_input_avg' => $t->avg
+                            'price_input_min' =>round($t->min,2),
+                            'price_input_max' =>round($t->max,2),
+                            'price_input_avg' =>round($t->avg,2)
                         ]);
+                        
                     }
                 }
-
+                 echo '<script type="text/javascript">alert("Цены успешно импортированы")</script>';
             }
         }
 

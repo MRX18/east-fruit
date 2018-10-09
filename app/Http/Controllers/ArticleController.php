@@ -26,13 +26,13 @@ class ArticleController extends Controller
                     array(
                         'name' => 'required|between:3,16',
                         'email' => 'required|email|max:32',
-                        'comment' => 'required|between:4,500'
+                        'comment' => 'required'
                     )
                 );
             } else {
                 $validator = Validator::make($request->all(),
                     array(
-                        'comment' => 'required|between:4,500'
+                        'comment' => 'required'
                     )
                 );
             }

@@ -28,6 +28,7 @@
 
 
 										<span class="text">{!! strip_tags(mb_substr($article->text, 0, 200)).'...' !!}</span>
+
 										<span class="date" style="display: block; color: #000; font-size: 12px; margin-top: 5px;">{{ $article->date }}</span>
 									</div>
 								</div>
@@ -129,9 +130,9 @@
                 			</form>
                 		</div>
 
-                		<div class="add-article">
-                			<a href="{{ route('addblog') }}">Добавить статью</a>
-                		</div>
+                		<!--<div class="add-article">-->
+                		<!--	<a href="{{ route('addblog') }}">Добавить статью</a>-->
+                		<!--</div>-->
                         @else
                         <div class="add-article">
                             <a href="/login">Авторизироваться</a>

@@ -44,7 +44,9 @@
                             <div class="descr-item">
                                 {!! $articlesContent->text !!}
                             </div>
-
+                            <p>Основные новости и аналитика плодоовощного рынка на <a href="https://www.facebook.com/eastfruit/">Facebook</a> и в <a href="https://t.me/eastfruit">Telegram</a> East-Fruit.com 
+<br>Подписывайтесь!</p>
+<p style="font-size: 14px">Использование материалов сайта свободно при наличии прямой, открытой для поисковых систем, ссылки на конкретную публикацию аналитической платформы <a href="https://east-fruit.com">East-fruit.com</a>.</p>
                             <div class="share42init" data-url="{{ route('min-research', ['id' => $articles->id]) }}"
                                  data-title="{{ $articles->title }}" data-image="{{ asset($articles->img) }}"
                                  data-description="{{ $articles->lid }}"></div>

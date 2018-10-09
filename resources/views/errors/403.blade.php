@@ -36,7 +36,8 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Access denied :(</div>
+        <div class="title">Ошибка 403 :(</div>
+        <a href="/">На главную</a>
     </div>
 </div>
 </body>

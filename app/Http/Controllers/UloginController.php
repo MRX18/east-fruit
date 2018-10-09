@@ -37,7 +37,7 @@ class UloginController extends Controller
                 \Session::flash('flash_message_error', trans('interface.AccountNotActive'));
             }
 
-            return redirect()->back();
+            return redirect('/');
         }
         // Make registration new user.
         else {
@@ -63,7 +63,7 @@ class UloginController extends Controller
 
             \Session::flash('flash_message', trans('interface.ActivatedSuccess'));
 
-            return redirect()->back();
+            return redirect('/');
         }
     }
 }

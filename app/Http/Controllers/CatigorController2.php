@@ -135,94 +135,92 @@ class CatigorController extends Controller
                 foreach ($prices as $price) {
                     $price->price = $price->price_min;
                     $price->price_input = $price->price_input_min;
-                    $price->currencyl=$price->currency;
                 }
             } elseif($request->price == 2) {
                 foreach ($prices as $price) {
                     $price->price = $price->price_max;
                     $price->price_input = $price->price_input_max;
-                    $price->currencyl=$price->currency;
                 }
             } elseif($request->price == 3) {
                 foreach ($prices as $price) {
                     $price->price = $price->price_avg;
                     $price->price_input = $price->price_input_avg;
-                    $price->currencyl=$price->currency;
                 }
             }
-
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             $date = array();
             foreach($prices as $price) {
                 $priceDate = explode('-', $price->date);
-                $price->date = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
+                $price->date = $priceDate[1].'.'.$priceDate[0];
                 $price->allDate = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
-                $date[] = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
+                $date[] = $priceDate[1].'.'.$priceDate[0];
             }
 
             $date = array_values(array_unique($date));
 
-            // for($i=0; $i<count($market); $i++) {
-            //     for($j=0; $j<count($date); $j++) {
-            //         $var = $prices->where('id_market', $market[$i])->where('date', $date[$j])->first();
+            for($i=0; $i<count($market); $i++) {
+                for($j=0; $j<count($date); $j++) {
+                    $var = $prices->where('id_market', $market[$i])->where('date', $date[$j])->first();
 
-            //         if(!isset($var)) {
-            //             $error[] = $market[$i];
-            //         }
-            //     }
-            // }
+                    if(!isset($var)) {
+                        $error[] = $market[$i];
+                    }
+                }
+            }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if(isset($error)) {
+                $error = array_values(array_unique($error));
 
-            // if(isset($error)) {
-            //     $error = array_values(array_unique($error));
+                foreach($prices as $price) {
+                    for($i=0; $i<count($error); $i++) {
+                        if($price->id_market != $error[$i]) {
+                            $collection[] = $price;
+                        }
+                    }
+                }
+                $prices = collect($collection);
+                unset($collection);
+            }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            $collection = array();
+            if($request->price == 1) {
+                for($i=0; $i<count($market); $i++) {
+                    for($j=0; $j<count($date); $j++) {
+                        $collection[] = $prices->where('id_market', $market[$i])->where('date', $date[$j])->sortBy('price')->first();
+                    }
+                }
 
-            //     foreach($prices as $price) {
-            //         for($i=0; $i<count($error); $i++) {
-            //             // if($price->id_market != $error[$i]) {
-            //                 $collection[] = $price;
-            //             // }
-            //         }
-            //     }
-            //     $prices = collect($collection);
-            //     unset($collection);
-            // }
+                $prices = collect($collection);
+            } elseif($request->price == 2) {
+                for($i=0; $i<count($market); $i++) {
+                    for($j=0; $j<count($date); $j++) {
+                        $collection[] = $prices->where('id_market', $market[$i])->where('date', $date[$j])->sortByDesc('price')->first();
+                    }
+                }
 
-            // $collection = array();
-            // if($request->price == 1) {
-            //     for($i=0; $i<count($market); $i++) {
-            //         for($j=0; $j<count($date); $j++) {
-            //             $collection[] = $prices->where('id_market', $market[$i])->where('date', $date[$j])->sortBy('price')->first();
-            //         }
-            //     }
+                $prices = collect($collection);
+            } elseif($request->price == 3) {
+                for($i=0; $i<count($market); $i++) {
+                    for($j=0; $j<count($date); $j++) {
+                        $p = $prices->where('id_market', $market[$i])->where('date', $date[$j]);
 
-            //     $prices = collect($collection);
-            // } elseif($request->price == 2) {
-            //     for($i=0; $i<count($market); $i++) {
-            //         for($j=0; $j<count($date); $j++) {
-            //             $collection[] = $prices->where('id_market', $market[$i])->where('date', $date[$j])->sortByDesc('price')->first();
-            //         }
-            //     }
+                        foreach($p as $value) {
+                            $array[] = $value->price;
+                        }
 
-            //     $prices = collect($collection);
-            // } elseif($request->price == 3) {
-            //     for($i=0; $i<count($market); $i++) {
-            //         for($j=0; $j<count($date); $j++) {
-            //             $p = $prices->where('id_market', $market[$i])->where('date', $date[$j]);
+                        $result = $this->avgPrice($array);
+                        unset($array);
 
-            //             foreach($p as $value) {
-            //                 $array[] = $value->price;
-            //             }
+                        $p = $prices->where('id_market', $market[$i])->where('date', $date[$j])->first();
+                        $p->price = $result;
 
-            //             $result = $this->avgPrice($array);
-            //             unset($array);
-
-            //             $p = $prices->where('id_market', $market[$i])->where('date', $date[$j])->first();
-            //             $p->price = $result;
-
-            //             $collection[] = $p;
-            //         }
-            //     }
-            //     $prices = collect($collection);
-            // }
-
+                        $collection[] = $p;
+                    }
+                }
+                $prices = collect($collection);
+            }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            dd($prices);
 
 
             if (array_key_exists($request->currency, $this->currency())) {
@@ -230,23 +228,13 @@ class CatigorController extends Controller
             } else {
                 $currency = $this->currency()['USD'];
             }
-            
+
             $currency = $currency[0] / $currency[1];
             $uan = $this->currency()['UAH'][0] / $this->currency()['UAH'][1];
 
             foreach($prices as $price) {
-
-                if($price->currencyl==Currency::where('charCode', $request->currency)->value('id')){
-                    $rub = $price->price_input;
-                    $price->price_input = round($rub,2);
-                }else{
-                if($request->currency=='RUB'){
-                    $rub = $price->price*$uan;
-                    $price->price_input = round($rub);
-                }else{
-                    $rub = $price->price*$uan;
-                    $price->price_input = round($rub/$currency,2);
-                }}
+                $rub = $price->price*$uan;
+                $price->price_input = round($rub/$currency);
             }
 
             $markets = Market::whereIn('id', $market)->get();

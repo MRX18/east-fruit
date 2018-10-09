@@ -14,7 +14,25 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
     
     $model->onDisplay(function () {
         $display = AdminDisplay::datatables();
+        $display->setApply(function($query) {
+            $query->OrderByDesc('id');
+        });
+    //      $display->actions([
+    //     Column::action('massdelete')->value('Massdelete')->icon('fa-trash')->callback(function ($collection)
+    //     {
+    //         foreach ($collection->toArray() as $key => $delete_item) {
 
+    //             $item = App\Model::find($delete_item['id']);
+    //             //http://laravel.com/docs/5.1/eloquent#deleting-models
+    //             $item->delete();
+    //         }
+    //     }),
+    //     //more actions
+    // ]);
+        // $display->setActions([
+        //         AdminColumn::action('delete', 'Удалить')->callback(function ($collection){}),
+        //         //->setAction(route('news.export'))
+        //     ]);
         $display->setFilters(
             AdminDisplayFilter::related('id_market')->setModel(Market::class),
             AdminDisplayFilter::related('id_product')->setModel(Product::class),
@@ -27,6 +45,7 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
         );
 
         $display->setColumns([
+             AdminColumn::checkbox(),
         	AdminColumn::text('id')->setLabel('ID'),
 
             $country = AdminColumn::text('Market.market', 'Страны')
@@ -82,6 +101,9 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
                     AdminColumn::filter('date')
                 ),
         ]);
+        $display->getActions()
+            ->setPlacement('panel.buttons')
+            ->setHtmlAttribute('class', 'pull-right');
         return $display;
     });
     // Create And Edit

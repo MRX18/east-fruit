@@ -35,7 +35,7 @@ class BlogController extends Controller
                     array(
                         'name' => 'between:4,32',
                         'positionSelect' => 'required|integer',
-                        'position' => 'string|between:2,32',
+                        'position' => 'string|between:2,128',
                         'img' => 'image'
                     )
                 );
@@ -111,7 +111,7 @@ class BlogController extends Controller
                     array(
                         'name' => 'between:4,32',
                         'positionSelect' => 'required|integer',
-                        'position' => 'string|between:2,32',
+                        'position' => 'string|between:2,128',
                         'img' => 'image'
                     )
                 );
@@ -176,11 +176,11 @@ class BlogController extends Controller
             if(Auth::check()) {
                 $validator = Validator::make($request->all(),
                     array(
-                        'comment' => 'required|between:4,500'
+                        'comment' => 'required'
                     )
                 );
             }
-
+//|between:4,500
             $time = date('H:i');
             $date = date('d.m.Y');
 
@@ -223,7 +223,7 @@ class BlogController extends Controller
                     array(
                         'name' => 'between:4,32',
                         'positionSelect' => 'required|integer',
-                        'position' => 'string|between:2,32',
+                        'position' => 'string|between:2,128',
                         'img' => 'image'
                     )
                 );
