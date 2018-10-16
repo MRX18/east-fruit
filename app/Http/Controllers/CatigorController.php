@@ -154,7 +154,7 @@ class CatigorController extends Controller
             $date = array();
             foreach($prices as $price) {
                 $priceDate = explode('-', $price->date);
-                $price->date = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
+//                $price->date = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
                 $price->allDate = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
                 $date[] = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
             }
@@ -267,6 +267,12 @@ class CatigorController extends Controller
                         $price->id_specification = "Нет";
                     }
                     $price->currency = Currency::where('charCode', $request->currency)->value('currency');
+                }
+
+                if(isset($request->filter_bottom)) {
+                    $prices = $prices->sortBy($request->filter_bottom);
+                } elseif(isset($request->filter_top)) {
+                    $prices = $prices->sortByDesc($request->filter_top);
                 }
 
                 $returnHTML = view('includes.table')->with(['prices'=>$prices])->render();

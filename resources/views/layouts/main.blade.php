@@ -39,6 +39,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+    <script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
+
 </head>
 <body>
 <div class="top-header">
@@ -346,7 +349,7 @@
 <!--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
 <!--    <link rel="stylesheet"-->
 <!--          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">-->
-<script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
+{{--<script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>--}}
 <script src="{{ asset('assets/8a33ea23/yii.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>

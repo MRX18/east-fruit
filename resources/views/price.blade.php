@@ -187,6 +187,9 @@
 				    </div>
 				  </div>
 
+					<input id="filter-bottom" name="filter_bottom" type="hidden" value="">
+					<input id="filter-top" name="filter_top" type="hidden" value="">
+
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
 				      <button id="bth-form" type="submit" class="btn btn-default">Показать</button>
@@ -197,7 +200,6 @@
 
 			<canvas id="myChart"></canvas>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-
 			<div class="view"></div>
 		</div>
 	</section>

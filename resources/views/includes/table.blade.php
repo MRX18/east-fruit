@@ -2,12 +2,30 @@
     <table class="table">
         <thead class="thead-default">
         <tr>
-            <th scope="row">Рынок</th>
-            <th>Товар</th>
-            <th>Спецификация</th>
-            <th>Цена</th>
-            <th>Валюта</th>
-            <th>Дата</th>
+            <th scope="row">Рынок
+                <button class="filter-bottom" data-filter="id_market"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="id_market"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
+            <th>Товар
+                <button class="filter-bottom" data-filter="id_product"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="id_product"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
+            <th>Спецификация
+                <button class="filter-bottom" data-filter="id_specification"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="id_specification"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
+            <th>Цена
+                <button class="filter-bottom" data-filter="price_input"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="price_input"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
+            <th>Валюта
+                <button class="filter-bottom" data-filter="currency"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="currency"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
+            <th>Дата
+                <button class="filter-bottom" data-filter="date"><i class="fas fa-filter"></i><i class="fas fa-arrow-down"></i></button>
+                <button class="filter-top" data-filter="date"><i class="fas fa-filter"></i><i class="fas fa-arrow-up"></i></button>
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -29,3 +47,22 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    /*--filters data in table page price--*/
+    $('.filter-bottom').on('click', function() {
+        var filter = $(this).attr("data-filter");
+        $('#filter-bottom').val(filter);
+        $('#filter-top').val(null);
+
+        $('.form-horizontal').submit();
+    });
+
+    $('.filter-top').on('click', function() {
+        var filter = $(this).attr("data-filter");
+        $('#filter-top').val(filter);
+        $('#filter-bottom').val(null);
+
+        $('.form-horizontal').submit();
+    });
+</script>
