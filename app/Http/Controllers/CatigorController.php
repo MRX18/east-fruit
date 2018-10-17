@@ -122,6 +122,8 @@ class CatigorController extends Controller
             $dateMin = $request->yearMin.'-'.$request->monthMin.'-'.$request->deyMin;
             $dateMax = $request->yearMax.'-'.$request->monthMax.'-'.$request->deyMax;
 
+            $linkExcel = '?market='.$request->hidden_market.'&product='.$request->product.'&specification='.$request->specification.'&dateMin='.$dateMin.'&dateMax='.$dateMax.'&price='.$request->price.'&currency='.$request->currency;
+
             $market = explode(',', $request->hidden_market);
 
             if(isset($request->specification)) {
@@ -129,6 +131,7 @@ class CatigorController extends Controller
             } else {
                 $prices = $_price->priceN($market, $request->product, $dateMin, $dateMax);
             }
+
 
 
             if($request->price == 1) {
@@ -275,7 +278,7 @@ class CatigorController extends Controller
                     $prices = $prices->sortByDesc($request->filter_top);
                 }
 
-                $returnHTML = view('includes.table')->with(['prices'=>$prices])->render();
+                $returnHTML = view('includes.table')->with(['prices'=>$prices, 'linkExcel'=>$linkExcel])->render();
 
                 return response()->json([
                     'table' => $returnHTML

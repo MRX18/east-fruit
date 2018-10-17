@@ -1,4 +1,5 @@
 <div class="tabl" style="margin-bottom: 50px;">
+    <a href="{{ route('exportExcel').$linkExcel }}">Скачать</a>
     <table class="table">
         <thead class="thead-default">
         <tr>
@@ -65,4 +66,26 @@
 
         $('.form-horizontal').submit();
     });
+
+
+    {{--$('.export-excel').on('click', function(e) {--}}
+        {{--e.preventDefault();--}}
+
+        {{--var data = {--}}
+            {{--'_token' : "{!! csrf_token() !!}",--}}
+            {{--'data': $(this).attr("data-excel")--}}
+        {{--};--}}
+
+        {{--$.ajax({--}}
+            {{--type: "POST",--}}
+            {{--url: "/excel",--}}
+            {{--data: data,--}}
+            {{--success: function(res) {--}}
+                {{--console.log("200");--}}
+            {{--},--}}
+            {{--error: function(error) {--}}
+                {{--console.log("500");--}}
+            {{--}--}}
+        {{--});--}}
+    {{--});--}}
 </script>

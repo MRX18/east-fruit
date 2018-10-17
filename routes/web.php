@@ -73,7 +73,7 @@ Route::post('ulogin', 'UloginController@login');
 
 
 Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/home', 'IndexController@index')->name('home');
 Route::match(['get', 'post'], '/register', 'RegisterController@register')->name('register');
 Route::match(['get', 'post'], '/registration', 'RegisterController@register')->name('registration');
@@ -85,6 +85,8 @@ Route::match(['get', 'post'], '/password/restoring/{hash}', 'RegisterController@
 
 Route::get('/video', 'CatigorController@video')->name('video');
 Route::get('/video-article/{id}', 'CatigorController@videoArticle')->name('video-article');
+
+Route::match(['get', 'post'], '/excel', 'ExcelController@exportExcel')->name('exportExcel');
 
 //Route::match(['get', 'post'], '/excel', 'ExcelController@uploadExsel')->name('excel');
 
