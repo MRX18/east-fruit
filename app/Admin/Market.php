@@ -12,7 +12,8 @@ AdminSection::registerModel(Market::class, function (ModelConfiguration $model) 
         $display = AdminDisplay::datatables();
         $display->setColumns([
         	AdminColumn::text('id')->setLabel('ID'),
-            AdminColumn::text('market')->setLabel('Название')
+            AdminColumn::text('market')->setLabel('Название'),
+            AdminColumn::text('color')->setLabel('Цвет')
         ]);
         return $display;
     });
@@ -20,7 +21,8 @@ AdminSection::registerModel(Market::class, function (ModelConfiguration $model) 
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             
-            AdminFormElement::text('market', 'Название')->required()
+            AdminFormElement::text('market', 'Название')->required(),
+            AdminFormElement::text('color', 'Цвет (0,0,0)')->required()
 
         );
     });

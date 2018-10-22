@@ -24,7 +24,7 @@
 
 
                         backgroundColor: 'transparent',
-                        borderColor: 'rgb({{ rand(0, 255) }}, {{ rand(0, 255) }}, {{ rand(0, 255) }})',
+                        borderColor: 'rgb({{ $market->color }})',
                         data: [
                             @foreach($prices as $price)
                                 @if($price->id_market == $market->id)
