@@ -20,7 +20,13 @@
     <title>{{ $title.' - Eastfruit, Аналитика, Новости плодоовощного рынка,Информация АПК, Цены на овощи и фрукты, Исследования, Конференции' }}</title>
     <link rel="shortcut icon" href="{{ asset('/images/logo.png') }}" type="image/png">
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <link rel="alternate" type="application/rss+xml" title="RSS" href="https://east-fruit.com/rss/feed_rss.php">
 
  <!--<link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> -->
@@ -41,7 +47,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
     <script src="{{ asset('assets/eba91ba9/jquery.js') }}"></script>
-
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9e9e048e76bfae9d4541f24c5/692876947b5030f9bd375df10.js");</script>
 </head>
 <body>
 <div class="top-header">

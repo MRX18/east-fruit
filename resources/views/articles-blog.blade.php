@@ -61,7 +61,7 @@
                                                         <div class="item-image">
                 <span class="item-image-user">
                     @if($com->img != null)
-                        <img src="{{ asset($user->img) }}" alt="User">
+                        <img src="{{ asset($com->img) }}" alt="User">
                     @else
                         <img src="{{ asset('/images/user/user.png') }}" alt="User">
                     @endif

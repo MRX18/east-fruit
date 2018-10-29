@@ -2,6 +2,7 @@
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Article;
 use App\CatigorTop;
+use App\Market;
 
 AdminSection::registerModel(Article::class, function (ModelConfiguration $model) {
    $model->enableAccessCheck();
@@ -42,7 +43,9 @@ AdminSection::registerModel(Article::class, function (ModelConfiguration $model)
             AdminFormElement::select('id_catigories', 'Категория')->setModelForOptions(new CatigorTop)->setDisplay(function($CatigorTop) {
                 return $CatigorTop->title;
             })->required(),
-
+            AdminFormElement::select('id_country', 'Страна')->setModelForOptions(new Market)->setDisplay(function($Market) {
+                return $Market->market;
+            }),
             AdminFormElement::textarea('keywords', 'Слова (фразы) по которым google будет искать эту статью')->required(),
             AdminFormElement::textarea('lid', 'Лид')->required(),
             AdminFormElement::ckeditor('text', 'Текст')->required(),

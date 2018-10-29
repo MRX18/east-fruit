@@ -19,7 +19,7 @@
                                We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
                         </style>
                         <div id="mc_embed_signup" style="margin-top: -30px;">
-                            <form action="https://east-fruit.us18.list-manage.com/subscribe/post?u=1f5fa0f4967175e9e576cb0ca&amp;id=6e49ceab61"
+                            <form action="https://east-fruit.us18.list-manage.com/subscribe/post?u=9e9e048e76bfae9d4541f24c5&amp;id=599f72a5ad"
                                   method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
                                   class="validate" target="_blank" novalidate>
                                 <div id="mc_embed_signup_scroll">
@@ -37,7 +37,7 @@
                                     </div>
                                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input
-                                                type="text" name="b_1f5fa0f4967175e9e576cb0ca_6e49ceab61" tabindex="-1"
+                                                type="text" name="b_9e9e048e76bfae9d4541f24c5_599f72a5ad" tabindex="-1"
                                                 value=""></div>
                                     <div class="clear"><input style="background-color: #262D49;" type="submit"
                                                               value="Подписаться" name="subscribe"
