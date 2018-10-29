@@ -66,7 +66,7 @@ class CatigorController extends Controller
         $otherCatigorTop = $this->otherCatigorTop();
 
         $markets = Market::get();
-        $products = Product::get();
+        $products = Product::orderBy("name")->get();
         $currencys = Currency::get();
         $specification = Specification::get();
 

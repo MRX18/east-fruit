@@ -68,35 +68,37 @@
                                         <div class="col-md-12 col-sm-12">
                                             <div class="title-block clearfix">
                                                 <h3 class="comment-title">
-                                                    Комментарии ({{ count($comments) }}) </h3>
+                                                    Комментарии ({{ $countComments }}) </h3>
                                             </div>
 
 
-                                            <div id="w1" class="new-comments">
-                                                @foreach($comments as $comment)
-                                                    <div style="background-color: #F3F3F3;" class="item comment"
-                                                         id="comment-1">
-                                                        <div class="item-image">
-                                                            <span class="item-image-user">
-                                                                @if($comment->img != null)
-                                                                    <img src="{{ asset($comment->img) }}" alt="User">
-                                                                @else
-                                                                    <img src="{{ asset('/images/user/user.png') }}" alt="User">
-                                                                @endif
-                                                            </span>
-                                                        </div>
-                                                        <div class="item-content">
-                                                            <p class="user-name">{{ $comment->user }}<span
-                                                                        class="user-date">{{ $comment->date." в ".$comment->time }}</span>
-                                                            </p>
-                                                            <div class="user-descr">{{ $comment->text }}</div>
+                                            {{--<div id="w1" class="new-comments">--}}
+                                                {{--@foreach($comments as $comment)--}}
+                                                    {{--<div style="background-color: #F3F3F3;" class="item comment"--}}
+                                                         {{--id="comment-1">--}}
+                                                        {{--<div class="item-image">--}}
+                                                            {{--<span class="item-image-user">--}}
+                                                                {{--@if($comment->img != null)--}}
+                                                                    {{--<img src="{{ asset($comment->img) }}" alt="User">--}}
+                                                                {{--@else--}}
+                                                                    {{--<img src="{{ asset('/images/user/user.png') }}" alt="User">--}}
+                                                                {{--@endif--}}
+                                                            {{--</span>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="item-content">--}}
+                                                            {{--<p class="user-name">{{ $comment->user }}<span--}}
+                                                                        {{--class="user-date">{{ $comment->date." в ".$comment->time }}</span>--}}
+                                                            {{--</p>--}}
+                                                            {{--<div class="user-descr">{{ $comment->text }}</div>--}}
 
-                                                        </div>
-                                                        <div class="triang-img"></div>
-                                                    </div>
-                                                @endforeach
+                                                        {{--</div>--}}
+                                                        {{--<div class="triang-img"></div>--}}
+                                                        {{--<a class="reply" href="#comment" data-name="{{ $comment->user }}" data-id="{{ $comment->id }}">Ответить</a>--}}
+                                                    {{--</div>--}}
+                                                {{--@endforeach--}}
+                                                {!! $comments !!}
 
-                                            </div>
+                                            {{--</div>--}}
 
 
                                             <div id="w1" class="new-comments">
@@ -118,13 +120,21 @@
                                                     {{--после одобрения модератора.--}}
                                                 {{--</div>--}}
                                             {{--@endif--}}
-                                            <div class="comment-form-container">
+                                            <div class="comment-form-container" id="comment">
+                                                @if(Auth::check())
+                                                    <div class="reply-form">
+                                                        <h4 class="name-reply"></h4>
+                                                        <a class="close-reply" style="display: none;">Отменить ответ</a>
+                                                    </div>
+                                                @endif
                                                 <form name="com" id="comment-form" class="comment-box"
                                                       action="{{ route('article', ['id'=>$article->slug]) }}"
                                                       method="post">
                                                     {{ csrf_field() }}
 
                                                     @if(Auth::check())
+
+                                                        <input name="parent_id" type="hidden" value="">
                                                     <div class="form-group field-commentmodel-content required">
                                                         <textarea id="commentmodel-content" class="form-control"
                                                                   name="comment" rows="4"

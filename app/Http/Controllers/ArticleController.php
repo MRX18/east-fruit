@@ -47,7 +47,7 @@ class ArticleController extends Controller
                 } else {
                     $idUser = Auth::user()->id;
                     $user = User::where('id', $idUser)->first();
-                    ArticlesComment::insert(['id_articles' => $ArticleId, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
+                    ArticlesComment::insert(['id_articles' => $ArticleId, 'parent_id' => $request->parent_id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
                 }
 
                 $addComment = true;
@@ -77,8 +77,14 @@ class ArticleController extends Controller
     	$comments = ArticlesComment::where('id_articles', $ArticleId)
             ->orderByDesc('id')
             ->get();
+        $countComments = count($comments);
 
+    	foreach ($comments as $comment) {
+    	    $comment->children = $comments->where('parent_id', $comment->id)->all();
+        }
 
+        $comments = $comments->where('parent_id', null)->all();
+    	$html = $this->comments($comments);
 
     	return view('articles')->with([
     		'title' => $title,
@@ -90,8 +96,30 @@ class ArticleController extends Controller
 
     		'article' => $article,
     		'reads' => $read,
-    		'comments' => $comments,
+    		'comments' => $html,
+            'countComments' => $countComments,
             'artID' => $article->id
     	]);
+    }
+
+    public function comments($comments) {
+        $html = "<div id=\"w1\" class=\"new-comments\">";
+        foreach($comments as $comment) {
+            $html .= view('includes.comment')->with(['comment' => $comment])->render();
+            if(count($comment->children) > 0) {
+                $html .= $this->comments($comment->children);
+            }
+        }
+        $html .= "</div>";
+
+        return $html;
+    }
+
+    public function deleteComment($id) {
+        if(Auth::user()->email == ArticlesComment::where('id', $id)->value('email')) {
+            ArticlesComment::where('id', $id)->delete();
+            ArticlesComment::where('parent_id', $id)->delete();
+        }
+        return redirect()->back();
     }
 }

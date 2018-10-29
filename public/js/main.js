@@ -1,5 +1,25 @@
 ﻿var min_id = 0;
 
+$(".reply").on("click", function() {
+    var comment_id = $(this).attr("data-id"),
+        name = $(this).attr("data-name"),
+
+        id  = $(this).attr('href'),
+        top = $(id).offset().top - 280;
+
+    $('body,html').animate({scrollTop: top}, 1500);
+
+    $(".name-reply").html("Ответ: "+name);
+    $("input[name=\"parent_id\"]").val(comment_id);
+    $(".close-reply").css("display", "block");
+});
+
+$(".close-reply").on("click", function() {
+    $(".name-reply").html("");
+    $("input[name=\"parent_id\"]").val(null);
+    $(".close-reply").css("display", "none");
+});
+
 $('.form-horizontal').on('submit', function(e) {
     e.preventDefault();
 

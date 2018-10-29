@@ -174,11 +174,14 @@
 .new-comments {
 
 }
+.new-comments:not(:first-child) {
+    padding-left: 40px;
+}
 .new-comments .item {
     background-image: url("../images/page-item/comments/comment-block.png");
     /*background-color: #f2f2f2;*/
     background-size: contain;
-    margin: 20px 0 50px;
+    margin: 20px 0 20px;
     padding: 20px 15px 0px 15px;
 }
 .new-comments .item-image{
@@ -203,9 +206,34 @@
     padding: 0 20px;
 }
 .new-comments .user-descr{
-
     line-height: 16px;
     font-size: 13px;
+    margin-bottom: 15px;
+}
+.comment {
+    background-color: #F3F3F3;
+    position: relative;
+}
+.reply {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 14px;
+}
+.delete-comment {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.reply-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.name-reply {
+    font-size: 16px;
+    font-weight: bold;
 }
 .new-comments .user-like {
     padding: 20px 0 0;
