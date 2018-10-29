@@ -102,9 +102,15 @@ return [
                 ->setPriority(800),
             [
                 'title' => 'Цены Excel',
-                'icon'  => 'fa fa-users',
+                'icon'  => 'fa fa-sliders',
                 'url'   => route('excel'),
                 'priority' => 1000,
+            ],
+            [
+                'title' => 'Сверочная таблица цен',
+                'icon'  => 'fa fa-sliders',
+                'url'   => route('table-price'),
+                'priority' => 1200,
             ],
         ]
     ],
