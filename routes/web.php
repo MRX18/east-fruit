@@ -89,6 +89,7 @@ Route::get('/video-article/{id}', 'CatigorController@videoArticle')->name('video
 Route::match(['get', 'post'], '/excel', 'ExcelController@exportExcel')->name('exportExcel');
 
 Route::get('/delete-comment/{id}', 'ArticleController@deleteComment')->where('id','[0-9]+')->name('delete-comment');
+Route::get('/delete-blog-comment/{id}', 'BlogController@deleteComment')->where('id','[0-9]+')->name('delete-blog-comment');
 
 //Route::match(['get', 'post'], '/excel', 'ExcelController@uploadExsel')->name('excel');
 

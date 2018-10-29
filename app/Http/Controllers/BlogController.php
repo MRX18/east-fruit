@@ -144,7 +144,18 @@ class BlogController extends Controller
         $article = $_blog->oneArticleSlug($id);
 
 
-        $comment = BlogComment::where('id_blog', Blog::where('slug',$id)->value('id'))->orderByDesc('id')->get();
+        $comments = BlogComment::where('id_blog', Blog::where('slug',$id)->value('id'))->orderByDesc('id')->get();
+        $countComments = count($comments);
+
+        foreach ($comments as $comment) {
+            $comment->children = $comments->where('parent_id', $comment->id)->all();
+            $comment->delete_blog = true;
+        }
+
+        $comments = $comments->where('parent_id', null)->all();
+        $html = $this->comments($comments);
+
+
         $reads = Article::orderByDesc('id')->limit(10)->get();
         foreach($reads as $read) {
             $read->date = $this->dateFirst($read->date);
@@ -164,10 +175,32 @@ class BlogController extends Controller
             'occupations' => $occupation,
 
             'article' => $article,
-            'comment' => $comment,
+            'comment' => $html,
+            'countComments' => $countComments,
             'author' => $author,
             'reads' => $reads
     	]);
+    }
+
+    public function comments($comments) {
+        $html = "<div id=\"w1\" class=\"new-comments\">";
+        foreach($comments as $comment) {
+            $html .= view('includes.comment')->with(['comment' => $comment])->render();
+            if(count($comment->children) > 0) {
+                $html .= $this->comments($comment->children);
+            }
+        }
+        $html .= "</div>";
+
+        return $html;
+    }
+
+    public function deleteComment($id) {
+        if(Auth::user()->email == BlogComment::where('id', $id)->value('email')) {
+            BlogComment::where('id', $id)->delete();
+            BlogComment::where('parent_id', $id)->delete();
+        }
+        return redirect()->back();
     }
 
     public function addcomment(Request $request, $id) {
@@ -191,7 +224,7 @@ class BlogController extends Controller
                 if(Auth::check()) {
                     $idUser = Auth::user()->id;
                     $user = User::where('id', $idUser)->first();
-                    BlogComment::insert(['id_blog' => $id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
+                    BlogComment::insert(['id_blog' => $id, 'parent_id' => $request->parent_id, 'user' => $user->name, 'email' => $user->email, 'time' => $time, 'date' => $date, 'text' => $request->comment, 'img'=>$user->img]);
                 }
 
                 $addComment = true;

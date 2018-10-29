@@ -35,9 +35,13 @@
                             <div class="descr-item">
                                 {!! $article->text !!}
                             </div>
-                            <p>Основные новости и аналитика плодоовощного рынка на <a href="https://www.facebook.com/eastfruit/">Facebook</a> и в <a href="https://t.me/eastfruit">Telegram</a> East-Fruit.com 
-<br>Подписывайтесь!</p>
-<p style="font-size: 14px">Использование материалов сайта свободно при наличии прямой, открытой для поисковых систем, ссылки на конкретную публикацию аналитической платформы <a href="https://east-fruit.com">East-fruit.com</a>.</p>
+                            <p>Основные новости и аналитика плодоовощного рынка на <a
+                                        href="https://www.facebook.com/eastfruit/">Facebook</a> и в <a
+                                        href="https://t.me/eastfruit">Telegram</a> East-Fruit.com
+                                <br>Подписывайтесь!</p>
+                            <p style="font-size: 14px">Использование материалов сайта свободно при наличии прямой,
+                                открытой для поисковых систем, ссылки на конкретную публикацию аналитической платформы
+                                <a href="https://east-fruit.com">East-fruit.com</a>.</p>
                             <div class="share42init" data-url="{{ route('articleBlog', ['id' => $article->slug]) }}"
                                  data-title="{{ $article->title }}" data-image="{{ asset($author->img) }}"
                                  data-description="{{ $author->name }}"></div>
@@ -50,35 +54,36 @@
                                         <div class="col-md-12 col-sm-12">
                                             <div class="title-block clearfix">
                                                 <h3 class="comment-title">
-                                                    Комментарии ({{ count($comment) }}) </h3>
+                                                    Комментарии ({{ $countComments }}) </h3>
                                             </div>
 
 
-                                            <div id="w1" class="new-comments">
-                                                @foreach($comment as $com)
-                                                    <div style="background-color: #F3F3F3;" class="item comment"
-                                                         id="comment-1">
-                                                        <div class="item-image">
-                <span class="item-image-user">
-                    @if($com->img != null)
-                        <img src="{{ asset($com->img) }}" alt="User">
-                    @else
-                        <img src="{{ asset('/images/user/user.png') }}" alt="User">
-                    @endif
-                </span>
-                                                        </div>
-                                                        <div class="item-content">
-                                                            <p class="user-name">{{ $com->user }}<span
-                                                                        class="user-date">{{ $com->date.' o '.$com->time }}</span>
-                                                            </p>
-                                                            <div class="user-descr">{{ $com->text }}</div>
+                                            {{--<div id="w1" class="new-comments">--}}
+                                                {{--@foreach($comment as $com)--}}
+                                                    {{--<div style="background-color: #F3F3F3;" class="item comment"--}}
+                                                         {{--id="comment-1">--}}
+                                                        {{--<div class="item-image">--}}
+                                                        {{--<span class="item-image-user">--}}
+                                                            {{--@if($com->img != null)--}}
+                                                                {{--<img src="{{ asset($com->img) }}" alt="User">--}}
+                                                            {{--@else--}}
+                                                                {{--<img src="{{ asset('/images/user/user.png') }}" alt="User">--}}
+                                                            {{--@endif--}}
+                                                        {{--</span>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="item-content">--}}
+                                                            {{--<p class="user-name">{{ $com->user }}<span--}}
+                                                                        {{--class="user-date">{{ $com->date.' o '.$com->time }}</span>--}}
+                                                            {{--</p>--}}
+                                                            {{--<div class="user-descr">{{ $com->text }}</div>--}}
 
-                                                        </div>
-                                                        <div class="triang-img"></div>
-                                                    </div>
-                                                @endforeach
+                                                        {{--</div>--}}
+                                                        {{--<div class="triang-img"></div>--}}
+                                                    {{--</div>--}}
+                                                {{--@endforeach--}}
 
-                                            </div>
+                                            {{--</div>--}}
+                                            {!! $comment !!}
 
 
                                             <div id="w1" class="new-comments">
@@ -99,13 +104,20 @@
                                                     <strong>Ваш комментарий был отправлен!</strong>
                                                 </div>
                                             @endif
-                                            <div class="comment-form-container">
+                                            <div class="comment-form-container"  id="comment">
+                                                @if(Auth::check())
+                                                    <div class="reply-form">
+                                                        <h4 class="name-reply"></h4>
+                                                        <a class="close-reply" style="display: none;">Отменить ответ</a>
+                                                    </div>
+                                                @endif
                                                 <form name="com" id="comment-form" class="comment-box"
                                                       action="{{ route('addcomment', ['id'=>$article->id]) }}"
                                                       method="post">
                                                     {{ csrf_field() }}
 
                                                     @if(Auth::check())
+                                                        <input name="parent_id" type="hidden" value="">
                                                         <div class="form-group field-commentmodel-content required">
                                                         <textarea id="commentmodel-content" class="form-control"
                                                                   name="comment" rows="4"
@@ -268,7 +280,7 @@
                                 </div>
 
                                 <!--<div class="add-article">-->
-                                <!--    <a href="{{ route('addblog') }}">Добавить статью</a>-->
+                            <!--    <a href="{{ route('addblog') }}">Добавить статью</a>-->
                                 <!--</div>-->
                             @else
                                 <div class="add-article">
