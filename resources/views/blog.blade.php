@@ -15,7 +15,11 @@
                                 @foreach($articles as $article)
 								<div class="article">
 									<div class="img">
-										<img src="{{ asset($article->img_user) }}" alt="">
+										@if(!isset($article->img))
+                                            <img src="{{ asset($article->img_user) }}" alt="">
+                                        @else
+                                            <img src="{{ asset($article->img) }}" alt="">
+                                        @endif
 									</div>
 									<div class="information">
 										<span class="name">{{ $article->name_user }}</span>

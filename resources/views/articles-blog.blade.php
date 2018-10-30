@@ -21,7 +21,13 @@
                         <div class="news-more-item">
 
                             <div class="user-article">
-                                <div class="img"><img src="{{ asset($author->img) }}" alt=""></div>
+                                <div class="img">
+                                    @if(!isset($article->img))
+                                        <img src="{{ asset($author->img) }}" alt="">
+                                    @else
+                                        <img src="{{ asset($article->img) }}" alt="">
+                                    @endif
+                                </div>
                                 <div class="text">
                                     <h3>{{ $author->name }}</h3>
                                     <p>{{ $author->position }}</p>

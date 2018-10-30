@@ -19,7 +19,8 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
                 return $instance->visible ? '<i class="fa fa-check bg-success"></i>' : '<i class="fa fa-minus text-danger bg-danger"></i>';
             })->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
 
-        	AdminColumn::text('title')->setLabel('Название')
+        	AdminColumn::text('title')->setLabel('Название'),
+            AdminColumn::image('img')->setLabel('Изображение')
         ]);
         return $display;
     });
@@ -39,7 +40,8 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
             })->required(),
 
             AdminFormElement::ckeditor('text', 'Текст')->required(),
-            AdminFormElement::date('date', 'Дата')->required()
+            AdminFormElement::date('date', 'Дата')->required(),
+            AdminFormElement::image('img', 'Изображение')
         );
     });
 });
