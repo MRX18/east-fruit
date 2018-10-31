@@ -35,6 +35,7 @@ AdminSection::registerModel(Event::class, function (ModelConfiguration $model) {
             AdminFormElement::text('signature', 'Подпись для актуального'),
             AdminFormElement::text('adres', 'Адрес')->required(),
             AdminFormElement::date('date', 'Дата события')->required(),
+            AdminFormElement::date('date_end', 'Кінець события'),
             AdminFormElement::select('year', 'Год события')->setModelForOptions(new Yaer)->setDisplay(function($Yaer) {
                 return $Yaer->year;
             })->required(),

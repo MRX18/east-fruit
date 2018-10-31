@@ -23,7 +23,13 @@
            <div class="img"> <img src="{{ asset($event->img) }}" alt=""></div>
            <div class="text" style="margin-left: 20px;">
                <h3>{{ $event->title }}</h3>
-               <span style="margin-top: 10px;" class="date-user">{{ $event->date }}</span>
+               <span style="margin-top: 10px;" class="date-user">
+                   @if(!isset($event->date_end))
+                       {{ $event->date }}
+                   @else
+                       {{ $event->date."-".date("d.m.Y", strtotime($event->date_end)) }}
+                   @endif
+               </span>
                <p style="margin-top: -10px;">{{ $event->adres }}</p>
            </div>
         </div>

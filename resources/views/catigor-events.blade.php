@@ -38,7 +38,13 @@
                             </header>
                             <div class="content-event">
                                 <div class="event-left">
-                                    <div class="event-date">{{ $event->date }}</div>
+                                    <div class="event-date">
+                                        @if(!isset($event->date_end))
+                                            {{ $event->date }}
+                                        @else
+                                            {{ $event->date."-".date("d.m.Y", strtotime($event->date_end)) }}
+                                        @endif
+                                    </div>
                                     <div class="event-img">
                                         <img src="{{ asset($event->img) }}" alt="">
                                     </div>
