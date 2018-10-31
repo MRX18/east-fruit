@@ -20,3 +20,5 @@ Route::get('/east-fruit/edit/{id}',['as' => 'eastfruit-user','uses' => '\App\Htt
 Route::match(['get', 'post'], '/excel',['as' => 'excel','uses' => '\App\Http\Controllers\ExcelController@uploadExsel']);
 
 Route::match(['get','post'],'/price/table',['as' => 'table-price','uses' => '\App\Http\Controllers\EastfruitController@tablePrice']);
+
+Route::match(['get','post'],'/price/delete',['as' => 'price-delete','uses' => '\App\Http\Controllers\EastfruitController@deletePrice']);

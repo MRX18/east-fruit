@@ -143,4 +143,10 @@ class EastfruitController extends Controller
 
         return AdminSection::view(view('admin.price-table', $data), 'Сверочная таблица цен');
     }
+
+    public function deletePrice(Request $data) {
+        $idPrice = $data->toArray()["_id"];
+        Price::whereIn('id', $idPrice)->delete();
+        echo "200";
+    }
 }

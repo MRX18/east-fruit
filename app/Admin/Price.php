@@ -17,22 +17,7 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
         $display->setApply(function($query) {
             $query->OrderByDesc('id');
         });
-    //      $display->actions([
-    //     Column::action('massdelete')->value('Massdelete')->icon('fa-trash')->callback(function ($collection)
-    //     {
-    //         foreach ($collection->toArray() as $key => $delete_item) {
 
-    //             $item = App\Model::find($delete_item['id']);
-    //             //http://laravel.com/docs/5.1/eloquent#deleting-models
-    //             $item->delete();
-    //         }
-    //     }),
-    //     //more actions
-    // ]);
-        // $display->setActions([
-        //         AdminColumn::action('delete', 'Удалить')->callback(function ($collection){}),
-        //         //->setAction(route('news.export'))
-        //     ]);
         $display->setFilters(
             AdminDisplayFilter::related('id_market')->setModel(Market::class),
             AdminDisplayFilter::related('id_product')->setModel(Product::class),
@@ -44,7 +29,11 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminDisplayFilter::related('date')->setModel(Price::class)
         );
 
-        $display->setColumns([
+        $display = AdminDisplay::table()->setActions(
+            AdminColumn::action('export', 'Удалить')
+                ->setAction(route('price-delete'))
+                ->setIcon('fa fa-share')
+        )->setColumns([
              AdminColumn::checkbox(),
         	AdminColumn::text('id')->setLabel('ID'),
 
