@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <form style="padding:3px;text-align:center;" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=east-fruit/rss', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Введите свой электронный адрес для подписки на RSS-рассылку:</p><p><input type="text" style="width:300px" name="email"/></p><input type="hidden" value="east-fruit/rss" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Подписатся" /></form>
+                            <form style="padding:3px;text-align:center;" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=EastFruit', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Введите свой электронный адрес для подписки на RSS-рассылку:</p><p><input type="text" style="width:300px" name="email"/></p><input type="hidden" value="EastFruit" name="uri"/><input type="hidden" name="loc" value="ru_RU"/><input type="submit" value="Подписатся" /></form>
 
                         </div>
 

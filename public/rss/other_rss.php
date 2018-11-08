@@ -14,7 +14,7 @@
 header("content-type:text/xml");
 date_default_timezone_set('Europe/Kiev');
 
-$result=mysqli_query($db,"SELECT * FROM `articles` WHERE `datetime` > DATE_SUB(NOW(), INTERVAL 2 DAY) and `datetime` < DATE_ADD(NOW(), INTERVAL 1 HOUR) and `id_country`=5   ORDER BY `datetime` DESC LIMIT 10");
+$result=mysqli_query($db,"SELECT * FROM `articles` WHERE `datetime` > DATE_SUB(NOW(), INTERVAL 2 DAY) and `datetime` < DATE_ADD(NOW(), INTERVAL 1 HOUR)   ORDER BY `datetime` DESC LIMIT 10");
 
 echo "<?xml version=\"1.0\"?>
    <rss version=\"2.0\">
@@ -38,7 +38,6 @@ echo "<?xml version=\"1.0\"?>
 
 
 		 "<description><![CDATA[".$myrow['lid']."]]></description>".
-		 "<category>Экономика</category>".
 		 "<enclosure url=\"https://east-fruit.com/".$myrow['img']."\" type=\"image/jpeg\" />".
 
 

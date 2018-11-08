@@ -318,7 +318,7 @@
             <div class="">
                 <p class="copy">© 2018 Аналитическая платформа для роста плодоовощного бизнеса</p>
                 <p class="copy">Все права защищены</p>
-<p><a href="http://feeds.feedburner.com/east-fruit/rss" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0 margin-bottom:0; width:16px; margin-right:5px"/></a>&nbsp;<a href="http://feeds.feedburner.com/east-fruit/rss" rel="alternate" type="application/rss+xml">Подписатся</a></p>
+<p><a href="http://feeds.feedburner.com/east-fruit/rss" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0 margin-bottom:0; width:16px; margin-right:5px"/></a>&nbsp;<a href="https://feedburner.google.com/fb/a/mailverify?uri=EastFruit&amp;loc=ru_RU">Подписатся</a>
             </div>
         </div>
     </div>
