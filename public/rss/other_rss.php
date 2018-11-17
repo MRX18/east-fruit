@@ -38,7 +38,6 @@ echo "<?xml version=\"1.0\"?>
 
 
 		 "<description><![CDATA[".$myrow['lid']."]]></description>".
-		 "<enclosure url=\"https://east-fruit.com/".$myrow['img']."\" type=\"image/jpeg\" />".
 
 
 		 "<pubDate>".date("r",strtotime($myrow['datetime']))."</pubDate>".
@@ -52,3 +51,4 @@ echo "<?xml version=\"1.0\"?>
 
 
 echo "</channel></rss>";
+?>

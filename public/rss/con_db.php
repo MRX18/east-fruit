@@ -78,4 +78,4 @@ mysqli_select_db( $db, $DB_name);
 
 
 
-mysqli_query($db,'SET NAMES UTF-8');
+// mysqli_query($db,'SET NAMES UTF-8');
