@@ -147,6 +147,17 @@ class Article extends Model
 
         return $_controller->dateCatigor($article);
     }
+
+    public function feedXml($count) {
+        $_controller = new Controller;
+
+        date_default_timezone_set('Europe/Kiev');
+        $date = Carbon::now()->toDateTimeString();
+
+        $article = $this->where('datetime','<=',$date)->where('id_country', 5)->orderByDesc('datetime')->paginate($count);
+
+        return $_controller->dateCatigor($article);
+    }
     /*--------search-------*/
     public function search($search, $count) {
         $_controller = new Controller;

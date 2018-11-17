@@ -91,6 +91,111 @@ Route::match(['get', 'post'], '/excel', 'ExcelController@exportExcel')->name('ex
 Route::get('/delete-comment/{id}', 'ArticleController@deleteComment')->where('id','[0-9]+')->name('delete-comment');
 Route::get('/delete-blog-comment/{id}', 'BlogController@deleteComment')->where('id','[0-9]+')->name('delete-blog-comment');
 
+Route::get('/rss_other', "XMLController@RssOther");
+
+Route::get('/other_rss.php', function() {
+	$_article = new Article;
+    $articles = $_article->sitebar(20);
+
+    $xml = new XMLWriter();
+    $xml->openMemory();
+    $xml->startDocument();
+    $xml->startElement('rss');
+    $xml->writeAttribute('version', "2.0");
+    	$xml->startElement('channel');
+    		$xml->startElement('title');
+    			$xml->text("East Fruit Новости");
+    		$xml->endElement();
+    		$xml->startElement('link');
+    			$xml->text("https://east-fruit.com/");
+    		$xml->endElement();
+    		$xml->startElement('description');
+    			$xml->text("Информация о рынках овощей и фруктов на восток от Евросоюза");
+    		$xml->endElement();
+    		$xml->startElement('language');
+    			$xml->text("ru-ru");
+    		$xml->endElement();
+		    foreach($articles as $article) {
+		        $xml->startElement('item');
+		        	$xml->startElement('title');
+		        		$xml->text($article->title);
+		        	$xml->endElement();
+		        	$xml->startElement('link');
+		        		$xml->text("https://east-fruit.com/article/".$article->slug);
+		        	$xml->endElement();
+		        	$xml->startElement('description');
+		        		$xml->text("<![CDATA[".$article->lid."]]");
+		        	$xml->endElement();
+		        	$xml->startElement('pubDate');
+		        		$xml->text(date("r",strtotime($article->datetime)));
+		        	$xml->endElement();
+		        $xml->endElement();
+		    }
+    	$xml->endElement();
+    $xml->endElement();
+    $xml->endDocument();
+
+    $content = $xml->outputMemory();
+    $xml = null;
+
+    return response($content)->header('Content-Type', 'text/xml');
+});
+
+Route::get('/feed_rss.php', function() {
+	$_article = new Article;
+    $articles = $_article->feedXml(20);
+
+    $xml = new XMLWriter();
+    $xml->openMemory();
+    $xml->startDocument();
+    $xml->startElement('rss');
+    $xml->writeAttribute('version', "2.0");
+    	$xml->startElement('channel');
+    		$xml->startElement('title');
+    			$xml->text("East Fruit Новости");
+    		$xml->endElement();
+    		$xml->startElement('link');
+    			$xml->text("https://east-fruit.com/");
+    		$xml->endElement();
+    		$xml->startElement('description');
+    			$xml->text("Информация о рынках овощей и фруктов на восток от Евросоюза");
+    		$xml->endElement();
+    		$xml->startElement('language');
+    			$xml->text("ru-ru");
+    		$xml->endElement();
+		    foreach($articles as $article) {
+		        $xml->startElement('item');
+		        	$xml->startElement('title');
+		        		$xml->text($article->title);
+		        	$xml->endElement();
+		        	$xml->startElement('link');
+		        		$xml->text("https://east-fruit.com/article/".$article->slug);
+		        	$xml->endElement();
+		        	$xml->startElement('description');
+		        		$xml->text("<![CDATA[".$article->lid."]]");
+		        	$xml->endElement();
+		        	$xml->startElement('category');
+		        		$xml->text("Экономика");
+		        	$xml->endElement();
+		        	$xml->startElement('enclosure');
+		        		$xml->writeAttribute('url', "https://east-fruit.com/".$article->img);
+		        		$xml->writeAttribute('type', "image/jpeg");
+		        	$xml->endElement();
+		        	$xml->startElement('pubDate');
+		        		$xml->text(date("r",strtotime($article->datetime)));
+		        	$xml->endElement();
+		        $xml->endElement();
+		    }
+    	$xml->endElement();
+    $xml->endElement();
+    $xml->endDocument();
+
+    $content = $xml->outputMemory();
+    $xml = null;
+
+    return response($content)->header('Content-Type', 'text/xml');
+});
+
 //Route::match(['get', 'post'], '/excel', 'ExcelController@uploadExsel')->name('excel');
 
 // Route::get('/slug', function() {
