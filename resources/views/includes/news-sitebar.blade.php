@@ -13,7 +13,7 @@
                     {{ csrf_field() }}
                     <div class="checkbox">
                         @foreach($answer as $value)
-                            <label><input type="checkbox" name="answer{{ $value->id }}" value="{{ $value->id }}"> {{ $value->title }}</label>
+                            <label><input type="radio" name="answer" value="{{ $value->id }}"> {{ $value->title }}</label>
                         @endforeach
                     </div>
 

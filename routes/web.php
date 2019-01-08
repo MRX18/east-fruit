@@ -121,7 +121,7 @@ Route::get('/other_rss.php', function() {
 		        		$xml->text($article->title);
 		        	$xml->endElement();
 		        	$xml->startElement('link');
-		        		$xml->text("https://east-fruit.com/article/".$article->slug);
+		        		$xml->text("https://east-fruit.com".$article->slug);
 		        	$xml->endElement();
 		        	$xml->startElement('description');
 		        		$xml->text("<![CDATA[".$article->lid."]]");
@@ -150,6 +150,7 @@ Route::get('/feed_rss.php', function() {
     $xml->startDocument();
     $xml->startElement('rss');
     $xml->writeAttribute('version', "2.0");
+    $xml->writeAttribute('xmlns:yandex', "http://news.yandex.ru");
     	$xml->startElement('channel');
     		$xml->startElement('title');
     			$xml->text("East Fruit Новости");
@@ -183,6 +184,9 @@ Route::get('/feed_rss.php', function() {
 		        	$xml->endElement();
 		        	$xml->startElement('pubDate');
 		        		$xml->text(date("r",strtotime($article->datetime)));
+		        	$xml->endElement();
+		        	$xml->startElement('yandex:full-text');
+		        		$xml->text(strip_tags($article->text));
 		        	$xml->endElement();
 		        $xml->endElement();
 		    }

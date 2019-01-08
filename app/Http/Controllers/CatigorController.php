@@ -132,8 +132,6 @@ class CatigorController extends Controller
                 $prices = $_price->priceN($market, $request->product, $dateMin, $dateMax);
             }
 
-
-
             if($request->price == 1) {
                 foreach ($prices as $price) {
                     $price->price = $price->price_min;
@@ -226,31 +224,30 @@ class CatigorController extends Controller
             //     $prices = collect($collection);
             // }
 
-
-
-            if (array_key_exists($request->currency, $this->currency())) {
-                $currency = $this->currency()[$request->currency];
-            } else {
-                $currency = $this->currency()['USD'];
-            }
             
-            $currency = $currency[0] / $currency[1];
-            $uan = $this->currency()['UAH'][0] / $this->currency()['UAH'][1];
+            // if (array_key_exists($request->currency, $this->currency())) {
+            //     $currency = $this->currency()[$request->currency];
+            // } else {
+            //     $currency = $this->currency()['USD'];
+            // }
 
-            foreach($prices as $price) {
+            // $currency = $currency[0] / $currency[1];
+            // $uan = $this->currency()['UAH'][0] / $this->currency()['UAH'][1];
 
-                if($price->currencyl==Currency::where('charCode', $request->currency)->value('id')){
-                    $rub = $price->price_input;
-                    $price->price_input = round($rub,2);
-                }else{
-                if($request->currency=='RUB'){
-                    $rub = $price->price*$uan;
-                    $price->price_input = round($rub);
-                }else{
-                    $rub = $price->price*$uan;
-                    $price->price_input = round($rub/$currency,2);
-                }}
-            }
+            // foreach($prices as $price) {
+
+            //     if($price->currencyl==Currency::where('charCode', $request->currency)->value('id')){
+            //         $rub = $price->price_input;
+            //         $price->price_input = round($rub,2);
+            //     }else{
+            //     if($request->currency=='RUB'){
+            //         $rub = $price->price*$uan;
+            //         $price->price_input = round($rub);
+            //     }else{
+            //         $rub = $price->price*$uan;
+            //         $price->price_input = round($rub/$currency,2);
+            //     }}
+            // }
 
             $markets = Market::whereIn('id', $market)->get();
 
