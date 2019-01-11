@@ -97,48 +97,79 @@ class EastfruitController extends Controller
     }
 
     public function tablePrice(Request $request) {
-        $markets = Market::get();
-        $products = Product::orderBy('name')->get();
-
-        $data = [
-            'markets' => $markets,
-            'products' => $products
-        ];
-
+        $data = array();
+        $dataPrice = array();
+        $marketsId = array();
         if($request->isMethod('post')) {
-            $validator = Validator::make($request->all(),
-                [
-                    'market' => 'required|integer',
-                    'product' => 'required|integer',
-                ]);
+            $prices = Price::where('date', $request->date)->get();
+            $products = Product::get();
+            $specifications = Specification::get();
+            $markets = Market::get();
 
-            if($validator->fails()) {
-                return redirect()->back()->withInput()->withErrors($validator->errors());
-            } else {
-                $specifications = Specification::where('id_product', $request->product)->get();
-
-                if(count($specifications) > 0) {
-                    foreach($specifications as $specification) {
-                        $specification->price = Price::where('id_market',$request->market)
-                            ->where('id_product', $request->product)
-                            ->where('id_specification', $specification->id)
-                            ->where('date', $request->date)
-                            ->get();
-                    }
-
-                    $market = Market::where('id', $request->market)->first();
-                    $product = Product::where('id', $request->product)->first();
-                } else {
-                    $specifications = false;
-                    $market = false;
-                    $product = false;
-                }
-
-                $data['specification'] = $specifications;
-                $data['name_market'] = $market;
-                $data['name_product'] = $product;
-                $data['date'] = date("d.m.Y", strtotime($request->date));
+            foreach ($markets as $m) {
+                $marketsId[] = $m->id;
             }
+
+            foreach ($products as $p) {
+                if($specifications->where("id_product", $p->id)->count() > 0) {
+                    $specification = $specifications->where("id_product", $p->id);
+                    foreach ($specification as $s) {
+                        if($prices->whereIn("id_market", $marketsId)->where("id_product", $p->id)->where("id_specification", $s->id)->count() > 0) {
+                            $price = $prices->whereIn("id_market", $marketsId)->where("id_product", $p->id)->where("id_specification", $s->id);
+                            $mId = array();
+                            foreach($price as $pr) {
+                                $mId[] = $pr->id_market;
+                            }
+
+                            $dataPrice[] = array(
+                                "product" => $p->name,
+                                "specification" => $s->title,
+                                "marker" => $mId,
+                                "price" => "Есть"
+                            );
+                        } else {
+                            $dataPrice[] = array(
+                                "product" => $p->name,
+                                "specification" => $s->title,
+                                "marker" => 0,
+                                "price" => "Нет"
+                            );
+                        }
+                    }
+                } else {
+                    if($prices->whereIn("id_market", $marketsId)->where("id_product", $p->id)->where("id_specification", NULL)->count() > 0) {
+                        $price = $prices->whereIn("id_market", $marketsId)->where("id_product", $p->id)->where("id_specification", NULL);
+                        $mId = array();
+                        foreach($price as $pr) {
+                            $mId[] = $pr->id_market;
+                        }
+
+                        $dataPrice[] = array(
+                            "product" => $p->name,
+                            "specification" => "Нет",
+                            "marker" => $mId,
+                            "price" => "Есть"
+                        );
+                    } else {
+                        $dataPrice[] = array(
+                            "product" => $p->name,
+                            "specification" => "Нет",
+                            "marker" => 0,
+                            "price" => "Нет"
+                        );
+                    }
+                }
+            }
+
+            //dd($dataPrice);
+
+            $data = [
+                "prices" => $dataPrice,
+                "markets" => $markets,
+                "date" => $request->date
+            ];
+
+                //$data['date'] = date("d.m.Y", strtotime($request->date));
         }
 
         return AdminSection::view(view('admin.price-table', $data), 'Сверочная таблица цен');

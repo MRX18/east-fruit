@@ -29,7 +29,7 @@ AdminSection::registerModel(Price::class, function (ModelConfiguration $model) {
             AdminDisplayFilter::related('date')->setModel(Price::class)
         );
 
-        $display = AdminDisplay::table()->setActions(
+        $display->setActions(
             AdminColumn::action('export', 'Удалить')
                 ->setAction(route('price-delete'))
                 ->setIcon('fa fa-share')

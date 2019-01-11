@@ -153,14 +153,52 @@ class CatigorController extends Controller
             }
 
             $date = array();
+            $dateOrigin = array();
+            $marketsxId = array();
             foreach($prices as $price) {
                 $priceDate = explode('-', $price->date);
 //                $price->date = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
                 $price->allDate = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
                 $date[] = $priceDate[2].'.'.$priceDate[1].'.'.$priceDate[0];
+                $dateOrigin[] = $price->date;
+                $marketsxId[] = $price->id_market;
             }
-
             $date = array_values(array_unique($date));
+            $dateOrigin = array_values(array_unique($dateOrigin));
+            $marketsId = array_values(array_unique($marketsxId));
+            //dd($prices);
+
+            /*
+             * Создание розрывов на графике
+             */
+//            foreach ($marketsId as $m) {
+//                foreach ($dateOrigin as $d) {
+//                    if($prices->where("id_market", $m)->where("date", $d)->count() == 0) {
+//                        $p = $prices[0];
+//                        $p->id_market = $m;
+//                        $p->date = $d;
+//                        $p->price = "";
+//                        $p->price_input = "";
+//                        $p->currencyl = "";
+//                        $p->allDate = date("d.m.Y", strtotime($d));
+//
+////                        $prices[] = array(
+////                            "id_market" => $m,
+////                            "date" => $d,
+////                            "price" => "",
+////                            "price_input" => "",
+////                            "currencyl" => "",
+////                            "allDate" => date("d.m.Y", strtotime($d))
+////                        );
+//
+//                        $prices[] = $p;
+//                    }
+//                }
+//            }
+
+            //dd($prices);
+
+            $prices = $prices->sortBy("date");
 
             // for($i=0; $i<count($market); $i++) {
             //     for($j=0; $j<count($date); $j++) {
